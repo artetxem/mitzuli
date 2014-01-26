@@ -1,0 +1,1 @@
+This project includes third party libraries; please see 'libraries/' for copyright details pertaining to them.

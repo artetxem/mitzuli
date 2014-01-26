@@ -1,0 +1,5 @@
+# apertium-ht-en (RELEASED BUT NOT IN TRUNK)
+ht-en	20131230001	http://sourceforge.net/projects/mitzuli/files/packages/mt/beta/ht-en.zip/download
+
+# apertium-mt-ar (RELEASED BUT NOT IN TRUNK | mt-ar INCOMPATIBLE (depends on CG))
+ar-mt	20131230001	http://sourceforge.net/projects/mitzuli/files/packages/mt/beta/ar-mt.zip/download

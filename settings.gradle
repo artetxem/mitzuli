@@ -1,0 +1,1 @@
+include ':app', 'libraries:axmlrpc', 'libraries:cropper', 'libraries:opencv', 'libraries:tesseract-android-tools', 'libraries:lttoolbox-java'

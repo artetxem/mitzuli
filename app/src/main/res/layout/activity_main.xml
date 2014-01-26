@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/card_margin"
+    android:background="@color/card_activity_background"
+    tools:context="com.mitzuli.MainActivity" >
+    
+    <LinearLayout style="@style/card"
+        android:id="@+id/src_card" >
+	    
+	    <LinearLayout style="@style/card_header"
+	        android:id="@+id/src_header" >
+	        
+	        <ImageView style="@style/card_expand_state"
+	            android:id="@+id/src_expand_state"
+	            android:src="@drawable/expander_down" />
+	        
+	        <TextView style="@style/card_title"
+	            android:id="@+id/src_title"
+	            android:fontFamily="sans-serif-light" />
+
+	        <View style="@style/card_vertical_separator" />
+	        
+	        <LinearLayout style="@style/card_header_button_area" >
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/src_audio_button"
+                    android:src="@drawable/ic_action_audio" />
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/camera_button"
+                    android:src="@drawable/ic_action_camera" />
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/keyboard_button"
+                    android:src="@drawable/ic_action_keyboard" />
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/remove_button"
+                    android:src="@drawable/ic_action_remove" />
+
+            </LinearLayout>
+	        
+	    </LinearLayout>
+	
+	    <View style="@style/card_horizontal_separator" />
+	    
+	    <LinearLayout style="@style/card_content"
+	        android:id="@+id/src_content" >
+
+            <EditText style="@style/card_text"
+                android:id="@+id/src_text"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="outsideOverlay"/>
+
+        </LinearLayout>
+	    
+	    <View style="@style/card_horizontal_separator" />
+	    
+	    <Button style="@style/card_main_button"
+	        android:id="@+id/translate_button"
+	        android:text="@string/translate_button"/>
+	    
+    </LinearLayout>
+    
+    
+    <LinearLayout style="@style/card"
+        android:id="@+id/trg_card" >
+	    
+	    <LinearLayout style="@style/card_header"
+	        android:id="@+id/trg_header" >
+	
+	        <ImageView style="@style/card_expand_state"
+	            android:id="@+id/trg_expand_state"
+	            android:src="@drawable/expander_up" />
+	        
+	        <TextView style="@style/card_title"
+	            android:id="@+id/trg_title"
+	            android:fontFamily="sans-serif-light" />
+	        
+	        <View style="@style/card_vertical_separator" />
+	        
+	        <LinearLayout style="@style/card_header_button_area" >
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/trg_audio_button"
+                    android:src="@drawable/ic_action_audio" />
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/copy_button"
+                    android:src="@drawable/ic_action_copy" />
+
+                <ImageButton style="@style/card_header_button"
+                    android:id="@+id/share_button"
+                    android:src="@drawable/ic_action_share" />
+
+            </LinearLayout>
+	
+	    </LinearLayout>
+	
+	    <View style="@style/card_horizontal_separator" />
+	
+	    <LinearLayout style="@style/card_content"
+	        android:id="@+id/trg_content" >
+
+            <ScrollView
+                android:id="@+id/trg_text_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView style="@style/card_text"
+                    android:id="@+id/trg_text" />
+            </ScrollView>
+
+        </LinearLayout>
+	    
+    </LinearLayout>
+
+</LinearLayout>

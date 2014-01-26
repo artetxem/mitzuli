@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/axmlrpc/axmlrpc.iml" filepath="$PROJECT_DIR$/libraries/axmlrpc/axmlrpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/cropper/cropper.iml" filepath="$PROJECT_DIR$/libraries/cropper/cropper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" filepath="$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mitzuli.iml" filepath="$PROJECT_DIR$/mitzuli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/opencv/opencv.iml" filepath="$PROJECT_DIR$/libraries/opencv/opencv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/tesseract-android-tools/tesseract-android-tools.iml" filepath="$PROJECT_DIR$/libraries/tesseract-android-tools/tesseract-android-tools.iml" />
+    </modules>
+  </component>
+</project>
+

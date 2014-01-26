@@ -1,0 +1,26 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    release {
+        runProguard false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+    }
+    sourceSets {
+        main {
+            aidl.srcDirs = ['src/main/java']
+        }
+    }
+}
+
+dependencies {
+    compile files('libs/native-libs.jar')
+}

@@ -1,0 +1,44 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    release {
+        runProguard false
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: "$buildDir/native-libs", include: '*.jar')
+}
+
+task ndkBuild(type:Exec) {
+    commandLine "$ndkdir/ndk-build", "--directory", "$projectDir/src/main/native", '-j', Runtime.runtime.availableProcessors(),
+            "APP_PLATFORM=android-8",
+            "APP_BUILD_SCRIPT=$projectDir/src/main/native/Android.mk",
+            "NDK_APPLICATION_MK=$projectDir/src/main/native/Application.mk",
+            "NDK_OUT=$buildDir/native/obj",
+            "NDK_APP_DST_DIR=$buildDir/native/libs/\$(TARGET_ARCH_ABI)"
+}
+
+task nativeLibsToJar(type: Zip, description: 'create a jar with native libs') {
+    destinationDir file("$buildDir/native-libs")
+    baseName 'native-libs'
+    extension 'jar'
+    from fileTree(dir: "$buildDir/native/libs", include: '**/*.so')
+    into 'lib/'
+}
+
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn nativeLibsToJar
+}
+
+nativeLibsToJar.dependsOn 'ndkBuild'

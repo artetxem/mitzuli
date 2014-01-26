@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="app_theme" parent="Theme.AppCompat.Light" />
+
+    <style name="card">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/card_background</item>
+    </style>
+
+    <style name="card_header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/card_header_height</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="card_expand_state">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="card_title">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingRight">@dimen/card_title_right_padding</item>
+        <item name="android:textSize">@dimen/card_title</item>
+        <item name="android:textColor">@color/card_title</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="card_vertical_separator">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/card_vertical_separator_horizontal_margin</item>
+        <item name="android:layout_marginBottom">@dimen/card_vertical_separator_horizontal_margin</item>
+        <item name="android:background">@color/card_separator</item>
+    </style>
+
+    <style name="card_horizontal_separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/card_separator</item>
+    </style>
+
+    <style name="card_header_button_area">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="card_header_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/card_header_button_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/card_header_button_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/card_header_button_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/card_header_button_vertical_padding</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@drawable/button_selector</item>
+    </style>
+
+    <style name="card_content">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="card_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/card_text_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/card_text_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/card_text_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/card_text_vertical_padding</item>
+        <item name="android:textSize">@dimen/card_text</item>
+        <item name="android:textColor">@color/card_text</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">top</item>
+        <item name="android:inputType">textMultiLine|textNoSuggestions</item>
+    </style>
+
+    <style name="card_main_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/card_header_height</item>
+        <item name="android:textSize">@dimen/card_main_button</item>
+        <item name="android:textColor">@color/card_main_button</item>
+        <item name="android:background">@drawable/button_selector</item>
+    </style>
+
+</resources>

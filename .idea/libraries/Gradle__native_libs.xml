@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: native-libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/opencv/libs/native-libs.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

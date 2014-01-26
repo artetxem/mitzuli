@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="@string/pref_header_general"
+        android:key="pref_key_general">
+        
+        <CheckBoxPreference
+            android:key="pref_key_beta_packages"
+            android:summary="@string/pref_description_beta_packages"
+            android:title="@string/pref_title_beta_packages"
+            android:defaultValue="false" />
+        
+        <CheckBoxPreference
+            android:key="pref_key_mark_unknown"
+            android:summary="@string/pref_description_mark_unknown"
+            android:title="@string/pref_title_mark_unknown"
+            android:defaultValue="true" />
+        
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory
+        android:title="@string/pref_header_updates"
+        android:key="pref_key_updates">
+        
+        <CheckBoxPreference
+            android:key="pref_key_autocheck_updates"
+            android:summary="@string/pref_description_autocheck_updates"
+            android:title="@string/pref_title_autocheck_updates"
+            android:defaultValue="true" />
+        
+        <Preference
+            android:key="pref_key_check_updates"
+            android:summary="@string/pref_description_check_updates"
+            android:title="@string/pref_title_check_updates" />
+        
+    </PreferenceCategory>
+    
+    
+    <PreferenceCategory
+        android:title="@string/pref_header_about"
+        android:key="pref_key_about">
+        
+        <Preference
+            android:key="pref_key_licenses"
+            android:summary="@string/pref_description_licenses"
+            android:title="@string/pref_title_licenses" />
+        
+    </PreferenceCategory>
+    
+</PreferenceScreen>

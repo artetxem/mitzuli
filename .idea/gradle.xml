@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/axmlrpc" />
+            <option value="$PROJECT_DIR$/libraries/cropper" />
+            <option value="$PROJECT_DIR$/libraries/lttoolbox-java" />
+            <option value="$PROJECT_DIR$/libraries/opencv" />
+            <option value="$PROJECT_DIR$/libraries/tesseract-android-tools" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
+
