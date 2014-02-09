@@ -162,7 +162,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                 params.setPictureSize(pictureSize.width, pictureSize.height);
                 params.setPreviewSize(previewSizes.get(0).width, previewSizes.get(0).height);
                 params.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
-                params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
                 params.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
                 params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
                 camera.setParameters(params);
