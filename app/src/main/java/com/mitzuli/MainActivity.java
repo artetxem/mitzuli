@@ -30,6 +30,7 @@ import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
 import com.mitzuli.core.tts.Tts;
 
+import org.acra.annotation.ReportsCrashes;
 import org.opencv.android.OpenCVLoader;
 
 import com.f2prateek.progressbutton.ProgressButton;
@@ -68,6 +69,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+@ReportsCrashes(formUri = Keys.ACRA_FORM_URI, formKey=Keys.ACRA_FORM_KEY)
 public class MainActivity extends ActionBarActivity implements OnClickListener, ActionBar.OnNavigationListener {
 
     static {

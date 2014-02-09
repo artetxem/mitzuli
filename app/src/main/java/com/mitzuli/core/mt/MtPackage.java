@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import com.mitzuli.Keys;
 import com.mitzuli.core.Package;
 
 import org.apertium.Translator;
@@ -47,16 +48,6 @@ import android.os.AsyncTask;
 
 
 public class MtPackage extends Package {
-
-    private static final URL API_URL;
-    private static final String API_KEY = ""; // TODO Gakoa gehitu...
-    static {
-        try {
-            API_URL = new URL("http://api.apertium.org/xmlrpc");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     private static final Pattern unknownPattern = Pattern.compile("\\B\\*((\\p{L}||\\p{N})+)\\b");
     private static final String unknownReplacement = "<font color='#EE0000'>$1</font>";
@@ -118,7 +109,11 @@ public class MtPackage extends Package {
                     }
                 }
             };
-            new XMLRPCClient(API_URL).callAsync(callback, "translate", text, "txt", getId().split("-")[0], getId().split("-")[1], markUnknown, API_KEY);
+            try {
+                new XMLRPCClient(new URL(Keys.APERTIUM_API_URL)).callAsync(callback, "service.translate", text, "txt", getId().split("-")[0], getId().split("-")[1], markUnknown, Keys.APERTIUM_API_KEY);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException(e); // We should never reach this
+            }
         }
     }
 
@@ -127,6 +122,7 @@ public class MtPackage extends Package {
         private final boolean markUnknown;
         private final TranslationCallback translationCallback;
         private final ExceptionCallback exceptionCallback;
+        private Exception exception;
 
         public TranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
             this.markUnknown = markUnknown;
@@ -145,7 +141,7 @@ public class MtPackage extends Package {
                 IOUtils.cacheDir = getCacheDir();
                 return "<html>" + (markUnknown ? unknownPattern.matcher(Translator.translate(text[0])).replaceAll(unknownReplacement) : Translator.translate(text[0])).replaceAll("\n", "<br/>") + "<html>";
             } catch (Exception e) {
-                exceptionCallback.onException(e);
+                exception = e;
                 return null;
             }
         }
@@ -154,6 +150,7 @@ public class MtPackage extends Package {
         protected void onPostExecute(String translation) {
             translationTask = null;
             if (translation != null) translationCallback.onTranslationDone(translation);
+            else if (exception != null) exceptionCallback.onException(exception);
         }
 
     }

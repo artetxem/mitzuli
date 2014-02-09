@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="ComAndroidSupportAppcompatV71901.aar">
+  <library name="appcompat-v7-19.0.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/build/exploded-bundles/ComAndroidSupportAppcompatV71901.aar/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/exploded-bundles/ComAndroidSupportAppcompatV71901.aar/res" />

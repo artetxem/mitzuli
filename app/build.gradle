@@ -20,8 +20,9 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:+'
-    compile 'com.android.support:support-v4:18.0.+@jar'
+    compile 'com.android.support:support-v4:+@jar'
     compile 'com.f2prateek.progressbutton:progressbutton:2.0.1@aar'
+    compile 'ch.acra:acra:4.5.0'
     compile project(':libraries:axmlrpc')
     compile project(':libraries:cropper')
     compile project(':libraries:opencv')

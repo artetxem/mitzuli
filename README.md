@@ -24,6 +24,7 @@ Building
 --------
 
 - Set the path to your NDK installation in gradle.properties
+- (Optional) Set your API keys for ACRA and Apertium web service in com.mitzuli.Keys
 - Either import the project in Android Studio or run './gradlew assemble'
 
 
