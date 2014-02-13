@@ -365,7 +365,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        if (view == translateButton) { //TODO Should we check that there is an active pair?
+        if (view == translateButton && (activePair.mtPackage.isInstalled() || checkInternetAccess(getResources().getString(R.string.offline_on_translate_error_title), getResources().getString(R.string.offline_on_translate_error_message)))) {
             trgContent.removeAllViews();
             trgContent.setGravity(Gravity.CENTER);
             trgContent.addView(trgProgressBar);
@@ -444,6 +444,24 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private boolean isOnline() {
         final NetworkInfo networkInfo = ((ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
+    }
+
+
+    private boolean checkInternetAccess(String errorTitle, String errorMessage) {
+        if (isOnline()) {
+            return true;
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(errorTitle)
+                    .setMessage(errorMessage)
+                    .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                        @Override public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+            return false;
+        }
     }
 
 
@@ -564,7 +582,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
                         notifyDataSetChanged();
 
-                    } else {
+                    } else if (checkInternetAccess(getResources().getString(R.string.offline_on_install_error_title), getResources().getString(R.string.offline_on_install_error_message))) {
                         PackageManager.installPackages(
                                 pair.ocrPackage != null && !pair.ocrPackage.isInstalled() ?
                                         Arrays.asList(pair.mtPackage, pair.ocrPackage) :
@@ -586,7 +604,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                                         //progress.setPinned(false);
                                         //progress.setProgress(0);
                                         notifyDataSetChanged();
-                                        exception.printStackTrace(); //TODO What should we do?
+                                        exceptionCallback.onException(exception);
                                     }
                                 });
                     }

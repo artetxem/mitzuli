@@ -20,6 +20,10 @@ package com.mitzuli;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -36,7 +40,9 @@ public class SettingsActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.preferences);
         findPreference("pref_key_check_updates").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override public boolean onPreferenceClick(Preference preference) {
-                PackageManagers.updatePackages(SettingsActivity.this, true, true);
+                if (checkInternetAccess(getResources().getString(R.string.offline_on_update_error_title), getResources().getString(R.string.offline_on_update_error_message))) {
+                    PackageManagers.updatePackages(SettingsActivity.this, true, true);
+                }
                 return true;
             }
         });
@@ -73,6 +79,30 @@ public class SettingsActivity extends PreferenceActivity {
                 .setTitle(R.string.pref_title_licenses)
                 .setView(webview)
                 .create();
+    }
+
+
+    private boolean isOnline() {
+        final NetworkInfo networkInfo = ((ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        return networkInfo != null && networkInfo.isConnected();
+    }
+
+
+    private boolean checkInternetAccess(String errorTitle, String errorMessage) {
+        if (isOnline()) {
+            return true;
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(errorTitle)
+                    .setMessage(errorMessage)
+                    .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                        @Override public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+            return false;
+        }
     }
 
 }
