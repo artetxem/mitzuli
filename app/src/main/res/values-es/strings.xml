@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Ajustes</string>
+    <string name="translate_button">TRADUCIR</string>
+    <string name="translation_copied">Traducción copiada</string>
+    <string name="share_with">Compartir traducción con</string>
+    
+    <string name="ok_button">Aceptar</string>
+    <string name="cancel_button">Cancelar</string>
+    
+    <string name="error_dialog_title">Error</string>
+    
+    <string name="update_dialog_title">¿Actualizar ahora?</string>
+    <string name="update_dialog_update_button">Actualizar</string>
+    <string name="update_dialog_packages_to_update">Los siguientes paquetes serán actualizados:</string>
+    
+    <string name="no_update_dialog_message">¡No hay actualizaciones disponibles!</string>
+    
+    <string name="update_progress_dialog_title">Actualizando</string>
+    <string name="update_progress_dialog_message">Actualizando paquetes&#8230;</string>
+
+    <string name="offline_on_install_error_title">Instalación fallida</string>
+    <string name="offline_on_install_error_message">Se requiere acceso a Internet para instalar idiomas.</string>
+    <string name="offline_on_translate_error_title">Traducción fallida</string>
+    <string name="offline_on_translate_error_message">Instala idiomas para poder traducir sin accesso a Internet.</string>
+    
+    
+    <!-- SETTINGS -->
+    
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_beta_packages">Idiomas beta</string>
+    <string name="pref_description_beta_packages">Habilitar idiomas beta (la calidad de las traducciones puede ser mala)</string>
+    <string name="pref_title_mark_unknown">Marcar palabras desconocidas</string>
+    <string name="pref_description_mark_unknown">Mostrar marcas para palabras desconocidas</string>
+    
+    <string name="pref_header_updates">Actualizaciones</string>
+    <string name="pref_title_autocheck_updates">Actualizar automáticamente</string>
+    <string name="pref_description_autocheck_updates">Comprobar actualizaciones para tus idiomas de manera automática</string>
+    <string name="pref_title_check_updates">Comprobar actualizaciones</string>
+    <string name="pref_description_check_updates">Comprobar actualizaciones para tus idiomas</string>
+    
+    <string name="pref_header_about">Acerca de</string>
+    <string name="pref_title_licenses">Licencias de software libre</string>
+    <string name="pref_description_licenses">Detalles de la licencia de software de código abierto</string>
+
+    <string name="offline_on_update_error_title">Actualización fallida</string>
+    <string name="offline_on_update_error_message">Se requiere acceso a Internet para actualizar idiomas.</string>
+
+</resources>

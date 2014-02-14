@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Ezarpenak</string>
+    <string name="translate_button">ITZULI</string>
+    <string name="translation_copied">Itzulpena kopiatu da</string>
+    <string name="share_with">Itzulpena honekin partekatu</string>
+
+    <string name="ok_button">Ados</string>
+    <string name="cancel_button">Utzi</string>
+
+    <string name="error_dialog_title">Errorea</string>
+
+    <string name="update_dialog_title">Orain eguneratu?</string>
+    <string name="update_dialog_update_button">Eguneratu</string>
+    <string name="update_dialog_packages_to_update">Ondorengo paketeak eguneratuko dira:</string>
+
+    <string name="no_update_dialog_message">Guztia eguneraturik dago!</string>
+
+    <string name="update_progress_dialog_title">Eguneratzen</string>
+    <string name="update_progress_dialog_message">Paketeak eguneratzen&#8230;</string>
+
+    <string name="offline_on_install_error_title">Instalazioak huts egin du</string>
+    <string name="offline_on_install_error_message">Hizkuntza bikoteak instalatzeko Interneterako konexioa behar da.</string>
+    <string name="offline_on_translate_error_title">Itzulpenak huts egin du</string>
+    <string name="offline_on_translate_error_message">Instalatu hizkuntza bikoteak Interneterako konexiorik gabe itzuli ahal izateko.</string>
+
+
+    <!-- SETTINGS -->
+
+    <string name="pref_header_general">Orokorra</string>
+    <string name="pref_title_beta_packages">Beta hizkuntza bikoteak</string>
+    <string name="pref_description_beta_packages">Beta hizkuntza bikoteak gaitu (itzulpenen kalitatea txarra izan daiteke)</string>
+    <string name="pref_title_mark_unknown">Hitz ezezagunak nabarmendu</string>
+    <string name="pref_description_mark_unknown">Hitz ezezagunentzako markak erakutsi</string>
+
+    <string name="pref_header_updates">Eguneraketak</string>
+    <string name="pref_title_autocheck_updates">Eguneraketa automatikoak</string>
+    <string name="pref_description_autocheck_updates">Zure hizkuntza bikoteentzako eguneraketak automatikoki bilatu</string>
+    <string name="pref_title_check_updates">Eguneraketak bilatu</string>
+    <string name="pref_description_check_updates">Zure hizkuntza bikoteentzako eguneraketak bilatu</string>
+
+    <string name="pref_header_about">Honi buruz</string>
+    <string name="pref_title_licenses">Iturburu irekiko lizentziak</string>
+    <string name="pref_description_licenses">Iturburu irekiko software lizentzien xehetasunak</string>
+
+    <string name="offline_on_update_error_title">Eguneraketak huts egin du</string>
+    <string name="offline_on_update_error_message">Hizkuntza bikoteak instalatzeko Interneterako konexioa behar da.</string>
+
+</resources>
