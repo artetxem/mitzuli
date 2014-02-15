@@ -3,6 +3,8 @@ Mitzuli [BETA]
 
 Simple, clean, yet powerful translator app for Android.
 
+For more information, visit [www.mitzuli.com](http://www.mitzuli.com/).
+
 
 Features
 --------
