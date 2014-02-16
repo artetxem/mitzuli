@@ -42,7 +42,7 @@
     <string name="offline_on_install_error_title">Ha fallat la instal·lació</string>
     <string name="offline_on_install_error_message">Cal una connexió a Internet per a instal·lar paquets d'idioma.</string>
     <string name="offline_on_translate_error_title">Ha fallat la traducció</string>
-    <string name="offline_on_translate_error_message">Instal·leu paquets d'idoma per a poder fer traduccions sense accés a Internet.</string>
+    <string name="offline_on_translate_error_message">Instal·leu paquets d'idioma per a poder fer traduccions sense accés a Internet.</string>
 
 
     <!-- SETTINGS -->
@@ -54,7 +54,7 @@
     <string name="pref_description_mark_unknown">Es mostren marques per a les paraules desconegudes.</string>
 
     <string name="pref_header_updates">Actualitzacions</string>
-    <string name="pref_title_autocheck_updates">Comprova les actualitzacions autoàticament</string>
+    <string name="pref_title_autocheck_updates">Comprova les actualitzacions automàticament</string>
     <string name="pref_description_autocheck_updates">Comprova automàticament si hi ha actualitzacions per als vostres paquets d'idioma</string>
     <string name="pref_title_check_updates">Comprova actualitzacions</string>
     <string name="pref_description_check_updates">Comprova si hi ha actualitzacions per als vostres paquets d'idioma</string>
