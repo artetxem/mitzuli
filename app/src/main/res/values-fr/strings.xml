@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Bernard Chardonneau <bechapertium@free.fr>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Ajustages</string>
+    <string name="translate_button">TRADUIRE</string>
+    <string name="translation_copied">Traduction copiée</string>
+    <string name="share_with">Partager la traduction avec</string>
+
+    <string name="ok_button">Accepter</string>
+    <string name="cancel_button">Annuler</string>
+
+    <string name="error_dialog_title">Erreur</string>
+
+    <string name="update_dialog_title">Mettre à jour?</string>
+    <string name="update_dialog_update_button">Mise à jour</string>
+    <string name="update_dialog_packages_to_update">Les paquets suivants seront mis à jour:</string>
+
+    <string name="no_update_dialog_message">Tout est à jour!</string>
+
+    <string name="update_progress_dialog_title">Mise à jour</string>
+    <string name="update_progress_dialog_message">Mise à jour des paquets&#8230;</string>
+
+    <string name="offline_on_install_error_title">Installation ratée</string>
+    <string name="offline_on_install_error_message">Un accès à Internet est nécessaire pour installer les paires de langues.</string>
+    <string name="offline_on_translate_error_title">Traduction ratée</string>
+    <string name="offline_on_translate_error_message">Installez des paires de langues pour pouvoir traduire sans accès à Internet.</string>
+
+
+    <!-- SETTINGS -->
+
+    <string name="pref_header_general">Généralités</string>
+    <string name="pref_title_beta_packages">Paires de langues beta</string>
+    <string name="pref_description_beta_packages">Autoriser des paires de langues beta (la qualité des traductions peut être mauvaise)</string>
+    <string name="pref_title_mark_unknown">Marquer les mots inconnus</string>
+    <string name="pref_description_mark_unknown">Afficher les marques pour les mots inconnus</string>
+
+    <string name="pref_header_updates">Mises à jour</string>
+    <string name="pref_title_autocheck_updates">Mettre à jour automatiquement</string>
+    <string name="pref_description_autocheck_updates">Vérifier automatiquement les mises à jour pour vos paires de langues</string>
+    <string name="pref_title_check_updates">Vérifier les mises à jour</string>
+    <string name="pref_description_check_updates">Vérifier les mises à jour pour vos paires de langues</string>
+
+    <string name="pref_header_about">A propos</string>
+    <string name="pref_title_licenses">Licences de logiciels libres</string>
+    <string name="pref_description_licenses">Détails de la licence de logiciel à code ouvert</string>
+
+    <string name="offline_on_update_error_title">Mise à jour ratée</string>
+    <string name="offline_on_update_error_message">Un accès à Internet est nécessaire pour mettre à jour les paires de langues</string>
+
+</resources>
