@@ -22,7 +22,7 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Achustes</string>
     <string name="translate_button">TRADUCIR</string>
-    <string name="translation_copied">S'ha copiau a traducción</string>
+    <string name="translation_copied">S\'ha copiau a traducción</string>
     <string name="share_with">Compartir a traducción con</string>
     
     <string name="ok_button">Acceptar</string>
@@ -32,7 +32,7 @@
     
     <string name="update_dialog_title">Quiers esviellar agora?</string>
     <string name="update_dialog_update_button">Esviellar</string>
-    <string name="update_dialog_packages_to_update">S'esviellarán os siguients paquetz:</string>
+    <string name="update_dialog_packages_to_update">S\'esviellarán os siguients paquetz:</string>
     
     <string name="no_update_dialog_message">Ya lo tiens tot esviellau!</string>
     
@@ -40,30 +40,30 @@
     <string name="update_progress_dialog_message">Se son esviellando os paquetz&#8230;</string>
 
     <string name="offline_on_install_error_title">Ha fallau a instalación</string>
-    <string name="offline_on_install_error_message">Cal una connexión a Internet ta instalar paquetz d'idioma.</string>
+    <string name="offline_on_install_error_message">Cal una connexión a Internet ta instalar paquetz d\'idioma.</string>
     <string name="offline_on_translate_error_title">Ha fallau a traducción</string>
-    <string name="offline_on_translate_error_message">Instala paquetz d'idioma ta poder fer traduccions sin accesso a Internet.</string>
+    <string name="offline_on_translate_error_message">Instala paquetz d\'idioma ta poder fer traduccions sin accesso a Internet.</string>
     
     
     <!-- SETTINGS -->
     
     <string name="pref_header_general">Cheneral</string>
-    <string name="pref_title_beta_packages">Paquetz d'idioma beta</string>
-    <string name="pref_description_beta_packages">Habilitar paquetz d'idioma en prebas (a qualidat d'as traduccions podría estar mala)</string>
+    <string name="pref_title_beta_packages">Paquetz d\'idioma beta</string>
+    <string name="pref_description_beta_packages">Habilitar paquetz d\'idioma en prebas (a qualidat d\'as traduccions podría estar mala)</string>
     <string name="pref_title_mark_unknown">Marcar parolas desconoixidas</string>
-    <string name="pref_description_mark_unknown">S'amuestran marcas en as parolas desconoixidas</string>
+    <string name="pref_description_mark_unknown">S\'amuestran marcas en as parolas desconoixidas</string>
     
     <string name="pref_header_updates">Actualizacions</string>
     <string name="pref_title_autocheck_updates">Esviellar automaticament</string>
-    <string name="pref_description_autocheck_updates">Comprebar as actualizacions d'os tuyos paquetz d'idioma de traza automatica</string>
+    <string name="pref_description_autocheck_updates">Comprebar as actualizacions d\'os tuyos paquetz d\'idioma de traza automatica</string>
     <string name="pref_title_check_updates">Comprebar actualizacions</string>
-    <string name="pref_description_check_updates">Comprebar as actualizacions d'os tuyos paquetz d'idioma</string>
+    <string name="pref_description_check_updates">Comprebar as actualizacions d\'os tuyos paquetz d\'idioma</string>
     
     <string name="pref_header_about">Sobre</string>
     <string name="pref_title_licenses">Licencias de codigo libre</string>
-    <string name="pref_description_licenses">Detalles d'as licencias de codigo ubierto</string>
+    <string name="pref_description_licenses">Detalles d\'as licencias de codigo ubierto</string>
 
-    <string name="offline_on_update_error_title">Ha fallau l'actualización</string>
-    <string name="offline_on_update_error_message">Cal una connexión a Internet ta esviellar os paquetz d'idioma.</string>
+    <string name="offline_on_update_error_title">Ha fallau l\'actualización</string>
+    <string name="offline_on_update_error_message">Cal una connexión a Internet ta esviellar os paquetz d\'idioma.</string>
 
 </resources>

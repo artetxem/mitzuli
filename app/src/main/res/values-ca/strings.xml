@@ -22,48 +22,48 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Configuració</string>
     <string name="translate_button">TRADUEIX</string>
-    <string name="translation_copied">S'ha copiat la traducció</string>
+    <string name="translation_copied">S\'ha copiat la traducció</string>
     <string name="share_with">Comparteix la traducció amb</string>
 
-    <string name="ok_button">D'acord</string>
+    <string name="ok_button">D\'acord</string>
     <string name="cancel_button">Cancel·la</string>
 
     <string name="error_dialog_title">Error</string>
 
     <string name="update_dialog_title">Voleu actualitzar?</string>
     <string name="update_dialog_update_button">Actualitza</string>
-    <string name="update_dialog_packages_to_update">Els següents paquets s'actualitzaran:</string>
+    <string name="update_dialog_packages_to_update">Els següents paquets s\'actualitzaran:</string>
 
     <string name="no_update_dialog_message">Tot està actualitzat!</string>
 
-    <string name="update_progress_dialog_title">S'està actualitzant</string>
-    <string name="update_progress_dialog_message">S'estan actualitzant els paquets&#8230;</string>
+    <string name="update_progress_dialog_title">S\'està actualitzant</string>
+    <string name="update_progress_dialog_message">S\'estan actualitzant els paquets&#8230;</string>
 
     <string name="offline_on_install_error_title">Ha fallat la instal·lació</string>
-    <string name="offline_on_install_error_message">Cal una connexió a Internet per a instal·lar paquets d'idioma.</string>
+    <string name="offline_on_install_error_message">Cal una connexió a Internet per a instal·lar paquets d\'idioma.</string>
     <string name="offline_on_translate_error_title">Ha fallat la traducció</string>
-    <string name="offline_on_translate_error_message">Instal·leu paquets d'idioma per a poder fer traduccions sense accés a Internet.</string>
+    <string name="offline_on_translate_error_message">Instal·leu paquets d\'idioma per a poder fer traduccions sense accés a Internet.</string>
 
 
     <!-- SETTINGS -->
 
     <string name="pref_header_general">General</string>
-    <string name="pref_title_beta_packages">Paquets d'idioma en proves (BETA)</string>
-    <string name="pref_description_beta_packages">Habiliteu paquets d'idioma en proves (la qualitat de la traducció pot ser dolenta)</string>
+    <string name="pref_title_beta_packages">Paquets d\'idioma en proves (BETA)</string>
+    <string name="pref_description_beta_packages">Habiliteu paquets d\'idioma en proves (la qualitat de la traducció pot ser dolenta)</string>
     <string name="pref_title_mark_unknown">Marca les paraules desconegudes</string>
     <string name="pref_description_mark_unknown">Es mostren marques per a les paraules desconegudes.</string>
 
     <string name="pref_header_updates">Actualitzacions</string>
     <string name="pref_title_autocheck_updates">Comprova les actualitzacions automàticament</string>
-    <string name="pref_description_autocheck_updates">Comprova automàticament si hi ha actualitzacions per als vostres paquets d'idioma</string>
+    <string name="pref_description_autocheck_updates">Comprova automàticament si hi ha actualitzacions per als vostres paquets d\'idioma</string>
     <string name="pref_title_check_updates">Comprova actualitzacions</string>
-    <string name="pref_description_check_updates">Comprova si hi ha actualitzacions per als vostres paquets d'idioma</string>
+    <string name="pref_description_check_updates">Comprova si hi ha actualitzacions per als vostres paquets d\'idioma</string>
 
     <string name="pref_header_about">Quant a</string>
     <string name="pref_title_licenses">Llicències de codi lliure</string>
     <string name="pref_description_licenses">Detalls de les licències de programari lliure</string>
 
-    <string name="offline_on_update_error_title">L'actualització ha fallat</string>
-    <string name="offline_on_update_error_message">Cal una connexió a Internet per a actualitzar paquets d'idioma.</string>
+    <string name="offline_on_update_error_title">L\'actualització ha fallat</string>
+    <string name="offline_on_update_error_message">Cal una connexió a Internet per a actualitzar paquets d\'idioma.</string>
 
 </resources>
