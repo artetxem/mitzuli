@@ -30,7 +30,7 @@ import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
 import com.mitzuli.core.tts.Tts;
 
-import org.acra.annotation.ReportsCrashes;
+import org.acra.ACRA;
 import org.opencv.android.OpenCVLoader;
 
 import com.f2prateek.progressbutton.ProgressButton;
@@ -69,7 +69,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-@ReportsCrashes(formUri = Keys.ACRA_FORM_URI, formKey=Keys.ACRA_FORM_KEY)
 public class MainActivity extends ActionBarActivity implements OnClickListener, ActionBar.OnNavigationListener {
 
     static {
@@ -162,6 +161,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private Package.ExceptionCallback exceptionCallback = new Package.ExceptionCallback() {
         @Override public void onException(Exception exception) {
+            ACRA.getErrorReporter().handleSilentException(exception);
             new AlertDialog.Builder(MainActivity.this)
                     .setTitle(R.string.error_dialog_title)
                     .setMessage(exception.getLocalizedMessage())
@@ -171,6 +171,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                         }
                     })
                     .create().show();
+            srcContent.removeAllViews();
+            srcContent.setGravity(Gravity.TOP);
+            srcContent.addView(srcText);
+            trgContent.removeAllViews();
+            trgContent.setGravity(Gravity.TOP);
+            trgContent.addView(trgTextScroll);
         }
     };
 
