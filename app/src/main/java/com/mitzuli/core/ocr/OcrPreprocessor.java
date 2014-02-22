@@ -59,7 +59,7 @@ public class OcrPreprocessor {
         if (DEBUG) dir.mkdirs();
 
         // The bitmap which with we will be working (the input bitmap should not be modified directly)
-        Bitmap bitmap = Bitmap.createBitmap(input.getWidth(), input.getHeight(), input.getConfig());
+        Bitmap bitmap = Bitmap.createBitmap(input.getWidth(), input.getHeight(), Bitmap.Config.ARGB_8888);
 
         // Create an OpenCV Mat object with the input bitmap
         final Mat mat = new Mat();

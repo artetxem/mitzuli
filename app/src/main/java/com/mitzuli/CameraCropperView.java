@@ -296,7 +296,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
             }
 
             if (cameraRotation == 90 || cameraRotation == 270) {
-                int aux = layoutWidth;
+                final int aux = layoutWidth;
                 layoutWidth = layoutHeight;
                 layoutHeight = aux;
             }
@@ -324,7 +324,8 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
 
     }
 
-    @Override
+    //This should crop the camera preview, but it does not work properly in old Android versions, so we will let the preview be stretched instead
+    /*@Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
 
@@ -344,7 +345,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
             final int scaledWidth = pictureWidth * layoutHeight / pictureHeight;
             preview.layout((layoutWidth - scaledWidth) / 2, 0, (layoutWidth + scaledWidth) / 2, layoutHeight);
         }
-    }
+    }*/
 
 
     public void openCamera(Context context, OpenCameraCallback callback) {
@@ -372,8 +373,6 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                     oldPicture.recycle();
                 }
 
-                float scaleFactor, widthOffset, heightOffset;
-
                 int pictureWidth, pictureHeight;
                 if (cameraRotation == 90 || cameraRotation == 270) {
                     pictureWidth = pictureSize.height;
@@ -383,6 +382,8 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                     pictureHeight = pictureSize.height;
                 }
 
+                // This would be the code to use if we were to crop the camera preview
+                /*float scaleFactor, widthOffset, heightOffset;
                 if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
                     scaleFactor = (float)pictureWidth / (float)layoutWidth;
                     widthOffset = 0;
@@ -392,12 +393,20 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                     widthOffset = (pictureWidth - layoutWidth*scaleFactor) / 2;
                     heightOffset = 0;
                 }
-
                 final Bitmap croppedPicture = Bitmap.createBitmap(picture,
                         (int) (Edge.LEFT.getCoordinate() * scaleFactor + widthOffset),
                         (int) (Edge.TOP.getCoordinate() * scaleFactor + heightOffset),
                         (int) (Edge.getWidth() * scaleFactor),
-                        (int) (Edge.getHeight() * scaleFactor));
+                        (int) (Edge.getHeight() * scaleFactor));*/
+
+                // This would be the code to use if we were to stretch the camera preview
+                final float scaleFactorHorizontal = (float)pictureWidth / (float)layoutWidth;
+                final float scaleFactorVertical = (float)pictureHeight / (float)layoutHeight;
+                final Bitmap croppedPicture = Bitmap.createBitmap(picture,
+                        (int) (Edge.LEFT.getCoordinate() * scaleFactorHorizontal),
+                        (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
+                        (int) (Edge.getWidth() * scaleFactorHorizontal),
+                        (int) (Edge.getHeight() * scaleFactorVertical));
 
                 camera.startPreview();
                 callback.onPictureCropped(croppedPicture);
