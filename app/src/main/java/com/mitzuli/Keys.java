@@ -24,7 +24,8 @@ public class Keys {
      * Set you own API keys here
      */
 
-    public static final String APERTIUM_API_URL = "http://api.apertium.org/xmlrpc";
+    public static final String APERTIUM_APY_URL = "http://apy.projectjj.com";
+    public static final String APERTIUM_XMLRPC_URL = "http://api.apertium.org/xmlrpc";
     public static final String APERTIUM_API_KEY = "";
 
     public static final String ACRA_FORM_URI = "";

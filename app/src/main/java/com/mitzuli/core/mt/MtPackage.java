@@ -24,9 +24,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Locale;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -36,25 +37,26 @@ import com.mitzuli.core.Package;
 
 import org.apertium.Translator;
 import org.apertium.utils.IOUtils;
+import org.json.JSONObject;
 
-import de.timroes.axmlrpc.XMLRPCCallback;
 import de.timroes.axmlrpc.XMLRPCClient;
 
 import dalvik.system.DexClassLoader;
-import de.timroes.axmlrpc.XMLRPCException;
-import de.timroes.axmlrpc.XMLRPCServerException;
 
 import android.os.AsyncTask;
+import android.text.Html;
 
 
 public class MtPackage extends Package {
 
     private static final Pattern unknownPattern = Pattern.compile("\\B\\*((\\p{L}||\\p{N})+)\\b");
-    private static final String unknownReplacement = "<font color='#EE0000'>$1</font>";
+    private static final String unknownReplacement = "<font color='#EE0000'>$1</font>"; // TODO Shouldn't we escape the text as HTML???
 
     private final Locale srcLanguage, trgLanguage;
 
-    private TranslationTask translationTask;
+    private OfflineTranslationTask offlineTranslationTask;
+    private ApyOnlineTranslationTask apyOnlineTranslationTask;
+    private XmlrpcOnlineTranslationTask xmlrpcOnlineTranslationTask;
 
     public static interface TranslationCallback {
         public void onTranslationDone(String translation);
@@ -79,52 +81,52 @@ public class MtPackage extends Package {
     public void translate(final String text, final boolean markUnknown, final TranslationCallback translationCallback, final ExceptionCallback exceptionCallback) {
         markUsage();
         if (getPackageDir() != null) {
-            translationTask = new TranslationTask(markUnknown, translationCallback, exceptionCallback);
-            translationTask.execute(text);
+            offlineTranslationTask = new OfflineTranslationTask(markUnknown, translationCallback, exceptionCallback);
+            offlineTranslationTask.execute(text);
         } else {
-            final XMLRPCCallback callback = new XMLRPCCallback() {
-                @Override public void onResponse(long id, Object result) {
-                    translationCallback.onTranslationDone((String)result);
-                }
-                @Override public void onError(long id, XMLRPCException e) {
-                    translateFromCache(e);
-                }
-                @Override public void onServerError(long id, XMLRPCServerException e) {
-                    translateFromCache(e);
-                }
-                private void translateFromCache(Exception e) {
+            // The package is not installed. We will try to:
+            //    1) Translate online using apy
+            //    2) If apy fails translate online using XML-RPC
+            //    3) If XML-RPC fails install the language pair to the cache and translate from there
+            final ExceptionCallback xmlrpcExceptionCallback = new ExceptionCallback() {
+                @Override
+                public void onException(Exception exception) {
                     if (isInstallable()) {
                         installToCache(
                                 null,
                                 new InstallCallback() {
                                     @Override
                                     public void onInstall() {
-                                        translationTask = new TranslationTask(markUnknown, translationCallback, exceptionCallback);
-                                        translationTask.execute(text);
+                                        offlineTranslationTask = new OfflineTranslationTask(markUnknown, translationCallback, exceptionCallback);
+                                        offlineTranslationTask.execute(text);
                                     }
                                 },
                                 exceptionCallback);
                     } else {
-                        exceptionCallback.onException(new Exception("Apertium web service failed and package not installable", e));
+                        exceptionCallback.onException(new Exception("Online translation failed and package not installable", exception));
                     }
                 }
             };
-            try {
-                new XMLRPCClient(new URL(Keys.APERTIUM_API_URL)).callAsync(callback, "service.translate", text, "txt", getId().split("-")[0], getId().split("-")[1], markUnknown, Keys.APERTIUM_API_KEY);
-            } catch (MalformedURLException e) {
-                throw new RuntimeException(e); // We should never reach this
-            }
+            final ExceptionCallback apyExceptionCallback = new ExceptionCallback() {
+                @Override
+                public void onException(Exception exception) {
+                    xmlrpcOnlineTranslationTask = new XmlrpcOnlineTranslationTask(markUnknown, translationCallback, xmlrpcExceptionCallback);
+                    xmlrpcOnlineTranslationTask.execute(text);
+                }
+            };
+            apyOnlineTranslationTask = new ApyOnlineTranslationTask(markUnknown, translationCallback, apyExceptionCallback);
+            apyOnlineTranslationTask.execute(text);
         }
     }
 
-    private class TranslationTask extends AsyncTask<String, Void, String> {
+    private class OfflineTranslationTask extends AsyncTask<String, Void, String> {
 
         private final boolean markUnknown;
         private final TranslationCallback translationCallback;
         private final ExceptionCallback exceptionCallback;
         private Exception exception;
 
-        public TranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
+        public OfflineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
             this.markUnknown = markUnknown;
             this.translationCallback = translationCallback;
             this.exceptionCallback = exceptionCallback;
@@ -148,12 +150,94 @@ public class MtPackage extends Package {
 
         @Override
         protected void onPostExecute(String translation) {
-            translationTask = null;
+            offlineTranslationTask = null;
             if (translation != null) translationCallback.onTranslationDone(translation);
             else if (exception != null) exceptionCallback.onException(exception);
         }
 
     }
+
+
+    private class ApyOnlineTranslationTask extends AsyncTask<String, Void, String> {
+
+        private final boolean markUnknown;
+        private final TranslationCallback translationCallback;
+        private final ExceptionCallback exceptionCallback;
+        private Exception exception;
+
+        public ApyOnlineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
+            this.markUnknown = markUnknown;
+            this.translationCallback = translationCallback;
+            this.exceptionCallback = exceptionCallback;
+        }
+
+        @Override
+        protected String doInBackground(String... text) {
+            try {
+                String langpair = srcLanguage.getISO3Language();
+                if (srcLanguage.getCountry().length() > 0) langpair += "_" + (srcLanguage.getCountry().equals("ARAN") ? "aran" : srcLanguage.getCountry());
+                langpair += "|" + trgLanguage.getISO3Language();
+                if (trgLanguage.getCountry().length() > 0) langpair += "_" + (trgLanguage.getCountry().equals("ARAN") ? "aran" : trgLanguage.getCountry());
+                final String response = new Scanner(new URL(Keys.APERTIUM_APY_URL + "/translate?langpair=" + langpair + "&q=" + URLEncoder.encode(text[0], "UTF-8")).openStream()).useDelimiter("\\A").next();
+                final String translation = Html.fromHtml(new JSONObject(response).getJSONObject("responseData").getString("translatedText")).toString();
+                return "<html>" + unknownPattern.matcher(translation).replaceAll(markUnknown ? unknownReplacement : "$1").replaceAll("\n", "<br/>") + "<html>";
+            } catch (Exception e) {
+                exception = e;
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String translation) {
+            apyOnlineTranslationTask = null;
+            if (translation != null) {
+                translationCallback.onTranslationDone(translation);
+            } else if (exception != null) {
+                exceptionCallback.onException(new Exception("apy translation failed", exception));
+            }
+        }
+
+    }
+
+
+    private class XmlrpcOnlineTranslationTask extends AsyncTask<String, Void, String> {
+
+        private final boolean markUnknown;
+        private final TranslationCallback translationCallback;
+        private final ExceptionCallback exceptionCallback;
+        private Exception exception;
+
+        public XmlrpcOnlineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
+            this.markUnknown = markUnknown;
+            this.translationCallback = translationCallback;
+            this.exceptionCallback = exceptionCallback;
+        }
+
+        @Override
+        protected String doInBackground(String... text) {
+            try {
+                final XMLRPCClient client = new XMLRPCClient(new URL(Keys.APERTIUM_XMLRPC_URL), XMLRPCClient.FLAGS_DEFAULT_TYPE_STRING);
+                client.setTimeout(5);
+                final String translation = (String)client.call("service.translate", text[0], "txt", getId().split("-")[0], getId().split("-")[1], markUnknown, Keys.APERTIUM_API_KEY);
+                return "<html>" + (markUnknown ? unknownPattern.matcher(translation).replaceAll(unknownReplacement) : translation).replaceAll("\n", "<br/>") + "<html>";
+            } catch (Exception e) {
+                exception = e;
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String translation) {
+            xmlrpcOnlineTranslationTask = null;
+            if (translation != null) {
+                translationCallback.onTranslationDone(translation);
+            } else if (exception != null) {
+                exceptionCallback.onException(new Exception("XML-RPC translation failed", exception));
+            }
+        }
+
+    }
+
 
     private ClassLoader getClassLoader(File packageDir) throws IOException {
         final File jar = new File(packageDir, "classes.jar");
