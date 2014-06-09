@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="native-libs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/exploded-bundles/MitzuliLibrariesOpencvUnspecified.aar/libs/native-libs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/exploded-aar/mitzuli.libraries/opencv/unspecified/libs/native-libs.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

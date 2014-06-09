@@ -10,10 +10,14 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    release {
-        runProguard false
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
     }
+
 }
 
 dependencies {
@@ -26,7 +30,8 @@ task ndkBuild(type:Exec) {
             "APP_BUILD_SCRIPT=$projectDir/src/main/native/Android.mk",
             "NDK_APPLICATION_MK=$projectDir/src/main/native/Application.mk",
             "NDK_OUT=$buildDir/native/obj",
-            "NDK_APP_DST_DIR=$buildDir/native/libs/\$(TARGET_ARCH_ABI)"
+            "NDK_APP_DST_DIR=$buildDir/native/libs/\$(TARGET_ARCH_ABI)",
+            "NDK_PROJECT_PATH=$projectDir/src/main/native"
 }
 
 task nativeLibsToJar(type: Zip, description: 'create a jar with native libs') {
