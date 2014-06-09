@@ -26,6 +26,7 @@ import java.util.List;
 
 import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
+import com.mitzuli.core.mt.AbumatranEnHrMtPackage;
 import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
 import com.mitzuli.core.tts.Tts;
@@ -517,6 +518,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                         PackageManagers.ocrPackageManager.getPackageForLanguage(translatorPackage.getSourceLanguage())));
             }
         }
+        final MtPackage abumatranEnHr = new AbumatranEnHrMtPackage();
+        languagePairs.add(new LanguagePair(
+                PackageManagers.getName(abumatranEnHr.getSourceLanguage()) + " → " + PackageManagers.getName(abumatranEnHr.getTargetLanguage()),
+                abumatranEnHr,
+                PackageManagers.ocrPackageManager.getPackageForLanguage(abumatranEnHr.getSourceLanguage())
+        ));
         Collections.sort(languagePairs);
         getSupportActionBar().setListNavigationCallbacks(new LanguagePairAdapter(MainActivity.this), this);
 
@@ -573,6 +580,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
             final TextView pairTxt = (TextView) convertView.findViewById(R.id.pairTxt);
             final ProgressButton progress = (ProgressButton) convertView.findViewById(R.id.progressBtn);
+
+            if (!languagePairs.get(position).mtPackage.isInstallable()) progress.setVisibility(View.INVISIBLE);
 
             progress.setOnClickListener(new OnClickListener() {
                 @Override public void onClick(View view) {
