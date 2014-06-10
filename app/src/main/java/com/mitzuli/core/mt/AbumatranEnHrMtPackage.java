@@ -58,7 +58,7 @@ public class AbumatranEnHrMtPackage extends MtPackage {
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
                 DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-                wr.writeBytes("cuadrotexto=" + text + "&direccion=" + getId());
+                wr.writeBytes("cuadrotexto=" + URLEncoder.encode(text[0], "UTF-8") + "&direccion=" + getId());
                 wr.flush();
                 wr.close();
                 return new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream()))).useDelimiter("\\A").next();
@@ -87,7 +87,7 @@ public class AbumatranEnHrMtPackage extends MtPackage {
     @Override
     public void translate(final String text, final boolean markUnknown, final TranslationCallback translationCallback, final ExceptionCallback exceptionCallback) {
         onlineTranslationTask = new OnlineTranslationTask(markUnknown, translationCallback, exceptionCallback);
-        onlineTranslationTask.doInBackground(text);
+        onlineTranslationTask.execute(text);
     }
 
     @Override
