@@ -19,11 +19,6 @@
 package com.mitzuli.core.mt;
 
 import android.os.AsyncTask;
-import android.text.Html;
-
-import com.mitzuli.Keys;
-
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -32,8 +27,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class AbumatranEnHrMtPackage extends MtPackage {
+public class MatxinMtPackage extends MtPackage {
+
+    private static final Pattern RESPONSE_PATTERN = Pattern.compile("<textarea id=\"tts_source\" name=\"cuadrotexto2\" rows=\"(\\d+)\" id=\"cuadrotexto2\">([^<]*)</textarea>");
 
     private OnlineTranslationTask onlineTranslationTask;
 
@@ -53,15 +52,18 @@ public class AbumatranEnHrMtPackage extends MtPackage {
         @Override
         protected String doInBackground(String... text) {
             try {
-                final URL url = new URL("http://translator.abumatran.eu/tradtexto.php");
+                final URL url = new URL("http://matxin.elhuyar.org/translatetext/");
                 final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
-                DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-                wr.writeBytes("cuadrotexto=" + URLEncoder.encode(text[0], "UTF-8") + "&direccion=" + getId());
+                final DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+                wr.writeBytes("norantza=" + getId() + "&text=" + URLEncoder.encode(text[0], "UTF-8"));
                 wr.flush();
                 wr.close();
-                return new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream()))).useDelimiter("\\A").next();
+                final String response = new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream()))).useDelimiter("\\A").next();
+                final Matcher matcher = RESPONSE_PATTERN.matcher(response);
+                if (!matcher.find()) throw new Exception("Unexpected response");
+                return matcher.group(2);
             } catch (Exception e) {
                 exception = e;
                 return null;
@@ -74,14 +76,14 @@ public class AbumatranEnHrMtPackage extends MtPackage {
             if (translation != null) {
                 translationCallback.onTranslationDone(translation);
             } else if (exception != null) {
-                exceptionCallback.onException(new Exception("apy translation failed", exception));
+                exceptionCallback.onException(new Exception("Matxin API failed", exception));
             }
         }
 
     }
 
-    public AbumatranEnHrMtPackage() {
-        super("en-hr", null, -1, null, null, null, null, null, null);
+    public MatxinMtPackage(String id) {
+        super(id, null, -1, null, null, null, null, null, null);
     }
 
     @Override

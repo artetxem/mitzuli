@@ -31,6 +31,7 @@ import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
 import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.mt.MtPackageManager;
+import com.mitzuli.core.mt.OnlineMtPackageManager;
 import com.mitzuli.core.ocr.OcrPackage;
 import com.mitzuli.core.ocr.OcrPackageManager;
 import android.app.AlertDialog;
@@ -42,10 +43,12 @@ import android.text.Html;
 
 public class PackageManagers {
 
+    private static final String ONLINE_MT_PACKAGES_MANIFEST_URL = "http://sourceforge.net/projects/mitzuli/files/packages/mt/online/manifest/download";
     private static final String BETA_MT_PACKAGES_MANIFEST_URL = "http://sourceforge.net/projects/mitzuli/files/packages/mt/beta/manifest/download";
     private static final String RELEASED_MT_PACKAGES_MANIFEST_URL = "http://sourceforge.net/projects/mitzuli/files/packages/mt/released/manifest/download";
     private static final String OCR_PACKAGES_MANIFEST_URL = "http://sourceforge.net/projects/mitzuli/files/packages/ocr/manifest/download";
 
+    public static OnlineMtPackageManager onlineMtPackageManager;
     public static MtPackageManager betaMtPackageManager, releasedMtPackageManager;
     public static OcrPackageManager ocrPackageManager;
 
@@ -54,6 +57,9 @@ public class PackageManagers {
     }
 
     public static void init(Context context) throws IOException {
+        onlineMtPackageManager = new OnlineMtPackageManager(
+                new File(context.getFilesDir(), "online_mt_packages"),
+                new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.online_mt_packages_manifest))));
         betaMtPackageManager = new MtPackageManager(
                 new File(context.getFilesDir(), "beta_mt_packages"),
                 new File(context.getCacheDir(), "beta_mt_packages"),
@@ -116,6 +122,7 @@ public class PackageManagers {
         @Override
         protected Exception doInBackground(Void... args) {
             try {
+                onlineMtPackageManager.updateManifest(new URL(ONLINE_MT_PACKAGES_MANIFEST_URL));
                 betaMtPackageManager.updateManifest(new URL(BETA_MT_PACKAGES_MANIFEST_URL));
                 releasedMtPackageManager.updateManifest(new URL(RELEASED_MT_PACKAGES_MANIFEST_URL));
                 ocrPackageManager.updateManifest(new URL(OCR_PACKAGES_MANIFEST_URL));
