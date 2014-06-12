@@ -90,7 +90,21 @@ public class OcrPackage extends Package {
                 final TessBaseAPI tesseract = new TessBaseAPI();
                 if (!tesseract.init(packageDir.getAbsolutePath(), getId())) throw new Exception("Tesseract init failed.");
                 tesseract.setImage(OcrPreprocessor.preprocess(picture[0]));
-                return tesseract.getUTF8Text();
+
+                final String text = tesseract.getUTF8Text();
+                final StringBuilder sb = new StringBuilder();
+                boolean lastEmpty = false;
+                for (String s : text.split("\n")) {
+                    if (s.trim().length() == 0) {
+                        lastEmpty = true;
+                    } else {
+                        if (sb.length() > 0) sb.append(lastEmpty ? "\n\n" : " ");
+                        sb.append(s.trim());
+                        lastEmpty = false;
+                    }
+                }
+                return sb.toString();
+                //return tesseract.getUTF8Text();
             } catch (Exception e) {
                 exception = e;
                 return null;
