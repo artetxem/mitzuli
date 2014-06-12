@@ -24,9 +24,10 @@ import android.text.TextUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public class AbumatranMtPackage extends MtPackage {
                 final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setDoOutput(true);
                 connection.setRequestMethod("POST");
-                final DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+                final OutputStream wr = new BufferedOutputStream(connection.getOutputStream());
                 final JSONObject params = new JSONObject();
                 params.put("text", new JSONArray(Arrays.asList(text[0].split("\n"))));
                 params.put("lang", getId());
@@ -69,7 +70,7 @@ public class AbumatranMtPackage extends MtPackage {
                 postprocessParams.put("detokenizer", new JSONArray(Arrays.asList(new Integer[]{1,2})));
                 postprocessParams.put("detruecaser", new JSONArray(Arrays.asList(new Integer[]{1,1})));
                 params.put("postprocess", postprocessParams);
-                wr.writeBytes("[" + params + "]");
+                wr.write(("[" + params + "]").getBytes("UTF-8"));
                 wr.flush();
                 wr.close();
                 final JSONObject response = new JSONObject(new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream()))).useDelimiter("\\A").next());
