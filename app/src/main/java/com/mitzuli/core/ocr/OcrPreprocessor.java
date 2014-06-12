@@ -226,6 +226,7 @@ public class OcrPreprocessor {
         // Dewarp the text using Leptonica
         final Pix pixs = Convert.convertTo8(ReadFile.readBitmap(bitmap));
         final Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
+        bitmap.recycle();
         bitmap = WriteFile.writeBitmap(pixsDewarp);
         if (DEBUG) saveImage(bitmap, new File(dir, "img_" + id + "_9_dewarp.jpg"));
 

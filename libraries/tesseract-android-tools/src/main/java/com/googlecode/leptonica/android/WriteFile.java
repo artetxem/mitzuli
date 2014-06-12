@@ -191,6 +191,31 @@ public class WriteFile {
         return null;
     }
 
+    /**
+     * NEW (not part of the original library)
+     * Writes a Pix to the Android Bitmap passed as parameter. The input bitmap must be in ARGB_8888
+     * format and have the same size as the input Pixs.
+     *
+     * @param pixs The source image.
+     * @param bitmap The bitmap to write the input Pix to.
+     * @return {@code true} on success, and {@code false} otherwise.
+     */
+    public static boolean writeBitmap(Pix pixs, Bitmap bitmap) {
+        if (pixs == null)
+            throw new IllegalArgumentException("Source pix must be non-null");
+
+        if (bitmap == null)
+            throw new IllegalArgumentException("Source bitmap must be non-null");
+
+        if (pixs.getHeight() != bitmap.getHeight() || pixs.getWidth() != bitmap.getWidth())
+            throw new IllegalArgumentException("Source pix and bitmap must be of the same size");
+
+        if (bitmap.getConfig() != Bitmap.Config.ARGB_8888)
+            throw new IllegalArgumentException("Source bitmap must be in ARGB_8888");
+
+        return nativeWriteBitmap(pixs.mNativePix, bitmap);
+    }
+
     // ***************
     // * NATIVE CODE *
     // ***************

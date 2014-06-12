@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -69,6 +70,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
 
     private Camera camera;
     private int cameraRotation;
+    private int pictureInSampleSize;
     private Size pictureSize;
     private List<Size> previewSizes;
 
@@ -137,20 +139,37 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                 if (camera == null) return false; // No camera available...
                 final Camera.Parameters params = camera.getParameters();
 
-                // Choose the biggest possible picture size and the corresponding preview sizes with the same ratio
+
+                // Set the maximum resolution based on the maximum heap size
+                final int maxHeapSize = ((ActivityManager)context.getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE)).getMemoryClass();
+                final int maxResolution = maxHeapSize*1024*1024/4/3; // Each image might take up to 33% of the maximum heap size
+                //System.err.println("max heap size: " + maxHeapSize);
+                //System.err.println("max resolution: " + maxResolution);
+
+                // Choose the biggest possible picture size within the limits and the corresponding preview sizes with the same ratio
                 pictureSize = null;
                 previewSizes = new ArrayList<Size>();
                 final List<Size> supportedPictureSizes = params.getSupportedPictureSizes();
                 final List<Size> supportedPreviewSizes = params.getSupportedPreviewSizes();
-                Collections.sort(supportedPictureSizes, Collections.reverseOrder(sizeComparator));
                 for (Size supportedPictureSize : supportedPictureSizes) {
                     for (Size supportedPreviewSize : supportedPreviewSizes) {
                         if (supportedPictureSize.width * supportedPreviewSize.height == supportedPictureSize.height * supportedPreviewSize.width) {
-                            pictureSize = supportedPictureSize;
-                            previewSizes.add(supportedPreviewSize);
+                            int inSampleSize = 1;
+                            while (supportedPictureSize.width*supportedPictureSize.height/(inSampleSize*inSampleSize) > maxResolution) inSampleSize *= 2;
+                            //System.err.println("Considering this resolution: " + supportedPictureSize.width + "x" + supportedPictureSize.height + "/" + inSampleSize);
+                            if (pictureSize == null || supportedPictureSize.width*supportedPictureSize.height/(inSampleSize*inSampleSize) > pictureSize.width*pictureSize.height/(pictureInSampleSize*pictureInSampleSize)) {
+                                pictureSize = supportedPictureSize;
+                                pictureInSampleSize = inSampleSize;
+                            }
+                            break;
                         }
                     }
-                    if (pictureSize != null) break;
+                }
+                //System.err.println("Selected resolution: " + pictureSize.width + "x" + pictureSize.height + "/" + pictureInSampleSize);
+                for (Size supportedPreviewSize : supportedPreviewSizes) {
+                    if (pictureSize.width * supportedPreviewSize.height == pictureSize.height * supportedPreviewSize.width) {
+                        previewSizes.add(supportedPreviewSize);
+                    }
                 }
                 Collections.sort(previewSizes, Collections.reverseOrder(sizeComparator));
                 if (pictureSize == null) { // No picture size ratio and preview size ratio match (shouldn't happen...)
@@ -363,7 +382,9 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
         final Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera cam) {
-                Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length);
+                final BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = pictureInSampleSize;
+                Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length, options);
 
                 if (cameraRotation != 0) {
                     final Bitmap oldPicture = picture;
@@ -400,8 +421,8 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                         (int) (Edge.getHeight() * scaleFactor));*/
 
                 // This would be the code to use if we were to stretch the camera preview
-                final float scaleFactorHorizontal = (float)pictureWidth / (float)layoutWidth;
-                final float scaleFactorVertical = (float)pictureHeight / (float)layoutHeight;
+                final float scaleFactorHorizontal = (float)pictureWidth/pictureInSampleSize / (float)layoutWidth;
+                final float scaleFactorVertical = (float)pictureHeight/pictureInSampleSize / (float)layoutHeight;
                 final Bitmap croppedPicture = Bitmap.createBitmap(picture,
                         (int) (Edge.LEFT.getCoordinate() * scaleFactorHorizontal),
                         (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
