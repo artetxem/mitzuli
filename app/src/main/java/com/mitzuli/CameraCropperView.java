@@ -384,7 +384,10 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
             public void onPictureTaken(byte[] data, Camera cam) {
                 final BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inSampleSize = pictureInSampleSize;
+                options.inPurgeable = true;
+                options.inInputShareable = true;
                 Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length, options);
+                data = null;
 
                 if (cameraRotation != 0) {
                     final Bitmap oldPicture = picture;
@@ -428,6 +431,8 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                         (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
                         (int) (Edge.getWidth() * scaleFactorHorizontal),
                         (int) (Edge.getHeight() * scaleFactorVertical));
+
+                picture.recycle();
 
                 camera.startPreview();
                 callback.onPictureCropped(croppedPicture);

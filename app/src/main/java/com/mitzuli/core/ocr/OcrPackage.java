@@ -89,9 +89,11 @@ public class OcrPackage extends Package {
                 if (packageDir == null) throw new Exception("Package not installed.");
                 final TessBaseAPI tesseract = new TessBaseAPI();
                 if (!tesseract.init(packageDir.getAbsolutePath(), getId())) throw new Exception("Tesseract init failed.");
-                tesseract.setImage(OcrPreprocessor.preprocess(picture[0]));
+                Bitmap preprocessedImage = OcrPreprocessor.preprocess(picture[0]);
+                tesseract.setImage(preprocessedImage);
 
                 final String text = tesseract.getUTF8Text();
+                preprocessedImage.recycle(); preprocessedImage = null;
                 final StringBuilder sb = new StringBuilder();
                 boolean lastEmpty = false;
                 for (String s : text.split("\n")) {

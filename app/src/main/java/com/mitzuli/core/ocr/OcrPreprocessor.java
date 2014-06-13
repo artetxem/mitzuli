@@ -224,10 +224,12 @@ public class OcrPreprocessor {
         if (DEBUG) saveImage(bitmap, new File(dir, "img_" + id + "_8_binary_text.jpg"));
 
         // Dewarp the text using Leptonica
-        final Pix pixs = Convert.convertTo8(ReadFile.readBitmap(bitmap));
-        final Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
-        bitmap.recycle();
+        Pix pixs = Convert.convertTo8(ReadFile.readBitmap(bitmap));
+        bitmap.recycle(); bitmap = null;
+        Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
         bitmap = WriteFile.writeBitmap(pixsDewarp);
+        pixs.recycle(); pixs = null;
+        pixsDewarp.recycle(); pixsDewarp = null;
         if (DEBUG) saveImage(bitmap, new File(dir, "img_" + id + "_9_dewarp.jpg"));
 
         return bitmap;
