@@ -211,7 +211,8 @@ public class OcrPreprocessor {
 
         // Binarize the input image in grayscale through adaptive Gaussian thresholding
         final Mat binary = new Mat(mat.size(), CvType.CV_8UC1);
-        Imgproc.adaptiveThreshold(grayscale, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 31, 7);
+        //Imgproc.adaptiveThreshold(grayscale, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 31, 7);
+        Imgproc.adaptiveThreshold(grayscale, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 51, 13);
         if (DEBUG) {
             org.opencv.android.Utils.matToBitmap(binary, bitmap);
             saveImage(bitmap, new File(dir, "img_" + id + "_7_binary.jpg"));
