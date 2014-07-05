@@ -1,8 +1,8 @@
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.0'
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         minSdkVersion 8
@@ -19,8 +19,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
-    compile 'com.android.support:support-v4:+@jar'
+    compile 'com.android.support:appcompat-v7:19.+'
+    compile 'com.android.support:support-v4:19.+'
     compile 'com.f2prateek.progressbutton:progressbutton:2.0.1@aar'
     compile 'ch.acra:acra:4.5.0'
     compile project(':libraries:axmlrpc')

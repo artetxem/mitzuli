@@ -7,14 +7,14 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\app" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries\axmlrpc" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries\cropper" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries\lttoolbox-java" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries\opencv" />
-            <option value="C:\Users\Mikel\Mitzuli\mitzuli\libraries\tesseract-android-tools" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/axmlrpc" />
+            <option value="$PROJECT_DIR$/libraries/cropper" />
+            <option value="$PROJECT_DIR$/libraries/lttoolbox-java" />
+            <option value="$PROJECT_DIR$/libraries/opencv" />
+            <option value="$PROJECT_DIR$/libraries/tesseract-android-tools" />
           </set>
         </option>
       </GradleProjectSettings>

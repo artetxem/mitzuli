@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="progressbutton-2.0.1">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/app/build/exploded-aar/com.f2prateek.progressbutton/progressbutton/2.0.1/res" />
-      <root url="jar://$PROJECT_DIR$/app/build/exploded-aar/com.f2prateek.progressbutton/progressbutton/2.0.1/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.f2prateek.progressbutton/progressbutton/2.0.1/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.f2prateek.progressbutton/progressbutton/2.0.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
