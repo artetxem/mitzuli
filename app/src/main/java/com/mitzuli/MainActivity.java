@@ -126,7 +126,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     };
 
     private CameraCropperView.CroppedPictureCallback croppedPictureCallback = new CameraCropperView.CroppedPictureCallback() {
-        @Override public void onPictureCropped(Bitmap croppedPicture) {
+        @Override public void onPictureCropped(Image croppedPicture) {
             srcAudioButton.setVisibility(tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
             cameraButton.setVisibility(View.VISIBLE); //TODO Should we do any check?
             keyboardButton.setVisibility(View.GONE);

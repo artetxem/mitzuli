@@ -19,7 +19,6 @@
 package com.mitzuli.core.ocr;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,74 +34,71 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
-import com.googlecode.leptonica.android.Convert;
 import com.googlecode.leptonica.android.Dewarp;
 import com.googlecode.leptonica.android.Pix;
-import com.googlecode.leptonica.android.ReadFile;
-import com.googlecode.leptonica.android.WriteFile;
+import com.mitzuli.Image;
 
-import android.graphics.Bitmap;
 import android.os.Environment;
 
 public class OcrPreprocessor {
+
+    // Scalar constants
+    private static final Scalar WHITE      = new Scalar(255);
+    private static final Scalar BLACK      = new Scalar(0);
+    private static final Scalar BLUE       = new Scalar(0,0,255);
+    private static final Scalar GREEN      = new Scalar(0,255,0);
+    private static final Scalar PURPLE     = new Scalar(128,0,128);
+    private static final Scalar DARK_RED   = new Scalar(128,0,0);
+    private static final Scalar DARK_GREEN = new Scalar(0,128,0);
+
+    // Structuring element constants
+    private static final Mat KERNEL_3X3   = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(3,3));
+    private static final Mat KERNEL_15X15 = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(15,15));
+    private static final Mat KERNEL_30X30 = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(30,30));
 
     // Debugging stuff
     private static final boolean DEBUG = false;
     private static final SimpleDateFormat TIMESTAMP = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 
 
-    public static Bitmap preprocess(final Bitmap input) {
+    /**
+     * Binarizes and cleans the input image for OCR.
+     *
+     * @param input the input image, which is recycled by this method, so the caller should make a defensive copy of it if necessary.
+     * @return the preprocessed image.
+     */
+    public static Image preprocess(final Image input) {
 
         // Debugging stuff
-        final File dir = new File(Environment.getExternalStorageDirectory(), "mitzuli_ocr");
-        final String id = TIMESTAMP.format(new Date());
+        final File dir = DEBUG ? new File(Environment.getExternalStorageDirectory(), "mitzuli_ocr") : null;
+        final String id = DEBUG ? TIMESTAMP.format(new Date()) : null;
         if (DEBUG) dir.mkdirs();
 
-        // The bitmap which with we will be working (the input bitmap should not be modified directly)
-        Bitmap bitmap = Bitmap.createBitmap(input.getWidth(), input.getHeight(), Bitmap.Config.ARGB_8888);
+        // Initialization
+        final Mat mat = input.toGrayscaleMat();
+        final Mat debugMat = DEBUG ? input.toRgbMat() : null;
+        input.recycle();
+        final Mat aux = new Mat(mat.size(), CvType.CV_8UC1);
+        final Mat binary = new Mat(mat.size(), CvType.CV_8UC1);
+        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_1_input.jpg"));
 
-        // Create an OpenCV Mat object with the input bitmap
-        final Mat mat = new Mat();
-        org.opencv.android.Utils.bitmapToMat(input, mat);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(mat, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_1_input.jpg"));
-        }
-
-        // Convert the input image to grayscale
-        final Mat grayscale = new Mat(mat.size(), CvType.CV_8UC1);
-        Imgproc.cvtColor(mat, grayscale, Imgproc.COLOR_RGB2GRAY);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(grayscale, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_2_grayscale.jpg"));
-        }
+        // Binarize the input image in mat through adaptive Gaussian thresholding
+        Imgproc.adaptiveThreshold(mat, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 51, 13);
+        // Imgproc.adaptiveThreshold(mat, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 31, 7);
 
         // Edge detection
-        final Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(3,3));
-        final Mat open = new Mat(mat.size(), CvType.CV_8UC1);
-        final Mat close = new Mat(mat.size(), CvType.CV_8UC1);
-        final Mat avg = new Mat(mat.size(), CvType.CV_8UC1);
-        final Mat gradient = new Mat(mat.size(), CvType.CV_8UC1);
-        final Mat edgemap = new Mat(mat.size(), CvType.CV_8UC1);
-        Imgproc.morphologyEx(grayscale, open, Imgproc.MORPH_OPEN, kernel);
-        Imgproc.morphologyEx(grayscale, close, Imgproc.MORPH_CLOSE, kernel);
-        Core.addWeighted(open, 0.5, close, 0.5, 0, avg);
-        Imgproc.morphologyEx(avg, gradient, Imgproc.MORPH_GRADIENT, kernel);
-        Imgproc.threshold(gradient, edgemap, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(edgemap, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_3_edges.jpg"));
-        }
+        Imgproc.morphologyEx(mat, mat, Imgproc.MORPH_OPEN, KERNEL_3X3);                   // Open
+        Imgproc.morphologyEx(mat, aux, Imgproc.MORPH_CLOSE, KERNEL_3X3);                  // Close
+        Core.addWeighted(mat, 0.5, aux, 0.5, 0, mat);                                     // Average
+        Imgproc.morphologyEx(mat, mat, Imgproc.MORPH_GRADIENT, KERNEL_3X3);               // Gradient
+        Imgproc.threshold(mat, mat, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU); // Edge map
+        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_2_edges.jpg"));
 
         // Extract word level connected-components from the dilated edge map
-        final Mat dilatedEdges = new Mat(mat.size(), CvType.CV_8UC1);
-        Imgproc.dilate(edgemap, dilatedEdges, kernel);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(dilatedEdges, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_4_dilated_edges.jpg"));
-        }
+        Imgproc.dilate(mat, mat, KERNEL_3X3);
+        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_3_dilated_edges.jpg"));
         final List<MatOfPoint> wordCCs = new ArrayList<MatOfPoint>();
-        Imgproc.findContours(dilatedEdges, wordCCs, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        Imgproc.findContours(mat, wordCCs, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
         // Filter word level connected-components individually and calculate their average attributes
         final List<MatOfPoint> individuallyFilteredWordCCs = new ArrayList<MatOfPoint>();
@@ -124,11 +120,12 @@ public class OcrPreprocessor {
                 if (DEBUG) removedWordCCs.add(cc);
             }
         }
+        wordCCs.clear();
         avgWidth /= individuallyFilteredWordCCs.size();
         avgHeight /= individuallyFilteredWordCCs.size();
         avgArea /= individuallyFilteredWordCCs.size();
         if (DEBUG) {
-            Imgproc.drawContours(mat, removedWordCCs, -1, new Scalar(0,0,255), -1); //URDIN ILUNA
+            Imgproc.drawContours(debugMat, removedWordCCs, -1, BLUE, -1);
             removedWordCCs.clear();
         }
 
@@ -146,31 +143,28 @@ public class OcrPreprocessor {
                 if (DEBUG) removedWordCCs.add(cc);
             }
         }
+        individuallyFilteredWordCCs.clear();
         if (DEBUG) {
-            Imgproc.drawContours(mat, filteredWordCCs, -1, new Scalar(0,255,0), -1); //BERDEA
-            Imgproc.drawContours(mat, removedWordCCs, -1, new Scalar(128,0,128), -1); //MORE ILUNA
+            Imgproc.drawContours(debugMat, filteredWordCCs, -1, GREEN, -1);
+            Imgproc.drawContours(debugMat, removedWordCCs, -1, PURPLE, -1);
             removedWordCCs.clear();
         }
 
         // Extract paragraph level connected-components
-        final Mat filteredWordCCsMask = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0,0,0));
-        Imgproc.drawContours(filteredWordCCsMask, filteredWordCCs, -1, new Scalar(255,0,0), -1);
+        mat.setTo(BLACK);
+        Imgproc.drawContours(mat, filteredWordCCs, -1, WHITE, -1);
         final List<MatOfPoint> paragraphCCs = new ArrayList<MatOfPoint>();
-        final Mat paragraphs = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0));
-        final Mat aux = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0));
-        filteredWordCCsMask.copyTo(aux);
-        Imgproc.morphologyEx(aux, paragraphs, Imgproc.MORPH_CLOSE, Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(30,30)));
-        Imgproc.findContours(paragraphs, paragraphCCs, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+        Imgproc.morphologyEx(mat, aux, Imgproc.MORPH_CLOSE, KERNEL_30X30);
+        Imgproc.findContours(aux, paragraphCCs, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
         // Filter paragraph level connected-components according to the word level connected-components inside
         final List<MatOfPoint> textCCs = new ArrayList<MatOfPoint>();
         for (MatOfPoint paragraphCC : paragraphCCs) {
             final List<MatOfPoint> wordCCsInParagraphCC = new ArrayList<MatOfPoint>();
-            final Mat paragraphCCMask = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0));
-            final Mat wordsInParagraphCC = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0));
-            Imgproc.drawContours(paragraphCCMask, Collections.singletonList(paragraphCC), -1, new Scalar(255,0,0), -1);
-            filteredWordCCsMask.copyTo(wordsInParagraphCC, paragraphCCMask);
-            Imgproc.findContours(wordsInParagraphCC, wordCCsInParagraphCC, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+            aux.setTo(BLACK);
+            Imgproc.drawContours(aux, Collections.singletonList(paragraphCC), -1, WHITE, -1);
+            Core.bitwise_and(mat, aux, aux);
+            Imgproc.findContours(aux, wordCCsInParagraphCC, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
             final Rect boundingBox = Imgproc.boundingRect(paragraphCC);
             final double center = mat.size().width/2;
             final double distToCenter = center > boundingBox.x + boundingBox.width ? center - boundingBox.x - boundingBox.width : center < boundingBox.x ? boundingBox.x - center: 0.0;
@@ -183,70 +177,47 @@ public class OcrPreprocessor {
             if ((wordCCsInParagraphCC.size() >= 10 || wordCCsInParagraphCC.size() >= 0.3*filteredWordCCs.size()) && mat.size().width/distToCenter >= 4) {
                 textCCs.addAll(wordCCsInParagraphCC);
                 if (DEBUG) {
-                    System.err.println("\tText:                 YES");
-                    Imgproc.drawContours(mat, Collections.singletonList(paragraphCC), -1, new Scalar(0,128,0), 5);
+                    System.err.println("\tText:                YES");
+                    Imgproc.drawContours(debugMat, Collections.singletonList(paragraphCC), -1, DARK_GREEN, 5);
                 }
             } else {
                 if (DEBUG) {
-                    System.err.println("\tText:                 NO");
-                    Imgproc.drawContours(mat, Collections.singletonList(paragraphCC), -1, new Scalar(128,0,0), 5);
+                    System.err.println("\tText:                NO");
+                    Imgproc.drawContours(debugMat, Collections.singletonList(paragraphCC), -1, DARK_RED, 5);
                 }
             }
         }
-        final Mat textCCsMask = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0,0,0));
-        Imgproc.drawContours(textCCsMask, textCCs, -1, new Scalar(255,0,0), -1);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(mat, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_5_filtering.jpg"));
-        }
+        filteredWordCCs.clear();
+        paragraphCCs.clear();
+        mat.setTo(WHITE);
+        Imgproc.drawContours(mat, textCCs, -1, BLACK, -1);
+        textCCs.clear();
+        if (DEBUG) Image.fromMat(debugMat).write(new File(dir, "img_" + id + "_4_filtering.jpg"));
 
         // Obtain the final text mask from the filtered connected-components
-        final Mat textMask = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(0,0,0));
-        Imgproc.dilate(textCCsMask, textMask, Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(15,15)));
-        Imgproc.morphologyEx(textMask, textMask, Imgproc.MORPH_CLOSE, Imgproc.getStructuringElement(Imgproc.MORPH_RECT, new Size(30,30)));
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(textMask, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_6_text_mask.jpg"));
-        }
-
-        // Binarize the input image in grayscale through adaptive Gaussian thresholding
-        final Mat binary = new Mat(mat.size(), CvType.CV_8UC1);
-        //Imgproc.adaptiveThreshold(grayscale, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 31, 7);
-        Imgproc.adaptiveThreshold(grayscale, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 51, 13);
-        if (DEBUG) {
-            org.opencv.android.Utils.matToBitmap(binary, bitmap);
-            saveImage(bitmap, new File(dir, "img_" + id + "_7_binary.jpg"));
-        }
+        Imgproc.erode(mat, mat, KERNEL_15X15);
+        Imgproc.morphologyEx(mat, mat, Imgproc.MORPH_OPEN, KERNEL_30X30);
+        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_5_text_mask.jpg"));
 
         // Apply the text mask to the binarized image
-        final Mat binaryText = new Mat(mat.size(), CvType.CV_8UC1, new Scalar(255,0,0));
-        binary.copyTo(binaryText, textMask);
-        org.opencv.android.Utils.matToBitmap(binaryText, bitmap);
-        if (DEBUG) saveImage(bitmap, new File(dir, "img_" + id + "_8_binary_text.jpg"));
+        if (DEBUG) Image.fromMat(binary).write(new File(dir, "img_" + id + "_6_binary.jpg"));
+        binary.setTo(WHITE, mat);
+        if (DEBUG) Image.fromMat(binary).write(new File(dir, "img_" + id + "_7_binary_text.jpg"));
 
         // Dewarp the text using Leptonica
-        Pix pixs = Convert.convertTo8(ReadFile.readBitmap(bitmap));
-        bitmap.recycle(); bitmap = null;
+        Pix pixs = Image.fromMat(binary).toGrayscalePix();
         Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
-        bitmap = WriteFile.writeBitmap(pixsDewarp);
-        pixs.recycle(); pixs = null;
-        pixsDewarp.recycle(); pixsDewarp = null;
-        if (DEBUG) saveImage(bitmap, new File(dir, "img_" + id + "_9_dewarp.jpg"));
+        final Image result = Image.fromGrayscalePix(pixsDewarp);
+        if (DEBUG) result.write(new File(dir, "img_" + id + "_8_dewarp.jpg"));
 
-        return bitmap;
-    }
+        // Clean up
+        pixs.recycle();
+        mat.release();
+        aux.release();
+        binary.release();
+        if (debugMat != null) debugMat.release();
 
-
-    private static void saveImage(Bitmap bitmap, File file) {
-        if (file.exists ()) file.delete ();
-        try {
-            final FileOutputStream out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
-            out.flush();
-            out.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return result;
     }
 
 }

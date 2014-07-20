@@ -16,7 +16,7 @@ public class Dewarp {
 		
 		if (nativePix == 0) {
 			System.err.println("Failed to natively dewarp pix: " + nativePix);
-			return pixs;
+			return pixs.clone();
             //throw new RuntimeException("Failed to natively dewarp pix: " + nativePix);
 		}
 

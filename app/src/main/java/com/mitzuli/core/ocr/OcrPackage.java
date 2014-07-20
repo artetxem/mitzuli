@@ -22,10 +22,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.Locale;
 
+import com.googlecode.leptonica.android.Pix;
+import com.mitzuli.Image;
 import com.mitzuli.core.Package;
 
-
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
@@ -49,7 +49,7 @@ public class OcrPackage extends Package {
         return language;
     }
 
-    public void recognizeText(final Bitmap picture, final OcrCallback ocrCallback, final ExceptionCallback exceptionCallback) {
+    public void recognizeText(final Image picture, final OcrCallback ocrCallback, final ExceptionCallback exceptionCallback) {
         markUsage();
         if (getPackageDir() != null) {
             ocrTask = new OcrTask(ocrCallback, exceptionCallback);
@@ -71,7 +71,7 @@ public class OcrPackage extends Package {
     }
 
 
-    private class OcrTask extends AsyncTask<Bitmap, Void, String> {
+    private class OcrTask extends AsyncTask<Image, Void, String> {
 
         private final OcrCallback ocrCallback;
         private final ExceptionCallback exceptionCallback;
@@ -83,17 +83,19 @@ public class OcrPackage extends Package {
         }
 
         @Override
-        protected String doInBackground(Bitmap... picture) {
+        protected String doInBackground(Image... picture) {
             try {
                 final File packageDir = getPackageDir();
                 if (packageDir == null) throw new Exception("Package not installed.");
                 final TessBaseAPI tesseract = new TessBaseAPI();
                 if (!tesseract.init(packageDir.getAbsolutePath(), getId())) throw new Exception("Tesseract init failed.");
-                Bitmap preprocessedImage = OcrPreprocessor.preprocess(picture[0]);
-                tesseract.setImage(preprocessedImage);
+                final Image preprocessedImage = OcrPreprocessor.preprocess(picture[0]);
+                final Pix pix = preprocessedImage.toGrayscalePix();
+                preprocessedImage.recycle();
+                tesseract.setImage(pix);
+                pix.recycle();
 
                 final String text = tesseract.getUTF8Text();
-                preprocessedImage.recycle(); preprocessedImage = null;
                 final StringBuilder sb = new StringBuilder();
                 boolean lastEmpty = false;
                 for (String s : text.split("\n")) {
