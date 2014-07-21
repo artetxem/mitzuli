@@ -50,6 +50,10 @@ import com.edmodo.cropper.cropwindow.edge.Edge;
  */
 public class CameraCropperView extends FrameLayout { //TODO Handle the case in which autofocus is not available (is that possible?)
 
+    // Whether to crop or stretch the camera preview (cropping is preferred, but it seems that it is only working on Android 4.1 and above)
+    private static final boolean CROP_PREVIEW = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+
+
     public static interface OpenCameraCallback {
         public void onCameraOpened(boolean success);
     }
@@ -331,28 +335,29 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
 
     }
 
-    //This should crop the camera preview, but it does not work properly in old Android versions, so we will let the preview be stretched instead
-    /*@Override
+    @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
 
-        int pictureWidth, pictureHeight;
-        if (cameraRotation == 90 || cameraRotation == 270) {
-            pictureWidth = pictureSize.height;
-            pictureHeight = pictureSize.width;
-        } else {
-            pictureWidth = pictureSize.width;
-            pictureHeight = pictureSize.height;
-        }
+        if (CROP_PREVIEW) {
+            int pictureWidth, pictureHeight;
+            if (cameraRotation == 90 || cameraRotation == 270) {
+                pictureWidth = pictureSize.height;
+                pictureHeight = pictureSize.width;
+            } else {
+                pictureWidth = pictureSize.width;
+                pictureHeight = pictureSize.height;
+            }
 
-        if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
-            final int scaledHeight = pictureHeight * layoutWidth / pictureWidth;
-            preview.layout(0, (layoutHeight - scaledHeight) / 2, layoutWidth, (layoutHeight + scaledHeight) / 2);
-        } else {
-            final int scaledWidth = pictureWidth * layoutHeight / pictureHeight;
-            preview.layout((layoutWidth - scaledWidth) / 2, 0, (layoutWidth + scaledWidth) / 2, layoutHeight);
+            if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
+                final int scaledHeight = pictureHeight * layoutWidth / pictureWidth;
+                preview.layout(0, (layoutHeight - scaledHeight) / 2, layoutWidth, (layoutHeight + scaledHeight) / 2);
+            } else {
+                final int scaledWidth = pictureWidth * layoutHeight / pictureHeight;
+                preview.layout((layoutWidth - scaledWidth) / 2, 0, (layoutWidth + scaledWidth) / 2, layoutHeight);
+            }
         }
-    }*/
+    }
 
 
     public void openCamera(Context context, OpenCameraCallback callback) {
@@ -380,74 +385,33 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                     pictureHeight = pictureSize.height;
                 }
 
-                // This would be the code to use if we were to stretch the camera preview
-                final double scaleFactorHorizontal = (double)pictureWidth / (double)layoutWidth;
-                final double scaleFactorVertical = (double)pictureHeight / (double)layoutHeight;
-                final Image croppedPicture = Image.fromCroppedData(data, cameraRotation,
-                        (int) (Edge.LEFT.getCoordinate() * scaleFactorHorizontal),
-                        (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
-                        (int) (Edge.getWidth() * scaleFactorHorizontal),
-                        (int) (Edge.getHeight() * scaleFactorVertical));
-
-                callback.onPictureCropped(croppedPicture);
+                if (CROP_PREVIEW) { // The preview was cropped
+                    double scaleFactor, widthOffset, heightOffset;
+                    if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
+                        scaleFactor = (double) pictureWidth / (double) layoutWidth;
+                        widthOffset = 0;
+                        heightOffset = (pictureHeight - layoutHeight * scaleFactor) / 2;
+                    } else {
+                        scaleFactor = (double) pictureHeight / (double) layoutHeight;
+                        widthOffset = (pictureWidth - layoutWidth * scaleFactor) / 2;
+                        heightOffset = 0;
+                    }
+                    callback.onPictureCropped(Image.fromCroppedData(data, cameraRotation,
+                            (int) (Edge.LEFT.getCoordinate() * scaleFactor + widthOffset),
+                            (int) (Edge.TOP.getCoordinate() * scaleFactor + heightOffset),
+                            (int) (Edge.getWidth() * scaleFactor),
+                            (int) (Edge.getHeight() * scaleFactor)));
+                } else { // The preview was stretched
+                    final double scaleFactorHorizontal = (double)pictureWidth / (double)layoutWidth;
+                    final double scaleFactorVertical = (double)pictureHeight / (double)layoutHeight;
+                    callback.onPictureCropped(Image.fromCroppedData(data, cameraRotation,
+                            (int) (Edge.LEFT.getCoordinate() * scaleFactorHorizontal),
+                            (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
+                            (int) (Edge.getWidth() * scaleFactorHorizontal),
+                            (int) (Edge.getHeight() * scaleFactorVertical)));
+                }
 
                 // TODO We are not restarting the preview, so we might want to offer a method to do so (recreating the view is the only alternative that we currently offer, which is OK for us)
-
-                /*
-                final BitmapFactory.Options options = new BitmapFactory.Options();
-                options.inSampleSize = pictureInSampleSize;
-                options.inPurgeable = true;
-                options.inInputShareable = true;
-                Bitmap picture = BitmapFactory.decodeByteArray(data, 0, data.length, options);
-                data = null;
-
-                if (cameraRotation != 0) {
-                    final Bitmap oldPicture = picture;
-                    final Matrix matrix = new Matrix();
-                    matrix.postRotate(cameraRotation);
-                    picture = Bitmap.createBitmap(picture, 0, 0, picture.getWidth(), picture.getHeight(), matrix, false); // TODO Should we set filter to true???
-                    oldPicture.recycle();
-                }
-
-                int pictureWidth, pictureHeight;
-                if (cameraRotation == 90 || cameraRotation == 270) {
-                    pictureWidth = pictureSize.height;
-                    pictureHeight = pictureSize.width;
-                } else {
-                    pictureWidth = pictureSize.width;
-                    pictureHeight = pictureSize.height;
-                }*/
-
-                // This would be the code to use if we were to crop the camera preview
-                /*float scaleFactor, widthOffset, heightOffset;
-                if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
-                    scaleFactor = (float)pictureWidth / (float)layoutWidth;
-                    widthOffset = 0;
-                    heightOffset = (pictureHeight - layoutHeight*scaleFactor) / 2;
-                } else {
-                    scaleFactor = (float)pictureHeight / (float)layoutHeight;
-                    widthOffset = (pictureWidth - layoutWidth*scaleFactor) / 2;
-                    heightOffset = 0;
-                }
-                final Bitmap croppedPicture = Bitmap.createBitmap(picture,
-                        (int) (Edge.LEFT.getCoordinate() * scaleFactor + widthOffset),
-                        (int) (Edge.TOP.getCoordinate() * scaleFactor + heightOffset),
-                        (int) (Edge.getWidth() * scaleFactor),
-                        (int) (Edge.getHeight() * scaleFactor));*/
-
-                // This would be the code to use if we were to stretch the camera preview
-                /*final float scaleFactorHorizontal = (float)pictureWidth/pictureInSampleSize / (float)layoutWidth;
-                final float scaleFactorVertical = (float)pictureHeight/pictureInSampleSize / (float)layoutHeight;
-                final Bitmap croppedPicture = Bitmap.createBitmap(picture,
-                        (int) (Edge.LEFT.getCoordinate() * scaleFactorHorizontal),
-                        (int) (Edge.TOP.getCoordinate() * scaleFactorVertical),
-                        (int) (Edge.getWidth() * scaleFactorHorizontal),
-                        (int) (Edge.getHeight() * scaleFactorVertical));
-
-                picture.recycle();
-
-                camera.startPreview();
-                callback.onPictureCropped(croppedPicture);*/
             }
         };
         final Camera.AutoFocusCallback autoFocusCallback = new Camera.AutoFocusCallback() {
