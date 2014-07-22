@@ -26,8 +26,6 @@ import java.util.List;
 
 import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
-import com.mitzuli.core.mt.AbumatranMtPackage;
-import com.mitzuli.core.mt.MatxinMtPackage;
 import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
 import com.mitzuli.core.tts.Tts;
@@ -39,13 +37,13 @@ import com.f2prateek.progressbutton.ProgressButton;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
@@ -120,6 +118,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private CameraCropperView.OpenCameraCallback openCameraCallback = new CameraCropperView.OpenCameraCallback() {
         @Override public void onCameraOpened(boolean success) {
+            if (success) srcCamera.updateDisplayOrientation(getApplicationContext());
             cameraAvailable = success;
             cameraButton.setVisibility(!cameraAvailable || activePair == null || activePair.ocrPackage == null ? View.GONE : View.VISIBLE);
         }
@@ -342,6 +341,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     protected void onPause() {
         super.onPause();
         srcCamera.releaseCamera();
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (cameraAvailable && srcCamera.isOpened()) srcCamera.updateDisplayOrientation(getApplicationContext());
     }
 
 

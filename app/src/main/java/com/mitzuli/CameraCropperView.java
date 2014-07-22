@@ -69,7 +69,12 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
     };
 
 
-    private Camera camera;
+    private volatile boolean opened = false;
+    private volatile boolean previewing = false;
+    private volatile Thread previewStarter;
+
+    private volatile Camera camera;
+    private int cameraOrientation;
     private int cameraRotation;
     private Size pictureSize;
     private List<Size> previewSizes;
@@ -85,19 +90,26 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
     private final SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
 
         @Override public void surfaceCreated(SurfaceHolder holder) {
-            try {
-                camera.setPreviewDisplay(previewHolder);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (opened) { // TODO This check should not be necessary (we must be missing something in the main activity class)
+                try {
+                    camera.setPreviewDisplay(previewHolder);
+                    startPreview();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
-            // Starting the preview for the first time is slow, so we will do it in a separate thread
-            new Thread() {@Override public void run() {camera.startPreview();}}.start();
         }
 
         @Override public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
 
         @Override public void surfaceDestroyed(SurfaceHolder holder) {
-            if (camera != null) camera.stopPreview();
+            if (opened) {
+                joinPreviewStarter();
+                if (previewing) {
+                    camera.stopPreview();
+                    previewing = false;
+                }
+            }
         }
 
     };
@@ -115,10 +127,9 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
 
         @Override
         protected Boolean doInBackground(Void... args) {
-            if (camera != null) return true;
+            if (opened) return true;
 
             try {
-                int cameraOrientation;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
                     // Choose the first back-facing camera
                     boolean cameraAvailable = false;
@@ -177,25 +188,12 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                 params.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
                 params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
                 camera.setParameters(params);
-
-                // Set the camera orientation
-                int rotation = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
-                int degrees = 0;
-                switch (rotation) {
-                    case Surface.ROTATION_0: degrees = 0; break;
-                    case Surface.ROTATION_90: degrees = 90; break;
-                    case Surface.ROTATION_180: degrees = 180; break;
-                    case Surface.ROTATION_270: degrees = 270; break;
-                }
-                cameraRotation = (cameraOrientation - degrees + 360) % 360;
-                camera.setDisplayOrientation(cameraRotation);
-                // TODO Should we set the orientation in the params as well (params.setRotation())???
-
             } catch (Exception e) {
                 releaseCamera();
                 return false; // Some error while opening the camera...
             }
 
+            opened = true;
             return true;
         }
 
@@ -365,17 +363,76 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
     }
 
     public void releaseCamera() {
+        if (opened) joinPreviewStarter();
         if (camera != null){
             camera.release();
             camera = null;
+            opened = false;
+            previewing = false;
+        }
+    }
+
+    public void startPreview() {
+        if (!opened) throw new IllegalStateException("Camera not opened yet");
+        if (previewing || previewStarter != null) return;
+        (previewStarter = new Thread() {
+            @Override public void run() {
+                camera.startPreview();
+                previewing = true;
+                previewStarter = null;
+            }
+        }).start();
+    }
+
+    public void joinPreviewStarter() {
+        if (!opened) throw new IllegalStateException("Camera not opened yet");
+        final Thread t = previewStarter;
+        if (t != null) {
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public boolean isPreviewing() {
+        return previewing;
+    }
+
+    public boolean isOpened() {
+        return camera != null;
+    }
+
+    public void updateDisplayOrientation(Context context) {
+        if (!opened) throw new IllegalStateException("Camera not opened yet");
+        joinPreviewStarter();
+        final boolean restartPreview = previewing && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
+        if (restartPreview) {
+            previewing = false;
+            camera.stopPreview();
+        }
+        int rotation = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
+        int degrees = 0;
+        switch (rotation) {
+            case Surface.ROTATION_0: degrees = 0; break;
+            case Surface.ROTATION_90: degrees = 90; break;
+            case Surface.ROTATION_180: degrees = 180; break;
+            case Surface.ROTATION_270: degrees = 270; break;
+        }
+        cameraRotation = (cameraOrientation - degrees + 360) % 360;
+        camera.setDisplayOrientation(cameraRotation);
+        if (restartPreview) {
+            startPreview();
         }
     }
 
     public void takeCroppedPicture(final CroppedPictureCallback callback) {
+        if (!opened) throw new IllegalStateException("Camera not opened yet");
         final Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera cam) {
-
+                previewing = false;
                 int pictureWidth, pictureHeight;
                 if (cameraRotation == 90 || cameraRotation == 270) {
                     pictureWidth = pictureSize.height;
@@ -384,7 +441,6 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                     pictureWidth = pictureSize.width;
                     pictureHeight = pictureSize.height;
                 }
-
                 if (CROP_PREVIEW) { // The preview was cropped
                     double scaleFactor, widthOffset, heightOffset;
                     if (layoutWidth * pictureHeight > layoutHeight * pictureWidth) {
@@ -410,8 +466,6 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                             (int) (Edge.getWidth() * scaleFactorHorizontal),
                             (int) (Edge.getHeight() * scaleFactorVertical)));
                 }
-
-                // TODO We are not restarting the preview, so we might want to offer a method to do so (recreating the view is the only alternative that we currently offer, which is OK for us)
             }
         };
         final Camera.AutoFocusCallback autoFocusCallback = new Camera.AutoFocusCallback() {
@@ -420,6 +474,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                 camera.takePicture(null, null, pictureCallback);
             }
         };
+        joinPreviewStarter();
         camera.autoFocus(autoFocusCallback);
         //mCamera.takePicture(null, null, pictureCallback);
     }

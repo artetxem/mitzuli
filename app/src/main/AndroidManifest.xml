@@ -15,6 +15,7 @@
 
         <activity
             android:name="com.mitzuli.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateUnchanged" >
 
