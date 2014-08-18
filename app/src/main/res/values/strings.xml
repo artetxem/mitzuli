@@ -59,8 +59,11 @@
     <string name="pref_title_check_updates">Check for updates</string>
     <string name="pref_description_check_updates">Check for updates for your language pairs</string>
 
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is either translated or removed -->
     <string name="pref_header_development">Development</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is either translated or removed -->
     <string name="pref_title_ocr_debugging">OCR debugging</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is either translated or removed -->
     <string name="pref_description_ocr_debugging">Save files for OCR debugging in external storage</string>
 
     <string name="pref_header_about">About</string>
