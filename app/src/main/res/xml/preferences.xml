@@ -54,6 +54,19 @@
             android:title="@string/pref_title_check_updates" />
         
     </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="@string/pref_header_development"
+        android:key="pref_key_development">
+
+        <CheckBoxPreference
+            android:key="pref_key_ocr_debugging"
+            android:summary="@string/pref_description_ocr_debugging"
+            android:title="@string/pref_title_ocr_debugging"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
     
     
     <PreferenceCategory

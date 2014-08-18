@@ -133,6 +133,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             srcContent.removeAllViews();
             srcContent.setGravity(Gravity.CENTER);
             srcContent.addView(srcProgressBar);
+            OcrPackage.DEBUG = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getBoolean("pref_key_ocr_debugging", false); // TODO Temporary workaround to allow to manually enable debugging
             activePair.ocrPackage.recognizeText(croppedPicture, ocrCallback, exceptionCallback);
         }
     };

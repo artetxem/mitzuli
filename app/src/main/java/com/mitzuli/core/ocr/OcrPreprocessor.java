@@ -22,7 +22,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.opencv.core.Core;
@@ -37,8 +36,6 @@ import org.opencv.imgproc.Imgproc;
 import com.googlecode.leptonica.android.Dewarp;
 import com.googlecode.leptonica.android.Pix;
 import com.mitzuli.Image;
-
-import android.os.Environment;
 
 public class OcrPreprocessor {
 
@@ -68,11 +65,20 @@ public class OcrPreprocessor {
      * @return the preprocessed image.
      */
     public static Image preprocess(final Image input) {
+        return preprocess(input, null);
+    }
 
-        // Debugging stuff
-        final File dir = DEBUG ? new File(Environment.getExternalStorageDirectory(), "mitzuli_ocr") : null;
-        final String id = DEBUG ? TIMESTAMP.format(new Date()) : null;
-        if (DEBUG) dir.mkdirs();
+
+    /**
+     * Binarizes and cleans the input image for OCR, saving debugging images in the given directory.
+     *
+     * @param input the input image, which is recycled by this method, so the caller should make a defensive copy of it if necessary.
+     * @param debugDir the directory to write the debugging images to, or null to disable debugging.
+     * @return the preprocessed image.
+     */
+    static Image preprocess(final Image input, final File debugDir) {
+        // TODO Temporary workaround to allow to manually enable debugging (the global final variable should be used)
+        boolean DEBUG = debugDir != null;
 
         // Initialization
         final Mat mat = input.toGrayscaleMat();
@@ -80,7 +86,7 @@ public class OcrPreprocessor {
         input.recycle();
         final Mat aux = new Mat(mat.size(), CvType.CV_8UC1);
         final Mat binary = new Mat(mat.size(), CvType.CV_8UC1);
-        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_1_input.jpg"));
+        if (DEBUG) Image.fromMat(mat).write(new File(debugDir, "1_input.jpg"));
 
         // Binarize the input image in mat through adaptive Gaussian thresholding
         Imgproc.adaptiveThreshold(mat, binary, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C, Imgproc.THRESH_BINARY, 51, 13);
@@ -92,11 +98,11 @@ public class OcrPreprocessor {
         Core.addWeighted(mat, 0.5, aux, 0.5, 0, mat);                                     // Average
         Imgproc.morphologyEx(mat, mat, Imgproc.MORPH_GRADIENT, KERNEL_3X3);               // Gradient
         Imgproc.threshold(mat, mat, 0, 255, Imgproc.THRESH_BINARY | Imgproc.THRESH_OTSU); // Edge map
-        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_2_edges.jpg"));
+        if (DEBUG) Image.fromMat(mat).write(new File(debugDir, "2_edges.jpg"));
 
         // Extract word level connected-components from the dilated edge map
         Imgproc.dilate(mat, mat, KERNEL_3X3);
-        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_3_dilated_edges.jpg"));
+        if (DEBUG) Image.fromMat(mat).write(new File(debugDir, "3_dilated_edges.jpg"));
         final List<MatOfPoint> wordCCs = new ArrayList<MatOfPoint>();
         Imgproc.findContours(mat, wordCCs, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
 
@@ -192,23 +198,23 @@ public class OcrPreprocessor {
         mat.setTo(WHITE);
         Imgproc.drawContours(mat, textCCs, -1, BLACK, -1);
         textCCs.clear();
-        if (DEBUG) Image.fromMat(debugMat).write(new File(dir, "img_" + id + "_4_filtering.jpg"));
+        if (DEBUG) Image.fromMat(debugMat).write(new File(debugDir, "4_filtering.jpg"));
 
         // Obtain the final text mask from the filtered connected-components
         Imgproc.erode(mat, mat, KERNEL_15X15);
         Imgproc.morphologyEx(mat, mat, Imgproc.MORPH_OPEN, KERNEL_30X30);
-        if (DEBUG) Image.fromMat(mat).write(new File(dir, "img_" + id + "_5_text_mask.jpg"));
+        if (DEBUG) Image.fromMat(mat).write(new File(debugDir, "5_text_mask.jpg"));
 
         // Apply the text mask to the binarized image
-        if (DEBUG) Image.fromMat(binary).write(new File(dir, "img_" + id + "_6_binary.jpg"));
+        if (DEBUG) Image.fromMat(binary).write(new File(debugDir, "6_binary.jpg"));
         binary.setTo(WHITE, mat);
-        if (DEBUG) Image.fromMat(binary).write(new File(dir, "img_" + id + "_7_binary_text.jpg"));
+        if (DEBUG) Image.fromMat(binary).write(new File(debugDir, "7_binary_text.jpg"));
 
         // Dewarp the text using Leptonica
         Pix pixs = Image.fromMat(binary).toGrayscalePix();
         Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
         final Image result = Image.fromGrayscalePix(pixsDewarp);
-        if (DEBUG) result.write(new File(dir, "img_" + id + "_8_dewarp.jpg"));
+        if (DEBUG) result.write(new File(debugDir, "8_dewarp.jpg"));
 
         // Clean up
         pixs.recycle();
