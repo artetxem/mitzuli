@@ -28,7 +28,8 @@ import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
 import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
-import com.mitzuli.core.tts.Tts;
+import com.mitzuli.core.speech.Stt;
+import com.mitzuli.core.speech.Tts;
 
 import org.acra.ACRA;
 import org.opencv.android.OpenCVLoader;
@@ -37,6 +38,7 @@ import com.f2prateek.progressbutton.ProgressButton;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -86,9 +88,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private List<LanguagePair> languagePairs;
     private LanguagePair activePair;
     private Tts tts;
+    private Stt stt;
 
     private boolean cameraAvailable = false;
     private boolean editing = false;
+    private boolean ttsRequest = false;
+
+    private SharedPreferences preferences;
 
     private LinearLayout mainPanel;
 
@@ -99,6 +105,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private LinearLayout srcContent;
 
     private EditText srcText;
+    private SttView srcMic;
     private CameraCropperView srcCamera;
     private ProgressBar srcProgressBar;
 
@@ -114,7 +121,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private TextView trgText;
     private ProgressBar trgProgressBar;
 
-    private ImageButton srcAudioButton, cameraButton, keyboardButton, removeButton, trgAudioButton, shareButton, copyButton;
+    private ImageButton srcAudioButton, micButton, cameraButton, keyboardButton, removeButton, trgAudioButton, shareButton, copyButton;
 
     private CameraCropperView.OpenCameraCallback openCameraCallback = new CameraCropperView.OpenCameraCallback() {
         @Override public void onCameraOpened(boolean success) {
@@ -126,14 +133,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private CameraCropperView.CroppedPictureCallback croppedPictureCallback = new CameraCropperView.CroppedPictureCallback() {
         @Override public void onPictureCropped(Image croppedPicture) {
-            srcAudioButton.setVisibility(tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) && tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
             cameraButton.setVisibility(View.VISIBLE); //TODO Should we do any check?
             keyboardButton.setVisibility(View.GONE);
             removeButton.setVisibility(View.VISIBLE);
             srcContent.removeAllViews();
             srcContent.setGravity(Gravity.CENTER);
             srcContent.addView(srcProgressBar);
-            OcrPackage.DEBUG = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getBoolean("pref_key_ocr_debugging", false); // TODO Temporary workaround to allow to manually enable debugging
+            OcrPackage.DEBUG = preferences.getBoolean("pref_key_ocr_debugging", false); // TODO Temporary workaround to allow to manually enable debugging
             activePair.ocrPackage.recognizeText(croppedPicture, ocrCallback, exceptionCallback);
         }
     };
@@ -146,7 +153,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             srcContent.addView(srcText);
             activePair.mtPackage.translate(
                     srcText.getText().toString(),
-                    PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getBoolean("pref_key_mark_unknown", true),
+                    preferences.getBoolean("pref_key_mark_unknown", true),
                     translationCallback,
                     exceptionCallback);
         }
@@ -154,10 +161,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private MtPackage.TranslationCallback translationCallback = new MtPackage.TranslationCallback() {
         @Override public void onTranslationDone(String translation) {
+            trgText.setText(Html.fromHtml(translation));
             trgContent.removeAllViews();
             trgContent.setGravity(Gravity.TOP);
             trgContent.addView(trgTextScroll);
-            trgText.setText(Html.fromHtml(translation));
+            if (ttsRequest && tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
+                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage(), true);
+            }
+            ttsRequest = false;
         }
     };
 
@@ -182,12 +193,73 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         }
     };
 
+    private Stt.RecognitionCallback sttRecognitionCallback = new Stt.RecognitionCallback() {
+        @Override public void onRecognitionDone(String recognizedText) {
+            if (recognizedText.length() > 0) srcText.setText(recognizedText);
+            srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) &&  tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            micButton.setVisibility(View.VISIBLE); // TODO Should we do any check?
+            keyboardButton.setVisibility(View.GONE);
+            removeButton.setVisibility(View.VISIBLE);
+            srcContent.removeAllViews();
+            srcContent.setGravity(Gravity.TOP);
+            srcContent.addView(srcText);
+            if (recognizedText.length() > 0) {
+                if (trgContent.getChildAt(0) != trgProgressBar) {
+                    trgContent.removeAllViews();
+                    trgContent.setGravity(Gravity.CENTER);
+                    trgContent.addView(trgProgressBar);
+                }
+                ttsRequest = preferences.getBoolean("pref_key_auto_tts", true);
+                activePair.mtPackage.translate(
+                        recognizedText,
+                        preferences.getBoolean("pref_key_mark_unknown", true),
+                        translationCallback,
+                        exceptionCallback);
+            } else if (trgContent.getChildAt(0) == trgProgressBar) { // The user pressed the "TRANSLATE" button but there was no speech input
+                srcText.setText("");
+                trgText.setText("");
+                trgContent.removeAllViews();
+                trgContent.setGravity(Gravity.TOP);
+                trgContent.addView(trgTextScroll);
+            }
+        }
+    };
+
+    private Stt.ExceptionCallback sttExceptionCallback = new Stt.ExceptionCallback() {
+        @Override public void onException(Exception exception) {
+            System.err.println("Recognition exception: " + exception.getMessage());
+            srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) &&  tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            micButton.setVisibility(View.VISIBLE); // TODO Should we do any check?
+            keyboardButton.setVisibility(View.GONE);
+            removeButton.setVisibility(View.VISIBLE);
+            exceptionCallback.onException(exception); // TODO Review this
+        }
+    };
+
+    private Stt.ProgressCallback sttProgressCallback = new Stt.ProgressCallback() {
+        @Override public void onReadyForSpeech() {
+            srcMic.setStatusText(getResources().getText(R.string.speak_now));
+            srcMic.setRecognizedText("");
+            srcMic.setRms(srcMic.MIN_RMS_DB);
+            srcContent.removeAllViews();
+            srcContent.setGravity(Gravity.CENTER);
+            srcContent.addView(srcMic);
+        }
+        @Override public void onRmsChanged(float rmsdB) {
+            srcMic.setRms(rmsdB);
+        }
+        @Override public void onPartialResults(String recognizedText) {
+            srcMic.setRecognizedText(recognizedText);
+        }
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         mainPanel = (LinearLayout)findViewById(R.id.activity_main);
 
@@ -209,6 +281,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         trgContent = (LinearLayout)findViewById(R.id.trg_content);
 
         srcText = (EditText)findViewById(R.id.src_text);
+        srcMic = new SttView(getApplicationContext());
         srcCamera = new CameraCropperView(getApplicationContext());
         srcCamera.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         srcProgressBar = new ProgressBar(getApplicationContext());
@@ -221,6 +294,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
         srcAudioButton = (ImageButton)findViewById(R.id.src_audio_button);
         srcAudioButton.setOnClickListener(this);
+        micButton = (ImageButton)findViewById(R.id.mic_button);
+        micButton.setOnClickListener(this);
         cameraButton = (ImageButton)findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(this);
         keyboardButton = (ImageButton)findViewById(R.id.keyboard_button);
@@ -264,15 +339,23 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         tts = new Tts(getApplicationContext(), new Tts.OnInitListener() {
             @Override public void onInit() {
                 if (activePair != null) {
-                    srcAudioButton.setVisibility(tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+                    srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) &&  tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
                     trgAudioButton.setVisibility(tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage()) ? View.VISIBLE : View.GONE);
+                }
+            }
+        });
+
+        stt = new Stt(getApplicationContext(), new Stt.OnInitListener() {
+            @Override public void onInit() {
+                if (activePair != null) {
+                    micButton.setVisibility(stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
                 }
             }
         });
 
         refreshLanguagePairs();
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_key_autocheck_updates", true)) {
+        if (preferences.getBoolean("pref_key_autocheck_updates", true)) {
             PackageManagers.updatePackages(this, false, false, new PackageManagers.ManifestsUpdateCallback() {
                 @Override public void onManifestsUpdate() {
                     refreshLanguagePairs();
@@ -375,6 +458,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     protected void onDestroy() {
         super.onDestroy();
         tts.shutdown();
+        stt.shutdown();
     }
 
 
@@ -384,7 +468,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             trgContent.removeAllViews();
             trgContent.setGravity(Gravity.CENTER);
             trgContent.addView(trgProgressBar);
-            if (srcContent.getChildAt(0) == srcCamera) { // Camera input mode
+            if (srcContent.getChildAt(0) == srcMic) { // Voice input mode
+                stt.stopRecognition();
+            } else if (srcContent.getChildAt(0) == srcCamera) { // Camera input mode
                 srcCamera.takeCroppedPicture(croppedPictureCallback); // Do the OCR stuff
             } else { // Text input mode
                 if (editing) { // Hide soft keyboard
@@ -392,7 +478,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 }
                 activePair.mtPackage.translate(
                         srcText.getText().toString(),
-                        PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getBoolean("pref_key_mark_unknown", true),
+                        preferences.getBoolean("pref_key_mark_unknown", true),
                         translationCallback,
                         exceptionCallback);
             }
@@ -416,11 +502,26 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             }
         } else if (view == srcAudioButton) {
             tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage(), true);
-        } else if (view == cameraButton) {
+        } else if(view == micButton) {
             if (editing) { // Hide soft keyboard
                 ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(srcText.getApplicationWindowToken(), 0);
             }
             srcAudioButton.setVisibility(View.GONE);
+            micButton.setVisibility(View.GONE);
+            cameraButton.setVisibility(!cameraAvailable || activePair.ocrPackage == null ? View.GONE : View.VISIBLE);
+            keyboardButton.setVisibility(View.VISIBLE);
+            removeButton.setVisibility(View.GONE);
+            srcContent.removeAllViews();
+            srcContent.setGravity(Gravity.CENTER);
+            srcContent.addView(srcProgressBar);
+            stt.recognize(activePair.mtPackage.getSourceLanguage(), sttRecognitionCallback, sttExceptionCallback, sttProgressCallback);
+        } else if (view == cameraButton) {
+            if (editing) { // Hide soft keyboard
+                ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(srcText.getApplicationWindowToken(), 0);
+            }
+            if (srcContent.getChildAt(0) == srcMic) stt.cancelRecognition();
+            srcAudioButton.setVisibility(View.GONE);
+            micButton.setVisibility(stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
             cameraButton.setVisibility(View.GONE);
             keyboardButton.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.GONE);
@@ -428,8 +529,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             srcContent.setGravity(Gravity.CENTER);
             srcContent.addView(srcCamera);
         } else if (view == keyboardButton) {
-            srcAudioButton.setVisibility(tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
-            cameraButton.setVisibility(View.VISIBLE); //TODO Should we do any check?
+            if (srcContent.getChildAt(0) == srcMic) stt.cancelRecognition();
+            srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) &&  tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            micButton.setVisibility(stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            cameraButton.setVisibility(!cameraAvailable || activePair.ocrPackage == null ? View.GONE : View.VISIBLE);
             keyboardButton.setVisibility(View.GONE);
             removeButton.setVisibility(View.VISIBLE);
             srcContent.removeAllViews();
@@ -486,7 +589,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             setTitle(pair.name);
             srcTitle.setText(PackageManagers.getName(pair.mtPackage.getSourceLanguage()));
             trgTitle.setText(PackageManagers.getName(pair.mtPackage.getTargetLanguage()));
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getId()).commit();
+            preferences.edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getId()).commit();
 
             for (int i = 0; i < languagePairs.size(); i++) {
                 if (pair.mtPackage.getId().equals(languagePairs.get(i).mtPackage.getId())) {
@@ -495,7 +598,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 }
             }
 
-            srcAudioButton.setVisibility(tts.isLanguageAvailable(pair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            srcAudioButton.setVisibility(preferences.getBoolean("pref_key_src_tts", false) &&  tts.isLanguageAvailable(pair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
+            micButton.setVisibility(stt.isLanguageAvailable(pair.mtPackage.getSourceLanguage()) ? View.VISIBLE : View.GONE);
             cameraButton.setVisibility(!cameraAvailable || pair.ocrPackage == null ? View.GONE : View.VISIBLE);
             keyboardButton.setVisibility(View.GONE);
             removeButton.setVisibility(View.VISIBLE);
@@ -525,7 +629,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                     translatorPackage,
                     PackageManagers.ocrPackageManager.getPackageForLanguage(translatorPackage.getSourceLanguage())));
         }
-        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("pref_key_beta_packages", false)) {
+        if (preferences.getBoolean("pref_key_beta_packages", false)) {
             for (MtPackage translatorPackage : PackageManagers.betaMtPackageManager.getAllPackages()) {
                 languagePairs.add(new LanguagePair(
                         "[BETA] " + PackageManagers.getName(translatorPackage.getSourceLanguage()) + " → " + PackageManagers.getName(translatorPackage.getTargetLanguage()),
@@ -536,7 +640,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         Collections.sort(languagePairs);
         getSupportActionBar().setListNavigationCallbacks(new LanguagePairAdapter(MainActivity.this), this);
 
-        final String lastPairId = PreferenceManager.getDefaultSharedPreferences(this).getString(PREFS_LAST_PAIR, null);
+        final String lastPairId = preferences.getString(PREFS_LAST_PAIR, null);
         LanguagePair lastPair = null;
         for (LanguagePair pair : languagePairs) if (pair.mtPackage.getId().equals(lastPairId)) lastPair = pair;
         for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled()) lastPair = pair;

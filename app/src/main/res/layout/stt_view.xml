@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/microphone_background"
+        android:layout_width="@dimen/microphone_width"
+        android:layout_height="@dimen/microphone_height"
+        android:layout_alignBottom="@+id/microphone_mask"
+        android:layout_centerHorizontal="true"
+        android:background="@color/microphone_background"/>
+
+    <View
+        android:id="@+id/microphone_foreground"
+        android:layout_width="@dimen/microphone_width"
+        android:layout_height="@dimen/microphone_height"
+        android:layout_alignBottom="@id/microphone_mask"
+        android:layout_centerHorizontal="true"
+        android:background="@color/microphone_foreground"/>
+
+    <ImageView
+        android:id="@id/microphone_mask"
+        android:layout_width="@dimen/microphone_width"
+        android:layout_height="@dimen/microphone_height"
+        android:layout_centerInParent="true"
+        android:src="@drawable/microphone_mask"/>
+
+    <TextView
+        android:id="@+id/status_text"
+        android:text="speak now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/microphone_mask"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/microphone_status_text"
+        android:textColor="@color/microphone_background"/>
+
+    <TextView style="@style/card_text"
+        android:id="@+id/recognized_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

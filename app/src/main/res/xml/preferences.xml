@@ -36,8 +36,27 @@
             android:defaultValue="true" />
         
     </PreferenceCategory>
-    
-    
+
+
+    <PreferenceCategory
+        android:title="@string/pref_header_speech"
+        android:key="pref_key_speech">
+
+        <CheckBoxPreference
+            android:key="pref_key_src_tts"
+            android:summary="@string/pref_description_src_tts"
+            android:title="@string/pref_title_src_tts"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="pref_key_auto_tts"
+            android:summary="@string/pref_description_auto_tts"
+            android:title="@string/pref_title_auto_tts"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+
     <PreferenceCategory
         android:title="@string/pref_header_updates"
         android:key="pref_key_updates">

@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.mitzuli.core.tts;
+package com.mitzuli.core.speech;
 
 import java.util.Locale;
 

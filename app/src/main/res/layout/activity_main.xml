@@ -50,6 +50,10 @@
                     android:src="@drawable/ic_action_audio" />
 
                 <ImageButton style="@style/card_header_button"
+                    android:id="@+id/mic_button"
+                    android:src="@drawable/ic_action_mic" />
+
+                <ImageButton style="@style/card_header_button"
                     android:id="@+id/camera_button"
                     android:src="@drawable/ic_action_camera" />
 

@@ -35,5 +35,9 @@
     <dimen name="dropdown_text_width">200dp</dimen>
     <dimen name="dropdown_text_horizontal_padding">0dp</dimen>
     <dimen name="dropdown_text_vertical_padding">16dp</dimen>
+
+    <dimen name="microphone_width">64dp</dimen>
+    <dimen name="microphone_height">64dp</dimen>
+    <dimen name="microphone_status_text">16sp</dimen>
     
 </resources>

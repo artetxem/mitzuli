@@ -127,7 +127,7 @@ public class OcrPackage extends Package {
                     output.println(sb);
                     output.close();
                     final PrintWriter build = new PrintWriter(new File(debugDir, "build.txt"));
-                    build.println("APP VERSION:   " + "7 (0.1.6)"); // TODO Hardcoded app version
+                    build.println("APP VERSION:   " + "8 (0.1.7)"); // TODO Hardcoded app version
                     build.println();
                     build.println("SDK:           " + Build.VERSION.SDK_INT);
                     build.println("RELEASE:       " + Build.VERSION.RELEASE);

@@ -24,4 +24,6 @@
     <color name="card_text">#ff969696</color>
     <color name="card_main_button">#ff8d8d8d</color>
     <color name="card_separator">#dddddd</color>
+    <color name="microphone_background">#eeeeee</color>
+    <color name="microphone_foreground">#cccccc</color>
 </resources>

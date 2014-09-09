@@ -22,6 +22,8 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Settings</string>
     <string name="translate_button">TRANSLATE</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="speak_now">speak now</string>
     <string name="translation_copied">Translation copied</string>
     <string name="share_with">Share translation with</string>
 
@@ -52,6 +54,17 @@
     <string name="pref_description_beta_packages">Enable beta language pairs (translation quality might be poor)</string>
     <string name="pref_title_mark_unknown">Mark unknown words</string>
     <string name="pref_description_mark_unknown">Display marks for unknown words</string>
+
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="pref_header_speech">Speech</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="pref_title_src_tts">Source language TTS</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="pref_description_src_tts">Enable text-to-speech output in the source language</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="pref_title_auto_tts">Automatic TTS</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
+    <string name="pref_description_auto_tts">Automatically speak translated text in microphone mode</string>
 
     <string name="pref_header_updates">Updates</string>
     <string name="pref_title_autocheck_updates">Auto-check for updates</string>
