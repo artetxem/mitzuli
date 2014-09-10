@@ -22,6 +22,7 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Ezarpenak</string>
     <string name="translate_button">ITZULI</string>
+    <string name="speak_now">hitz egin orain</string>
     <string name="translation_copied">Itzulpena kopiatu da</string>
     <string name="share_with">Itzulpena honekin partekatu</string>
 
@@ -52,12 +53,18 @@
     <string name="pref_description_beta_packages">Beta hizkuntza bikoteak gaitu (itzulpenen kalitatea txarra izan daiteke)</string>
     <string name="pref_title_mark_unknown">Hitz ezezagunak nabarmendu</string>
     <string name="pref_description_mark_unknown">Hitz ezezagunentzako markak erakutsi</string>
+    <string name="pref_title_auto_tts">TTS automatikoa</string>
+    <string name="pref_description_auto_tts">Testu itzulia automatikoki irakurri mikrofono moduan</string>
 
     <string name="pref_header_updates">Eguneraketak</string>
     <string name="pref_title_autocheck_updates">Eguneraketa automatikoak</string>
     <string name="pref_description_autocheck_updates">Zure hizkuntza bikoteentzako eguneraketak automatikoki bilatu</string>
     <string name="pref_title_check_updates">Eguneraketak bilatu</string>
     <string name="pref_description_check_updates">Zure hizkuntza bikoteentzako eguneraketak bilatu</string>
+
+    <string name="pref_header_development">Garapena</string>
+    <string name="pref_title_ocr_debugging">OCR arazketa</string>
+    <string name="pref_description_ocr_debugging">OCR arazketarako fitxategiak gorde kanpo-memorian</string>
 
     <string name="pref_header_about">Honi buruz</string>
     <string name="pref_title_licenses">Iturburu irekiko lizentziak</string>

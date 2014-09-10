@@ -22,6 +22,7 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Ajustes</string>
     <string name="translate_button">TRADUCIR</string>
+    <string name="speak_now">habla ahora</string>
     <string name="translation_copied">Traducción copiada</string>
     <string name="share_with">Compartir traducción con</string>
     
@@ -52,13 +53,19 @@
     <string name="pref_description_beta_packages">Habilitar idiomas beta (la calidad de las traducciones puede ser mala)</string>
     <string name="pref_title_mark_unknown">Marcar palabras desconocidas</string>
     <string name="pref_description_mark_unknown">Mostrar marcas para palabras desconocidas</string>
+    <string name="pref_title_auto_tts">TTS automático</string>
+    <string name="pref_description_auto_tts">Leer automáticamente el texto traducido en el modo micrófono</string>
     
     <string name="pref_header_updates">Actualizaciones</string>
     <string name="pref_title_autocheck_updates">Actualizar automáticamente</string>
     <string name="pref_description_autocheck_updates">Comprobar actualizaciones para tus idiomas de manera automática</string>
     <string name="pref_title_check_updates">Comprobar actualizaciones</string>
     <string name="pref_description_check_updates">Comprobar actualizaciones para tus idiomas</string>
-    
+
+    <string name="pref_header_development">Desarrollo</string>
+    <string name="pref_title_ocr_debugging">Depuración del OCR</string>
+    <string name="pref_description_ocr_debugging">Guardar archivos para la depuración del OCR en la memoria externa</string>
+
     <string name="pref_header_about">Acerca de</string>
     <string name="pref_title_licenses">Licencias de software libre</string>
     <string name="pref_description_licenses">Detalles de la licencia de software de código abierto</string>
