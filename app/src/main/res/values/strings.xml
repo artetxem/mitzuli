@@ -54,13 +54,6 @@
     <string name="pref_description_beta_packages">Enable beta language pairs (translation quality might be poor)</string>
     <string name="pref_title_mark_unknown">Mark unknown words</string>
     <string name="pref_description_mark_unknown">Display marks for unknown words</string>
-
-    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
-    <string name="pref_header_speech">Speech</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
-    <string name="pref_title_src_tts">Source language TTS</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
-    <string name="pref_description_src_tts">Enable text-to-speech output in the source language</string>
     <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->
     <string name="pref_title_auto_tts">Automatic TTS</string>
     <!--suppress AndroidLintMissingTranslation --> <!-- Temporary workaround until this is translated -->

@@ -41,7 +41,8 @@
 	            android:id="@+id/src_title"
 	            android:fontFamily="sans-serif-light" />
 
-	        <View style="@style/card_vertical_separator" />
+	        <View style="@style/card_vertical_separator"
+                android:id="@+id/src_button_separator" />
 	        
 	        <LinearLayout style="@style/card_header_button_area" >
 
@@ -104,7 +105,8 @@
 	            android:id="@+id/trg_title"
 	            android:fontFamily="sans-serif-light" />
 	        
-	        <View style="@style/card_vertical_separator" />
+	        <View style="@style/card_vertical_separator"
+                android:id="@+id/trg_button_separator" />
 	        
 	        <LinearLayout style="@style/card_header_button_area" >
 
