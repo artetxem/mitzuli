@@ -290,12 +290,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                     trgCardPreEditingVisibility = trgCard.getVisibility();
                     trgCard.setVisibility(View.GONE);
                     srcExpandState.setImageDrawable(getResources().getDrawable(R.drawable.expander_right));
-                    srcText.requestFocus();
                     updateSrcButtons();
                 } else if (heightDiff < 200 && editing) {
                     editing = false;
                     trgCard.setVisibility(trgCardPreEditingVisibility);
                     srcExpandState.setImageDrawable(getResources().getDrawable(trgCardPreEditingVisibility == View.VISIBLE ? R.drawable.expander_down : R.drawable.expander_up));
+                    srcText.clearFocus();
                     updateSrcButtons();
                 }
             }
