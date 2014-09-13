@@ -26,6 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.MissingResourceException;
 
 import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
@@ -52,11 +53,14 @@ public class PackageManagers {
     public static MtPackageManager betaMtPackageManager, releasedMtPackageManager;
     public static OcrPackageManager ocrPackageManager;
 
+    private static Context context;
+
     public static interface ManifestsUpdateCallback {
         public void onManifestsUpdate();
     }
 
     public static void init(Context context) throws IOException {
+        PackageManagers.context = context;
         onlineMtPackageManager = new OnlineMtPackageManager(
                 new File(context.getFilesDir(), "online_mt_packages"),
                 new BufferedReader(new InputStreamReader(context.getResources().openRawResource(R.raw.online_mt_packages_manifest))));
@@ -80,7 +84,41 @@ public class PackageManagers {
     }
 
     public static String getName(Locale locale) {
-        char[] chars = locale.getDisplayName().toLowerCase().toCharArray();
+        String languageName;
+        try {
+            final int id = context.getResources().getIdentifier("language_name_" + locale.getISO3Language().toLowerCase(), "string", "com.mitzuli");
+            languageName = id == 0 ? toTitleCase(locale.getDisplayLanguage()) : context.getResources().getString(id);
+        } catch (MissingResourceException e) {  // No 3-letter language code for locale
+            languageName = toTitleCase(locale.getDisplayLanguage());
+        }
+        if (languageName.equals("")) languageName = toTitleCase(locale.getLanguage());
+
+        String countryName = null;
+        if (!locale.getCountry().equals("")) {
+            final int id = context.getResources().getIdentifier("country_name_" + locale.getCountry().toLowerCase(), "string", "com.mitzuli");
+            countryName = id == 0 ? toTitleCase(locale.getDisplayCountry()) : context.getResources().getString(id);
+            if (countryName.equals("")) countryName = toTitleCase(locale.getCountry());
+        }
+
+        String variantName = null;
+        if (!locale.getVariant().equals("")) {
+            final int id = context.getResources().getIdentifier("variant_name_" + locale.getVariant().toLowerCase(), "string", "com.mitzuli");
+            variantName = id == 0 ? toTitleCase(locale.getDisplayVariant()) : context.getResources().getString(id);
+            if (variantName.equals("")) variantName = toTitleCase(locale.getVariant());
+        }
+
+        final StringBuilder name = new StringBuilder();
+        name.append(languageName);
+        if (countryName != null) {
+            name.append(" (").append(countryName);
+            if (variantName != null) name.append(", ").append(variantName);
+            name.append(")");
+        }
+        return name.toString();
+    }
+
+    private static String toTitleCase(String s) {
+        char[] chars = s.toLowerCase().toCharArray();
         boolean found = false;
         for (int i = 0; i < chars.length; i++) {
             if (!found && Character.isLetter(chars[i])) {

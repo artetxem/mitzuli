@@ -66,4 +66,35 @@
     <string name="offline_on_update_error_title">Mise à jour ratée</string>
     <string name="offline_on_update_error_message">Un accès à Internet est nécessaire pour mettre à jour les paires de langues</string>
 
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Arabe</string>
+    <string name="language_name_arg">Aragonais</string>
+    <string name="language_name_ast">Asturien</string>
+    <string name="language_name_cat">Catalan</string>
+    <string name="language_name_dan">Danois</string>
+    <string name="language_name_eng">Anglais</string>
+    <string name="language_name_epo">Espéranto</string>
+    <string name="language_name_eus">Basque</string>
+    <string name="language_name_fra">Français</string>
+    <string name="language_name_glg">Galicien</string>
+    <string name="language_name_hat">Haïtien</string>
+    <string name="language_name_hrv">Croate</string>
+    <string name="language_name_ind">Indonésien</string>
+    <string name="language_name_ita">Italien</string>
+    <string name="language_name_mlt">Maltais</string>
+    <string name="language_name_msa">Malais</string>
+    <string name="language_name_nld">Néerlandais</string>
+    <string name="language_name_oci">Occitan</string>
+    <string name="language_name_por">Portugais</string>
+    <string name="language_name_ron">Roumain</string>
+    <string name="language_name_spa">Espagnol</string>
+    <string name="language_name_swe">Suédois</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_br">Brésil</string>
+    <string name="country_name_us">États-Unis</string>
+
 </resources>

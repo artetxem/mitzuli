@@ -212,7 +212,7 @@ public class Stt {
                 if (compatibleLanguage.getISO3Country().equals(language.getISO3Country())) {
                     return compatibleLanguage.getLanguage() + "-" + compatibleLanguage.getCountry().toUpperCase();
                 }
-            } catch (MissingResourceException e) {} // No 3-letter language code for locale (as in cmn-Hans-CN), which can be ignored in our case
+            } catch (MissingResourceException e) {} // No 3-letter country code for locale (as in cmn-Hans-CN), which can be ignored in our case
         }
         return compatibleLanguages.isEmpty() ? null : compatibleLanguages.get(0).getLanguage();
     }

@@ -66,4 +66,35 @@
     <string name="offline_on_update_error_title">L\'actualització ha fallat</string>
     <string name="offline_on_update_error_message">Cal una connexió a Internet per a actualitzar paquets d\'idioma.</string>
 
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Àrab</string>
+    <string name="language_name_arg">Aragonès</string>
+    <string name="language_name_ast">Asturià</string>
+    <string name="language_name_cat">Català</string>
+    <string name="language_name_dan">Danès</string>
+    <string name="language_name_eng">Anglès</string>
+    <string name="language_name_epo">Esperanto</string>
+    <string name="language_name_eus">Basc</string>
+    <string name="language_name_fra">Francès</string>
+    <string name="language_name_glg">Gallec</string>
+    <string name="language_name_hat">Haitià</string>
+    <string name="language_name_hrv">Croat</string>
+    <string name="language_name_ind">Indonesi</string>
+    <string name="language_name_ita">Italià</string>
+    <string name="language_name_mlt">Maltès</string>
+    <string name="language_name_msa">Malai</string>
+    <string name="language_name_nld">Neerlandès</string>
+    <string name="language_name_oci">Occità</string>
+    <string name="language_name_por">Portuguès</string>
+    <string name="language_name_ron">Romanès</string>
+    <string name="language_name_spa">Espanyol</string>
+    <string name="language_name_swe">Suec</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_br">Brasil</string>
+    <string name="country_name_us">Estats Units</string>
+
 </resources>

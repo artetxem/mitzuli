@@ -77,4 +77,35 @@
     <string name="offline_on_update_error_title">Eguneraketak huts egin du</string>
     <string name="offline_on_update_error_message">Hizkuntza bikoteak instalatzeko Interneterako konexioa behar da.</string>
 
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Arabiera</string>
+    <string name="language_name_arg">Aragoiera</string>
+    <string name="language_name_ast">Asturiera</string>
+    <string name="language_name_cat">Katalana</string>
+    <string name="language_name_dan">Daniera</string>
+    <string name="language_name_eng">Ingelesa</string>
+    <string name="language_name_epo">Esperantoa</string>
+    <string name="language_name_eus">Euskara</string>
+    <string name="language_name_fra">Frantsesa</string>
+    <string name="language_name_glg">Galiziera</string>
+    <string name="language_name_hat">Haitiera</string>
+    <string name="language_name_hrv">Kroaziera</string>
+    <string name="language_name_ind">Indonesiera</string>
+    <string name="language_name_ita">Italiera</string>
+    <string name="language_name_mlt">Maltera</string>
+    <string name="language_name_msa">Malaysiera</string>
+    <string name="language_name_nld">Nederlandera</string>
+    <string name="language_name_oci">Okzitaniera</string>
+    <string name="language_name_por">Portugesa</string>
+    <string name="language_name_ron">Errumaniera</string>
+    <string name="language_name_spa">Gaztelania</string>
+    <string name="language_name_swe">Suediera</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_br">Brasil</string>
+    <string name="country_name_us">AEB</string>
+
 </resources>

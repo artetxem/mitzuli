@@ -77,4 +77,35 @@
     <string name="offline_on_update_error_title">Actualización fallida</string>
     <string name="offline_on_update_error_message">Se requiere acceso a Internet para actualizar idiomas.</string>
 
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Árabe</string>
+    <string name="language_name_arg">Aragonés</string>
+    <string name="language_name_ast">Asturiano</string>
+    <string name="language_name_cat">Catalán</string>
+    <string name="language_name_dan">Danés</string>
+    <string name="language_name_eng">Inglés</string>
+    <string name="language_name_epo">Esperanto</string>
+    <string name="language_name_eus">Vasco</string>
+    <string name="language_name_fra">Francés</string>
+    <string name="language_name_glg">Gallego</string>
+    <string name="language_name_hat">Haitiano</string>
+    <string name="language_name_hrv">Croata</string>
+    <string name="language_name_ind">Indonesio</string>
+    <string name="language_name_ita">Italiano</string>
+    <string name="language_name_mlt">Maltés</string>
+    <string name="language_name_msa">Malayo</string>
+    <string name="language_name_nld">Neerlandés</string>
+    <string name="language_name_oci">Occitano</string>
+    <string name="language_name_por">Portugués</string>
+    <string name="language_name_ron">Rumano</string>
+    <string name="language_name_spa">Español</string>
+    <string name="language_name_swe">Sueco</string>
+
+    <string name="country_name_aran">Arán</string>
+    <string name="country_name_br">Brasil</string>
+    <string name="country_name_us">EE.UU.</string>
+
 </resources>

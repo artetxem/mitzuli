@@ -66,4 +66,35 @@
     <string name="offline_on_update_error_title">Ha fallau l\'actualización</string>
     <string name="offline_on_update_error_message">Cal una connexión a Internet ta esviellar os paquetz d\'idioma.</string>
 
+
+    <!-- LANGUAGE NAMES --> <!-- TODO Translate all these language names -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Arabic</string>
+    <string name="language_name_arg">Aragonese</string>
+    <string name="language_name_ast">Asturian</string>
+    <string name="language_name_cat">Catalan</string>
+    <string name="language_name_dan">Danish</string>
+    <string name="language_name_eng">English</string>
+    <string name="language_name_epo">Esperanto</string>
+    <string name="language_name_eus">Basque</string>
+    <string name="language_name_fra">French</string>
+    <string name="language_name_glg">Galician</string>
+    <string name="language_name_hat">Haitian</string>
+    <string name="language_name_hrv">Croatian</string>
+    <string name="language_name_ind">Indonesian</string>
+    <string name="language_name_ita">Italian</string>
+    <string name="language_name_mlt">Maltese</string>
+    <string name="language_name_msa">Malay</string>
+    <string name="language_name_nld">Dutch</string>
+    <string name="language_name_oci">Occitan</string>
+    <string name="language_name_por">Portuguese</string>
+    <string name="language_name_ron">Romanian</string>
+    <string name="language_name_spa">Spanish</string>
+    <string name="language_name_swe">Swedish</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_br">Brazil</string>
+    <string name="country_name_us">US</string>
+
 </resources>
