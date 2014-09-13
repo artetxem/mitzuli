@@ -22,7 +22,13 @@
     <PreferenceCategory
         android:title="@string/pref_header_general"
         android:key="pref_key_general">
-        
+
+        <ListPreference
+            android:key="pref_key_display_language"
+            android:summary="%s"
+            android:title="@string/pref_title_display_language"
+            android:negativeButtonText="@string/cancel_button" />
+
         <CheckBoxPreference
             android:key="pref_key_beta_packages"
             android:summary="@string/pref_description_beta_packages"

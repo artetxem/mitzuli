@@ -49,6 +49,10 @@
     <!-- SETTINGS -->
     
     <string name="pref_header_general">General</string>
+    <string name="pref_title_display_language">Idioma de la interfaz</string>
+    <string name="pref_entry_value_default_display_language">Predeterminado del sistema</string>
+    <string name="pref_dialog_title_confirm_display_language">¿Cambiar el idioma?</string>
+    <string name="pref_dialog_message_confirm_display_language">La app se reiniciará para aplicar los cambios.</string>
     <string name="pref_title_beta_packages">Idiomas beta</string>
     <string name="pref_description_beta_packages">Habilitar idiomas beta (la calidad de las traducciones puede ser mala)</string>
     <string name="pref_title_mark_unknown">Marcar palabras desconocidas</string>

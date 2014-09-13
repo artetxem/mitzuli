@@ -49,6 +49,10 @@
     <!-- SETTINGS -->
 
     <string name="pref_header_general">Orokorra</string>
+    <string name="pref_title_display_language">Interfazearen hizkuntza</string>
+    <string name="pref_entry_value_default_display_language">Sistemaren lehenetsia</string>
+    <string name="pref_dialog_title_confirm_display_language">Hizkuntza aldatu?</string>
+    <string name="pref_dialog_message_confirm_display_language">Aplikazioa berrabiarazi egingo da aldaketak ezartzeko.</string>
     <string name="pref_title_beta_packages">Beta hizkuntza bikoteak</string>
     <string name="pref_description_beta_packages">Beta hizkuntza bikoteak gaitu (itzulpenen kalitatea txarra izan daiteke)</string>
     <string name="pref_title_mark_unknown">Hitz ezezagunak nabarmendu</string>

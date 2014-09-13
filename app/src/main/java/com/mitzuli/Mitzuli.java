@@ -18,7 +18,11 @@
 
 package com.mitzuli;
 
+import java.util.Locale;
+
 import android.app.Application;
+import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 
 import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
@@ -27,10 +31,30 @@ import org.acra.annotation.ReportsCrashes;
 @ReportsCrashes(formUri = Keys.ACRA_FORM_URI, formKey=Keys.ACRA_FORM_KEY)
 public class Mitzuli extends Application {
 
+    private Locale locale = null;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        final String displayLanguage = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_key_display_language", SettingsActivity.DEFAULT_LANGUAGE);
+        if (!displayLanguage.equals(SettingsActivity.DEFAULT_LANGUAGE)) locale = new Locale(displayLanguage);
+        updateLocale();
         ACRA.init(this);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        updateLocale();
+    }
+
+    private void updateLocale() {
+        if (locale != null) {
+            Locale.setDefault(locale);
+            final Configuration config = new Configuration(getBaseContext().getResources().getConfiguration());
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        }
     }
 
 }
