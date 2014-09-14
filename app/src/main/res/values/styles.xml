@@ -86,6 +86,13 @@
         <item name="android:background">@drawable/button_selector</item>
     </style>
 
+    <style name="card_header_loading_buttons_indicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/card_header_button_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/card_header_button_horizontal_padding</item>
+    </style>
+
     <style name="card_content">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>

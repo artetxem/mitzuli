@@ -40,7 +40,7 @@ import java.util.MissingResourceException;
 public class Stt {
 
     public interface OnInitListener {
-        public void onInit();
+        public void onInit(boolean success);
     }
 
     public static interface RecognitionCallback {
@@ -152,9 +152,9 @@ public class Stt {
             recognizer.setRecognitionListener(recognitionListener);
             context.sendOrderedBroadcast(new Intent(RecognizerIntent.ACTION_GET_LANGUAGE_DETAILS), null, new BroadcastReceiver() {
                 @Override public void onReceive(Context context, Intent intent) {
+                    supportedLanguages = new ArrayList<Locale>();
                     final Bundle results = getResultExtras(true);
                     if (results.containsKey(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
-                        supportedLanguages = new ArrayList<Locale>();
                         for (String language : preferredOnly ? Collections.singletonList(results.getString(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE)) : results.getStringArrayList(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
                             final String tags[] = language.split("-");
                             if (tags.length == 1) supportedLanguages.add(new Locale(tags[0]));
@@ -162,10 +162,14 @@ public class Stt {
                             else if (tags.length == 3) supportedLanguages.add(new Locale(tags[0], tags[1], tags[2]));
                         }
                         loaded = true;
-                        listener.onInit();
+                        listener.onInit(true);
+                    } else {
+                        listener.onInit(false);
                     }
                 }
             }, null, Activity.RESULT_OK, null, null);
+        } else {
+            listener.onInit(false);
         }
     }
 

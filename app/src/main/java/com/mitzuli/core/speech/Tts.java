@@ -30,15 +30,19 @@ public class Tts {
     private boolean loaded = false;
 
     public interface OnInitListener {
-        public void onInit();
+        public void onInit(boolean success);
     }
 
     public Tts(final Context context, final OnInitListener listener) {
         tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override public void onInit(int status) {
                 loaded = true;
-                if (status == TextToSpeech.SUCCESS) listener.onInit();
-                else tts = null;
+                if (status == TextToSpeech.SUCCESS) {
+                    listener.onInit(true);
+                } else {
+                    tts = null;
+                    listener.onInit(false);
+                }
             }
         });
     }

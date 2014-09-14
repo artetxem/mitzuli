@@ -44,7 +44,18 @@
     <string name="offline_on_install_error_title">Installation failed</string>
     <string name="offline_on_install_error_message">Internet access is required to install language pairs.</string>
     <string name="offline_on_translate_error_title">Translation failed</string>
-    <string name="offline_on_translate_error_message">Install language pairs to translate without internet access.</string>
+    <string name="offline_on_translate_error_message">Install language pairs to translate without Internet access.</string>
+
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="toast_unavailable_tts">Speech output isn\'t available for this language</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="toast_unavailable_tts_offline">Speech output isn\'t available for this language without Internet access</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="toast_unavailable_stt">Speech input isn\'t available for this language</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="toast_unavailable_stt_offline">Speech input isn\'t available without Internet access</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="toast_unavailable_ocr">Camera input isn\'t available for this language</string>
 
 
     <!-- SETTINGS -->

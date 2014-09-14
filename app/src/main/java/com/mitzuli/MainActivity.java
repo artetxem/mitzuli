@@ -41,6 +41,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -91,7 +94,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private Tts tts;
     private Stt stt;
 
+    private boolean ttsLoaded = false;
+    private boolean sttLoaded = false;
+    private boolean cameraLoaded = false;
+
+    private boolean ttsAvailable = false;
+    private boolean sttAvailable = false;
     private boolean cameraAvailable = false;
+
     private boolean editing = false;
     private boolean ttsRequest = false;
 
@@ -104,6 +114,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private ImageView srcExpandState;
     private TextView srcTitle;
     private View srcButtonSeparator;
+    private ProgressBar srcLoadingButtonsIndicator;
     private LinearLayout srcContent;
 
     private EditText srcText;
@@ -118,6 +129,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private ImageView trgExpandState;
     private TextView trgTitle;
     private View trgButtonSeparator;
+    private ProgressBar trgLoadingButtonsIndicator;
     private LinearLayout trgContent;
 
     private ScrollView trgTextScroll;
@@ -125,12 +137,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private ProgressBar trgProgressBar;
 
     private ImageButton srcAudioButton, micButton, cameraButton, keyboardButton, removeButton, trgAudioButton, shareButton, copyButton;
+    private Drawable srcAudioButtonEnabledDrawable, micButtonEnabledDrawable, cameraButtonEnabledDrawable, keyboardButtonEnabledDrawable, removeButtonEnabledDrawable, trgAudioButtonEnabledDrawable, shareButtonEnabledDrawable, copyButtonEnabledDrawable;
+    private Drawable srcAudioButtonDisabledDrawable, micButtonDisabledDrawable, cameraButtonDisabledDrawable, keyboardButtonDisabledDrawable, removeButtonDisabledDrawable, trgAudioButtonDisabledDrawable, shareButtonDisabledDrawable, copyButtonDisabledDrawable;
 
     private CameraCropperView.OpenCameraCallback openCameraCallback = new CameraCropperView.OpenCameraCallback() {
         @Override public void onCameraOpened(boolean success) {
             if (success) srcCamera.updateDisplayOrientation(getApplicationContext());
+            cameraLoaded = true;
             cameraAvailable = success;
-            cameraButton.setVisibility(!cameraAvailable || activePair == null || activePair.ocrPackage == null ? View.GONE : View.VISIBLE);
+            updateSrcButtons();
         }
     };
 
@@ -239,6 +254,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         srcExpandState = (ImageView)findViewById(R.id.src_expand_state);
         srcTitle = (TextView)findViewById(R.id.src_title);
         srcButtonSeparator = findViewById(R.id.src_button_separator);
+        srcLoadingButtonsIndicator = (ProgressBar)findViewById(R.id.src_loading_buttons_indicator);
         srcContent = (LinearLayout)findViewById(R.id.src_content);
 
         translateButton = (Button)findViewById(R.id.translate_button);
@@ -250,6 +266,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         trgExpandState = (ImageView)findViewById(R.id.trg_expand_state);
         trgTitle = (TextView)findViewById(R.id.trg_title);
         trgButtonSeparator = findViewById(R.id.trg_button_separator);
+        trgLoadingButtonsIndicator = (ProgressBar)findViewById(R.id.trg_loading_buttons_indicator);
         trgContent = (LinearLayout)findViewById(R.id.trg_content);
 
         srcText = (EditText)findViewById(R.id.src_text);
@@ -266,20 +283,36 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
         srcAudioButton = (ImageButton)findViewById(R.id.src_audio_button);
         srcAudioButton.setOnClickListener(this);
+        srcAudioButtonEnabledDrawable = srcAudioButton.getDrawable();
+        srcAudioButtonDisabledDrawable = convertDrawableToGrayscale(srcAudioButtonEnabledDrawable);
         micButton = (ImageButton)findViewById(R.id.mic_button);
         micButton.setOnClickListener(this);
+        micButtonEnabledDrawable = micButton.getDrawable();
+        micButtonDisabledDrawable = convertDrawableToGrayscale(micButtonEnabledDrawable);
         cameraButton = (ImageButton)findViewById(R.id.camera_button);
         cameraButton.setOnClickListener(this);
+        cameraButtonEnabledDrawable = cameraButton.getDrawable();
+        cameraButtonDisabledDrawable = convertDrawableToGrayscale(cameraButtonEnabledDrawable);
         keyboardButton = (ImageButton)findViewById(R.id.keyboard_button);
         keyboardButton.setOnClickListener(this);
+        keyboardButtonEnabledDrawable = keyboardButton.getDrawable();
+        keyboardButtonDisabledDrawable = convertDrawableToGrayscale(keyboardButtonEnabledDrawable);
         removeButton = (ImageButton)findViewById(R.id.remove_button);
         removeButton.setOnClickListener(this);
+        removeButtonEnabledDrawable = removeButton.getDrawable();
+        removeButtonDisabledDrawable = convertDrawableToGrayscale(removeButtonEnabledDrawable);
         trgAudioButton = (ImageButton)findViewById(R.id.trg_audio_button);
         trgAudioButton.setOnClickListener(this);
+        trgAudioButtonEnabledDrawable = trgAudioButton.getDrawable();
+        trgAudioButtonDisabledDrawable = convertDrawableToGrayscale(trgAudioButtonEnabledDrawable);
         copyButton = (ImageButton)findViewById(R.id.copy_button);
         copyButton.setOnClickListener(this);
+        copyButtonEnabledDrawable = copyButton.getDrawable();
+        copyButtonDisabledDrawable = convertDrawableToGrayscale(copyButtonEnabledDrawable);
         shareButton = (ImageButton)findViewById(R.id.share_button);
         shareButton.setOnClickListener(this);
+        shareButtonEnabledDrawable = shareButton.getDrawable();
+        shareButtonDisabledDrawable = convertDrawableToGrayscale(shareButtonEnabledDrawable);
 
         mainPanel.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             private int trgCardPreEditingVisibility;
@@ -311,7 +344,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         }
 
         tts = new Tts(getApplicationContext(), new Tts.OnInitListener() {
-            @Override public void onInit() {
+            @Override public void onInit(boolean success) {
+                ttsLoaded = true;
+                ttsAvailable = success;
                 if (activePair != null) {
                     updateSrcButtons();
                     updateTrgButtons();
@@ -320,7 +355,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         });
 
         stt = new Stt(getApplicationContext(), new Stt.OnInitListener() {
-            @Override public void onInit() {
+            @Override public void onInit(boolean success) {
+                sttLoaded = true;
+                sttAvailable = success;
                 if (activePair != null) {
                     updateSrcButtons();
                 }
@@ -399,6 +436,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     protected void onPause() {
         super.onPause();
         srcCamera.releaseCamera();
+        cameraLoaded = false;
+        cameraAvailable = false;
     }
 
 
@@ -473,21 +512,39 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 trgExpandState.setImageDrawable(getResources().getDrawable(R.drawable.expander_down));
             }
         } else if (view == srcAudioButton) {
-            tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage(), true);
-        } else if(view == micButton) {
-            if (editing) hideSoftKeyboard();
-            setSrcContent(srcProgressBar);
-            stt.recognize(activePair.mtPackage.getSourceLanguage(), sttRecognitionCallback, sttExceptionCallback, sttProgressCallback);
+            if (!tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage())) {
+                Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
+            } else {
+                tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage(), true);
+            }
+        } else if (view == micButton) {
+            if (!isOnline()) {
+                Toast.makeText(getApplicationContext(), R.string.toast_unavailable_stt_offline, Toast.LENGTH_SHORT).show();
+            } else if (!stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage())) {
+                Toast.makeText(getApplicationContext(), R.string.toast_unavailable_stt, Toast.LENGTH_SHORT).show();
+            } else {
+                if (editing) hideSoftKeyboard();
+                setSrcContent(srcProgressBar);
+                stt.recognize(activePair.mtPackage.getSourceLanguage(), sttRecognitionCallback, sttExceptionCallback, sttProgressCallback);
+            }
         } else if (view == cameraButton) {
-            if (editing) hideSoftKeyboard();
-            setSrcContent(srcCamera);
+            if (activePair.ocrPackage == null) {
+                Toast.makeText(getApplicationContext(), R.string.toast_unavailable_ocr, Toast.LENGTH_SHORT).show();
+            } else {
+                if (editing) hideSoftKeyboard();
+                setSrcContent(srcCamera);
+            }
         } else if (view == keyboardButton) {
             if (srcContent.getChildAt(0) == srcMic) stt.cancelRecognition();
             setSrcContent(srcText);
         } else if (view == removeButton) {
             srcText.setText("");
         } else if (view == trgAudioButton) {
-            tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage(), true);
+            if (!tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
+                Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
+            } else {
+                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage(), true);
+            }
         } else if (view == copyButton) { //TODO Should we use conditional code depending on the Android version?
             android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             clipboard.setText(trgText.getText());
@@ -509,30 +566,68 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private void updateSrcButtons() {
         final View view = srcContent.getChildAt(0);
         final Locale language = activePair.mtPackage.getSourceLanguage();
-        final boolean isAudioVisible = view == srcText && !editing && language != null && tts.isLanguageAvailable(language);
-        final boolean isMicVisible = view == srcText && !editing && language != null && stt.isLanguageAvailable(language);
-        final boolean isCameraVisible = view == srcText && !editing && cameraAvailable && activePair.ocrPackage != null;
+        final boolean isLoaded = ttsLoaded && sttLoaded && cameraLoaded;
+        final boolean isAudioVisible = isLoaded && ttsAvailable && (view == srcText || view == srcProgressBar) && !editing;
+        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language);
+        final boolean isAudioEnabled = view == srcText;
+        final boolean isMicVisible = isLoaded && sttAvailable && (view == srcText || view == srcProgressBar) && !editing;
+        final boolean isMicAvailable = language != null && stt.isLanguageAvailable(language) && isOnline();
+        final boolean isMicEnabled = view == srcText;
+        final boolean isCameraVisible = isLoaded && cameraAvailable && (view == srcText || view == srcProgressBar) && !editing;
+        final boolean isCameraAvailable = activePair.ocrPackage != null;
+        final boolean isCameraEnabled = view == srcText;
         final boolean isKeyboardVisible = view == srcCamera || view == srcMic;
+        final boolean isKeyboardAvailable = true;
+        final boolean isKeyboardEnabled = true;
         final boolean isRemoveVisible = view == srcText && editing;
+        final boolean isRemoveAvailable = true;
+        final boolean isRemoveEnabled = true;
+        final boolean isLoadingVisible = !isLoaded && !isKeyboardVisible && !isRemoveVisible;
         srcAudioButton.setVisibility(isAudioVisible ? View.VISIBLE : View.GONE);
+        srcAudioButton.setImageDrawable(isAudioAvailable && isAudioEnabled ? srcAudioButtonEnabledDrawable : srcAudioButtonDisabledDrawable);
+        srcAudioButton.setEnabled(isAudioEnabled);
         micButton.setVisibility(isMicVisible ? View.VISIBLE : View.GONE);
+        micButton.setImageDrawable(isMicAvailable && isMicEnabled ? micButtonEnabledDrawable : micButtonDisabledDrawable);
+        micButton.setEnabled(isMicEnabled);
         cameraButton.setVisibility(isCameraVisible ? View.VISIBLE : View.GONE);
+        cameraButton.setImageDrawable(isCameraAvailable && isCameraEnabled ? cameraButtonEnabledDrawable : cameraButtonDisabledDrawable);
+        cameraButton.setEnabled(isCameraEnabled);
         keyboardButton.setVisibility(isKeyboardVisible ? View.VISIBLE : View.GONE);
+        keyboardButton.setImageDrawable(isKeyboardAvailable && isKeyboardEnabled ? keyboardButtonEnabledDrawable : keyboardButtonDisabledDrawable);
+        keyboardButton.setEnabled(isKeyboardEnabled);
         removeButton.setVisibility(isRemoveVisible ? View.VISIBLE : View.GONE);
-        srcButtonSeparator.setVisibility(isAudioVisible || isMicVisible || isCameraVisible || isKeyboardVisible || isRemoveVisible ? View.VISIBLE : View.GONE);
+        removeButton.setImageDrawable(isRemoveAvailable && isRemoveEnabled ? removeButtonEnabledDrawable : removeButtonDisabledDrawable);
+        removeButton.setEnabled(isRemoveEnabled);
+        srcLoadingButtonsIndicator.setVisibility(isLoadingVisible ? View.VISIBLE : View.GONE);
+        srcButtonSeparator.setVisibility(isAudioVisible || isMicVisible || isCameraVisible || isKeyboardVisible || isRemoveVisible || isLoadingVisible ? View.VISIBLE : View.GONE);
     }
 
 
     private void updateTrgButtons() {
         final View view = trgContent.getChildAt(0);
         final Locale language = activePair.mtPackage.getTargetLanguage();
-        final boolean isAudioVisible = view == trgTextScroll && language != null && tts.isLanguageAvailable(language);
-        final boolean isShareVisible = view == trgTextScroll;
-        final boolean isCopyVisible = view == trgTextScroll;
+        final boolean isLoaded = ttsLoaded;
+        final boolean isAudioVisible = isLoaded && ttsAvailable && (view == trgTextScroll || view == trgProgressBar);
+        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language);
+        final boolean isAudioEnabled = view == trgTextScroll;
+        final boolean isShareVisible = isLoaded && (view == trgTextScroll || view == trgProgressBar);
+        final boolean isShareAvailable = true;
+        final boolean isShareEnabled = view == trgTextScroll;
+        final boolean isCopyVisible = isLoaded && (view == trgTextScroll || view == trgProgressBar);
+        final boolean isCopyAvailable = true;
+        final boolean isCopyEnabled = view == trgTextScroll;
+        final boolean isLoadingVisible = !isLoaded;
         trgAudioButton.setVisibility(isAudioVisible ? View.VISIBLE : View.GONE);
+        trgAudioButton.setImageDrawable(isAudioAvailable && isAudioEnabled ? trgAudioButtonEnabledDrawable : trgAudioButtonDisabledDrawable);
+        trgAudioButton.setEnabled(isAudioEnabled);
         shareButton.setVisibility(isShareVisible ? View.VISIBLE : View.GONE);
+        shareButton.setImageDrawable(isShareAvailable && isShareEnabled ? shareButtonEnabledDrawable : shareButtonDisabledDrawable);
+        shareButton.setEnabled(isShareEnabled);
         copyButton.setVisibility(isCopyVisible ? View.VISIBLE : View.GONE);
-        trgButtonSeparator.setVisibility(isAudioVisible || isShareVisible || isCopyVisible ? View.VISIBLE : View.GONE);
+        copyButton.setImageDrawable(isCopyAvailable && isCopyEnabled ? copyButtonEnabledDrawable : copyButtonDisabledDrawable);
+        copyButton.setEnabled(isCopyEnabled);
+        trgLoadingButtonsIndicator.setVisibility(isLoadingVisible ? View.VISIBLE : View.GONE);
+        trgButtonSeparator.setVisibility(isAudioVisible || isShareVisible || isCopyVisible || isLoadingVisible ? View.VISIBLE : View.GONE);
     }
 
 
@@ -542,6 +637,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             srcContent.setGravity(view == srcText ? Gravity.TOP : Gravity.CENTER);
             srcContent.addView(view);
         }
+        translateButton.setEnabled(view != srcProgressBar && trgContent.getChildAt(0) != trgProgressBar);
         updateSrcButtons();
     }
 
@@ -552,7 +648,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             trgContent.setGravity(view == trgTextScroll ? Gravity.TOP : Gravity.CENTER);
             trgContent.addView(view);
         }
+        translateButton.setEnabled(srcContent.getChildAt(0) != srcProgressBar && view != trgProgressBar);
         updateTrgButtons();
+    }
+
+
+    private Drawable convertDrawableToGrayscale(Drawable drawable) {
+        final Drawable result = drawable.getConstantState().newDrawable().mutate();
+        result.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
+        return result;
     }
 
 

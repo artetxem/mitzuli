@@ -77,6 +77,12 @@
     <string name="offline_on_update_error_title">Eguneraketak huts egin du</string>
     <string name="offline_on_update_error_message">Hizkuntza bikoteak instalatzeko Interneterako konexioa behar da.</string>
 
+    <string name="toast_unavailable_tts">Ahots bidezko irteera ez dago eskuragarri hizkuntza honentzat</string>
+    <string name="toast_unavailable_tts_offline">Ahots bidezko irteera ez dago eskuragarri hizkuntza honentzat Interneterako konexiorik gabe</string>
+    <string name="toast_unavailable_stt">Ahots bidezko sarrera ez dago eskuragarri hizkuntza honentzat</string>
+    <string name="toast_unavailable_stt_offline">Ahots bidezko sarrera ez dago eskuragarri Interneterako konexiorik gabe</string>
+    <string name="toast_unavailable_ocr">Kamera bidezko sarrera ez dago eskuragarri hizkuntza honentzat</string>
+
 
     <!-- LANGUAGE NAMES -->
 

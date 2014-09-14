@@ -74,6 +74,9 @@
                     android:id="@+id/remove_button"
                     android:src="@drawable/ic_action_remove" />
 
+                <ProgressBar style="@style/card_header_loading_buttons_indicator"
+                    android:id="@+id/src_loading_buttons_indicator"/>
+
             </LinearLayout>
 	        
 	    </LinearLayout>
@@ -129,6 +132,9 @@
                 <ImageButton style="@style/card_header_button"
                     android:id="@+id/share_button"
                     android:src="@drawable/ic_action_share" />
+
+                <ProgressBar style="@style/card_header_loading_buttons_indicator"
+                    android:id="@+id/trg_loading_buttons_indicator"/>
 
             </LinearLayout>
 	
