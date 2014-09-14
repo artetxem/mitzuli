@@ -63,6 +63,7 @@
     <string name="pref_header_general">General</string>
     <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_title_display_language">Display language</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_entry_value_default_display_language">System default</string>
     <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_dialog_title_confirm_display_language">Change the language?</string>
