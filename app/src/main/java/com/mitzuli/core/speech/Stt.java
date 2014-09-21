@@ -136,18 +136,6 @@ public class Stt {
 
     public Stt(final Context context, final OnInitListener listener) {
         if (SpeechRecognizer.isRecognitionAvailable(context)) {
-
-            // TODO Temporary workaround for a recent bug in the Google Search app
-            // The bug causes SpeechRecognizer to always use the preferred language no matter what is given as RecognizerIntent.EXTRA_LANGUAGE
-            // This has been reported in the official Google support forums: https://productforums.google.com/forum/#!topic/websearch/PUjEPmdSzSE/discussion
-            int googleSearchVersion = 0;
-            try {
-                // the version code is something like 300306140 whereas the version name is something like 3.6.14.1337016.arm
-                // so we assume that the first two digits of the version code are for the multiple APK support and the rest refer to the version name
-                googleSearchVersion = context.getPackageManager().getPackageInfo("com.google.android.googlequicksearchbox", 0).versionCode % 10000000;
-            } catch (PackageManager.NameNotFoundException e) {} // The Google Search app is not installed
-            final boolean preferredOnly = googleSearchVersion >= 306140;
-
             recognizer = SpeechRecognizer.createSpeechRecognizer(context);
             recognizer.setRecognitionListener(recognitionListener);
             context.sendOrderedBroadcast(new Intent(RecognizerIntent.ACTION_GET_LANGUAGE_DETAILS), null, new BroadcastReceiver() {
@@ -155,7 +143,7 @@ public class Stt {
                     supportedLanguages = new ArrayList<Locale>();
                     final Bundle results = getResultExtras(true);
                     if (results.containsKey(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
-                        for (String language : preferredOnly ? Collections.singletonList(results.getString(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE)) : results.getStringArrayList(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
+                        for (String language : results.getStringArrayList(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
                             final String tags[] = language.split("-");
                             if (tags.length == 1) supportedLanguages.add(new Locale(tags[0]));
                             else if (tags.length == 2) supportedLanguages.add(new Locale(tags[0], tags[1]));
@@ -190,6 +178,7 @@ public class Stt {
             this.progressCallback = progressCallback;
             final Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, compatibleLanguageCode(language));
+            intent.putExtra("android.speech.extra.EXTRA_ADDITIONAL_LANGUAGES", new String[]{}); // TODO This is undocumented but necessary. See https://productforums.google.com/forum/#!topic/websearch/PUjEPmdSzSE/discussion
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             intent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, progressCallback != null);
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
