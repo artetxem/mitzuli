@@ -77,8 +77,13 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener, ActionBar.OnNavigationListener {
 
+    static boolean openCVavialable = false;
     static {
-        if (!OpenCVLoader.initDebug()) throw new RuntimeException("Unexpected error while loading OpenCV.");
+        if (OpenCVLoader.initDebug()) openCVavialable = true;
+        else {
+          RuntimeException e = new RuntimeException("Unexpected error while loading OpenCV.");
+          ACRA.getErrorReporter().handleException(e);
+        }
     }
 
     private static final String STATE_SRC_CARD_VISIBILITY = "SRC_CARD_VISIBILITY";
@@ -482,6 +487,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 setTrgContent(trgProgressBar);
                 stt.stopRecognition();
             } else if (srcContent.getChildAt(0) == srcCamera) { // Camera input mode
+                if (!openCVavialable) {
+                  Toast.makeText(this, "Sorry, camera input is not available", Toast.LENGTH_SHORT).show();
+                }
                 setTrgContent(trgProgressBar);
                 srcCamera.takeCroppedPicture(croppedPictureCallback); // Do the OCR stuff
             } else if (srcContent.getChildAt(0) == srcText) { // Text input mode
