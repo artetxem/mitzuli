@@ -80,15 +80,15 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="progressbutton-2.0.1" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="progressbutton-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="acra-4.5.0" level="project" />
-    <orderEntry type="module" module-name="cropper" exported="" />
-    <orderEntry type="module" module-name="axmlrpc" exported="" />
-    <orderEntry type="module" module-name="lttoolbox-java" exported="" />
-    <orderEntry type="module" module-name="tesseract-android-tools" exported="" />
+    <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
     <orderEntry type="module" module-name="opencv" exported="" />
+    <orderEntry type="module" module-name="axmlrpc" exported="" />
+    <orderEntry type="module" module-name="cropper" exported="" />
+    <orderEntry type="module" module-name="tesseract-android-tools" exported="" />
+    <orderEntry type="module" module-name="lttoolbox-java" exported="" />
   </component>
 </module>
 
