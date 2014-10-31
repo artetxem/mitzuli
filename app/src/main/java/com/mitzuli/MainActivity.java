@@ -734,10 +734,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         Collections.sort(languagePairs);
         getSupportActionBar().setListNavigationCallbacks(new LanguagePairAdapter(MainActivity.this), this);
 
+        // Not the most efficient way of doing it, but it's clear and fast enough
         final String lastPairId = preferences.getString(PREFS_LAST_PAIR, null);
         LanguagePair lastPair = null;
         for (LanguagePair pair : languagePairs) if (pair.mtPackage.getId().equals(lastPairId)) lastPair = pair;
+        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled() && pair.mtPackage.getSourceLanguage().getLanguage().equals(Locale.getDefault().getLanguage())) lastPair = pair;
         for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled()) lastPair = pair;
+        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.getSourceLanguage().getLanguage().equals(Locale.getDefault().getLanguage())) lastPair = pair;
         for (LanguagePair pair : languagePairs) if (lastPair == null) lastPair = pair;
         setActivePair(lastPair);
     }
