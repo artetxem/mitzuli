@@ -30,6 +30,23 @@
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
 
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_src_audio">Voice output</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_mic">Voice input</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_camera">Camera input</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_keyboard">Keyboard input</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_clear">Clear</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_trg_audio">Voice output</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_copy">Copy</string>
+    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
+    <string name="action_share">Share</string>
+
     <string name="error_dialog_title">Error</string>
 
     <string name="update_dialog_title">Update now?</string>

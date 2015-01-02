@@ -29,6 +29,15 @@
     <string name="ok_button">Ados</string>
     <string name="cancel_button">Utzi</string>
 
+    <string name="action_src_audio">Ahots bidezko irteera</string>
+    <string name="action_mic">Ahots bidezko sarrera</string>
+    <string name="action_camera">Kamera bidezko sarrera</string>
+    <string name="action_keyboard">Teklatu bidezko sarrera</string>
+    <string name="action_clear">Garbitu</string>
+    <string name="action_trg_audio">Ahots bidezko irteera</string>
+    <string name="action_copy">Kopiatu</string>
+    <string name="action_share">Partekatu</string>
+
     <string name="error_dialog_title">Errorea</string>
 
     <string name="update_dialog_title">Orain eguneratu?</string>

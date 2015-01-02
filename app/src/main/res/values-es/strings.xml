@@ -28,6 +28,15 @@
     
     <string name="ok_button">Aceptar</string>
     <string name="cancel_button">Cancelar</string>
+
+    <string name="action_src_audio">Salida de voz</string>
+    <string name="action_mic">Entrada de voz</string>
+    <string name="action_camera">Traducción por cámara</string>
+    <string name="action_keyboard">Entrada por teclado</string>
+    <string name="action_clear">Borrar</string>
+    <string name="action_trg_audio">Salida de voz</string>
+    <string name="action_copy">Copiar</string>
+    <string name="action_share">Compartir</string>
     
     <string name="error_dialog_title">Error</string>
     

@@ -36,8 +36,8 @@ public class Mitzuli extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        final String displayLanguage = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_key_display_language", SettingsActivity.DEFAULT_LANGUAGE);
-        if (!displayLanguage.equals(SettingsActivity.DEFAULT_LANGUAGE)) locale = new Locale(displayLanguage);
+        final String displayLanguage = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_key_display_language", SettingsFragment.DEFAULT_LANGUAGE);
+        if (!displayLanguage.equals(SettingsFragment.DEFAULT_LANGUAGE)) locale = new Locale(displayLanguage);
         updateLocale();
         ACRA.init(this);
     }

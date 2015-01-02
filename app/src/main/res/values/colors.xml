@@ -18,7 +18,11 @@
   -->
 
 <resources>
-    <color name="selection">#6633b5e5</color>
+    <color name="primary">#03a9f4</color>
+    <color name="primary_dark">#0277bd</color>
+    <color name="accent">#40c4ff</color>
+    <color name="actionbar_foreground">#fff</color>
+    <color name="card_background">#fff</color>
     <color name="card_activity_background">#eee</color>
     <color name="card_title">#ff8d8d8d</color>
     <color name="card_text">#ff969696</color>

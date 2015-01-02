@@ -25,7 +25,6 @@
 
         <ListPreference
             android:key="pref_key_display_language"
-            android:summary="%s"
             android:title="@string/pref_title_display_language"
             android:negativeButtonText="@string/cancel_button" />
 

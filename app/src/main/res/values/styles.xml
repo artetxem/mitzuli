@@ -17,42 +17,122 @@
   ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="app_theme" parent="Theme.AppCompat.Light" />
+    <style name="app_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="actionbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:elevation" tools:targetApi="21">@dimen/actionbar_elevation</item>
+    </style>
+
+    <style name="actionbar_theme_overlay">
+        <item name="android:textColorPrimary">@color/actionbar_foreground</item>
+        <item name="colorControlNormal">@color/actionbar_foreground</item>
+        <item name="colorControlHighlight">@color/ripple_material_dark</item>
+        <item name="selectableItemBackground">@drawable/abc_item_background_holo_dark</item>
+    </style>
+
+    <style name="actionbar_popup_theme_overlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="actionbar_spinner">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint" tools:targetApi="21">@color/actionbar_foreground</item>
+    </style>
+
+    <style name="actionbar_spinner_main_view">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="android:textColor">@color/actionbar_foreground</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="actionbar_spinner_dropdown_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="actionbar_spinner_dropdown_view_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">@dimen/dropdown_text_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/dropdown_text_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/dropdown_text_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/dropdown_text_vertical_padding</item>
+    </style>
+
+    <style name="actionbar_spinner_dropdown_view_progress_button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="card_toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/card_toolbar_height</item>
+        <item name="android:minHeight">@dimen/card_toolbar_height</item>
+    </style>
+
+    <style name="card_toolbar_overlay_theme">
+        <item name="toolbarStyle">@style/card_toolbar_style</item>
+        <item name="toolbarNavigationButtonStyle">@style/card_toolbar_navigation_button_style</item>
+        <item name="android:actionBarItemBackground" tools:targetApi="21">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="card_toolbar_style" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/card_toolbar_title_text_appearance</item>
+    </style>
+
+    <style name="card_toolbar_title_text_appearance">
+        <item name="android:textColor">@color/card_title</item>
+        <item name="android:textSize">@dimen/card_title</item>
+        <item name="android:fontFamily" tools:targetApi="16">sans-serif-light</item>
+    </style>
+
+    <style name="card_toolbar_navigation_button_style" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">@dimen/card_toolbar_height</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="card_toolbar_inner_layout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="card_toolbar_loading_indicator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/card_toolbar_menu_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/card_toolbar_menu_horizontal_padding</item>
+    </style>
 
     <style name="card">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">@dimen/card_margin</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/card_background</item>
     </style>
 
-    <style name="card_header">
+    <style name="card_inner_layout">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/card_header_height</item>
-        <item name="android:gravity">center_vertical</item>
-        <item name="android:clickable">true</item>
-    </style>
-
-    <style name="card_expand_state">
-        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:adjustViewBounds">true</item>
-    </style>
-
-    <style name="card_title">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:paddingRight">@dimen/card_title_right_padding</item>
-        <item name="android:textSize">@dimen/card_title</item>
-        <item name="android:textColor">@color/card_title</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:ellipsize">end</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
     <style name="card_vertical_separator">
@@ -67,30 +147,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/card_separator</item>
-    </style>
-
-    <style name="card_header_button_area">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:orientation">horizontal</item>
-    </style>
-
-    <style name="card_header_button">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingTop">@dimen/card_header_button_horizontal_padding</item>
-        <item name="android:paddingBottom">@dimen/card_header_button_horizontal_padding</item>
-        <item name="android:paddingLeft">@dimen/card_header_button_vertical_padding</item>
-        <item name="android:paddingRight">@dimen/card_header_button_vertical_padding</item>
-        <item name="android:scaleType">fitCenter</item>
-        <item name="android:background">@drawable/button_selector</item>
-    </style>
-
-    <style name="card_header_loading_buttons_indicator">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:paddingTop">@dimen/card_header_button_horizontal_padding</item>
-        <item name="android:paddingBottom">@dimen/card_header_button_horizontal_padding</item>
     </style>
 
     <style name="card_content">
@@ -116,10 +172,14 @@
 
     <style name="card_main_button">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/card_header_height</item>
-        <item name="android:textSize">@dimen/card_main_button</item>
+        <item name="android:layout_height">@dimen/card_toolbar_height</item>
+        <item name="android:textAppearance">@style/card_main_button_text_appearance</item>
         <item name="android:textColor">@color/card_main_button</item>
-        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="card_main_button_text_appearance" parent="@style/TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/card_main_button</item>
     </style>
 
 </resources>
