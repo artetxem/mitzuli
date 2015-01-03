@@ -18,21 +18,16 @@
 
 package com.mitzuli.core.mt;
 
+import com.mitzuli.Keys;
+
 import android.os.AsyncTask;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class MatxinMtPackage extends MtPackage {
-
-    private static final Pattern RESPONSE_PATTERN = Pattern.compile("<textarea id=\"tts_source\" name=\"cuadrotexto2\" rows=\"(\\d+)\" id=\"cuadrotexto2\">([^<]*)</textarea>");
 
     private OnlineTranslationTask onlineTranslationTask;
 
@@ -52,18 +47,8 @@ public class MatxinMtPackage extends MtPackage {
         @Override
         protected String doInBackground(String... text) {
             try {
-                final URL url = new URL("http://matxin.elhuyar.org/translatetext/");
-                final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setDoOutput(true);
-                connection.setRequestMethod("POST");
-                final DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-                wr.writeBytes("norantza=" + getId() + "&text=" + URLEncoder.encode(text[0], "UTF-8"));
-                wr.flush();
-                wr.close();
-                final String response = new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream()))).useDelimiter("\\A").next();
-                final Matcher matcher = RESPONSE_PATTERN.matcher(response);
-                if (!matcher.find()) throw new Exception("Unexpected response");
-                return matcher.group(2);
+                final URL url = new URL(Keys.MATXIN_API_URL + "?lang=" + getId() + "&cod_client=" + Keys.MATXIN_API_KEY + "&text=" + URLEncoder.encode(text[0], "UTF-8"));
+                return new Scanner(url.openStream(), "UTF-8").useDelimiter("\\A").next();
             } catch (Exception e) {
                 exception = e;
                 return null;

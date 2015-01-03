@@ -18,6 +18,8 @@
 
 package com.mitzuli.core.mt;
 
+import com.mitzuli.Keys;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -68,7 +70,7 @@ public class OnlineMtPackageManager {
                 final String api = columns[1];
                 if (api.equals("abumatran")) {
                     packages.add(new AbumatranMtPackage(id));
-                } else if (api.equals("matxin")) {
+                } else if (api.equals("matxin") && Keys.MATXIN_API_URL != null && Keys.MATXIN_API_KEY != null) {
                     packages.add(new MatxinMtPackage(id));
                 }
             }

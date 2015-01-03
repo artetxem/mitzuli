@@ -28,6 +28,9 @@ public class Keys {
     public static final String APERTIUM_XMLRPC_URL = "http://api.apertium.org/xmlrpc";
     public static final String APERTIUM_API_KEY = "";
 
+    public static final String MATXIN_API_URL = null;
+    public static final String MATXIN_API_KEY = null;
+
     public static final String ACRA_FORM_URI = "";
     public static final String ACRA_FORM_KEY = "";
 
