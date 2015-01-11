@@ -38,7 +38,9 @@ import org.opencv.android.OpenCVLoader;
 import com.f2prateek.progressbutton.ProgressButton;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
@@ -129,6 +131,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private ScrollView trgTextScroll;
     private TextView trgText;
     private ProgressBar trgProgressBar;
+
+    private BroadcastReceiver connectivityChangeReceiver = new BroadcastReceiver() {
+        @Override public void onReceive(Context context, Intent intent) {
+            updateSrcToolbar();
+            updateTrgToolbar();
+        }
+    };
 
     private CameraCropperView.OpenCameraCallback openCameraCallback = new CameraCropperView.OpenCameraCallback() {
         @Override public void onCameraOpened(boolean success) {
@@ -392,14 +401,17 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             ACRA.getErrorReporter().handleSilentException(new RuntimeException("Unexpected error while loading OpenCV"));
             cameraLoaded = true;
             cameraAvailable = false;
-            updateSrcToolbar();
         }
+        registerReceiver(connectivityChangeReceiver, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        updateSrcToolbar();
+        updateTrgToolbar();
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
+        unregisterReceiver(connectivityChangeReceiver);
         srcCamera.releaseCamera();
         cameraLoaded = false;
         cameraAvailable = false;
