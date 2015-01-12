@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.googlecode.leptonica.android.Pix;
+import com.mitzuli.BuildConfig;
 import com.mitzuli.Image;
 import com.mitzuli.core.Package;
 
@@ -127,7 +128,7 @@ public class OcrPackage extends Package {
                     output.println(sb);
                     output.close();
                     final PrintWriter build = new PrintWriter(new File(debugDir, "build.txt"));
-                    build.println("APP VERSION:   " + "11 (0.1.10)"); // TODO Hardcoded app version
+                    build.println("APP VERSION:   " + BuildConfig.VERSION_CODE + " (" + BuildConfig.VERSION_NAME + ")");
                     build.println();
                     build.println("SDK:           " + Build.VERSION.SDK_INT);
                     build.println("RELEASE:       " + Build.VERSION.RELEASE);
