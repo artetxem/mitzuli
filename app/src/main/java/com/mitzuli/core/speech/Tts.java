@@ -18,52 +18,77 @@
 
 package com.mitzuli.core.speech;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.content.Context;
+import android.os.Build;
 import android.speech.tts.TextToSpeech;
 
 
-public class Tts {
+public class Tts { // TODO Review concurrency
 
-    private TextToSpeech tts;
-    private boolean loaded = false;
+    private List<TextToSpeech> ttsList = new ArrayList<TextToSpeech>();
+    private volatile int totalEngines = -1, loadedEngines = 0;
 
     public interface OnInitListener {
         public void onInit(boolean success);
     }
 
     public Tts(final Context context, final OnInitListener listener) {
-        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+        class TtsOnInitListener implements TextToSpeech.OnInitListener {
+            private TextToSpeech tts;
             @Override public void onInit(int status) {
-                loaded = true;
-                if (status == TextToSpeech.SUCCESS) {
-                    listener.onInit(true);
-                } else {
-                    tts = null;
-                    listener.onInit(false);
+                synchronized (Tts.this) {
+                    if (status == TextToSpeech.SUCCESS) ttsList.add(tts);
+                    if (loadedEngines == 0) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                            totalEngines = 1;
+                        } else {
+                            totalEngines = tts.getEngines().size();
+                            for (TextToSpeech.EngineInfo engine : tts.getEngines()) {
+                                if (!engine.name.equals(tts.getDefaultEngine())) {
+                                    final TtsOnInitListener ttsOnInitListener = new TtsOnInitListener();
+                                    ttsOnInitListener.tts = new TextToSpeech(context, ttsOnInitListener, engine.name);
+                                }
+                            }
+                        }
+                    }
+                    loadedEngines++;
+                    if (loadedEngines == totalEngines) listener.onInit(!ttsList.isEmpty());
                 }
             }
-        });
+        };
+        final TtsOnInitListener ttsOnInitListener = new TtsOnInitListener();
+        ttsOnInitListener.tts = new TextToSpeech(context, ttsOnInitListener);
     }
 
     public boolean isLanguageAvailable(Locale language) {
-        if (!loaded || tts == null) return false;
-
-        final int res = tts.isLanguageAvailable(language);
-        return res != TextToSpeech.LANG_MISSING_DATA && res != TextToSpeech.LANG_NOT_SUPPORTED;
+        if (loadedEngines != totalEngines) return false;
+        for (TextToSpeech tts : ttsList) {
+            final int available = tts.isLanguageAvailable(language);
+            if (available != TextToSpeech.LANG_MISSING_DATA && available != TextToSpeech.LANG_NOT_SUPPORTED) return true;
+        }
+        return false;
     }
 
-    public boolean speak(String text, Locale language, boolean flush) {
-        if (!isLanguageAvailable(language)) return false;
-
-        tts.setLanguage(language);
-        tts.speak(text, flush ? TextToSpeech.QUEUE_FLUSH : TextToSpeech.QUEUE_ADD, null);
-        return true;
+    public boolean speak(String text, Locale language) {
+        if (loadedEngines != totalEngines) return false;
+        for (TextToSpeech tts : ttsList) tts.stop();
+        for (TextToSpeech tts : ttsList) {
+            final int available = tts.isLanguageAvailable(language);
+            if (available != TextToSpeech.LANG_MISSING_DATA && available != TextToSpeech.LANG_NOT_SUPPORTED) {
+                tts.setLanguage(language);
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void shutdown() {
-        if (tts != null) tts.shutdown();
+        for (TextToSpeech tts : ttsList) tts.shutdown();
     }
 
 }

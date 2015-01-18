@@ -173,7 +173,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             trgText.setText(Html.fromHtml(translation));
             setTrgContent(trgTextScroll);
             if (ttsRequest && tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
-                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage(), true);
+                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage());
             }
             ttsRequest = false;
         }
@@ -492,7 +492,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 if (!tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage())) {
                     Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
                 } else {
-                    tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage(), true);
+                    tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage());
                 }
                 return true;
             case R.id.action_mic:
@@ -525,7 +525,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 if (!tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
                     Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
                 } else {
-                    tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage(), true);
+                    tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage());
                 }
                 return true;
             case R.id.action_copy: // TODO Should we use conditional code depending on the Android version?
