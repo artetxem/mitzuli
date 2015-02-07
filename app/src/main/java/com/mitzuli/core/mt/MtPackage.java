@@ -18,249 +18,165 @@
 
 package com.mitzuli.core.mt;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.Locale;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-import com.mitzuli.Keys;
-import com.mitzuli.core.Package;
-
-import org.apertium.Translator;
-import org.apertium.utils.IOUtils;
-import org.json.JSONObject;
-
-import de.timroes.axmlrpc.XMLRPCClient;
+import android.os.AsyncTask;
+import android.text.TextUtils;
 
 import dalvik.system.DexClassLoader;
 
-import android.os.AsyncTask;
-import android.text.Html;
+import com.mitzuli.Keys;
+import com.mitzuli.core.KeyValueSaver;
+import com.mitzuli.Language;
+import com.mitzuli.core.Package;
+import com.mitzuli.core.PackageManager;
+
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
-public class MtPackage extends Package {
+public class MtPackage extends Package { // TODO Installing, updating or uninstalling this package while its translation task is running yields to undefined behavior
 
-    private static final Pattern unknownPattern = Pattern.compile("\\B\\*((\\p{L}||\\p{N})+)\\b");
-    private static final String unknownReplacement = "<font color='#EE0000'>$1</font>"; // TODO Shouldn't we escape the text as HTML???
+    private static final String ONLINE_SCALE_MT = "scale-mt";
+    private static final String ONLINE_APERTIUM_APY = "apy";
+    private static final String ONLINE_MATXIN = "matxin";
+    private static final String ONLINE_ABUMATRAN = "abumatran";
+    private static final String OFFLINE_APERTIUM = "apertium";
 
-    private final Locale srcLanguage, trgLanguage;
+    private static final Pattern UNKNOWN_PATTERN = Pattern.compile("\\B\\*((\\p{L}||\\p{N})+)\\b");
 
-    private OfflineTranslationTask offlineTranslationTask;
-    private ApyOnlineTranslationTask apyOnlineTranslationTask;
-    private XmlrpcOnlineTranslationTask xmlrpcOnlineTranslationTask;
+    private final Language src;
+    private final Language trg;
 
     public static interface TranslationCallback {
         public void onTranslationDone(String translation);
     }
 
-    public MtPackage(String id, URL repoUrl, long repoVersion, LongSaver installedVersionSaver, LongSaver lastUsageSaver, File packageDir, File cacheDir, File tmpDir, MtPackageManager manager) {
-        super(id, repoUrl, repoVersion, installedVersionSaver, lastUsageSaver, packageDir, cacheDir, tmpDir, manager);
+    public static class Builder extends Package.Builder {
 
-        final String codes[] = id.split("-", 2);
-        this.srcLanguage = codeToLocale(codes[0]);
-        this.trgLanguage = codeToLocale(codes[1]);
-    }
+        private final Language src;
+        private final Language trg;
 
-    public Locale getSourceLanguage() {
-        return srcLanguage;
-    }
-
-    public Locale getTargetLanguage() {
-        return trgLanguage;
-    }
-
-    public void translate(final String text, final boolean markUnknown, final TranslationCallback translationCallback, final ExceptionCallback exceptionCallback) {
-        markUsage();
-        if (getPackageDir() != null) {
-            offlineTranslationTask = new OfflineTranslationTask(markUnknown, translationCallback, exceptionCallback);
-            offlineTranslationTask.execute(text);
-        } else {
-            // The package is not installed. We will try to:
-            //    1) Translate online using apy
-            //    2) If apy fails translate online using XML-RPC
-            //    3) If XML-RPC fails install the language pair to the cache and translate from there
-            final ExceptionCallback xmlrpcExceptionCallback = new ExceptionCallback() {
-                @Override
-                public void onException(Exception exception) {
-                    if (isInstallable()) {
-                        installToCache(
-                                null,
-                                new InstallCallback() {
-                                    @Override
-                                    public void onInstall() {
-                                        offlineTranslationTask = new OfflineTranslationTask(markUnknown, translationCallback, exceptionCallback);
-                                        offlineTranslationTask.execute(text);
-                                    }
-                                },
-                                exceptionCallback);
-                    } else {
-                        exceptionCallback.onException(new Exception("Online translation failed and package not installable", exception));
-                    }
-                }
-            };
-            final ExceptionCallback apyExceptionCallback = new ExceptionCallback() {
-                @Override
-                public void onException(Exception exception) {
-                    xmlrpcOnlineTranslationTask = new XmlrpcOnlineTranslationTask(markUnknown, translationCallback, xmlrpcExceptionCallback);
-                    xmlrpcOnlineTranslationTask.execute(text);
-                }
-            };
-            apyOnlineTranslationTask = new ApyOnlineTranslationTask(markUnknown, translationCallback, apyExceptionCallback);
-            apyOnlineTranslationTask.execute(text);
+        public Builder(PackageManager manager, KeyValueSaver saver, File packageDir, File cacheDir, File safeCacheDir, File tmpDir, Language src, Language trg) {
+            super(manager, saver, packageDir, cacheDir, safeCacheDir, tmpDir);
+            this.src = src;
+            this.trg = trg;
         }
+
+        public MtPackage build() {
+            return new MtPackage(this);
+        }
+
     }
 
-    private class OfflineTranslationTask extends AsyncTask<String, Void, String> {
+    private MtPackage(Builder builder) {
+        super(builder);
+        this.src = builder.src;
+        this.trg = builder.trg;
+    }
+
+    public Language getSourceLanguage() {
+        return src;
+    }
+
+    public Language getTargetLanguage() {
+        return trg;
+    }
+
+    public void translate(String text, TranslationCallback translationCallback, ExceptionCallback exceptionCallback, boolean markUnknown, boolean htmlOutput) {
+        markUsage();
+        new TranslationTask(translationCallback, exceptionCallback, markUnknown, htmlOutput).execute(text);
+    }
+
+
+    private class TranslationTask extends AsyncTask<String, Void, String> {
 
         private final boolean markUnknown;
+        private final boolean htmlOutput;
         private final TranslationCallback translationCallback;
         private final ExceptionCallback exceptionCallback;
         private Exception exception;
 
-        public OfflineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
-            this.markUnknown = markUnknown;
+        public TranslationTask(TranslationCallback translationCallback, ExceptionCallback exceptionCallback, boolean markUnknown, boolean htmlOutput) {
             this.translationCallback = translationCallback;
             this.exceptionCallback = exceptionCallback;
+            this.markUnknown = markUnknown;
+            this.htmlOutput = htmlOutput;
+        }
+
+        private String escape(String s) {
+            return htmlOutput ? TextUtils.htmlEncode(s).replaceAll("\n", "<br/>") : s;
+        }
+
+        private String format(String s) {
+            final Matcher matcher = UNKNOWN_PATTERN.matcher(s);
+            final StringBuilder sb = new StringBuilder();
+            if (htmlOutput) sb.append("<html>");
+            int prevEnd = 0;
+            while (matcher.find()) {
+                sb.append(escape(s.substring(prevEnd, matcher.start())));
+                if (markUnknown) sb.append(htmlOutput ? "<font color='#EE0000'>" : "*");
+                sb.append(escape(matcher.group(1)));
+                if (markUnknown && htmlOutput) sb.append("</font>");
+                prevEnd = matcher.end();
+            }
+            sb.append(escape(s.substring(prevEnd)));
+            if (htmlOutput) sb.append("</html>");
+            return sb.toString();
         }
 
         @Override
-        protected String doInBackground(String... text) {
-            try {
-                final File packageDir = getPackageDir();
-                if (packageDir == null) throw new Exception("Package not installed.");
-                Translator.setDisplayMarks(markUnknown);
-                Translator.setBase(packageDir.getAbsolutePath(), getClassLoader(packageDir));
-                Translator.setMode(getId());
-                IOUtils.cacheDir = getCacheDir();
-                return "<html>" + (markUnknown ? unknownPattern.matcher(Translator.translate(text[0])).replaceAll(unknownReplacement) : Translator.translate(text[0])).replaceAll("\n", "<br/>") + "<html>";
-            } catch (Exception e) {
-                exception = e;
-                return null;
+        protected String doInBackground(final String... text) {
+            final OfflineServiceProvider offline = getOfflineServiceProvider();
+            if (offline == null) {
+                for (OnlineServiceProvider online : getOnlineServiceProviders()) {
+                    try {
+                        if (online.type.equals(ONLINE_SCALE_MT)) {
+                            return format(new ScaleMtTranslator(online.code, online.url, Keys.SCALE_MT_API_KEY).translate(text[0]));
+                        } else if (online.type.equals(ONLINE_APERTIUM_APY)) {
+                            return format(new ApyTranslator(online.code, online.url).translate(text[0]));
+                        } else if (online.type.equals(ONLINE_MATXIN)) {
+                            return format(new MatxinTranslator(online.code, online.url, Keys.MATXIN_API_KEY).translate(text[0]));
+                        } else if (online.type.equals(ONLINE_ABUMATRAN)) {
+                            return format(new AbumatranTranslator(online.code, online.url).translate(text[0]));
+                        }
+                    } catch (Exception e) {
+                        exception = e;
+                    }
+                }
+                if (isInstallable()) {
+                    installToCache(null, new InstallCallback() {
+                        @Override public void onInstall() {
+                            translate(text[0], translationCallback, exceptionCallback, markUnknown, htmlOutput);
+                        }
+                    }, exceptionCallback);
+                    return null;
+                } else {
+                    exception = new Exception("Online translation failed and package not installable", exception);
+                    return null;
+                }
+            } else {
+                try {
+                    if (offline.type.equals(OFFLINE_APERTIUM)) {
+                        final File jar = new File(offline.dir, "classes.jar");
+                        if (!verifyFileIntegrity(jar)) throw new Exception("Package integrity verification failed");
+                        final ClassLoader classLoader = new DexClassLoader(jar.getAbsolutePath(), getSafeCacheDir().getAbsolutePath(), null, getClass().getClassLoader());
+                        return format(new ApertiumTranslator(offline.code, offline.dir, getCacheDir(), classLoader).translate(text[0]));
+                    } else {
+                        throw new Exception("Unknown engine: " + offline.type);
+                    }
+                } catch (Exception e) {
+                    exception = e;
+                    return null;
+                }
             }
         }
 
         @Override
         protected void onPostExecute(String translation) {
-            offlineTranslationTask = null;
             if (translation != null) translationCallback.onTranslationDone(translation);
             else if (exception != null) exceptionCallback.onException(exception);
         }
 
-    }
-
-
-    private class ApyOnlineTranslationTask extends AsyncTask<String, Void, String> {
-
-        private final boolean markUnknown;
-        private final TranslationCallback translationCallback;
-        private final ExceptionCallback exceptionCallback;
-        private Exception exception;
-
-        public ApyOnlineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
-            this.markUnknown = markUnknown;
-            this.translationCallback = translationCallback;
-            this.exceptionCallback = exceptionCallback;
-        }
-
-        @Override
-        protected String doInBackground(String... text) {
-            try {
-                String langpair = srcLanguage.getISO3Language();
-                if (srcLanguage.getCountry().length() > 0) langpair += "_" + (srcLanguage.getCountry().equals("ARAN") ? "aran" : srcLanguage.getCountry());
-                langpair += "|" + trgLanguage.getISO3Language();
-                if (trgLanguage.getCountry().length() > 0) langpair += "_" + (trgLanguage.getCountry().equals("ARAN") ? "aran" : trgLanguage.getCountry());
-                final String response = new Scanner(new URL(Keys.APERTIUM_APY_URL + "/translate?langpair=" + langpair + "&q=" + URLEncoder.encode(text[0], "UTF-8")).openStream()).useDelimiter("\\A").next();
-                final String translation = Html.fromHtml(new JSONObject(response).getJSONObject("responseData").getString("translatedText")).toString();
-                return "<html>" + unknownPattern.matcher(translation).replaceAll(markUnknown ? unknownReplacement : "$1").replaceAll("\n", "<br/>") + "<html>";
-            } catch (Exception e) {
-                exception = e;
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String translation) {
-            apyOnlineTranslationTask = null;
-            if (translation != null) {
-                translationCallback.onTranslationDone(translation);
-            } else if (exception != null) {
-                exceptionCallback.onException(new Exception("apy translation failed", exception));
-            }
-        }
-
-    }
-
-
-    private class XmlrpcOnlineTranslationTask extends AsyncTask<String, Void, String> {
-
-        private final boolean markUnknown;
-        private final TranslationCallback translationCallback;
-        private final ExceptionCallback exceptionCallback;
-        private Exception exception;
-
-        public XmlrpcOnlineTranslationTask(boolean markUnknown, TranslationCallback translationCallback, ExceptionCallback exceptionCallback) {
-            this.markUnknown = markUnknown;
-            this.translationCallback = translationCallback;
-            this.exceptionCallback = exceptionCallback;
-        }
-
-        @Override
-        protected String doInBackground(String... text) {
-            try {
-                final XMLRPCClient client = new XMLRPCClient(new URL(Keys.APERTIUM_XMLRPC_URL), XMLRPCClient.FLAGS_DEFAULT_TYPE_STRING);
-                client.setTimeout(5);
-                final String translation = (String)client.call("service.translate", text[0], "txt", getId().split("-")[0], getId().split("-")[1], markUnknown, Keys.APERTIUM_API_KEY);
-                return "<html>" + (markUnknown ? unknownPattern.matcher(translation).replaceAll(unknownReplacement) : translation).replaceAll("\n", "<br/>") + "<html>";
-            } catch (Exception e) {
-                exception = e;
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String translation) {
-            xmlrpcOnlineTranslationTask = null;
-            if (translation != null) {
-                translationCallback.onTranslationDone(translation);
-            } else if (exception != null) {
-                exceptionCallback.onException(new Exception("XML-RPC translation failed", exception));
-            }
-        }
-
-    }
-
-
-    private ClassLoader getClassLoader(File packageDir) throws IOException {
-        final File jar = new File(packageDir, "classes.jar");
-        if (!jar.exists()) {
-            final ZipOutputStream zos = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(jar)));
-            final byte buffer[] = new byte[1024];
-            final ZipEntry ze = new ZipEntry("classes.dex");
-            zos.putNextEntry(ze);
-            final InputStream in = new FileInputStream(new File(packageDir, "classes.dex"));
-            int len;
-            while ((len = in.read(buffer)) > 0) zos.write(buffer, 0, len);
-            in.close();
-            zos.closeEntry();
-            zos.close();
-        }
-        return new DexClassLoader(jar.getAbsolutePath(), getCacheDir().getAbsolutePath(), null, getClass().getClassLoader());
-        //return new DexClassLoader(new File(packageDir, "classes.dex").getAbsolutePath(), cacheDir.getAbsolutePath(), null, getClass().getClassLoader());
-    }
-
-    private static Locale codeToLocale(String code) {
-        final String args[] = code.split("_", 2);
-        if (args.length == 1) return new Locale(args[0]);
-        else return new Locale(args[0], args[1]);
     }
 
 }

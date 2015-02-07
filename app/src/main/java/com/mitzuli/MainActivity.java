@@ -18,7 +18,6 @@
 
 package com.mitzuli;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -29,6 +28,7 @@ import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
 import com.mitzuli.core.mt.MtPackage;
 import com.mitzuli.core.ocr.OcrPackage;
+import com.mitzuli.core.ocr.TesseractTextRecognizer;
 import com.mitzuli.core.speech.Stt;
 import com.mitzuli.core.speech.Tts;
 
@@ -91,6 +91,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private static final int EXPANDER_ICON_ALPHA = 114;
 
 
+    private PackageManager packageManager;
     private List<LanguagePair> languagePairs;
     private LanguagePair activePair;
     private Tts tts;
@@ -106,6 +107,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private boolean editing = false;
     private boolean ttsRequest = false;
+
+    private boolean updatedManifest = false;
 
     private SharedPreferences preferences;
 
@@ -136,6 +139,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         @Override public void onReceive(Context context, Intent intent) {
             updateSrcToolbar();
             updateTrgToolbar();
+            updateManifest();
         }
     };
 
@@ -151,7 +155,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     private CameraCropperView.CroppedPictureCallback croppedPictureCallback = new CameraCropperView.CroppedPictureCallback() {
         @Override public void onPictureCropped(Image croppedPicture) {
             setSrcContent(srcProgressBar);
-            OcrPackage.DEBUG = preferences.getBoolean("pref_key_ocr_debugging", false); // TODO Temporary workaround to allow to manually enable debugging
+            TesseractTextRecognizer.DEBUG = preferences.getBoolean("pref_key_ocr_debugging", false); // TODO Temporary workaround to allow to manually enable debugging
             activePair.ocrPackage.recognizeText(croppedPicture, ocrCallback, exceptionCallback);
         }
     };
@@ -162,9 +166,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             setSrcContent(srcText);
             activePair.mtPackage.translate(
                     srcText.getText().toString(),
-                    preferences.getBoolean("pref_key_mark_unknown", true),
                     translationCallback,
-                    exceptionCallback);
+                    exceptionCallback,
+                    preferences.getBoolean("pref_key_mark_unknown", true),
+                    true);
         }
     };
 
@@ -172,8 +177,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         @Override public void onTranslationDone(String translation) {
             trgText.setText(Html.fromHtml(translation));
             setTrgContent(trgTextScroll);
-            if (ttsRequest && tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
-                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage());
+            if (ttsRequest && tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage().toLocale())) {
+                tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage().toLocale());
             }
             ttsRequest = false;
         }
@@ -205,9 +210,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 ttsRequest = preferences.getBoolean("pref_key_auto_tts", true);
                 activePair.mtPackage.translate(
                         recognizedText,
-                        preferences.getBoolean("pref_key_mark_unknown", true),
                         translationCallback,
-                        exceptionCallback);
+                        exceptionCallback,
+                        preferences.getBoolean("pref_key_mark_unknown", true),
+                        true);
             } else if (trgContent.getChildAt(0) == trgProgressBar) { // The user pressed the "TRANSLATE" button but there was no speech input
                 srcText.setText("");
                 trgText.setText("");
@@ -305,8 +311,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         try {
-            PackageManagers.init(this);
-        } catch (IOException e) {
+            packageManager = PackageManager.fromContext(this);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
@@ -332,14 +338,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         });
 
         refreshLanguagePairs();
-
-        if (preferences.getBoolean("pref_key_autocheck_updates", true)) {
-            PackageManagers.updatePackages(this, false, false, new PackageManagers.ManifestsUpdateCallback() {
-                @Override public void onManifestsUpdate() {
-                    refreshLanguagePairs();
-                }
-            });
-        }
+        updateManifest();
 
         final Intent intent = getIntent();
         if (Intent.ACTION_SEND.equals(intent.getAction()) && "text/plain".equals(intent.getType())) {
@@ -387,7 +386,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SETTINGS_ACTIVITY_ID) {
-            refreshLanguagePairs();
+            try {
+                packageManager = PackageManager.fromContext(this);
+                refreshLanguagePairs();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -471,9 +475,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 setTrgContent(trgProgressBar);
                 activePair.mtPackage.translate(
                         srcText.getText().toString(),
-                        preferences.getBoolean("pref_key_mark_unknown", true),
                         translationCallback,
-                        exceptionCallback);
+                        exceptionCallback,
+                        preferences.getBoolean("pref_key_mark_unknown", true),
+                        true);
             }
         } else if (view == srcToolbar && !editing) {
             trgCard.setVisibility(trgCard.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
@@ -489,21 +494,21 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.action_src_audio:
-                if (!tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage())) {
+                if (!tts.isLanguageAvailable(activePair.mtPackage.getSourceLanguage().toLocale())) {
                     Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
                 } else {
-                    tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage());
+                    tts.speak(srcText.getText().toString(), activePair.mtPackage.getSourceLanguage().toLocale());
                 }
                 return true;
             case R.id.action_mic:
                 if (!isOnline()) {
                     Toast.makeText(getApplicationContext(), R.string.toast_unavailable_stt_offline, Toast.LENGTH_SHORT).show();
-                } else if (!stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage())) {
+                } else if (!stt.isLanguageAvailable(activePair.mtPackage.getSourceLanguage().toLocale())) {
                     Toast.makeText(getApplicationContext(), R.string.toast_unavailable_stt, Toast.LENGTH_SHORT).show();
                 } else {
                     if (editing) hideSoftKeyboard();
                     setSrcContent(srcProgressBar);
-                    stt.recognize(activePair.mtPackage.getSourceLanguage(), sttRecognitionCallback, sttExceptionCallback, sttProgressCallback);
+                    stt.recognize(activePair.mtPackage.getSourceLanguage().toLocale(), sttRecognitionCallback, sttExceptionCallback, sttProgressCallback);
                 }
                 return true;
             case R.id.action_camera:
@@ -522,10 +527,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
                 srcText.setText("");
                 return true;
             case R.id.action_trg_audio:
-                if (!tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage())) {
+                if (!tts.isLanguageAvailable(activePair.mtPackage.getTargetLanguage().toLocale())) {
                     Toast.makeText(getApplicationContext(), isOnline() ? R.string.toast_unavailable_tts : R.string.toast_unavailable_tts_offline, Toast.LENGTH_SHORT).show();
                 } else {
-                    tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage());
+                    tts.speak(trgText.getText().toString(), activePair.mtPackage.getTargetLanguage().toLocale());
                 }
                 return true;
             case R.id.action_copy: // TODO Should we use conditional code depending on the Android version?
@@ -559,13 +564,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private void updateSrcToolbar() {
         final View view = srcContent.getChildAt(0);
-        final Locale language = activePair.mtPackage.getSourceLanguage();
+        final Language language = activePair.mtPackage.getSourceLanguage();
         final boolean isLoaded = ttsLoaded && sttLoaded && cameraLoaded;
         final boolean isAudioVisible = isLoaded && ttsAvailable && (view == srcText || view == srcProgressBar) && !editing;
-        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language);
+        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language.toLocale());
         final boolean isAudioEnabled = view == srcText;
         final boolean isMicVisible = isLoaded && sttAvailable && (view == srcText || view == srcProgressBar) && !editing;
-        final boolean isMicAvailable = language != null && stt.isLanguageAvailable(language) && isOnline();
+        final boolean isMicAvailable = language != null && stt.isLanguageAvailable(language.toLocale()) && isOnline();
         final boolean isMicEnabled = view == srcText;
         final boolean isCameraVisible = isLoaded && cameraAvailable && (view == srcText || view == srcProgressBar) && !editing;
         final boolean isCameraAvailable = activePair.ocrPackage != null;
@@ -577,7 +582,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         final boolean isClearAvailable = true;
         final boolean isClearEnabled = true;
         final boolean isLoadingVisible = !isLoaded && !isKeyboardVisible && !isClearVisible;
-        srcToolbar.setTitle(PackageManagers.getName(activePair.mtPackage.getSourceLanguage()));
+        srcToolbar.setTitle(activePair.mtPackage.getSourceLanguage().getDisplayName(this));
         srcToolbar.setNavigationIcon(trgCard.getVisibility() == View.VISIBLE ? R.drawable.ic_expander_down : editing ? R.drawable.ic_expander_right : R.drawable.ic_expander_up);
         srcToolbar.getNavigationIcon().setAlpha(EXPANDER_ICON_ALPHA);
         updateMenuItem(srcToolbar.getMenu().findItem(R.id.action_src_audio), isAudioVisible, isAudioAvailable, isAudioEnabled);
@@ -592,10 +597,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private void updateTrgToolbar() {
         final View view = trgContent.getChildAt(0);
-        final Locale language = activePair.mtPackage.getTargetLanguage();
+        final Language language = activePair.mtPackage.getTargetLanguage();
         final boolean isLoaded = ttsLoaded;
         final boolean isAudioVisible = isLoaded && ttsAvailable && (view == trgTextScroll || view == trgProgressBar);
-        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language);
+        final boolean isAudioAvailable = language != null && tts.isLanguageAvailable(language.toLocale());
         final boolean isAudioEnabled = view == trgTextScroll;
         final boolean isShareVisible = isLoaded && (view == trgTextScroll || view == trgProgressBar);
         final boolean isShareAvailable = true;
@@ -604,7 +609,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         final boolean isCopyAvailable = true;
         final boolean isCopyEnabled = view == trgTextScroll;
         final boolean isLoadingVisible = !isLoaded;
-        trgToolbar.setTitle(PackageManagers.getName(activePair.mtPackage.getTargetLanguage()));
+        trgToolbar.setTitle(activePair.mtPackage.getTargetLanguage().getDisplayName(this));
         trgToolbar.setNavigationIcon(srcCard.getVisibility() == View.VISIBLE ? R.drawable.ic_expander_up : R.drawable.ic_expander_down);
         trgToolbar.getNavigationIcon().setAlpha(EXPANDER_ICON_ALPHA);
         updateMenuItem(trgToolbar.getMenu().findItem(R.id.action_trg_audio), isAudioVisible, isAudioAvailable, isAudioEnabled);
@@ -665,9 +670,9 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         activePair = pair;
         if (pair != null) {
             setTitle(pair.name);
-            preferences.edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getId()).commit();
+            preferences.edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getSourceLanguage().toTag() + "." + pair.mtPackage.getTargetLanguage().toTag()).commit();
             for (int i = 0; i < languagePairs.size(); i++) {
-                if (pair.mtPackage.getId().equals(languagePairs.get(i).mtPackage.getId())) {
+                if (pair.mtPackage.equals(languagePairs.get(i).mtPackage)) {
                     actionBarSpinner.setSelection(i);
                     break;
                 }
@@ -680,26 +685,13 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
 
     private void refreshLanguagePairs() {
         languagePairs = new ArrayList<LanguagePair>();
-        for (MtPackage translatorPackage : PackageManagers.onlineMtPackageManager.getAllPackages()) {
+        for (MtPackage translatorPackage : packageManager.getMtPackages()) {
             languagePairs.add(new LanguagePair(
-                    PackageManagers.getName(translatorPackage.getSourceLanguage()) + " → " + PackageManagers.getName(translatorPackage.getTargetLanguage()),
+                    (translatorPackage.isBeta() ? "[BETA] " : "") +
+                    translatorPackage.getSourceLanguage().getDisplayName(this) + " → " + translatorPackage.getTargetLanguage().getDisplayName(this),
                     translatorPackage,
-                    PackageManagers.ocrPackageManager.getPackageForLanguage(translatorPackage.getSourceLanguage())
+                    packageManager.ocrPackageForLanguage(translatorPackage.getSourceLanguage())
             ));
-        }
-        for (MtPackage translatorPackage : PackageManagers.releasedMtPackageManager.getAllPackages()) {
-            languagePairs.add(new LanguagePair(
-                    PackageManagers.getName(translatorPackage.getSourceLanguage()) + " → " + PackageManagers.getName(translatorPackage.getTargetLanguage()),
-                    translatorPackage,
-                    PackageManagers.ocrPackageManager.getPackageForLanguage(translatorPackage.getSourceLanguage())));
-        }
-        if (preferences.getBoolean("pref_key_beta_packages", false)) {
-            for (MtPackage translatorPackage : PackageManagers.betaMtPackageManager.getAllPackages()) {
-                languagePairs.add(new LanguagePair(
-                        "[BETA] " + PackageManagers.getName(translatorPackage.getSourceLanguage()) + " → " + PackageManagers.getName(translatorPackage.getTargetLanguage()),
-                        translatorPackage,
-                        PackageManagers.ocrPackageManager.getPackageForLanguage(translatorPackage.getSourceLanguage())));
-            }
         }
         Collections.sort(languagePairs);
         actionBarSpinner.setAdapter(new LanguagePairAdapter(getSupportActionBar().getThemedContext()));
@@ -707,12 +699,32 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
         // Not the most efficient way of doing it, but it's clear and fast enough
         final String lastPairId = preferences.getString(PREFS_LAST_PAIR, null);
         LanguagePair lastPair = null;
-        for (LanguagePair pair : languagePairs) if (pair.mtPackage.getId().equals(lastPairId)) lastPair = pair;
-        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled() && pair.mtPackage.getSourceLanguage().getLanguage().equals(Locale.getDefault().getLanguage())) lastPair = pair;
+        for (LanguagePair pair : languagePairs) if ((pair.mtPackage.getSourceLanguage().toTag() + "." + pair.mtPackage.getTargetLanguage().toTag()).equals(lastPairId)) lastPair = pair;
+        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled() && pair.mtPackage.getSourceLanguage().getLanguage().equals(Language.forLocale(Locale.getDefault()).getLanguage())) lastPair = pair;
         for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.isInstalled()) lastPair = pair;
-        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.getSourceLanguage().getLanguage().equals(Locale.getDefault().getLanguage())) lastPair = pair;
+        for (LanguagePair pair : languagePairs) if (lastPair == null && pair.mtPackage.getSourceLanguage().getLanguage().equals(Language.forLocale(Locale.getDefault()).getLanguage())) lastPair = pair;
         for (LanguagePair pair : languagePairs) if (lastPair == null) lastPair = pair;
         setActivePair(lastPair);
+    }
+
+
+    private void updateManifest() {
+        if (!updatedManifest && isOnline()) {
+            if (preferences.getBoolean("pref_key_autocheck_updates", true)) {
+                packageManager.showUpdateDialog(this, Keys.REPO_URL, false, false, new PackageManager.ManifestsUpdateCallback() {
+                    @Override public void onManifestsUpdate() {
+                        refreshLanguagePairs();
+                    }
+                });
+            } else {
+                packageManager.updateManifest(Keys.REPO_URL, new PackageManager.ManifestsUpdateCallback(){
+                    @Override public void onManifestsUpdate() {
+                        refreshLanguagePairs();
+                    }
+                });
+            }
+            updatedManifest = true;
+        }
     }
 
 
@@ -766,12 +778,12 @@ public class MainActivity extends ActionBarActivity implements OnClickListener, 
             progress.setOnClickListener(new OnClickListener() {
                 @Override public void onClick(View view) {
                     final LanguagePair pair = languagePairs.get(position);
-                    if (pair.mtPackage.isInstalled()) {
+                    if (!progress.isPinned()) { // The button is not pinned now, so it was pinned before it was clicked and the package was either installed or installing
                         pair.mtPackage.uninstall();
 
                         boolean uninstallOcr = pair.ocrPackage != null;
                         for (LanguagePair lp : languagePairs)
-                            if (uninstallOcr && lp.mtPackage.isInstalled() && pair.ocrPackage.getId().equals(lp.ocrPackage.getId()))
+                            if (uninstallOcr && lp.mtPackage.isInstalled() && pair.ocrPackage.equals(lp.ocrPackage))
                                 uninstallOcr = false;
                         if (uninstallOcr) pair.ocrPackage.uninstall();
 

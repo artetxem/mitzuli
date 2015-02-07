@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+ * Copyright (C) 2015 Mikel Artetxe <artetxem@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,20 +16,27 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.mitzuli;
+package com.mitzuli.core.mt;
 
-public class Keys {
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Scanner;
 
-    /*
-     * Set you own API keys here
-     */
 
-    public static final String REPO_URL = "http://repo.mitzuli.com";
+public class MatxinTranslator implements Translator {
 
-    public static final String SCALE_MT_API_KEY = "";
-    public static final String MATXIN_API_KEY = "";
+    private final String code, url, key;
 
-    public static final String ACRA_FORM_URI = "";
-    public static final String ACRA_FORM_KEY = "";
+    public MatxinTranslator(String code, String url, String key) {
+        this.code = code;
+        this.url = url;
+        this.key = key;
+    }
+
+    @Override
+    public String translate(String text) throws Exception {
+        final URL query = new URL(url + "?lang=" + code + "&cod_client=" + key + "&text=" + URLEncoder.encode(text, "UTF-8"));
+        return new Scanner(query.openStream(), "UTF-8").useDelimiter("\\A").next();
+    }
 
 }

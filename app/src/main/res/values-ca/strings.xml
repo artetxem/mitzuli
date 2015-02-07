@@ -73,7 +73,12 @@
     <string name="language_name_ara">Àrab</string>
     <string name="language_name_arg">Aragonès</string>
     <string name="language_name_ast">Asturià</string>
+    <string name="language_name_bos">Bosnià</string>
+    <string name="language_name_bre">Bretó</string>
+    <string name="language_name_bul">Búlgar</string>
     <string name="language_name_cat">Català</string>
+    <string name="language_name_ces">Txec</string>
+    <string name="language_name_cym">Gal·lès</string>
     <string name="language_name_dan">Danès</string>
     <string name="language_name_eng">Anglès</string>
     <string name="language_name_epo">Esperanto</string>
@@ -81,20 +86,38 @@
     <string name="language_name_fra">Francès</string>
     <string name="language_name_glg">Gallec</string>
     <string name="language_name_hat">Haitià</string>
+    <string name="language_name_hbs">Serbocroat</string>
+    <string name="language_name_heb">Hebreu</string>
+    <string name="language_name_hin">Hindi</string>
     <string name="language_name_hrv">Croat</string>
+    <string name="language_name_isl">Islandès</string>
     <string name="language_name_ind">Indonesi</string>
     <string name="language_name_ita">Italià</string>
+    <string name="language_name_kaz">Kazakh</string>
+    <string name="language_name_mkd">Macedoni</string>
     <string name="language_name_mlt">Maltès</string>
     <string name="language_name_msa">Malai</string>
     <string name="language_name_nld">Neerlandès</string>
+    <string name="language_name_nno">Noruec Nynorsk</string>
+    <string name="language_name_nob">Noruec Bokmål</string>
+    <string name="language_name_nor">Noruec</string>
     <string name="language_name_oci">Occità</string>
+    <string name="language_name_pol">Polonès</string>
     <string name="language_name_por">Portuguès</string>
     <string name="language_name_ron">Romanès</string>
+    <string name="language_name_slv">Eslovè</string>
+    <string name="language_name_sme">Sami septentrional</string>
     <string name="language_name_spa">Espanyol</string>
+    <string name="language_name_srd">Sard</string>
+    <string name="language_name_srp">Serbi</string>
     <string name="language_name_swe">Suec</string>
+    <string name="language_name_tat">Tàtar</string>
+    <string name="language_name_tet">Tetun</string>
+    <string name="language_name_urd">Urdú</string>
 
     <string name="country_name_aran">Aran</string>
-    <string name="country_name_br">Brasil</string>
-    <string name="country_name_us">Estats Units</string>
+    <string name="country_name_bra">Brasil</string>
+    <string name="country_name_usa">Estats Units</string>
+    <string name="country_name_valencia">València</string>
 
 </resources>

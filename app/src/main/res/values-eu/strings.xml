@@ -75,6 +75,14 @@
     <string name="pref_title_check_updates">Eguneraketak bilatu</string>
     <string name="pref_description_check_updates">Zure hizkuntza bikoteentzako eguneraketak bilatu</string>
 
+    <string name="pref_header_advanced">Aurreratua</string>
+    <string name="pref_title_external_storage">Kanpo-memoria erabili</string>
+    <string name="pref_description_external_storage">Paketeak kanpo-memorian instalatu</string>
+    <string name="pref_dialog_title_confirm_external_storage">Instalazio-tokia aldatu?</string>
+    <string name="pref_dialog_message_confirm_external_storage">Instalatutako hizkuntza bikote guztiak ezabatu egingo dira.</string>
+    <string name="pref_title_signature_verification">Paketeen sinadura egiaztatu</string>
+    <string name="pref_description_signature_verification">Sinadura-egiaztapena erabili kode-injekzio erasoak saihesteko</string>
+
     <string name="pref_header_development">Garapena</string>
     <string name="pref_title_ocr_debugging">OCR arazketa</string>
     <string name="pref_description_ocr_debugging">OCR arazketarako fitxategiak gorde kanpo-memorian</string>
@@ -95,11 +103,16 @@
 
     <!-- LANGUAGE NAMES -->
 
-    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_afr">Afrikaansa</string>
     <string name="language_name_ara">Arabiera</string>
     <string name="language_name_arg">Aragoiera</string>
     <string name="language_name_ast">Asturiera</string>
+    <string name="language_name_bos">Bosniera</string>
+    <string name="language_name_bre">Bretoiera</string>
+    <string name="language_name_bul">Bulgariera</string>
     <string name="language_name_cat">Katalana</string>
+    <string name="language_name_ces">Txekiera</string>
+    <string name="language_name_cym">Galesera</string>
     <string name="language_name_dan">Daniera</string>
     <string name="language_name_eng">Ingelesa</string>
     <string name="language_name_epo">Esperantoa</string>
@@ -107,20 +120,38 @@
     <string name="language_name_fra">Frantsesa</string>
     <string name="language_name_glg">Galiziera</string>
     <string name="language_name_hat">Haitiera</string>
+    <string name="language_name_hbs">Serbokroaziera</string>
+    <string name="language_name_heb">Hebreera</string>
+    <string name="language_name_hin">Hindia</string>
     <string name="language_name_hrv">Kroaziera</string>
+    <string name="language_name_isl">Islandiera</string>
     <string name="language_name_ind">Indonesiera</string>
     <string name="language_name_ita">Italiera</string>
+    <string name="language_name_kaz">Kazakhera</string>
+    <string name="language_name_mkd">Mazedoniera</string>
     <string name="language_name_mlt">Maltera</string>
     <string name="language_name_msa">Malaysiera</string>
     <string name="language_name_nld">Nederlandera</string>
+    <string name="language_name_nno">Norvegiera (Nynorsk)</string>
+    <string name="language_name_nob">Norvegiera (Bokmål)</string>
+    <string name="language_name_nor">Norvegiera</string>
     <string name="language_name_oci">Okzitaniera</string>
+    <string name="language_name_pol">Poloniera</string>
     <string name="language_name_por">Portugesa</string>
     <string name="language_name_ron">Errumaniera</string>
+    <string name="language_name_slv">Esloveniera</string>
+    <string name="language_name_sme">Ipar samiera</string>
     <string name="language_name_spa">Gaztelania</string>
+    <string name="language_name_srd">Sardiniera</string>
+    <string name="language_name_srp">Serbiera</string>
     <string name="language_name_swe">Suediera</string>
+    <string name="language_name_tat">Tatarera</string>
+    <string name="language_name_tet">Tetuma</string>
+    <string name="language_name_urd">Urdua</string>
 
     <string name="country_name_aran">Aran</string>
-    <string name="country_name_br">Brasil</string>
-    <string name="country_name_us">AEB</string>
+    <string name="country_name_bra">Brasil</string>
+    <string name="country_name_usa">AEB</string>
+    <string name="country_name_valencia">Valentzia</string>
 
 </resources>

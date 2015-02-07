@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+ * Copyright (C) 2015 Mikel Artetxe <artetxem@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,20 +16,11 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-package com.mitzuli;
+package com.mitzuli.core.mt;
 
-public class Keys {
 
-    /*
-     * Set you own API keys here
-     */
+public interface Translator {
 
-    public static final String REPO_URL = "http://repo.mitzuli.com";
-
-    public static final String SCALE_MT_API_KEY = "";
-    public static final String MATXIN_API_KEY = "";
-
-    public static final String ACRA_FORM_URI = "";
-    public static final String ACRA_FORM_KEY = "";
+    public String translate(String text) throws Exception;
 
 }

@@ -73,7 +73,12 @@
     <string name="language_name_ara">Arabic</string>
     <string name="language_name_arg">Aragonese</string>
     <string name="language_name_ast">Asturian</string>
+    <string name="language_name_bos">Bosnian</string>
+    <string name="language_name_bre">Breton</string>
+    <string name="language_name_bul">Bulgarian</string>
     <string name="language_name_cat">Catalan</string>
+    <string name="language_name_ces">Czech</string>
+    <string name="language_name_cym">Welsh</string>
     <string name="language_name_dan">Danish</string>
     <string name="language_name_eng">English</string>
     <string name="language_name_epo">Esperanto</string>
@@ -81,20 +86,38 @@
     <string name="language_name_fra">French</string>
     <string name="language_name_glg">Galician</string>
     <string name="language_name_hat">Haitian</string>
+    <string name="language_name_hbs">Serbo-Croatian</string>
+    <string name="language_name_heb">Hebrew</string>
+    <string name="language_name_hin">Hindi</string>
     <string name="language_name_hrv">Croatian</string>
+    <string name="language_name_isl">Icelandic</string>
     <string name="language_name_ind">Indonesian</string>
     <string name="language_name_ita">Italian</string>
+    <string name="language_name_kaz">Kazakh</string>
+    <string name="language_name_mkd">Macedonian</string>
     <string name="language_name_mlt">Maltese</string>
     <string name="language_name_msa">Malay</string>
     <string name="language_name_nld">Dutch</string>
+    <string name="language_name_nno">Norwegian Nynorsk</string>
+    <string name="language_name_nob">Norwegian Bokmål</string>
+    <string name="language_name_nor">Norwegian</string>
     <string name="language_name_oci">Occitan</string>
+    <string name="language_name_pol">Polish</string>
     <string name="language_name_por">Portuguese</string>
     <string name="language_name_ron">Romanian</string>
+    <string name="language_name_slv">Slovenian</string>
+    <string name="language_name_sme">Northern Sami</string>
     <string name="language_name_spa">Spanish</string>
+    <string name="language_name_srd">Sardinian</string>
+    <string name="language_name_srp">Serbian</string>
     <string name="language_name_swe">Swedish</string>
+    <string name="language_name_tat">Tatar</string>
+    <string name="language_name_tet">Tetum</string>
+    <string name="language_name_urd">Urdu</string>
 
     <string name="country_name_aran">Aran</string>
-    <string name="country_name_br">Brazil</string>
-    <string name="country_name_us">US</string>
+    <string name="country_name_bra">Brazil</string>
+    <string name="country_name_usa">US</string>
+    <string name="country_name_valencia">Valencia</string>
 
 </resources>

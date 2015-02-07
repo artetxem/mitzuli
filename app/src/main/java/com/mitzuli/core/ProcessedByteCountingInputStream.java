@@ -38,13 +38,6 @@ public class ProcessedByteCountingInputStream extends FilterInputStream {
     }
 
     @Override
-    public int read(byte[] b) throws IOException {
-        final int res = super.read(b);
-        if (res > 0) processedByteCount += res;
-        return res;
-    }
-
-    @Override
     public int read(byte[] b, int off, int len) throws IOException {
         final int res = super.read(b, off, len);
         if (res > 0) processedByteCount += res;

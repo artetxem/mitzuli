@@ -18,7 +18,6 @@
 
 package com.mitzuli;
 
-import java.util.Locale;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -30,6 +29,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -37,6 +37,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.github.machinarius.preferencefragment.PreferenceFragment;
+
+import com.mitzuli.core.PackageManager;
 
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
@@ -46,6 +48,9 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     private ListPreference displayLanguagePreference;
     private String displayLanguage;
 
+    private CheckBoxPreference externalStoragePreference;
+    private boolean externalStorage;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,7 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
         final SortedMap<String, String> languageToCode = new TreeMap<String, String>();
         for (String code: getResources().getStringArray(R.array.supported_display_languages)) {
-            languageToCode.put(PackageManagers.getName(new Locale(code)), code); // TODO Does it make sense to call a method in PackageManagers from here?
+            languageToCode.put(new Language(code).getDisplayLanguage(getActivity()), code);
         }
         final String displayLanguageEntryValues[] = new String[languageToCode.size()+1];
         final String displayLanguageEntries[] = new String[languageToCode.size()+1];
@@ -74,11 +79,17 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         displayLanguagePreference.setEntries(displayLanguageEntries);
         displayLanguagePreference.setValue(displayLanguage);
         displayLanguagePreference.setSummary(displayLanguagePreference.getEntry());
+        externalStorage = preferences.getBoolean("pref_key_external_storage", true);
+        externalStoragePreference = (CheckBoxPreference)findPreference("pref_key_external_storage");
 
         findPreference("pref_key_check_updates").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override public boolean onPreferenceClick(Preference preference) {
                 if (checkInternetAccess(getResources().getString(R.string.offline_on_update_error_title), getResources().getString(R.string.offline_on_update_error_message))) {
-                    PackageManagers.updatePackages(getActivity(), true, true);
+                    try {
+                        PackageManager.fromContext(getActivity()).showUpdateDialog(getActivity(), Keys.REPO_URL, true, true);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 return true;
             }
@@ -113,6 +124,31 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                     .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
                         @Override public void onClick(DialogInterface dialog, int id) {
                             System.exit(0);
+                        }
+                    })
+                    .create().show();
+        }
+        if (key.equals("pref_key_external_storage") && externalStorage != sharedPreferences.getBoolean(key, true)) {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.pref_dialog_title_confirm_external_storage)
+                    .setMessage(R.string.pref_dialog_message_confirm_external_storage)
+                    .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            externalStoragePreference.setChecked(externalStorage);
+                            dialog.dismiss();
+                        }
+                    })
+                    .setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            externalStoragePreference.setChecked(externalStorage);
+                            dialog.dismiss();
+                        }
+                    })
+                    .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                        @Override public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
                         }
                     })
                     .create().show();

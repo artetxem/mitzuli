@@ -68,6 +68,25 @@
 
 
     <PreferenceCategory
+        android:title="@string/pref_header_advanced"
+        android:key="pref_key_advanced">
+
+        <CheckBoxPreference
+            android:key="pref_key_external_storage"
+            android:summary="@string/pref_description_external_storage"
+            android:title="@string/pref_title_external_storage"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="pref_key_signature_verification"
+            android:summary="@string/pref_description_signature_verification"
+            android:title="@string/pref_title_signature_verification"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
         android:title="@string/pref_header_development"
         android:key="pref_key_development">
 
