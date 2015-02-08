@@ -27,7 +27,7 @@
 
     <dimen name="card_toolbar_height">40dp</dimen>
     <dimen name="card_toolbar_menu_horizontal_padding">9dp</dimen>
-    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
     <dimen name="card_vertical_separator_horizontal_margin">8dp</dimen>
     <dimen name="card_text_horizontal_padding">0dp</dimen>
     <dimen name="card_text_vertical_padding">8dp</dimen>
