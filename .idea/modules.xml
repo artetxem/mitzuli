@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/axmlrpc/axmlrpc.iml" filepath="$PROJECT_DIR$/libraries/axmlrpc/axmlrpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/cropper/cropper.iml" filepath="$PROJECT_DIR$/libraries/cropper/cropper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" filepath="$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/mitzuli.iml" filepath="$PROJECT_DIR$/mitzuli.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/opencv/opencv.iml" filepath="$PROJECT_DIR$/libraries/opencv/opencv.iml" />
