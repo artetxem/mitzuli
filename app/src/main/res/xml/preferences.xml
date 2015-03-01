@@ -86,7 +86,7 @@
     </PreferenceCategory>
 
 
-    <PreferenceCategory
+    <!--PreferenceCategory
         android:title="@string/pref_header_development"
         android:key="pref_key_development">
 
@@ -96,7 +96,7 @@
             android:title="@string/pref_title_ocr_debugging"
             android:defaultValue="false" />
 
-    </PreferenceCategory>
+    </PreferenceCategory-->
     
     
     <PreferenceCategory
