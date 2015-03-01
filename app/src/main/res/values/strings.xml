@@ -22,7 +22,6 @@
     <string name="app_name">Mitzuli</string>
     <string name="settings">Settings</string>
     <string name="translate_button">TRANSLATE</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="speak_now">speak now</string>
     <string name="translation_copied">Translation copied</string>
     <string name="share_with">Share translation with</string>
@@ -30,21 +29,13 @@
     <string name="ok_button">OK</string>
     <string name="cancel_button">Cancel</string>
 
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_src_audio">Voice output</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_mic">Voice input</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_camera">Camera input</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_keyboard">Keyboard input</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_clear">Clear</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_trg_audio">Voice output</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_copy">Copy</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="action_share">Share</string>
 
     <string name="error_dialog_title">Error</string>
@@ -63,36 +54,25 @@
     <string name="offline_on_translate_error_title">Translation failed</string>
     <string name="offline_on_translate_error_message">Install language pairs to translate without Internet access.</string>
 
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="toast_unavailable_tts">Speech output isn\'t available for this language</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="toast_unavailable_tts_offline">Speech output isn\'t available for this language without Internet access</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="toast_unavailable_stt">Speech input isn\'t available for this language</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="toast_unavailable_stt_offline">Speech input isn\'t available without Internet access</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="toast_unavailable_ocr">Camera input isn\'t available for this language</string>
 
 
     <!-- SETTINGS -->
 
     <string name="pref_header_general">General</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_title_display_language">Display language</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_entry_value_default_display_language">System default</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_dialog_title_confirm_display_language">Change the language?</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_dialog_message_confirm_display_language">The app will be restarted to apply the changes.</string>
     <string name="pref_title_beta_packages">Beta language pairs</string>
     <string name="pref_description_beta_packages">Enable beta language pairs (translation quality might be poor)</string>
     <string name="pref_title_mark_unknown">Mark unknown words</string>
     <string name="pref_description_mark_unknown">Display marks for unknown words</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_title_auto_tts">Automatic TTS</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is translated -->
     <string name="pref_description_auto_tts">Automatically speak translated text in microphone mode</string>
 
     <string name="pref_header_updates">Updates</string>
@@ -101,26 +81,16 @@
     <string name="pref_title_check_updates">Check for updates</string>
     <string name="pref_description_check_updates">Check for updates for your language pairs</string>
 
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_header_advanced">Advanced</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_title_external_storage">Use external storage</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_description_external_storage">Install packages in external storage</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_dialog_title_confirm_external_storage">Change the install location?</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_dialog_message_confirm_external_storage">All the language pairs downloaded for offline use will be uninstalled.</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_title_signature_verification">Verify package signatures</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_description_signature_verification">Use signature verification to protect from code injection attacks</string>
 
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_header_development">Development</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_title_ocr_debugging">OCR debugging</string>
-    <!--suppress AndroidLintMissingTranslation --> <!-- TODO Temporary workaround until this is either translated or removed -->
     <string name="pref_description_ocr_debugging">Save files for OCR debugging in external storage</string>
 
     <string name="pref_header_about">About</string>
@@ -188,12 +158,9 @@
     <!-- NON-TRANSLATABLE -->
 
     <string-array name="supported_display_languages" translatable="false">
-        <item>an</item>
-        <item>ca</item>
         <item>en</item>
         <item>es</item>
         <item>eu</item>
-        <item>fr</item>
     </string-array>
 
 </resources>

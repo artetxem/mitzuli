@@ -53,6 +53,12 @@
     <string name="offline_on_install_error_message">Se requiere acceso a Internet para instalar idiomas.</string>
     <string name="offline_on_translate_error_title">Traducción fallida</string>
     <string name="offline_on_translate_error_message">Instala idiomas para poder traducir sin accesso a Internet.</string>
+
+    <string name="toast_unavailable_tts">La salida de voz no está disponible para este idioma</string>
+    <string name="toast_unavailable_tts_offline">La salida de voz no está disponible para este idioma sin acceso a Internet</string>
+    <string name="toast_unavailable_stt">La entrada de voz no está disponible para este idioma</string>
+    <string name="toast_unavailable_stt_offline">La entrada de voz no está disponible sin acceso a Internet</string>
+    <string name="toast_unavailable_ocr">La traducción por cámara no está disponible para este idioma</string>
     
     
     <!-- SETTINGS -->
@@ -93,12 +99,6 @@
 
     <string name="offline_on_update_error_title">Actualización fallida</string>
     <string name="offline_on_update_error_message">Se requiere acceso a Internet para actualizar idiomas.</string>
-
-    <string name="toast_unavailable_tts">La salida de voz no está disponible para este idioma</string>
-    <string name="toast_unavailable_tts_offline">La salida de voz no está disponible para este idioma sin acceso a Internet</string>
-    <string name="toast_unavailable_stt">La entrada de voz no está disponible para este idioma</string>
-    <string name="toast_unavailable_stt_offline">La entrada de voz no está disponible sin acceso a Internet</string>
-    <string name="toast_unavailable_ocr">La traducción por cámara no está disponible para este idioma</string>
 
 
     <!-- LANGUAGE NAMES -->
