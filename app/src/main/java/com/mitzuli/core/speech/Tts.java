@@ -38,12 +38,12 @@ public class Tts { // TODO Review concurrency
 
     public Tts(final Context context, final OnInitListener listener) {
         class TtsOnInitListener implements TextToSpeech.OnInitListener {
-            private TextToSpeech tts;
+            private TextToSpeech tts; // TODO The current code assumes that this will only be null if TTS initialization fails
             @Override public void onInit(int status) {
                 synchronized (Tts.this) {
-                    if (status == TextToSpeech.SUCCESS) ttsList.add(tts);
+                    if (status == TextToSpeech.SUCCESS && tts != null) ttsList.add(tts);
                     if (loadedEngines == 0) {
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.ICE_CREAM_SANDWICH || tts == null) {
                             totalEngines = 1;
                         } else {
                             totalEngines = tts.getEngines().size();
