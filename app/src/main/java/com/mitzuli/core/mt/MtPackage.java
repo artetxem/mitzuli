@@ -30,6 +30,8 @@ import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,6 +64,7 @@ public class MtPackage extends Package { // TODO Installing, updating or uninsta
             this.trg = trg;
         }
 
+        @Override
         public MtPackage build() {
             return new MtPackage(this);
         }
@@ -72,6 +75,17 @@ public class MtPackage extends Package { // TODO Installing, updating or uninsta
         super(builder);
         this.src = builder.src;
         this.trg = builder.trg;
+    }
+
+    @Override
+    public boolean isSupported() {
+        final List<String> supportedTypes = new ArrayList<String>();
+        if (Keys.SCALE_MT_API_KEY != null) supportedTypes.add(ONLINE_SCALE_MT);
+        supportedTypes.add(ONLINE_APERTIUM_APY);
+        if (Keys.MATXIN_API_KEY != null) supportedTypes.add(ONLINE_MATXIN);
+        supportedTypes.add(ONLINE_ABUMATRAN);
+        supportedTypes.add(OFFLINE_APERTIUM);
+        return isSupported(supportedTypes);
     }
 
     public Language getSourceLanguage() {

@@ -27,7 +27,7 @@ public class Keys {
     public static final String REPO_URL = "http://repo.mitzuli.com";
 
     public static final String SCALE_MT_API_KEY = "";
-    public static final String MATXIN_API_KEY = "";
+    public static final String MATXIN_API_KEY = null;
 
     public static final String ACRA_FORM_URI = "";
     public static final String ACRA_FORM_KEY = "";

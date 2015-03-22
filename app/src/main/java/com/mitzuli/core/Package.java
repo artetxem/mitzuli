@@ -40,8 +40,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -204,6 +207,17 @@ public abstract class Package {
             if (packageDir.exists()) IOUtils.deleteAll(packageDir);
             if (cachedPackageDir.exists()) IOUtils.deleteAll(cachedPackageDir);
         }
+    }
+
+    public abstract boolean isSupported();
+
+    protected boolean isSupported(Collection<String> supportedTypes) {
+        final Set<String> availableTypes = new HashSet<String>();
+        for (OnlineServiceProvider online : onlineServiceProviders) availableTypes.add(online.type);
+        if (getOfflineServiceProvider() != null) availableTypes.add(getOfflineServiceProvider().type);
+        if (remotePackage != null) availableTypes.add(remotePackage.type);
+        for (String supportedType : supportedTypes) if (availableTypes.contains(supportedType)) return true;
+        return false;
     }
 
     public synchronized boolean isInstallable() {

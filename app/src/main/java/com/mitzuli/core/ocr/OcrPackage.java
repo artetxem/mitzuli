@@ -27,6 +27,7 @@ import com.mitzuli.core.Package;
 import com.mitzuli.core.PackageManager;
 
 import java.io.File;
+import java.util.Collections;
 
 
 public class OcrPackage extends Package { // TODO Installing, updating or uninstalling this package while its text recognition task is running yields to undefined behavior
@@ -48,6 +49,7 @@ public class OcrPackage extends Package { // TODO Installing, updating or uninst
             this.language = language;
         }
 
+        @Override
         public OcrPackage build() {
             return new OcrPackage(this);
         }
@@ -57,6 +59,11 @@ public class OcrPackage extends Package { // TODO Installing, updating or uninst
     private OcrPackage(Builder builder) {
         super(builder);
         this.language = builder.language;
+    }
+
+    @Override
+    public boolean isSupported() {
+        return isSupported(Collections.singleton(OFFLINE_TESSERACT));
     }
 
     public Language getLanguage() {

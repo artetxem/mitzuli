@@ -166,15 +166,37 @@ public class PackageManager { // TODO Using packages contained by this manager w
     private void refreshPackages(Manifest manifest) {
         mtPackages.clear();
         ocrPackages.clear();
-        mtPackages.addAll(manifest.mtPackages);
-        ocrPackages.addAll(manifest.ocrPackages);
+        for (MtPackage mtPackage : manifest.mtPackages) {
+            if (mtPackage.isSupported()) {
+                mtPackages.add(mtPackage);
+            } else {
+                mtPackage.uninstall();
+                mtPackage.cleanUpCache();
+            }
+        }
+        for (OcrPackage ocrPackage : manifest.ocrPackages) {
+            if (ocrPackage.isSupported()) {
+                ocrPackages.add(ocrPackage);
+            } else {
+                ocrPackage.uninstall();
+                ocrPackage.cleanUpCache();
+            }
+        }
         for (MtPackage mtPackage : manifest.unknownMtPackages) {
-            if (mtPackage.isInstalled()) mtPackages.add(mtPackage);
-            else mtPackage.cleanUpCache();
+            if (mtPackage.isInstalled() && mtPackage.isSupported()) {
+                mtPackages.add(mtPackage);
+            } else {
+                mtPackage.uninstall();
+                mtPackage.cleanUpCache();
+            }
         }
         for (OcrPackage ocrPackage : manifest.unknownOcrPackages) {
-            if (ocrPackage.isInstalled()) ocrPackages.add(ocrPackage);
-            else ocrPackage.cleanUpCache();
+            if (ocrPackage.isInstalled() && ocrPackage.isSupported()) {
+                ocrPackages.add(ocrPackage);
+            } else {
+                ocrPackage.uninstall();
+                ocrPackage.cleanUpCache();
+            }
         }
     }
 
