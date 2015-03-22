@@ -318,7 +318,7 @@ public class PackageManager { // TODO Using packages contained by this manager w
                         final MtPackage mtPackage = new MtPackage.Builder(this, new KeyValueSaver(mtSaver, id),
                                 new File(mtPackageDir, id), new File(mtCacheDir, id), new File(mtSafeCacheDir, id), new File(mtTmpDir, id),
                                 src, trg).build();
-                        mtPackages.add(mtPackage);
+                        unknownMtPackages.add(mtPackage);
                     } else {
                         IOUtils.deleteAll(f);
                     }
@@ -335,7 +335,7 @@ public class PackageManager { // TODO Using packages contained by this manager w
                     final OcrPackage ocrPackage = new OcrPackage.Builder(this, new KeyValueSaver(mtSaver, id),
                             new File(mtPackageDir, id), new File(mtCacheDir, id), new File(mtSafeCacheDir, id), new File(mtTmpDir, id),
                             language).build();
-                    ocrPackages.add(ocrPackage);
+                    unknownOcrPackages.add(ocrPackage);
                 }
             }
         }
