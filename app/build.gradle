@@ -16,6 +16,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi', 'armeabi-v7a', 'mips', 'x86'
+            universalApk true
+        }
+    }
+}
+
+ext.versionCodes = ['armeabi':1, 'armeabi-v7a':2, 'mips':3, 'x86':4]
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        output.versionCodeOverride =
+                project.ext.versionCodes.get(output.getFilter(com.android.build.OutputFile.ABI), 0) * 1000000 + android.defaultConfig.versionCode
+    }
 }
 
 dependencies {

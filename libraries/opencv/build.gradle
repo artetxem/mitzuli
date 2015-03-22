@@ -18,13 +18,19 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            aidl.srcDirs = ['src/main/java']
-        }
+    sourceSets.main {
+        aidl.srcDirs = ['src/main/java']
+        jniLibs.srcDir "$buildDir/native-libs/lib"
     }
-}
 
-dependencies {
-    compile files('libs/native-libs.jar')
+    // TODO Ugly workaround to support ABI based APK splits; dependency management should definitely be improved
+    task extractNativeLibs(type:Copy){
+        from zipTree('libs/native-libs.jar')
+        into "$buildDir/native-libs"
+    }
+
+    tasks.withType(JavaCompile) {
+        compileTask -> compileTask.dependsOn extractNativeLibs
+    }
+
 }
