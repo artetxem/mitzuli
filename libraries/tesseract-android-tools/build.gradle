@@ -1,3 +1,4 @@
+import org.apache.tools.ant.taskdefs.condition.Os
 apply plugin: 'com.android.library'
 
 android {
@@ -23,7 +24,11 @@ android {
     }
 
     task ndkBuild(type:Exec) {
-        commandLine "$ndkdir/ndk-build", "--directory", "$projectDir/src/main/native", '-j', Runtime.runtime.availableProcessors(),
+        def ndk_build_command = 'ndk-build'
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            ndk_build_command = 'ndk-build.cmd'
+        }
+        commandLine "$ndkdir/$ndk_build_command", "--directory", "$projectDir/src/main/native", '-j', Runtime.runtime.availableProcessors(),
                 "APP_PLATFORM=android-8",
                 "APP_BUILD_SCRIPT=$projectDir/src/main/native/Android.mk",
                 "NDK_APPLICATION_MK=$projectDir/src/main/native/Application.mk",
