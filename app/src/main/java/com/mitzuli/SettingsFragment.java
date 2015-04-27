@@ -35,6 +35,7 @@ import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import com.github.machinarius.preferencefragment.PreferenceFragment;
 
@@ -97,6 +98,12 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         findPreference("pref_key_licenses").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override public boolean onPreferenceClick(Preference preference) {
                 getLicenseDialog().show();
+                return true;
+            }
+        });
+        findPreference("pref_key_acknowledgments").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override public boolean onPreferenceClick(Preference preference) {
+                getAcknowledgmentsDialog().show();
                 return true;
             }
         });
@@ -163,6 +170,22 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
         return new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.pref_title_licenses)
                 .setView(webview)
+                .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                    @Override public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+    }
+
+
+    private Dialog getAcknowledgmentsDialog() {
+        final ImageView logo = new ImageView(getActivity());
+        logo.setImageResource(R.drawable.claim_ej);
+        return new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.pref_title_acknowledgments)
+                .setMessage(R.string.pref_dialog_message_acknowledgments)
+                .setView(logo)
                 .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();

@@ -96,6 +96,9 @@
     <string name="pref_header_about">Acerca de</string>
     <string name="pref_title_licenses">Licencias de software libre</string>
     <string name="pref_description_licenses">Detalles de la licencia de software de código abierto</string>
+    <string name="pref_title_acknowledgments">Agradecimientos</string>
+    <string name="pref_description_acknowledgments">Detalles de las instituciones que han financiado el proyecto</string>
+    <string name="pref_dialog_message_acknowledgments">Proyecto financiado por el Gobierno Vasco dentro de la convocatoria IKT 2014</string>
 
     <string name="offline_on_update_error_title">Actualización fallida</string>
     <string name="offline_on_update_error_message">Se requiere acceso a Internet para actualizar idiomas.</string>

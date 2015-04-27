@@ -96,6 +96,9 @@
     <string name="pref_header_about">Honi buruz</string>
     <string name="pref_title_licenses">Iturburu irekiko lizentziak</string>
     <string name="pref_description_licenses">Iturburu irekiko software lizentzien xehetasunak</string>
+    <string name="pref_title_acknowledgments">Esker onak</string>
+    <string name="pref_description_acknowledgments">Proiektua diruz lagundu duten erakundeen xehetasunak</string>
+    <string name="pref_dialog_message_acknowledgments">Eusko Jaurlaritzak 2014ko IKT deialdian diruz lagundutako proiektua</string>
 
     <string name="offline_on_update_error_title">Eguneraketak huts egin du</string>
     <string name="offline_on_update_error_message">Hizkuntza bikoteak instalatzeko Interneterako konexioa behar da.</string>

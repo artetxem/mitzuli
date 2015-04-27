@@ -96,6 +96,9 @@
     <string name="pref_header_about">Arredol de</string>
     <string name="pref_title_licenses">Licencias de software libre</string>
     <string name="pref_description_licenses">Detalles d\'a la licencia de software de codigo ubierto</string>
+    <string name="pref_title_acknowledgments">Agradeiximientos</string>
+    <string name="pref_description_acknowledgments">Detalles d\'as institucions que han financiau o prochecto</string>
+    <string name="pref_dialog_message_acknowledgments">Prochecto financiau por o Gubierno Basco adintro d\'a convocatoria IKT 2014</string>
 
     <string name="offline_on_update_error_title">Actualización fallida</string>
     <string name="offline_on_update_error_message">Se precisa acceso ta Internet ta esviellar os idiomas.</string>

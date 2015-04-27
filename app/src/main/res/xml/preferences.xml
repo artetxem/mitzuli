@@ -102,12 +102,17 @@
     <PreferenceCategory
         android:title="@string/pref_header_about"
         android:key="pref_key_about">
-        
+
         <Preference
             android:key="pref_key_licenses"
             android:summary="@string/pref_description_licenses"
             android:title="@string/pref_title_licenses" />
-        
+
+        <Preference
+            android:key="pref_key_acknowledgments"
+            android:summary="@string/pref_description_acknowledgments"
+            android:title="@string/pref_title_acknowledgments" />
+
     </PreferenceCategory>
     
 </PreferenceScreen>
