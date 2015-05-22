@@ -48,7 +48,7 @@ import com.edmodo.cropper.cropwindow.edge.Edge;
  * A custom view to take cropped pictures with the device camera
  * This is somehow an adaptation of com.edmodo.cropper.CropImageView for camera images
  */
-public class CameraCropperView extends FrameLayout { //TODO Handle the case in which autofocus is not available (is that possible?)
+public class CameraCropperView extends FrameLayout {
 
     // Whether to crop or stretch the camera preview (cropping is preferred, but it seems that it is only working on Android 4.1 and above)
     private static final boolean CROP_PREVIEW = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
@@ -78,6 +78,7 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
     private int cameraRotation;
     private Size pictureSize;
     private List<Size> previewSizes;
+    private boolean autofocus;
 
     private final SurfaceHolder previewHolder;
     private final SurfaceView preview;
@@ -181,12 +182,34 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
                 }
 
                 // Set parameters
+                final List<String> supportedWhiteBalance = params.getSupportedWhiteBalance();
+                final List<String> supportedFlashModes = params.getSupportedFlashModes();
+                final List<String> supportedSceneModes = params.getSupportedSceneModes();
+                final List<String> supportedFocusModes = params.getSupportedFocusModes();
                 params.setPictureSize(pictureSize.width, pictureSize.height);
                 params.setPreviewSize(previewSizes.get(0).width, previewSizes.get(0).height);
-                params.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
-                params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
-                params.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
-                params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                if (supportedWhiteBalance != null && supportedWhiteBalance.contains(Camera.Parameters.WHITE_BALANCE_AUTO)) {
+                    params.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
+                }
+                if (supportedFlashModes != null && supportedFlashModes.contains(Camera.Parameters.FLASH_MODE_AUTO)) {
+                    params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
+                }
+                if (supportedSceneModes != null && supportedSceneModes.contains(Camera.Parameters.SCENE_MODE_AUTO)) {
+                    params.setSceneMode(Camera.Parameters.SCENE_MODE_AUTO);
+                }
+                // TODO Decide the preferred focus mode order
+                if (supportedFocusModes != null && supportedFocusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+                    params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                    autofocus = true;
+                } else if (supportedFocusModes != null && supportedFocusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                    params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                    autofocus = true;
+                } else if (supportedFocusModes != null && supportedFocusModes.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+                    params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
+                    autofocus = false;
+                } else {
+                    autofocus = false;
+                }
                 camera.setParameters(params);
             } catch (Exception e) {
                 releaseCamera();
@@ -475,8 +498,8 @@ public class CameraCropperView extends FrameLayout { //TODO Handle the case in w
             }
         };
         joinPreviewStarter();
-        camera.autoFocus(autoFocusCallback);
-        //mCamera.takePicture(null, null, pictureCallback);
+        if (autofocus) camera.autoFocus(autoFocusCallback);
+        else camera.takePicture(null, null, pictureCallback);
     }
 
 }
