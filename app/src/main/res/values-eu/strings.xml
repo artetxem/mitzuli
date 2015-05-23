@@ -24,7 +24,7 @@
     <string name="translate_button">ITZULI</string>
     <string name="speak_now">hitz egin orain</string>
     <string name="translation_copied">Itzulpena kopiatu da</string>
-    <string name="share_with">Itzulpena honekin partekatu</string>
+    <string name="share_with">Itzulpena honekin partekatu:</string>
 
     <string name="ok_button">Ados</string>
     <string name="cancel_button">Utzi</string>
@@ -42,7 +42,7 @@
 
     <string name="update_dialog_title">Orain eguneratu?</string>
     <string name="update_dialog_update_button">Eguneratu</string>
-    <string name="update_dialog_packages_to_update">Ondorengo paketeak eguneratuko dira:</string>
+    <string name="update_dialog_packages_to_update">Pakete hauek eguneratuko dira:</string>
 
     <string name="no_update_dialog_message">Guztia eguneraturik dago!</string>
 
@@ -69,35 +69,35 @@
     <string name="pref_dialog_title_confirm_display_language">Hizkuntza aldatu?</string>
     <string name="pref_dialog_message_confirm_display_language">Aplikazioa berrabiarazi egingo da aldaketak ezartzeko.</string>
     <string name="pref_title_beta_packages">Beta hizkuntza bikoteak</string>
-    <string name="pref_description_beta_packages">Beta hizkuntza bikoteak gaitu (itzulpenen kalitatea txarra izan daiteke)</string>
-    <string name="pref_title_mark_unknown">Hitz ezezagunak nabarmendu</string>
-    <string name="pref_description_mark_unknown">Hitz ezezagunentzako markak erakutsi</string>
+    <string name="pref_description_beta_packages">Gaitu beta hizkuntza bikoteak (itzulpenen kalitatea txarra izan daiteke)</string>
+    <string name="pref_title_mark_unknown">Nabarmendu hitz ezezagunak</string>
+    <string name="pref_description_mark_unknown">Erakutsi hitz ezezagunentzako markak</string>
     <string name="pref_title_auto_tts">TTS automatikoa</string>
-    <string name="pref_description_auto_tts">Testu itzulia automatikoki irakurri mikrofono moduan</string>
+    <string name="pref_description_auto_tts">Automatikoki irakurri testu itzulia mikrofono moduan</string>
 
     <string name="pref_header_updates">Eguneraketak</string>
     <string name="pref_title_autocheck_updates">Eguneraketa automatikoak</string>
-    <string name="pref_description_autocheck_updates">Zure hizkuntza bikoteentzako eguneraketak automatikoki bilatu</string>
-    <string name="pref_title_check_updates">Eguneraketak bilatu</string>
-    <string name="pref_description_check_updates">Zure hizkuntza bikoteentzako eguneraketak bilatu</string>
+    <string name="pref_description_autocheck_updates">Automatikoki bilatu zure hizkuntza bikoteentzako eguneraketak</string>
+    <string name="pref_title_check_updates">Bilatu eguneraketak</string>
+    <string name="pref_description_check_updates">Bilatu eguneraketak zure hizkuntza bikoteentzat</string>
 
     <string name="pref_header_advanced">Aurreratua</string>
-    <string name="pref_title_external_storage">Kanpo-memoria erabili</string>
-    <string name="pref_description_external_storage">Paketeak kanpo-memorian instalatu</string>
+    <string name="pref_title_external_storage">Erabili kanpo-memoria</string>
+    <string name="pref_description_external_storage">Instalatu paketeak kanpo-memorian</string>
     <string name="pref_dialog_title_confirm_external_storage">Instalazio-tokia aldatu?</string>
     <string name="pref_dialog_message_confirm_external_storage">Instalatutako hizkuntza bikote guztiak ezabatu egingo dira.</string>
-    <string name="pref_title_signature_verification">Paketeen sinadura egiaztatu</string>
-    <string name="pref_description_signature_verification">Sinadura-egiaztapena erabili kode-injekzio erasoak saihesteko</string>
+    <string name="pref_title_signature_verification">Egiaztatu paketeen sinadura</string>
+    <string name="pref_description_signature_verification">Erabili sinadura-egiaztapena kode-injekzioko erasoak saihesteko</string>
 
     <string name="pref_header_development">Garapena</string>
     <string name="pref_title_ocr_debugging">OCR arazketa</string>
-    <string name="pref_description_ocr_debugging">OCR arazketarako fitxategiak gorde kanpo-memorian</string>
+    <string name="pref_description_ocr_debugging">Gorde OCR arazketarako fitxategiak kanpo-memorian</string>
 
     <string name="pref_header_about">Honi buruz</string>
     <string name="pref_title_licenses">Iturburu irekiko lizentziak</string>
-    <string name="pref_description_licenses">Iturburu irekiko software lizentzien xehetasunak</string>
+    <string name="pref_description_licenses">Iturburu irekiko software-lizentzien xehetasunak</string>
     <string name="pref_title_acknowledgments">Esker onak</string>
-    <string name="pref_description_acknowledgments">Proiektua diruz lagundu duten erakundeen xehetasunak</string>
+    <string name="pref_description_acknowledgments">Proiektua diruz lagundu duten erakundeei buruzko xehetasunak</string>
     <string name="pref_dialog_message_acknowledgments">Eusko Jaurlaritzak 2014ko IKT deialdian diruz lagundutako proiektua</string>
 
     <string name="offline_on_update_error_title">Eguneraketak huts egin du</string>

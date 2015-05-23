@@ -52,7 +52,7 @@
     <string name="offline_on_install_error_title">Instalación fallida</string>
     <string name="offline_on_install_error_message">Se requiere acceso a Internet para instalar idiomas.</string>
     <string name="offline_on_translate_error_title">Traducción fallida</string>
-    <string name="offline_on_translate_error_message">Instala idiomas para poder traducir sin accesso a Internet.</string>
+    <string name="offline_on_translate_error_message">Instala idiomas para poder traducir sin acceso a Internet.</string>
 
     <string name="toast_unavailable_tts">La salida de voz no está disponible para este idioma</string>
     <string name="toast_unavailable_tts_offline">La salida de voz no está disponible para este idioma sin acceso a Internet</string>
@@ -85,7 +85,7 @@
     <string name="pref_title_external_storage">Usar la memoria externa</string>
     <string name="pref_description_external_storage">Instalar los paquetes en la memoria externa</string>
     <string name="pref_dialog_title_confirm_external_storage">¿Cambiar la ubicación de instalación?</string>
-    <string name="pref_dialog_message_confirm_external_storage">Todos los pares de idioma descargados serán desinstalados.</string>
+    <string name="pref_dialog_message_confirm_external_storage">Se desinstalarán todos los pares de idiomas descargados.</string>
     <string name="pref_title_signature_verification">Verificar la firma digital</string>
     <string name="pref_description_signature_verification">Verificar la firma digital de los paquetes para prevenir ataques de inyección de código</string>
 
@@ -97,7 +97,7 @@
     <string name="pref_title_licenses">Licencias de software libre</string>
     <string name="pref_description_licenses">Detalles de la licencia de software de código abierto</string>
     <string name="pref_title_acknowledgments">Agradecimientos</string>
-    <string name="pref_description_acknowledgments">Detalles de las instituciones que han financiado el proyecto</string>
+    <string name="pref_description_acknowledgments">Detalles sobre las instituciones que han financiado el proyecto</string>
     <string name="pref_dialog_message_acknowledgments">Proyecto financiado por el Gobierno Vasco dentro de la convocatoria IKT 2014</string>
 
     <string name="offline_on_update_error_title">Actualización fallida</string>
