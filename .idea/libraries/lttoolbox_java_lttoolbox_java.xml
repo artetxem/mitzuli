@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="lttoolbox-java.lttoolbox-java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/lttoolbox-java/build/libs/lttoolbox-java.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

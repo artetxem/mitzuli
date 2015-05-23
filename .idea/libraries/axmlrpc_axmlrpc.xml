@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="axmlrpc.axmlrpc">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libraries/axmlrpc/build/libs/axmlrpc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
