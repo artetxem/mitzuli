@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Xavi Ivars <xavi.ivars@gmail.com>
+  ~ Copyright (C) 2015 Elhuyar Hizkuntza eta Teknologia <elhuyar@elhuyar.com>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Configuració</string>
+    <string name="translate_button">TRADUEIX</string>
+    <string name="speak_now">parla ara</string>
+    <string name="translation_copied">S\'ha copiat la traducció</string>
+    <string name="share_with">Comparteix la traducció amb</string>
+
+    <string name="ok_button">D\'acord</string>
+    <string name="cancel_button">Cancel·la</string>
+
+    <string name="action_src_audio">Sortida de veu</string>
+    <string name="action_mic">Entrada de veu</string>
+    <string name="action_camera">Traducció per càmera</string>
+    <string name="action_keyboard">Entrada per teclat</string>
+    <string name="action_clear">Esborra</string>
+    <string name="action_trg_audio">Sortida de veu</string>
+    <string name="action_copy">Copia</string>
+    <string name="action_share">Comparteix</string>
+
+    <string name="error_dialog_title">Error</string>
+
+    <string name="update_dialog_title">Voleu actualitzar?</string>
+    <string name="update_dialog_update_button">Actualitza</string>
+    <string name="update_dialog_packages_to_update">Els paquets següents s\'actualitzaran:</string>
+
+    <string name="no_update_dialog_message">Tot està actualitzat!</string>
+
+    <string name="update_progress_dialog_title">S\'està actualitzant</string>
+    <string name="update_progress_dialog_message">S\'estan actualitzant els paquets&#8230;</string>
+
+    <string name="offline_on_install_error_title">Ha fallat la instal·lació</string>
+    <string name="offline_on_install_error_message">Cal una connexió a Internet per instal·lar paquets d\'idioma.</string>
+    <string name="offline_on_translate_error_title">Ha fallat la traducció</string>
+    <string name="offline_on_translate_error_message">Instal·leu paquets d\'idioma per fer traduccions sense accés a Internet.</string>
+
+    <string name="toast_unavailable_tts">La sortida de veu no està disponible per a aquest idioma</string>
+    <string name="toast_unavailable_tts_offline">La sortida de veu no està disponible per a aquest idioma sense accés a Internet</string>
+    <string name="toast_unavailable_stt">L\'entrada de veu no està disponible per a aquest idioma</string>
+    <string name="toast_unavailable_stt_offline">L\'entrada de veu no està disponible sense accés a Internet</string>
+    <string name="toast_unavailable_ocr">La traducció per càmera no està disponible per a aquest idioma</string>
+
+
+    <!-- SETTINGS -->
+
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_display_language">Idioma de la interfície</string>
+    <string name="pref_entry_value_default_display_language">Predeterminat del sistema</string>
+    <string name="pref_dialog_title_confirm_display_language">Voleu canviar l\'idioma?</string>
+    <string name="pref_dialog_message_confirm_display_language">L\'app es reiniciarà per aplicar els canvis.</string>
+    <string name="pref_title_beta_packages">Paquets d\'idioma en proves (BETA)</string>
+    <string name="pref_description_beta_packages">Habiliteu paquets d\'idioma en proves (la qualitat de la traducció pot ser dolenta)</string>
+    <string name="pref_title_mark_unknown">Marca les paraules desconegudes</string>
+    <string name="pref_description_mark_unknown">Es mostren marques per a les paraules desconegudes.</string>
+    <string name="pref_title_auto_tts">TTS automàtic</string>
+    <string name="pref_description_auto_tts">Llegeix automàticament el text traduït en mode micròfon</string>
+
+    <string name="pref_header_updates">Actualitzacions</string>
+    <string name="pref_title_autocheck_updates">Comprova les actualitzacions automàticament</string>
+    <string name="pref_description_autocheck_updates">Comprova automàticament si hi ha actualitzacions per als vostres paquets d\'idioma</string>
+    <string name="pref_title_check_updates">Comprova actualitzacions</string>
+    <string name="pref_description_check_updates">Comprova si hi ha actualitzacions per als vostres paquets d\'idioma</string>
+
+    <string name="pref_header_advanced">Avançat</string>
+    <string name="pref_title_external_storage">Utilitza la memòria externa</string>
+    <string name="pref_description_external_storage">Instal·la els paquets en la memòria externa</string>
+    <string name="pref_dialog_title_confirm_external_storage">Voleu canviar la ubicació d\'instal·lació?</string>
+    <string name="pref_dialog_message_confirm_external_storage">Es desinstal·laran tots els parells d\'idiomes descarregats.</string>
+    <string name="pref_title_signature_verification">Verifica la signatura digital</string>
+    <string name="pref_description_signature_verification">Verifica la signatura digital dels paquets per prevenir atacs d\'injecció de codi</string>
+
+    <string name="pref_header_development">Desenvolupament</string>
+    <string name="pref_title_ocr_debugging">Depuració de l\'OCR</string>
+    <string name="pref_description_ocr_debugging">Desa arxius per a la depuració de l\'OCR en la memòria externa</string>
+
+    <string name="pref_header_about">Quant a</string>
+    <string name="pref_title_licenses">Llicències de codi lliure</string>
+    <string name="pref_description_licenses">Detalls de les llicències de programari lliure</string>
+    <string name="pref_title_acknowledgments">Agraïments</string>
+    <string name="pref_description_acknowledgments">Informació sobre les institucions que financen el projecte</string>
+    <string name="pref_dialog_message_acknowledgments">Projecte finançat pel Govern Basc dins de la convocatòria IKT 2014</string>
+
+    <string name="offline_on_update_error_title">L\'actualització ha fallat</string>
+    <string name="offline_on_update_error_message">Cal una connexió a Internet per actualitzar paquets d\'idioma.</string>
+
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Àrab</string>
+    <string name="language_name_arg">Aragonès</string>
+    <string name="language_name_ast">Asturià</string>
+    <string name="language_name_bos">Bosnià</string>
+    <string name="language_name_bre">Bretó</string>
+    <string name="language_name_bul">Búlgar</string>
+    <string name="language_name_cat">Català</string>
+    <string name="language_name_ces">Txec</string>
+    <string name="language_name_cym">Gal·lès</string>
+    <string name="language_name_dan">Danès</string>
+    <string name="language_name_eng">Anglès</string>
+    <string name="language_name_epo">Esperanto</string>
+    <string name="language_name_eus">Basc</string>
+    <string name="language_name_fra">Francès</string>
+    <string name="language_name_glg">Gallec</string>
+    <string name="language_name_hat">Haitià</string>
+    <string name="language_name_hbs">Serbocroat</string>
+    <string name="language_name_heb">Hebreu</string>
+    <string name="language_name_hin">Hindi</string>
+    <string name="language_name_hrv">Croat</string>
+    <string name="language_name_isl">Islandès</string>
+    <string name="language_name_ind">Indonesi</string>
+    <string name="language_name_ita">Italià</string>
+    <string name="language_name_kaz">Kazakh</string>
+    <string name="language_name_mkd">Macedoni</string>
+    <string name="language_name_mlt">Maltès</string>
+    <string name="language_name_msa">Malai</string>
+    <string name="language_name_nld">Neerlandès</string>
+    <string name="language_name_nno">Noruec Nynorsk</string>
+    <string name="language_name_nob">Noruec Bokmål</string>
+    <string name="language_name_nor">Noruec</string>
+    <string name="language_name_oci">Occità</string>
+    <string name="language_name_pol">Polonès</string>
+    <string name="language_name_por">Portuguès</string>
+    <string name="language_name_ron">Romanès</string>
+    <string name="language_name_slv">Eslovè</string>
+    <string name="language_name_sme">Sami septentrional</string>
+    <string name="language_name_spa">Espanyol</string>
+    <string name="language_name_srd">Sard</string>
+    <string name="language_name_srp">Serbi</string>
+    <string name="language_name_swe">Suec</string>
+    <string name="language_name_tat">Tàtar</string>
+    <string name="language_name_tet">Tetun</string>
+    <string name="language_name_urd">Urdú</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_bra">Brasil</string>
+    <string name="country_name_usa">Estats Units</string>
+    <string name="country_name_valencia">València</string>
+
+</resources>

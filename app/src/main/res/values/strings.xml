@@ -162,6 +162,7 @@
 
     <string-array name="supported_display_languages" translatable="false">
         <item>an</item>
+        <item>ca</item>
         <item>en</item>
         <item>es</item>
         <item>eu</item>
