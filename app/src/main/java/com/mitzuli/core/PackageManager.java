@@ -18,13 +18,13 @@
 
 package com.mitzuli.core;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.util.Base64;
 import android.util.Xml;

@@ -37,7 +37,6 @@ import org.opencv.android.OpenCVLoader;
 
 import com.f2prateek.progressbutton.ProgressButton;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.IntentFilter;
@@ -50,7 +49,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
@@ -76,7 +76,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity implements OnClickListener, AdapterView.OnItemSelectedListener, Toolbar.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity implements OnClickListener, AdapterView.OnItemSelectedListener, Toolbar.OnMenuItemClickListener {
 
     private static final boolean OPENCV_AVAILABLE = OpenCVLoader.initDebug();
 
