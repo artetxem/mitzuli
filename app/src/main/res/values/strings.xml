@@ -163,6 +163,7 @@
     <string-array name="supported_display_languages" translatable="false">
         <item>an</item>
         <item>ca</item>
+        <item>de</item>
         <item>fr</item>
         <item>gl</item>
         <item>en</item>
