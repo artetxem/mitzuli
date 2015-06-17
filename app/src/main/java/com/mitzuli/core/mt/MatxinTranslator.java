@@ -18,9 +18,16 @@
 
 package com.mitzuli.core.mt;
 
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 
 public class MatxinTranslator implements Translator {
@@ -33,10 +40,34 @@ public class MatxinTranslator implements Translator {
         this.key = key;
     }
 
+    private String translateLine(String text) throws IOException {
+        if (text.trim().length() == 0) return "";
+        final URL query = new URL(url + "?lang=" + code + "&cod_client=" + key + "&text=" + URLEncoder.encode(text, "UTF-8"));
+        return new Scanner(query.openStream(), "UTF-8").useDelimiter("\\A").next().trim();
+    }
+
     @Override
     public String translate(String text) throws Exception {
-        final URL query = new URL(url + "?lang=" + code + "&cod_client=" + key + "&text=" + URLEncoder.encode(text, "UTF-8"));
-        return new Scanner(query.openStream(), "UTF-8").useDelimiter("\\A").next();
+        // The Matxin API does not keep line breaks in its translations, so we will translate line by line
+        final String[] lines = text.split("\n");
+        if (lines.length > 25) {  // If the input text has more than 25 lines translate it as a single line (we don't want to make so many calls to the server)
+            return translateLine(text);
+        }
+        final ExecutorService executor = Executors.newCachedThreadPool();
+        final List<Callable<String>> tasks = new ArrayList<Callable<String>>();
+        for (final String line : lines) {
+            tasks.add(new Callable<String>() {
+                @Override public String call() throws Exception {
+                    return translateLine(line);
+                }
+            });
+        }
+        final StringBuilder sb = new StringBuilder();
+        for (Future<String> translation : executor.invokeAll(tasks)) {
+            if (sb.length() > 0) sb.append("\n");
+            sb.append(translation.get());
+        }
+        return sb.toString();
     }
 
 }
