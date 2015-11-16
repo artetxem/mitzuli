@@ -28,7 +28,7 @@ import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
 
-@ReportsCrashes(formUri = Keys.ACRA_FORM_URI, formKey=Keys.ACRA_FORM_KEY)
+@ReportsCrashes(formUri = Keys.ACRA_FORM_URI)
 public class Mitzuli extends Application {
 
     private Locale locale = null;
