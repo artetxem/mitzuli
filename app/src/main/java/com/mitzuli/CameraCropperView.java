@@ -91,26 +91,16 @@ public class CameraCropperView extends FrameLayout {
     private final SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
 
         @Override public void surfaceCreated(SurfaceHolder holder) {
-            if (opened) { // TODO This check should not be necessary (we must be missing something in the main activity class)
-                try {
-                    camera.setPreviewDisplay(previewHolder);
-                    startPreview();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+            // We will wait for surfaceChanged to start the preview
         }
 
-        @Override public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
+        @Override public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            // TODO This check should not be necessary (we must be missing something in the main activity class)
+            if (opened) startPreview();
+        }
 
         @Override public void surfaceDestroyed(SurfaceHolder holder) {
-            if (opened) {
-                joinPreviewStarter();
-                if (previewing) {
-                    camera.stopPreview();
-                    previewing = false;
-                }
-            }
+            if (opened) stopPreview();
         }
 
     };
@@ -333,13 +323,12 @@ public class CameraCropperView extends FrameLayout {
                 layoutHeight = aux;
             }
 
-            // TODO Review this...
             final Camera.Parameters params = camera.getParameters();
             if (!previewSize.equals(params.getPreviewSize())) {
-                camera.stopPreview();
+                stopPreview();
                 params.setPreviewSize(previewSize.width, previewSize.height);
                 camera.setParameters(params);
-                camera.startPreview();
+                // Preview will be restarted by surfaceChanged
             }
 
             cropOverlayBitmapRect.left = 0;
@@ -400,11 +389,26 @@ public class CameraCropperView extends FrameLayout {
         if (previewing || previewStarter != null) return;
         (previewStarter = new Thread() {
             @Override public void run() {
-                camera.startPreview();
-                previewing = true;
-                previewStarter = null;
+                try {
+                    camera.stopPreview();
+                    camera.setPreviewDisplay(previewHolder);
+                    camera.startPreview();
+                    previewing = true;
+                    previewStarter = null;
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }).start();
+    }
+
+    public void stopPreview() {
+        if (!opened) throw new IllegalStateException("Camera not opened yet");
+        joinPreviewStarter();
+        if (previewing) {
+            camera.stopPreview();
+            previewing = false;
+        }
     }
 
     public void joinPreviewStarter() {
@@ -432,8 +436,7 @@ public class CameraCropperView extends FrameLayout {
         joinPreviewStarter();
         final boolean restartPreview = previewing && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
         if (restartPreview) {
-            previewing = false;
-            camera.stopPreview();
+            stopPreview();
         }
         int rotation = ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
         int degrees = 0;

@@ -29,8 +29,9 @@
 
     <include layout="@layout/toolbar_actionbar" android:id="@+id/toolbar_actionbar" />
 
-    <!-- Dummy element to be able to clear focus from the source text -->
-    <LinearLayout
+    <!-- Dummy element to be able to clear focus from the source text and solve the SurfaceView
+    blinking problem (see https://stackoverflow.com/questions/8772862/surfaceview-flashes-black-on-load) -->
+    <SurfaceView
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:layout_width="0px"
