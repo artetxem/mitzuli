@@ -33,6 +33,12 @@ android.applicationVariants.all { variant ->
         output.versionCodeOverride =
                 project.ext.versionCodes.get(output.getFilter(com.android.build.OutputFile.ABI), 0) * 1000000 + android.defaultConfig.versionCode
     }
+    variant.mergeResources.doLast {
+        copy { // Hack to support Asturian, which doesn't have an ISO 639-1 code, in pre-lollipop devices
+            from "$buildDir/intermediates/res/$variant.dirName/values-b+ast"
+            into "$buildDir/intermediates/res/$variant.dirName/values-es-rXA"
+        }
+    }
 }
 
 dependencies {

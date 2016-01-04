@@ -22,6 +22,7 @@ import java.util.Locale;
 
 import android.app.Application;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.preference.PreferenceManager;
 
 import org.acra.ACRA;
@@ -37,7 +38,8 @@ public class Mitzuli extends Application {
     public void onCreate() {
         super.onCreate();
         final String displayLanguage = PreferenceManager.getDefaultSharedPreferences(this).getString("pref_key_display_language", SettingsActivity.DEFAULT_LANGUAGE);
-        if (!displayLanguage.equals(SettingsActivity.DEFAULT_LANGUAGE)) locale = new Locale(displayLanguage);
+        if (displayLanguage.equals("ast") && Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) locale = new Locale("es", "XA"); // Hack to support Asturian, which doesn't have an ISO 639-1 code
+        else if (!displayLanguage.equals(SettingsActivity.DEFAULT_LANGUAGE)) locale = new Locale(displayLanguage);
         updateLocale();
         ACRA.init(this);
     }

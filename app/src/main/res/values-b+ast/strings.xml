@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2015 Softastur <alministradores@softastur.org>
+  ~
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation; either version 2 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License along
+  ~ with this program; if not, write to the Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Axustes</string>
+    <string name="translate_button">TRADUCIR</string>
+    <string name="speak_now">fala agora</string>
+    <string name="translation_copied">Copióse la traducción</string>
+    <string name="share_with">Compartir traducción con</string>
+
+    <string name="ok_button">Aceutar</string>
+    <string name="cancel_button">Encaboxar</string>
+
+    <string name="action_src_audio">Salida de voz</string>
+    <string name="action_mic">Entrada de voz</string>
+    <string name="action_camera">Traducción pela cámara</string>
+    <string name="action_keyboard">Entrada de tecláu</string>
+    <string name="action_clear">Llimpiar</string>
+    <string name="action_trg_audio">Salida de voz</string>
+    <string name="action_copy">Copiar</string>
+    <string name="action_share">Compartir</string>
+
+    <string name="error_dialog_title">Fallu</string>
+
+    <string name="update_dialog_title">¿Anovar agora?</string>
+    <string name="update_dialog_update_button">Anovar</string>
+    <string name="update_dialog_packages_to_update">Anovaránse los paquetes de darréu:</string>
+
+    <string name="no_update_dialog_message">¡Ta too anovao!</string>
+
+    <string name="update_progress_dialog_title">Anovando</string>
+    <string name="update_progress_dialog_message">Anovando paquetes&#8230;</string>
+
+    <string name="offline_on_install_error_title">Falló la instalación</string>
+    <string name="offline_on_install_error_message">Ríquese l\'accesu a internet pa instalar pareyes de llingües.</string>
+    <string name="offline_on_translate_error_title">Falló la traducción</string>
+    <string name="offline_on_translate_error_message">Instala les pareyes de llingües pa traducir ensin accesu a internet.</string>
+
+    <string name="toast_unavailable_tts">Nun ta disponible la salida de voz pa esta llingua</string>
+    <string name="toast_unavailable_tts_offline">Nun ta disponible ensin accesu a internet la salida de voz pa esta llingua</string>
+    <string name="toast_unavailable_stt">Nun ta disponible la entrada de voz pa esta llingua</string>
+    <string name="toast_unavailable_stt_offline">Nun ta disponible ensin accesu a internet la entrada de voz pa esta llingua</string>
+    <string name="toast_unavailable_ocr">Nun ta disponible la traducción pela cámara pa esta llingua</string>
+
+
+    <!-- SETTINGS -->
+
+    <string name="pref_header_general">Xeneral</string>
+    <string name="pref_title_display_language">Llingua p\'amosar</string>
+    <string name="pref_entry_value_default_display_language">Predeterminada del sistema</string>
+    <string name="pref_dialog_title_confirm_display_language">¿Camudar la llingua?</string>
+    <string name="pref_dialog_message_confirm_display_language">Reaniciaráse l\'aplicación p\'aplicar les camudancies.</string>
+    <string name="pref_title_beta_packages">Pareyes de llingües en beta</string>
+    <string name="pref_description_beta_packages">Habilita les pareyes de llingües en beta (quiciabes la calidá de traducción sía probe)</string>
+    <string name="pref_title_mark_unknown">Pintar pallabres desconocíes</string>
+    <string name="pref_description_mark_unknown">Pinta les pallabres desconocíes</string>
+    <string name="pref_title_auto_tts">TTS automáticu</string>
+    <string name="pref_description_auto_tts">Diz de mou automáticu\'l testu traducíu nel mou micrófonu</string>
+
+    <string name="pref_header_updates">Anovamientos</string>
+    <string name="pref_title_autocheck_updates">Auto-comprobar anovamientos</string>
+    <string name="pref_description_autocheck_updates">Comprueba automáticamente anovamientos pa les tos pareyes de llingües</string>
+    <string name="pref_title_check_updates">Comprobar anovamientos</string>
+    <string name="pref_description_check_updates">Comprueba anovamientos de les tos pareyes de llingües</string>
+
+    <string name="pref_header_advanced">Avanzao</string>
+    <string name="pref_title_external_storage">Usar l\'almacenamientu esternu</string>
+    <string name="pref_description_external_storage">Instala los paquetes nel almacenamientu esternu</string>
+    <string name="pref_dialog_title_confirm_external_storage">¿Camudar allugamientu d\'instalación?</string>
+    <string name="pref_dialog_message_confirm_external_storage">Desinstalaránse toles pareyes de llingües pal usu fuera de llinia.</string>
+    <string name="pref_title_signature_verification">Verificar robles de paquetes</string>
+    <string name="pref_description_signature_verification">Usa la verificación de robles pa protexer d\'ataques d\'inyeición de códigu</string>
+
+    <string name="pref_header_development">Desendolcu</string>
+    <string name="pref_title_ocr_debugging">Depuración d\'OCR</string>
+    <string name="pref_description_ocr_debugging">Guarda los ficheros pa la depuración d\'OCR nel almcenamientu esternu</string>
+
+    <string name="pref_header_about">Tocante a</string>
+    <string name="pref_title_licenses">Llicencies de códigu abiertu</string>
+    <string name="pref_description_licenses">Detalles de llicencies pa software de códigu abiertu</string>
+    <string name="pref_title_acknowledgments">Agradecimientos</string>
+    <string name="pref_description_acknowledgments">Detalles tocante a les instituciones financiando\'l proyeutu</string>
+    <string name="pref_dialog_message_acknowledgments">Proyeutu sofitáu pol gobiernu vascu so l\'ayuda financiera d\'IKT 2014</string>
+
+    <string name="offline_on_update_error_title">Falló l\'anovamientu</string>
+    <string name="offline_on_update_error_message">Ríquese l\'accesu a internet p\'anovar les pareyes de llingües.</string>
+
+
+    <!-- LANGUAGE NAMES -->
+
+    <string name="language_name_afr">Afrikaans</string>
+    <string name="language_name_ara">Árabe</string>
+    <string name="language_name_arg">Aragonés</string>
+    <string name="language_name_ast">Asturianu</string>
+    <string name="language_name_bos">Bosniu</string>
+    <string name="language_name_bre">Bretón</string>
+    <string name="language_name_bul">Búlgaru</string>
+    <string name="language_name_cat">Catalán</string>
+    <string name="language_name_ces">Checu</string>
+    <string name="language_name_cym">Galés</string>
+    <string name="language_name_dan">Danés</string>
+    <string name="language_name_deu">Alemán</string>
+    <string name="language_name_eng">Inglés</string>
+    <string name="language_name_epo">Esperantu</string>
+    <string name="language_name_eus">Vascu</string>
+    <string name="language_name_fra">Francés</string>
+    <string name="language_name_glg">Gallegu</string>
+    <string name="language_name_hat">Haitianu</string>
+    <string name="language_name_hbs">Serbocroata</string>
+    <string name="language_name_heb">Hebréu</string>
+    <string name="language_name_hin">Hindi</string>
+    <string name="language_name_hrv">Croata</string>
+    <string name="language_name_isl">Islandés</string>
+    <string name="language_name_ind">Indonesiu</string>
+    <string name="language_name_ita">Italianu</string>
+    <string name="language_name_kaz">Kazaxu</string>
+    <string name="language_name_mkd">Macedoniu</string>
+    <string name="language_name_mlt">Maltés</string>
+    <string name="language_name_msa">Malayu</string>
+    <string name="language_name_nld">Neerlandés</string>
+    <string name="language_name_nno">Nynorsk noruegu</string>
+    <string name="language_name_nob">Bokmål noruegu</string>
+    <string name="language_name_nor">Noruegu</string>
+    <string name="language_name_oci">Occitanu</string>
+    <string name="language_name_pol">Polacu</string>
+    <string name="language_name_por">Portugués</string>
+    <string name="language_name_ron">Rumanu</string>
+    <string name="language_name_slv">Eslovenu</string>
+    <string name="language_name_sme">Sami del norte</string>
+    <string name="language_name_spa">Español</string>
+    <string name="language_name_srd">Sardu</string>
+    <string name="language_name_srp">Serbiu</string>
+    <string name="language_name_swe">Suecu</string>
+    <string name="language_name_tat">Tártaru</string>
+    <string name="language_name_tet">Tétum</string>
+    <string name="language_name_urd">Urdu</string>
+
+    <string name="country_name_aran">Aran</string>
+    <string name="country_name_bra">Brasil</string>
+    <string name="country_name_usa">EE.XX</string>
+    <string name="country_name_valencia">Valencia</string>
+
+</resources>
