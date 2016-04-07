@@ -30,8 +30,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.security.DigestInputStream;
 import java.security.DigestOutputStream;
 import java.security.KeyFactory;
@@ -380,7 +380,12 @@ public abstract class Package {
                 publishProgress(5);
                 if (remotePackage == null)
                     throw new IllegalStateException("There is no package available");
-                final URLConnection connection = new URL(remotePackage.url).openConnection();
+                HttpURLConnection connection = (HttpURLConnection) new URL(remotePackage.url).openConnection();
+                int responseCode = connection.getResponseCode();
+                while (responseCode == HttpURLConnection.HTTP_MOVED_PERM || responseCode == HttpURLConnection.HTTP_MOVED_TEMP) {
+                    connection = (HttpURLConnection) new URL(connection.getURL(), connection.getHeaderField("location")).openConnection();
+                    responseCode = connection.getResponseCode();
+                }
                 final int totalBytes = connection.getContentLength();
                 final byte[] buffer = new byte[2048];
                 final BufferedInputStream bis = new BufferedInputStream(connection.getInputStream());
