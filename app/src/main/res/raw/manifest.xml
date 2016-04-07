@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest version="20150301001">
+<manifest version="20160407001">
 
     <mt src="afr" trg="nld">
         <online type="apy" code="afr|nld" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="af-nl" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/af-nl.zip/download" signature="OsotNTZNNDfUaQVwqqWAopsf5vy4TGqpY6oyJQqLd6x4nLO4RcLX8sHezaKvj2zir2/oG7iyvTzEdWWdOmglmDwWrgB3pHlF4+SCOSiWvCppC7Z/APVqcqxCaoPrRUuIXl2FmRSFTuN0Nt2Cq9UwwiDzb9WDZqw1fbIPR+VvRwlst4ry6lP2nQfGDrWFd4zFPefq/2q4cmM3RFdwlFojeOqiEKZEP9avjEpXrXP3XADdvAUT8mISLr82BaUxS7HaonSNbD8D/8/crQ3hU4P2kKGaz/WtzpK4aJELStfnWjc1qyJ61ouyEiQOlUmvrCagrmdp0HXxNJIXjKAH8JQf2Q=="/>
+        <offline type="apertium" code="af-nl" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/af-nl.zip/download" signature="OsotNTZNNDfUaQVwqqWAopsf5vy4TGqpY6oyJQqLd6x4nLO4RcLX8sHezaKvj2zir2/oG7iyvTzEdWWdOmglmDwWrgB3pHlF4+SCOSiWvCppC7Z/APVqcqxCaoPrRUuIXl2FmRSFTuN0Nt2Cq9UwwiDzb9WDZqw1fbIPR+VvRwlst4ry6lP2nQfGDrWFd4zFPefq/2q4cmM3RFdwlFojeOqiEKZEP9avjEpXrXP3XADdvAUT8mISLr82BaUxS7HaonSNbD8D/8/crQ3hU4P2kKGaz/WtzpK4aJELStfnWjc1qyJ61ouyEiQOlUmvrCagrmdp0HXxNJIXjKAH8JQf2Q=="/>
     </mt>
 
     <mt src="ara" trg="mlt" beta="true">
         <online type="apy" code="ara|mlt" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ar-mt" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/ar-mt.zip/download" signature="HQW4+dmvmr2Aj6gfYGcQFTmfeIjZyGQqDa6MmvfuRNu5TeFcRgA7dy26WyIslYYNCZZAjL0nO3rCAYQ/dW1cLUdmZSr6e8A8HIIoxGyAq0Kv48gOZH43I6rAn8OnDQqwTTG6DYFSGR3j5brUQO3DA/QdT8sm276VvSGzwHzIvzX3NO8h2EchUsqLFxyFsXXlkxndMtC7LNgieW4+cbQvtBKBwmjwcxeRn0Ch3K5EwHS2Ybe2rooNuuWSBriFucflVLEzHdPXjW3rT/DGHTnI1qUBJpSCmSARm0igWdYaxOTVoXB89bfVrdgeUCBdKEoV/CwcJHu3smldwuDbuFPgog=="/>
+        <offline type="apertium" code="ar-mt" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/ar-mt.zip/download" signature="HQW4+dmvmr2Aj6gfYGcQFTmfeIjZyGQqDa6MmvfuRNu5TeFcRgA7dy26WyIslYYNCZZAjL0nO3rCAYQ/dW1cLUdmZSr6e8A8HIIoxGyAq0Kv48gOZH43I6rAn8OnDQqwTTG6DYFSGR3j5brUQO3DA/QdT8sm276VvSGzwHzIvzX3NO8h2EchUsqLFxyFsXXlkxndMtC7LNgieW4+cbQvtBKBwmjwcxeRn0Ch3K5EwHS2Ybe2rooNuuWSBriFucflVLEzHdPXjW3rT/DGHTnI1qUBJpSCmSARm0igWdYaxOTVoXB89bfVrdgeUCBdKEoV/CwcJHu3smldwuDbuFPgog=="/>
     </mt>
 
     <mt src="arg" trg="spa">
         <online type="apy" code="arg|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="an-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/an-es.zip/download" signature="nwg2WXUSZoyG54/wmYjhLsudGar0jOVo9+k+Wj+cnmszWNRVoda7rYJixvKrmbRfIV1/KtlPdrrB9opgFpXCWkkrjCIyoUGy3aoOdV0poPACA8WJPh9BOrZ9Mby9SBVmD7YF1Qybxm0k7y6iafBCiR7EWrP0oe0fwRRwKliC8UVBOqaggLDDwQ3Ur19pWjwwuXaUCsK/vM7gq4qAhtk3TQG5mOzHGIcYSg82mOmV9+AHQ2/+aoVZx2y5fMMoMQ9oxP1Kkn3txWC5P/p1gghttQ0yO+QW7cAGRoxEwChhib2wIex7TEMurTuOdRpGC1BXfMJeP25d/joLCh5bnnQD2w=="/>
+        <offline type="apertium" code="an-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/an-es.zip/download" signature="nwg2WXUSZoyG54/wmYjhLsudGar0jOVo9+k+Wj+cnmszWNRVoda7rYJixvKrmbRfIV1/KtlPdrrB9opgFpXCWkkrjCIyoUGy3aoOdV0poPACA8WJPh9BOrZ9Mby9SBVmD7YF1Qybxm0k7y6iafBCiR7EWrP0oe0fwRRwKliC8UVBOqaggLDDwQ3Ur19pWjwwuXaUCsK/vM7gq4qAhtk3TQG5mOzHGIcYSg82mOmV9+AHQ2/+aoVZx2y5fMMoMQ9oxP1Kkn3txWC5P/p1gghttQ0yO+QW7cAGRoxEwChhib2wIex7TEMurTuOdRpGC1BXfMJeP25d/joLCh5bnnQD2w=="/>
     </mt>
 
     <mt src="ast" trg="spa">
         <online type="apy" code="ast|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ast-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ast-es.zip/download" signature="Abe3WNurb10r3dVQ4L2s64K1rRkAP/z+LL2ULbf5JCnaX3g711u8Jd2+hM8NGERii+Xhuv2VpbqPViF32UrXwhi0YKJ82BgyKuX/PkKvFxkxFT1SRSuzHh+OKlXSFVTW24W44srXJ9w00XVpGT+sPL4Hu8NUOj0Zy78F9Vh6SlZn95HAnx7mbe7TKGUyEgIU8cGNL3NpSYcD/nGju8SNHWhpyvdS/JX68nxQbcV00QSeu293TM6dVXxhy0O9mNuZdlwVhJ0PtxmJAJTfyfvaq9gRt94nt+lb4/TC9mLlkjkqzsGzGFEBaTOW51yjrTz4pS5uhCN26jN9Jnift2ExNg=="/>
+        <offline type="apertium" code="ast-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ast-es.zip/download" signature="Abe3WNurb10r3dVQ4L2s64K1rRkAP/z+LL2ULbf5JCnaX3g711u8Jd2+hM8NGERii+Xhuv2VpbqPViF32UrXwhi0YKJ82BgyKuX/PkKvFxkxFT1SRSuzHh+OKlXSFVTW24W44srXJ9w00XVpGT+sPL4Hu8NUOj0Zy78F9Vh6SlZn95HAnx7mbe7TKGUyEgIU8cGNL3NpSYcD/nGju8SNHWhpyvdS/JX68nxQbcV00QSeu293TM6dVXxhy0O9mNuZdlwVhJ0PtxmJAJTfyfvaq9gRt94nt+lb4/TC9mLlkjkqzsGzGFEBaTOW51yjrTz4pS5uhCN26jN9Jnift2ExNg=="/>
     </mt>
 
     <mt src="cat" trg="eng">
         <online type="apy" code="cat|eng" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-en.zip/download" signature="UQzBTsxZAk1df8S+MeWWWxVy7RV7G7UKbPSx1hDrXWN5XNaqeOIgHR5hrBYRKIGzubLEQVtqqh0rojqaySJzf4IOb1r9pJpI7nfO3YSiZY47pra9pxqfQQL1/7aGffZv454YOuws7gmqPU+9Q7HKsiU749m9DigArm+Io4lnf5w4VjvrfndM8dWPJwwIzNKkqauN1Zxu0NsXgXMW8vG2HXC8paXmVwhr0rfyw88+dHx6hRWgcyLzd4gV2gWRHuBJuSN94zQD+5SmGjDOF6GISMm1BnzQzU1xDyJTTMicIE6gmxONqfO1tX8cPHC2RI727a0/b4k2FLhoNeydLJPRPw=="/>
+        <offline type="apertium" code="ca-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-en.zip/download" signature="UQzBTsxZAk1df8S+MeWWWxVy7RV7G7UKbPSx1hDrXWN5XNaqeOIgHR5hrBYRKIGzubLEQVtqqh0rojqaySJzf4IOb1r9pJpI7nfO3YSiZY47pra9pxqfQQL1/7aGffZv454YOuws7gmqPU+9Q7HKsiU749m9DigArm+Io4lnf5w4VjvrfndM8dWPJwwIzNKkqauN1Zxu0NsXgXMW8vG2HXC8paXmVwhr0rfyw88+dHx6hRWgcyLzd4gV2gWRHuBJuSN94zQD+5SmGjDOF6GISMm1BnzQzU1xDyJTTMicIE6gmxONqfO1tX8cPHC2RI727a0/b4k2FLhoNeydLJPRPw=="/>
     </mt>
 
     <mt src="cat" trg="eng-usa">
         <online type="apy" code="cat|eng_US" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-en_US" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-en_US.zip/download" signature="gs7U4xpVJJgvhJGQbjiSSGm3B34xon7F8SYKvxZchoUmiyIZTU/bH3CgHvwhyUwtfZOdiUAtZVLUXnoNjiYp04obMYA//rpzwh7JDGTnrMi9iDTZ/6y/wqiKUz4aNH5YPbtAofsonHcJ8RbHeAml72+8xpxQpKbwYQIozBJ1sOTZr4IOypkMJfpy+O04MbL7PRdEXt7jG/S6U2PXwdHC39O2bhs1OXP7+yMdKPH3QGgBeMgyOaGT9YNJ9Nl91/MkfldY2E3EkA+C74oz9EJEWt7MBARm20fKQjqj+LrNRfKXsl1tm/w6ZyDubzQUigHtzH8xYLdF28JzxGvwrNmC6A=="/>
+        <offline type="apertium" code="ca-en_US" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-en_US.zip/download" signature="gs7U4xpVJJgvhJGQbjiSSGm3B34xon7F8SYKvxZchoUmiyIZTU/bH3CgHvwhyUwtfZOdiUAtZVLUXnoNjiYp04obMYA//rpzwh7JDGTnrMi9iDTZ/6y/wqiKUz4aNH5YPbtAofsonHcJ8RbHeAml72+8xpxQpKbwYQIozBJ1sOTZr4IOypkMJfpy+O04MbL7PRdEXt7jG/S6U2PXwdHC39O2bhs1OXP7+yMdKPH3QGgBeMgyOaGT9YNJ9Nl91/MkfldY2E3EkA+C74oz9EJEWt7MBARm20fKQjqj+LrNRfKXsl1tm/w6ZyDubzQUigHtzH8xYLdF28JzxGvwrNmC6A=="/>
     </mt>
 
     <mt src="cat" trg="epo">
         <online type="apy" code="cat|epo" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-eo" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-eo.zip/download" signature="YLgvkuKaxNkGBEjj1XUZRuEUEx2d8N2eHOSA/l6q7yXiSz39+0qtnQ7s400sTIV77BsyKyGD73/ADJIEzqxmMOgwshnMl5WrD0GPK3t9Z8TxqvociMsDlHrA/6w6IMiEvhpwR6BeHofAwD4c6aIBIGZ/evMJs13C8B9oPrZrRKXFrz6eT8m+6mSR2J9n1DFyFuvpUXdkmyK7MP8H+Uf/nAfIoQeaa1/3JCA1dg2U62VcMzgZYrf7hlebBjWrd8G219UHNff8UwE4x5+1wR4H7NE1InWks8z1YyOqSF6SHMRoxtGweTlyJI1rXaOzkd1Vv/5ODjoox1qdvq2IOgo53A=="/>
+        <offline type="apertium" code="ca-eo" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-eo.zip/download" signature="YLgvkuKaxNkGBEjj1XUZRuEUEx2d8N2eHOSA/l6q7yXiSz39+0qtnQ7s400sTIV77BsyKyGD73/ADJIEzqxmMOgwshnMl5WrD0GPK3t9Z8TxqvociMsDlHrA/6w6IMiEvhpwR6BeHofAwD4c6aIBIGZ/evMJs13C8B9oPrZrRKXFrz6eT8m+6mSR2J9n1DFyFuvpUXdkmyK7MP8H+Uf/nAfIoQeaa1/3JCA1dg2U62VcMzgZYrf7hlebBjWrd8G219UHNff8UwE4x5+1wR4H7NE1InWks8z1YyOqSF6SHMRoxtGweTlyJI1rXaOzkd1Vv/5ODjoox1qdvq2IOgo53A=="/>
     </mt>
 
     <mt src="cat" trg="fra">
         <online type="apy" code="cat|fra" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-fr" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-fr.zip/download" signature="Rku+/mQNXPFylf4RCViRVuXlLtMspzcELkak+UPlBPUEedB8Ax1otIqAqd9RhDmvaJbmtqmhi5krmi4MJnL5wYkUpqZX9cWKD9yTbxU4qZ1ioI0bXItap1yACh+cpr3sXWBPTVlqlAbYuRG9BmrmVTkfPpXM7JMnVhAN3ozWaFlH/FlJItxVj+yX3MxCmxlXh7Li4xiaRiw3Fudp3ensytEU4F06s92xqkpxyu2F994OPlhw3zglhi1TgeowT/8aK1DO6Q3AfEFOPTtDyoKjhYZsmbOMV2icN+ZWYMJbVKtTiiQvcPTEwzVKlM7tMlVSnCk57IrXVyuZOzH33NozmQ=="/>
+        <offline type="apertium" code="ca-fr" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-fr.zip/download" signature="Rku+/mQNXPFylf4RCViRVuXlLtMspzcELkak+UPlBPUEedB8Ax1otIqAqd9RhDmvaJbmtqmhi5krmi4MJnL5wYkUpqZX9cWKD9yTbxU4qZ1ioI0bXItap1yACh+cpr3sXWBPTVlqlAbYuRG9BmrmVTkfPpXM7JMnVhAN3ozWaFlH/FlJItxVj+yX3MxCmxlXh7Li4xiaRiw3Fudp3ensytEU4F06s92xqkpxyu2F994OPlhw3zglhi1TgeowT/8aK1DO6Q3AfEFOPTtDyoKjhYZsmbOMV2icN+ZWYMJbVKtTiiQvcPTEwzVKlM7tMlVSnCk57IrXVyuZOzH33NozmQ=="/>
     </mt>
 
     <mt src="cat" trg="oci">
         <online type="apy" code="cat|oci" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-oc" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-oc.zip/download" signature="JeBccmNMFZf/IiENaKIgpaBU9lQzUm9bF81U3A/z72NVkwuDAVmBfAayfTnfMyKMkh1N5A4TdnBGob/TRkT6qZsfn2fCuairX3/alVDSPtWz0wIikiyJ7AUHrtxeoAGSJpGVxN6b+jid8fTfxZ4iC76MILVb0XrDk0nYAzK3JKoz2k+hBfE+GWv3vOXAalboW4wlyD8Dg7/byBjAo9euU9zrAMKnsKUjM5/AinbfBbkKHqcomOE5yAT7Brbx03QY7AJDvXMNT7IIyfE3Y8d4F/phCOlyYRbU/RIz4/hPOmrouSZxY0cakZvDZYZwCJvy/7/eX67Q69VzxMXUQUCPfw=="/>
+        <offline type="apertium" code="ca-oc" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-oc.zip/download" signature="JeBccmNMFZf/IiENaKIgpaBU9lQzUm9bF81U3A/z72NVkwuDAVmBfAayfTnfMyKMkh1N5A4TdnBGob/TRkT6qZsfn2fCuairX3/alVDSPtWz0wIikiyJ7AUHrtxeoAGSJpGVxN6b+jid8fTfxZ4iC76MILVb0XrDk0nYAzK3JKoz2k+hBfE+GWv3vOXAalboW4wlyD8Dg7/byBjAo9euU9zrAMKnsKUjM5/AinbfBbkKHqcomOE5yAT7Brbx03QY7AJDvXMNT7IIyfE3Y8d4F/phCOlyYRbU/RIz4/hPOmrouSZxY0cakZvDZYZwCJvy/7/eX67Q69VzxMXUQUCPfw=="/>
     </mt>
 
     <!--mt src="cat" trg="oci-aran">
       <online type="apy" code="cat|oci_aran" url="http://apy.projectjj.com"/>
-      <offline type="apertium" code="ca-oc_aran" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-oc_aran.zip/download" signature="oU7MRZMama3FRogU08dJL8DN+jbylz8gIZKZlONWaXCPhfJLKyNx9BSza2DuMijS5DRcr1gHXzyQscQrdmZZdMzJ7QfLnvIl/qv0Itewqn1nQpuy/xQh3pXDQmZPIVpcXBpC7NAHE4bfwGL40IGsO6cWzb3OaqiZue+wlM4eQOMjvYH0SDSpyAIO6FUddMnfeFTSVdEH43Kmikh8JwUGbS9TK4MwRruzzOnrRNpzr9DGf0R2XUUP6TaX4eSA03eW+mbI6caULvy6ueuPZ4gt1CuwdvP0Olnz8paAVYgAaXcuLIJKVK9tXmHhH2g1QcVyOsp4IHa55e/GWSy42FkfKw=="/>
+      <offline type="apertium" code="ca-oc_aran" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-oc_aran.zip/download" signature="oU7MRZMama3FRogU08dJL8DN+jbylz8gIZKZlONWaXCPhfJLKyNx9BSza2DuMijS5DRcr1gHXzyQscQrdmZZdMzJ7QfLnvIl/qv0Itewqn1nQpuy/xQh3pXDQmZPIVpcXBpC7NAHE4bfwGL40IGsO6cWzb3OaqiZue+wlM4eQOMjvYH0SDSpyAIO6FUddMnfeFTSVdEH43Kmikh8JwUGbS9TK4MwRruzzOnrRNpzr9DGf0R2XUUP6TaX4eSA03eW+mbI6caULvy6ueuPZ4gt1CuwdvP0Olnz8paAVYgAaXcuLIJKVK9tXmHhH2g1QcVyOsp4IHa55e/GWSy42FkfKw=="/>
     </mt-->
 
     <mt src="cat" trg="por">
         <online type="apy" code="cat|por" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-pt" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-pt.zip/download" signature="pX+Z0gkLAZFA/eZYttsbm0YKEA1IUuTWdTW3OAkalF2wvZ0OdLfO6DT2i1yGiHn5W9jOYR3hvMZKCM6/ooag/6fBw4Ev3NxcVfuUJjSyg6XV2SqU0WHJyezTn9uwnozwmXYcyoCEMmn17HMLKCcP3/e1T3OA5v6HryXSEToUfn2n3KjQ9Mly2TGdF7cv3M84aZEDXWg3SCqvSv4Nc3v1iSVc4Z8Otj1/NfIMPGGQuxMHmmJnVAS01NUNh7xElb1Vbp4ZgaR+izHb/9y7i3cgiiv29XbupQZOfuUCKSjDQ740YhnZInR9hOOgmOUQ9Xq+/gk9MS7Rt/A+KbO3d7KvmQ=="/>
+        <offline type="apertium" code="ca-pt" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-pt.zip/download" signature="pX+Z0gkLAZFA/eZYttsbm0YKEA1IUuTWdTW3OAkalF2wvZ0OdLfO6DT2i1yGiHn5W9jOYR3hvMZKCM6/ooag/6fBw4Ev3NxcVfuUJjSyg6XV2SqU0WHJyezTn9uwnozwmXYcyoCEMmn17HMLKCcP3/e1T3OA5v6HryXSEToUfn2n3KjQ9Mly2TGdF7cv3M84aZEDXWg3SCqvSv4Nc3v1iSVc4Z8Otj1/NfIMPGGQuxMHmmJnVAS01NUNh7xElb1Vbp4ZgaR+izHb/9y7i3cgiiv29XbupQZOfuUCKSjDQ740YhnZInR9hOOgmOUQ9Xq+/gk9MS7Rt/A+KbO3d7KvmQ=="/>
     </mt>
 
     <mt src="cat" trg="spa">
         <online type="apy" code="cat|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ca-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-es.zip/download" signature="jzDgKKTNYiA5ZspBo5NfrzyDo2rvQBA4Fhi6o566Gtehf4TjG1eKDmCH7L3y3CK5asBpIcWdk+gowT5zuPED4JirHvzkbZzRXWY8J3AHajOIJyFKxes1L3Drn7I8cJOQ1gqor0gZLlhSlZoVBNQjOnzfQmijbCyfq/StIpOfTobMdwx3gnQjhVCbK3SaEC07gQ9Sn7q4V6G9U5df1wvYtn4ORzPvopTG0ULoDkorbWxJKQiCRw2WcLc+CaNmFWB+v+PSM2LpRdyxvVc3rlg9sjWei//OJ23WdUd8hKk3t0qnkDuSmlbfNarS119CU+Vu5jYNFu2BB1iPeBImXwI5OQ=="/>
+        <offline type="apertium" code="ca-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ca-es.zip/download" signature="jzDgKKTNYiA5ZspBo5NfrzyDo2rvQBA4Fhi6o566Gtehf4TjG1eKDmCH7L3y3CK5asBpIcWdk+gowT5zuPED4JirHvzkbZzRXWY8J3AHajOIJyFKxes1L3Drn7I8cJOQ1gqor0gZLlhSlZoVBNQjOnzfQmijbCyfq/StIpOfTobMdwx3gnQjhVCbK3SaEC07gQ9Sn7q4V6G9U5df1wvYtn4ORzPvopTG0ULoDkorbWxJKQiCRw2WcLc+CaNmFWB+v+PSM2LpRdyxvVc3rlg9sjWei//OJ23WdUd8hKk3t0qnkDuSmlbfNarS119CU+Vu5jYNFu2BB1iPeBImXwI5OQ=="/>
     </mt>
 
     <mt src="cat-valencia" trg="spa">
-        <offline type="apertium" code="val-ca-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-ca-es.zip/download" signature="lrHW2GTNeIugNUfHcnmZGq6+WQ+E2ZRIQd+yGGtEpheQLXoRAfJ3UXw+k0i/i0Ul/zKET0uQBHDdVNU6SnnY0b5X0ibqFz7fZ+wyGReUJeq0Xwl+UTPeEv3YUZQ9aibzrO1op0r1Z8q4c2W/jLaZGHWOdFfUj7AUg4kybgC9YfApXKlmkDXUJ1SagjnImrnZOpEA41bfMaJTFaBSw33mpWmyp6tnk20LzqviC/pK6TfxD463DvaST6oCVWl86UkXSp8smvVsEuoWywdJpmmOndk2QGZ/2/H8qlQP8v9lkKAu6pnd2vD//ZkzJ2gdCg7pQkPVy50a6EoFke8mODsybA=="/>
+        <offline type="apertium" code="val-ca-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-ca-es.zip/download" signature="lrHW2GTNeIugNUfHcnmZGq6+WQ+E2ZRIQd+yGGtEpheQLXoRAfJ3UXw+k0i/i0Ul/zKET0uQBHDdVNU6SnnY0b5X0ibqFz7fZ+wyGReUJeq0Xwl+UTPeEv3YUZQ9aibzrO1op0r1Z8q4c2W/jLaZGHWOdFfUj7AUg4kybgC9YfApXKlmkDXUJ1SagjnImrnZOpEA41bfMaJTFaBSw33mpWmyp6tnk20LzqviC/pK6TfxD463DvaST6oCVWl86UkXSp8smvVsEuoWywdJpmmOndk2QGZ/2/H8qlQP8v9lkKAu6pnd2vD//ZkzJ2gdCg7pQkPVy50a6EoFke8mODsybA=="/>
     </mt>
 
     <mt src="ces" trg="pol" beta="true">
-        <offline type="apertium" code="cs-pl" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/cs-pl.zip/download" signature="ipehaZTFmpzQo+RpV9zTeriYd2lweUHc+jHLXlhiMzSJAb/Ol4YiJvOuGCrW9RG2mVbauLhjTarc4GgGZPKKDDalRvXLXdeuEz1jku89vw5YtNuAIRGHU3cD/6DZvIazaU4iVLAfny6QQRc9rhTNUB3yj8Gil/bP4h8FXKu9Z2pXrlZz0NN3sg3fjBFBjatMogP9LfN79IBuNca59epajkxnCZHKN03oRYlsgam/ywp1C9hNfpZPtj7JQlF3hlGuZHApK+Q2PQZSSRUJMflGDVDtZWeff7cqHpGEQNPfZLW6BIiAX3bGAaGc1R7a1o7eZFJkxM7uQWIPpccCyOMROA=="/>
+        <offline type="apertium" code="cs-pl" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/cs-pl.zip/download" signature="ipehaZTFmpzQo+RpV9zTeriYd2lweUHc+jHLXlhiMzSJAb/Ol4YiJvOuGCrW9RG2mVbauLhjTarc4GgGZPKKDDalRvXLXdeuEz1jku89vw5YtNuAIRGHU3cD/6DZvIazaU4iVLAfny6QQRc9rhTNUB3yj8Gil/bP4h8FXKu9Z2pXrlZz0NN3sg3fjBFBjatMogP9LfN79IBuNca59epajkxnCZHKN03oRYlsgam/ywp1C9hNfpZPtj7JQlF3hlGuZHApK+Q2PQZSSRUJMflGDVDtZWeff7cqHpGEQNPfZLW6BIiAX3bGAaGc1R7a1o7eZFJkxM7uQWIPpccCyOMROA=="/>
     </mt>
 
     <mt src="dan" trg="swe">
         <online type="apy" code="dan|swe" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="da-sv" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/da-sv.zip/download" signature="gU4cTJ58Ga74T1oDGXfZYPnnsyqQOrgM7oAGSjW8MWaP/4oz2URxiHVgPDv760EPu1SMCn7ZvQ7f4FKrfX9NZ2oV1HDfZOCKULUMWTOKOox4Z2T5XPogeorkWpvfFfK0/C9V0gXzRTFkm3Tij8SyXChwtL/nW/+wsRC57YJzS+q8JdZkM90bco6mvuHaHZyW1eGMc3BvHDKU6Bq8FIpYLlvXihw1F7EAIbO1VgVy5wwn9XcvWMfxJ9YKxr14PorPwZVxf5y7FEukM+vFsior9kTwCVyR1/zeHJrjfIWVRraxLXWjkHbNHFdVe2tvqM9qx74O5dGc3zB0bQbFG6RhNA=="/>
+        <offline type="apertium" code="da-sv" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/da-sv.zip/download" signature="gU4cTJ58Ga74T1oDGXfZYPnnsyqQOrgM7oAGSjW8MWaP/4oz2URxiHVgPDv760EPu1SMCn7ZvQ7f4FKrfX9NZ2oV1HDfZOCKULUMWTOKOox4Z2T5XPogeorkWpvfFfK0/C9V0gXzRTFkm3Tij8SyXChwtL/nW/+wsRC57YJzS+q8JdZkM90bco6mvuHaHZyW1eGMc3BvHDKU6Bq8FIpYLlvXihw1F7EAIbO1VgVy5wwn9XcvWMfxJ9YKxr14PorPwZVxf5y7FEukM+vFsior9kTwCVyR1/zeHJrjfIWVRraxLXWjkHbNHFdVe2tvqM9qx74O5dGc3zB0bQbFG6RhNA=="/>
     </mt>
 
     <mt src="eng" trg="cat">
         <online type="apy" code="eng|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="en-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-ca.zip/download" signature="IFYQWwsJPf6oBX8upmyG68f4SduWKyJr3qEs1LPtkCe5JgK9yg2ewAe59KQXtIBifYrUX0E2KrcEwDUeB5hNS9IWGEl99fQIW7owy4cE1he/A2L7lXhOb2XBNLOB0bErDm7h2UQKm7MGzfCSFP1OLQEfUAx+Mfqi92+4U/90ta4PN2Va9V4ZWVwFZlz2I5ABaGszAIdvHhKfzbPks5KnIcsymII4EaC7l2gnivdpqOnd4p3YPby9UpJZJAL8SUoTkHIWItdHY2umYylVIMLX/Q4iDExM1Tm/+nBgmgruC61XHRojREyMvEffwY1ECGZyYLnAbaPEy392R8vd2dXhGQ=="/>
+        <offline type="apertium" code="en-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-ca.zip/download" signature="IFYQWwsJPf6oBX8upmyG68f4SduWKyJr3qEs1LPtkCe5JgK9yg2ewAe59KQXtIBifYrUX0E2KrcEwDUeB5hNS9IWGEl99fQIW7owy4cE1he/A2L7lXhOb2XBNLOB0bErDm7h2UQKm7MGzfCSFP1OLQEfUAx+Mfqi92+4U/90ta4PN2Va9V4ZWVwFZlz2I5ABaGszAIdvHhKfzbPks5KnIcsymII4EaC7l2gnivdpqOnd4p3YPby9UpJZJAL8SUoTkHIWItdHY2umYylVIMLX/Q4iDExM1Tm/+nBgmgruC61XHRojREyMvEffwY1ECGZyYLnAbaPEy392R8vd2dXhGQ=="/>
     </mt>
 
     <mt src="eng" trg="cat-valencia">
-        <offline type="apertium" code="val-en-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-en-ca.zip/download" signature="YX3mqj34SFoiNrutwhNLk1rGhhwNal1irmA6MU1Hk0bSeZSi/yn50qnmh6bi/GlsFgLQ0X9RvFFe+3zJAw8iOwjaxHOR6wFgNrhePpRTtQUtWM4xUUy2q0PUS6hfNIqTNi0mBzNcFmL9V5+d+/I2rIHkm886hlicsCwT9cg7TDJ0NKxuUVnRqA5Z/e/CFTOhF4QZGF0ZbW6LE7XU6KIGflcKOj5G07441PctqyzHC6fLY4y4ayrZyoJipL9k2gpgG726/vxiTDyLW3M6tJYqDzdzHtWdtyoDYwh6esS7XYPJjEpPyBTVSGoXmABi+9PeuIfSpWUhA9Yn2+sFtBa9vA=="/>
+        <offline type="apertium" code="val-en-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-en-ca.zip/download" signature="YX3mqj34SFoiNrutwhNLk1rGhhwNal1irmA6MU1Hk0bSeZSi/yn50qnmh6bi/GlsFgLQ0X9RvFFe+3zJAw8iOwjaxHOR6wFgNrhePpRTtQUtWM4xUUy2q0PUS6hfNIqTNi0mBzNcFmL9V5+d+/I2rIHkm886hlicsCwT9cg7TDJ0NKxuUVnRqA5Z/e/CFTOhF4QZGF0ZbW6LE7XU6KIGflcKOj5G07441PctqyzHC6fLY4y4ayrZyoJipL9k2gpgG726/vxiTDyLW3M6tJYqDzdzHtWdtyoDYwh6esS7XYPJjEpPyBTVSGoXmABi+9PeuIfSpWUhA9Yn2+sFtBa9vA=="/>
     </mt>
 
     <mt src="eng" trg="epo">
         <online type="apy" code="eng|epo" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="en-eo" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-eo.zip/download" signature="FvieayVhgbyuCXeBHSlYT+DCHAlrL9lzquGJCEGJvSvv+R0Ys7wHvvPrEYVudn1Ak3I23uqjTQ1QNZvmOPdg/Jka8SA9hAXmOf/iXzQ0+I87oebHz5ywSLF7tz8NfcLDK02ZHNC036HG8Y1a10nTZD22QL/UpBnFN7ZaM0auRftwQeDqnjSYLLoGiZJ4F+tKrAkoXbdm0RyyX0MfOmUo4R4BmBbbTg5EKHqvSmsJA3mjJvoowxHm6u0gx8EWMmvr67UOD7Fz2gEtEqMLpZfwF+lqjUtKEYwTqFjEOLVgX8/wD8FoP1nRsc/SXGjZuv4XZMn69rYLGe3Kq1SWHRp9Ow=="/>
+        <offline type="apertium" code="en-eo" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-eo.zip/download" signature="FvieayVhgbyuCXeBHSlYT+DCHAlrL9lzquGJCEGJvSvv+R0Ys7wHvvPrEYVudn1Ak3I23uqjTQ1QNZvmOPdg/Jka8SA9hAXmOf/iXzQ0+I87oebHz5ywSLF7tz8NfcLDK02ZHNC036HG8Y1a10nTZD22QL/UpBnFN7ZaM0auRftwQeDqnjSYLLoGiZJ4F+tKrAkoXbdm0RyyX0MfOmUo4R4BmBbbTg5EKHqvSmsJA3mjJvoowxHm6u0gx8EWMmvr67UOD7Fz2gEtEqMLpZfwF+lqjUtKEYwTqFjEOLVgX8/wD8FoP1nRsc/SXGjZuv4XZMn69rYLGe3Kq1SWHRp9Ow=="/>
     </mt>
 
     <mt src="eng" trg="glg">
         <online type="apy" code="eng|glg" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="en-gl" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-gl.zip/download" signature="CY0tUHpBFs0QN5qBsycBeBFTUdNguvdlpcyxJ+3MusrNG+SkmzlQFuSwVtXkKOlxIjZ9SNOvkq52CciOYpju+5FEsRRgCS9NnJYZ0xlbsXl5yXkQRbPWdSuJ3OIhnu9vRnQeTCmVS3MyYAhkw1O+vrKEhOL6UwpOXZ4NzLRduWS1L3yyVe2K7dlvD+VbCZ8KDlv7AkxX2Q3am2/41tlULq1Z1Cw86G0mWbYk+U9Og/CSU3HJHA67JKNKu1kOfJ/HMHujmr1x+XNqAyNzAby7J94RHMNLvJwMxnl03QFHCwO7sGb0t3ZG/+QDJDWKKTbH3r5EWTgDuBWJSmeDlEO7Xw=="/>
+        <offline type="apertium" code="en-gl" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-gl.zip/download" signature="CY0tUHpBFs0QN5qBsycBeBFTUdNguvdlpcyxJ+3MusrNG+SkmzlQFuSwVtXkKOlxIjZ9SNOvkq52CciOYpju+5FEsRRgCS9NnJYZ0xlbsXl5yXkQRbPWdSuJ3OIhnu9vRnQeTCmVS3MyYAhkw1O+vrKEhOL6UwpOXZ4NzLRduWS1L3yyVe2K7dlvD+VbCZ8KDlv7AkxX2Q3am2/41tlULq1Z1Cw86G0mWbYk+U9Og/CSU3HJHA67JKNKu1kOfJ/HMHujmr1x+XNqAyNzAby7J94RHMNLvJwMxnl03QFHCwO7sGb0t3ZG/+QDJDWKKTbH3r5EWTgDuBWJSmeDlEO7Xw=="/>
     </mt>
 
     <mt src="eng" trg="hrv">
@@ -99,65 +99,65 @@
 
     <mt src="eng" trg="spa">
         <online type="apy" code="eng|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="en-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-es.zip/download" signature="BBgpRRk3sEeseVlCa7j3c9hbLSm6I/QVRIutQNjEFUyK+cZgHDn0UlCogNRjI34fcU/K+CcVtAmcmjwIAS2Fk322gR8TM91m5hwNdN7FiFKkoLoXFDYqzb4VjwRlNcBK9TS67D09QWVVoDVi0QkfXJUadu4mngUHrgTClIfyX+9JNZEofDWZNLLOpCgAL/AJDlo+EZFKcc+p5JvSmOkcKZoyt3N3EormMnSgx+ZeWlcREyNYyWsJBYie7WQqBcjlv0n1z3QDFRYat2n0cTxwxZzym1pz6fUV8b3HmYYp90fpwlyps8Ido6u+LALcOJW20Dfi7Tqw8aNz5qJM6+I2Ow=="/>
+        <offline type="apertium" code="en-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/en-es.zip/download" signature="BBgpRRk3sEeseVlCa7j3c9hbLSm6I/QVRIutQNjEFUyK+cZgHDn0UlCogNRjI34fcU/K+CcVtAmcmjwIAS2Fk322gR8TM91m5hwNdN7FiFKkoLoXFDYqzb4VjwRlNcBK9TS67D09QWVVoDVi0QkfXJUadu4mngUHrgTClIfyX+9JNZEofDWZNLLOpCgAL/AJDlo+EZFKcc+p5JvSmOkcKZoyt3N3EormMnSgx+ZeWlcREyNYyWsJBYie7WQqBcjlv0n1z3QDFRYat2n0cTxwxZzym1pz6fUV8b3HmYYp90fpwlyps8Ido6u+LALcOJW20Dfi7Tqw8aNz5qJM6+I2Ow=="/>
     </mt>
 
     <mt src="epo" trg="eng">
         <online type="apy" code="epo|eng" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="eo-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eo-en.zip/download" signature="KbyWOMayWc3CoBzj1d2d617DGvZvIMEe+2qIJBQftWbBIfkMxP6dkUyVaR9NZarbIK3s6hqNDcytQ03Y1bfuWbyAsuGiYFFo9OoL1CezmzvCEytfQoQouvdbX3uqRedTEEe+xMGsY8aaURCPbo4JIQIf7HfN4saMBjsMyRnJrPghzGVRLZT7dqfsC66WBof6yGX15Y3DlnhStjs4mksY14P4epVu3B8NxOwSAUHzGRquhBbjn9trucK7WpoTUtg7tzZSlz2sj6otZdHEhXq/Hx9K2LgqBQ+J8CDvfZCTxpCA05mB4rKOTAm8YL8rb8dhw6VEChj+pyD7zSuMQIsdyA=="/>
+        <offline type="apertium" code="eo-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eo-en.zip/download" signature="KbyWOMayWc3CoBzj1d2d617DGvZvIMEe+2qIJBQftWbBIfkMxP6dkUyVaR9NZarbIK3s6hqNDcytQ03Y1bfuWbyAsuGiYFFo9OoL1CezmzvCEytfQoQouvdbX3uqRedTEEe+xMGsY8aaURCPbo4JIQIf7HfN4saMBjsMyRnJrPghzGVRLZT7dqfsC66WBof6yGX15Y3DlnhStjs4mksY14P4epVu3B8NxOwSAUHzGRquhBbjn9trucK7WpoTUtg7tzZSlz2sj6otZdHEhXq/Hx9K2LgqBQ+J8CDvfZCTxpCA05mB4rKOTAm8YL8rb8dhw6VEChj+pyD7zSuMQIsdyA=="/>
     </mt>
 
     <mt src="eus" trg="eng">
         <online type="apy" code="eus|eng" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="eu-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eu-en.zip/download" signature="Fg+7PtI9d1v4AdRKd3GIW1WJVLmVI1z4709QXa80zv+VeSnbk80F6tm2hj3Vnu5Kwvc3jKMksxOwlLiZB6UT6SXyAnQ+Wk3/h0zOAK6QHf8H6yxL3g5PyKcFBM+/lCKdGjU5LCGdeN5mBnS9i3LXi4WDSRYK3NCmB/15oT39c+iDhgvNg9N/Ff1BJcVgopEjVtd2l9Xhz1HpQueCdcq1Vee/7WIdlun4NK1U8UuN/ucQoUlr12p3owjNn0p/s/C6qonqLM9HKWxA/qhLHlyPwEdMTL7QmNO4sb1Rh8FRtcGaaDKnV2eALVQUBzbbjXpO9vHbti+CzayQPROr1Ga90g=="/>
+        <offline type="apertium" code="eu-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eu-en.zip/download" signature="Fg+7PtI9d1v4AdRKd3GIW1WJVLmVI1z4709QXa80zv+VeSnbk80F6tm2hj3Vnu5Kwvc3jKMksxOwlLiZB6UT6SXyAnQ+Wk3/h0zOAK6QHf8H6yxL3g5PyKcFBM+/lCKdGjU5LCGdeN5mBnS9i3LXi4WDSRYK3NCmB/15oT39c+iDhgvNg9N/Ff1BJcVgopEjVtd2l9Xhz1HpQueCdcq1Vee/7WIdlun4NK1U8UuN/ucQoUlr12p3owjNn0p/s/C6qonqLM9HKWxA/qhLHlyPwEdMTL7QmNO4sb1Rh8FRtcGaaDKnV2eALVQUBzbbjXpO9vHbti+CzayQPROr1Ga90g=="/>
     </mt>
 
     <mt src="eus" trg="spa">
         <online type="apy" code="eus|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="eu-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eu-es.zip/download" signature="Pheq1DSbOssfoqRegF1bqJEXJbSmJWPUDKtYWq1y1Fzyf2z0MvuwljmT5youVJVWPuXTSAVsXUiTHCL/E2YWyxOSB5/mBCVYALAxl2IArSj/XazHmdpAfXP39AfmUgG1SF4I6eI0DKWOswIWvJSzFlhqT3p4Wn8DfgeNJCENg0JaR5F7HC78c+8tC5IyeDyjBhoagFOHjoEGOPooLkAoxXp42pzMu8+Drfy1oxlgGSYtHVC7wpYze50TH9KUUnIP9Zy30IQCvNijzTEW9e+YZOgzdNzCH5s2omrXRKHhGR9yz89xC77hkqjpNI9iky3a3h87pVdvbtAp01hvNTG4bQ=="/>
+        <offline type="apertium" code="eu-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/eu-es.zip/download" signature="Pheq1DSbOssfoqRegF1bqJEXJbSmJWPUDKtYWq1y1Fzyf2z0MvuwljmT5youVJVWPuXTSAVsXUiTHCL/E2YWyxOSB5/mBCVYALAxl2IArSj/XazHmdpAfXP39AfmUgG1SF4I6eI0DKWOswIWvJSzFlhqT3p4Wn8DfgeNJCENg0JaR5F7HC78c+8tC5IyeDyjBhoagFOHjoEGOPooLkAoxXp42pzMu8+Drfy1oxlgGSYtHVC7wpYze50TH9KUUnIP9Zy30IQCvNijzTEW9e+YZOgzdNzCH5s2omrXRKHhGR9yz89xC77hkqjpNI9iky3a3h87pVdvbtAp01hvNTG4bQ=="/>
     </mt>
 
     <mt src="fra" trg="cat">
         <online type="apy" code="fra|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="fr-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-ca.zip/download" signature="UU59jOeSNzP76yUu7+qT6tBKEthNklR91WG8B3r2LRSG1fWYzAbhmgcSNlJz2FmlZihxlx2ZvUV0ocUbNSoK6L8WlAnRnZ8NIuhWBtD1lNdwk0Sjv4FOMKcuMjuRyNfd1bymTplv11R5qLfPA+aBic5/0X/rLm5uGU8TzoG/ILJ4xMJ28xB1GNvd11rTRuo2pSdJxjtjM+EY+kjAf82QlsZdIqB19+AKr2DCKL8CFPq0FGgpFUIjWiiV5qjYgYk3Q2ZH3gWr8QZHdG/l4cJDE5kT6WlQKPlS4k9SnMu0DLEwRqLxOaO7H0oHiMD23PK4Xlu+UU3gparAVdSdFuKuMw=="/>
+        <offline type="apertium" code="fr-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-ca.zip/download" signature="UU59jOeSNzP76yUu7+qT6tBKEthNklR91WG8B3r2LRSG1fWYzAbhmgcSNlJz2FmlZihxlx2ZvUV0ocUbNSoK6L8WlAnRnZ8NIuhWBtD1lNdwk0Sjv4FOMKcuMjuRyNfd1bymTplv11R5qLfPA+aBic5/0X/rLm5uGU8TzoG/ILJ4xMJ28xB1GNvd11rTRuo2pSdJxjtjM+EY+kjAf82QlsZdIqB19+AKr2DCKL8CFPq0FGgpFUIjWiiV5qjYgYk3Q2ZH3gWr8QZHdG/l4cJDE5kT6WlQKPlS4k9SnMu0DLEwRqLxOaO7H0oHiMD23PK4Xlu+UU3gparAVdSdFuKuMw=="/>
     </mt>
 
     <mt src="fra" trg="epo">
         <online type="apy" code="fra|epo" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="fr-eo" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-eo.zip/download" signature="S4q3BhOWi02VKZeuI+jMG1FLnmk9Zra+/6OqfjsqgR8+xbIATk8vHIhVbMl/qhVkHP1qpgdYU7V/YK0FKtJe4t+3d86uzaK17W5GdrimcAssLuelouQY8OGJU1cFpUUa80trlWqYZQjZ8y8pCWDxRVSYeGN1GF70pc5g0SCZq8ktn7Q5Qiex6suVsDZVP/cpPHqP1GNqU75kxyTpaBNbVGBqNPBC330x6uF6WSuQ5bPwWCoD6FoSe7qVYpyPElK5ZmfAOgpvwni99F+1r2l7Btn6piUBFAcR2U5iz0hQxZKGzqOG7wT8polWv0hQbGl/3f6S7yxRnEsCiWkXGDXtKw=="/>
+        <offline type="apertium" code="fr-eo" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-eo.zip/download" signature="S4q3BhOWi02VKZeuI+jMG1FLnmk9Zra+/6OqfjsqgR8+xbIATk8vHIhVbMl/qhVkHP1qpgdYU7V/YK0FKtJe4t+3d86uzaK17W5GdrimcAssLuelouQY8OGJU1cFpUUa80trlWqYZQjZ8y8pCWDxRVSYeGN1GF70pc5g0SCZq8ktn7Q5Qiex6suVsDZVP/cpPHqP1GNqU75kxyTpaBNbVGBqNPBC330x6uF6WSuQ5bPwWCoD6FoSe7qVYpyPElK5ZmfAOgpvwni99F+1r2l7Btn6piUBFAcR2U5iz0hQxZKGzqOG7wT8polWv0hQbGl/3f6S7yxRnEsCiWkXGDXtKw=="/>
     </mt>
 
     <mt src="fra" trg="por" beta="true">
-        <offline type="apertium" code="fra-por" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/fra-por.zip/download" signature="P0HqsPCRq/DDAHdTaxUmozbkm0uwNP342aMpQq4Z1Ifhab69a53y53J5IBELO60NoeN3FgTXMVXv9D6L/Fp3lJuokFRZSUaL/DdrN8Zql1+0sXy7u7ToA6FGmr6FksP5ZbHr/NZdHLYj3fFfix3lv4pCG44xGco5YXIdaux+Tf9xr5eGPeN2EV7qWoB1NKedTv5BJsJkI7FFiSqlTl/h3YQ2oD4O6hgwkyKtJCmygFRQiQimRo1Vx/p/iAQ9UFl3fREwxdMF2+C73ps3XwyzOmyr62RB4akis/x2n4tWJaZiOK4ombCoxmxVX8Mp/d8j5JgkQxIJijsK0wqsZkszAQ=="/>
+        <offline type="apertium" code="fra-por" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/fra-por.zip/download" signature="P0HqsPCRq/DDAHdTaxUmozbkm0uwNP342aMpQq4Z1Ifhab69a53y53J5IBELO60NoeN3FgTXMVXv9D6L/Fp3lJuokFRZSUaL/DdrN8Zql1+0sXy7u7ToA6FGmr6FksP5ZbHr/NZdHLYj3fFfix3lv4pCG44xGco5YXIdaux+Tf9xr5eGPeN2EV7qWoB1NKedTv5BJsJkI7FFiSqlTl/h3YQ2oD4O6hgwkyKtJCmygFRQiQimRo1Vx/p/iAQ9UFl3fREwxdMF2+C73ps3XwyzOmyr62RB4akis/x2n4tWJaZiOK4ombCoxmxVX8Mp/d8j5JgkQxIJijsK0wqsZkszAQ=="/>
     </mt>
 
     <mt src="fra" trg="spa">
         <online type="apy" code="fra|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="fr-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-es.zip/download" signature="mFlOUvv4TB4CnTiAWw9Rd7VOfaGb2yIFmgz4Om6UqZp5Oxgu08Z4ggvMswVmJUO4TH0bDCljmAq2579+oM4FFOoSK7FbHsbWXAa247tDnwBnaJUpKN3333l3i3mpyDFGxO1FjYjAngs1gs/9EjGjdqwV3BhxT2KM8u9VjVLHRjJxjvdpQWcpkouk6rYNCA4BUrSGtJcpPWq04ulZsJVI2q0sNyyYLurf7XDZFFm2hyMfHSOoEQMuUQXWKYC2U2N0LaH2JRLwMaGcXofmS0dl4S0usNHeqFZMqfmGpvS20Iwhw4DeiraeEW0ROyvTya5HsP8AJKMYGUkdLDP+s93jJQ=="/>
+        <offline type="apertium" code="fr-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/fr-es.zip/download" signature="mFlOUvv4TB4CnTiAWw9Rd7VOfaGb2yIFmgz4Om6UqZp5Oxgu08Z4ggvMswVmJUO4TH0bDCljmAq2579+oM4FFOoSK7FbHsbWXAa247tDnwBnaJUpKN3333l3i3mpyDFGxO1FjYjAngs1gs/9EjGjdqwV3BhxT2KM8u9VjVLHRjJxjvdpQWcpkouk6rYNCA4BUrSGtJcpPWq04ulZsJVI2q0sNyyYLurf7XDZFFm2hyMfHSOoEQMuUQXWKYC2U2N0LaH2JRLwMaGcXofmS0dl4S0usNHeqFZMqfmGpvS20Iwhw4DeiraeEW0ROyvTya5HsP8AJKMYGUkdLDP+s93jJQ=="/>
     </mt>
 
     <mt src="glg" trg="eng">
         <online type="apy" code="glg|eng" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="gl-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-en.zip/download" signature="cKrHT51hUWKsRdPtME12TfSFbmsekO8vohW0RL9mm8HpU2NdU7YO1x+p7vsLz016hJH09D0xpXQ8sjwVnU/c3wmr7MaHknzkh9VB6FtuzDzw7dtPbzC2bwo60A5LLjL7Kt5cbkAp43PwhuWf6p4Z/Rl/9k254H/JsIOZTPKSxDQezOGsPv5SkVoEryi83+WVEvyDbdgtjf5RTEwyTk5nrGqke4XdE7ocwcuoYSYA6meFq4UADYDCAbG3aEAX6+R1o+7ijcP0D4Yb+nznHtA2wBDVIZCh3ekKqUvYf4fWKO31u9z8YIaBl9zh0Z10LTEJJZ7uD9M6hlcEZ1XjYbTZSA=="/>
+        <offline type="apertium" code="gl-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-en.zip/download" signature="cKrHT51hUWKsRdPtME12TfSFbmsekO8vohW0RL9mm8HpU2NdU7YO1x+p7vsLz016hJH09D0xpXQ8sjwVnU/c3wmr7MaHknzkh9VB6FtuzDzw7dtPbzC2bwo60A5LLjL7Kt5cbkAp43PwhuWf6p4Z/Rl/9k254H/JsIOZTPKSxDQezOGsPv5SkVoEryi83+WVEvyDbdgtjf5RTEwyTk5nrGqke4XdE7ocwcuoYSYA6meFq4UADYDCAbG3aEAX6+R1o+7ijcP0D4Yb+nznHtA2wBDVIZCh3ekKqUvYf4fWKO31u9z8YIaBl9zh0Z10LTEJJZ7uD9M6hlcEZ1XjYbTZSA=="/>
     </mt>
 
     <mt src="glg" trg="por">
         <online type="apy" code="glg|por" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="gl-pt" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-pt.zip/download" signature="GkEdWFgR/kQ/TgNcS9XgBh78LLvTf0YZfIsfgI9E0sjf6pOdElVWpMD9/bzdUFK84douwwMRXT5Bjt+TwXdZCQXeK7ToZgwbJ8+KGr0QiZej6OB9JwWKtbROeC959t8dGbPgFcQWC2kR6RuzfrgBUnvvTNnbhFrDypFzzHM5lZm68X7syJdHr1ko2g/yn5vg2vpAo1PeFu9WErlb4y+sNuOpqtkAG3ISEJOutGs4Xc7NJCpZEFkKkXZr9bmGFbbjd7nx56+3eSmelYN0X2Gzx6iQyNDPRr3OTM08VdoUf6G6oVBA0VXtTO9veMN3XwWqw9KtVmF9zfvN5TNNFSDYZA=="/>
+        <offline type="apertium" code="gl-pt" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-pt.zip/download" signature="GkEdWFgR/kQ/TgNcS9XgBh78LLvTf0YZfIsfgI9E0sjf6pOdElVWpMD9/bzdUFK84douwwMRXT5Bjt+TwXdZCQXeK7ToZgwbJ8+KGr0QiZej6OB9JwWKtbROeC959t8dGbPgFcQWC2kR6RuzfrgBUnvvTNnbhFrDypFzzHM5lZm68X7syJdHr1ko2g/yn5vg2vpAo1PeFu9WErlb4y+sNuOpqtkAG3ISEJOutGs4Xc7NJCpZEFkKkXZr9bmGFbbjd7nx56+3eSmelYN0X2Gzx6iQyNDPRr3OTM08VdoUf6G6oVBA0VXtTO9veMN3XwWqw9KtVmF9zfvN5TNNFSDYZA=="/>
     </mt>
 
     <mt src="glg" trg="spa">
         <online type="apy" code="glg|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="gl-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-es.zip/download" signature="cHLrb/9fxYbWlf1Xr9cQce8ouykMcv2e7ocwQ12phJ2ILzD5SVt2vQaBFCHECJ/TIuxjpiOqm8BUOpgq0P1AbGBh3orok66CL84rvfUzpb7xOa1bNzPAz82RG0VbzlHSoY0Tdpd7gu1tPzV9Bo56zhez6BemEdai5z349vKifubRVq7fb2SqnSIw9XjswO7QQBDJx2K/fftQgc+k/B0AkC+3XZbIFeLumui9rYlYDY+JYTwTibXdxtTEkVylFBZWQQHmudPCGsh/9rzjYBX6hEYKq2QH91YeZIGbX9MJaXHlJPrT24zOtt6Tdnu8PCMDo6PVGO+EMS3D4s6TJdICWw=="/>
+        <offline type="apertium" code="gl-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/gl-es.zip/download" signature="cHLrb/9fxYbWlf1Xr9cQce8ouykMcv2e7ocwQ12phJ2ILzD5SVt2vQaBFCHECJ/TIuxjpiOqm8BUOpgq0P1AbGBh3orok66CL84rvfUzpb7xOa1bNzPAz82RG0VbzlHSoY0Tdpd7gu1tPzV9Bo56zhez6BemEdai5z349vKifubRVq7fb2SqnSIw9XjswO7QQBDJx2K/fftQgc+k/B0AkC+3XZbIFeLumui9rYlYDY+JYTwTibXdxtTEkVylFBZWQQHmudPCGsh/9rzjYBX6hEYKq2QH91YeZIGbX9MJaXHlJPrT24zOtt6Tdnu8PCMDo6PVGO+EMS3D4s6TJdICWw=="/>
     </mt>
 
     <mt src="hat" trg="eng" beta="true">
-        <offline type="apertium" code="ht-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/ht-en.zip/download" signature="KTk4Pfe58gGyBSaJn5iHVTHqpwyN1xPSkKFhI0AMv0/TYloL5dWWreJ8bSnkhHl5b/FaGUWk4oGi/lO9brgyTXjGGQe3BA1k9VGGHSU7eeASzK6POO+VX+9CYjhrUYQRSh6nDcz9mbC8D+Sr4LLybLP9a2Fqrag0+z1VapdcnWgs0SqPQa+0BS4KewB6H0VexZUA9il08ImG/EgYEJSdNHJ7ui0FvRDS/nJhColPc6YPO6hgjJl3C4wvJodFVYBeQDVjCFyxf2b9u8fB7K0HHpXYMJxrxJMn7PppvJ4NY3Q1HgmlMA/zUFfEFx+VfJ6FUwdITsIj9iwRle/4gI3X7A=="/>
+        <offline type="apertium" code="ht-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/ht-en.zip/download" signature="KTk4Pfe58gGyBSaJn5iHVTHqpwyN1xPSkKFhI0AMv0/TYloL5dWWreJ8bSnkhHl5b/FaGUWk4oGi/lO9brgyTXjGGQe3BA1k9VGGHSU7eeASzK6POO+VX+9CYjhrUYQRSh6nDcz9mbC8D+Sr4LLybLP9a2Fqrag0+z1VapdcnWgs0SqPQa+0BS4KewB6H0VexZUA9il08ImG/EgYEJSdNHJ7ui0FvRDS/nJhColPc6YPO6hgjJl3C4wvJodFVYBeQDVjCFyxf2b9u8fB7K0HHpXYMJxrxJMn7PppvJ4NY3Q1HgmlMA/zUFfEFx+VfJ6FUwdITsIj9iwRle/4gI3X7A=="/>
     </mt>
 
     <mt src="hin" trg="urd">
         <online type="apy" code="hin|urd" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="hin-urd" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/hin-urd.zip/download" signature="E3wLNLIockEQw0L0s5K0C+sAxffCB/vNto2PBUrC1IEWjkF16E30GF7DKjeBBqdV52NcY5uzYlVcDzpbJO2LMDmDbF21S1NH7fn+lsKpwGsUwpzsylpKXMcuwNRuznqBoq3LycdsvfPmLNgvJLU6h+5UnvbVJJ6D+ffaA5av0VTf+/9M55mS4cQLXsiYo39opCgrtibTCxIzsC+/d7tlaPrmYVrs1UOHS+Mn5h4xQtWo9omLNbt5G1u1zRlHgLlRljdyjGIfgANMajYhGgtoouKdAGslOuv8k0y4p+1qFcLFJKQAaQt0BLnzAgt+8LM8+rMYzze4ab6q08N1mcDIwA=="/>
+        <offline type="apertium" code="hin-urd" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/hin-urd.zip/download" signature="E3wLNLIockEQw0L0s5K0C+sAxffCB/vNto2PBUrC1IEWjkF16E30GF7DKjeBBqdV52NcY5uzYlVcDzpbJO2LMDmDbF21S1NH7fn+lsKpwGsUwpzsylpKXMcuwNRuznqBoq3LycdsvfPmLNgvJLU6h+5UnvbVJJ6D+ffaA5av0VTf+/9M55mS4cQLXsiYo39opCgrtibTCxIzsC+/d7tlaPrmYVrs1UOHS+Mn5h4xQtWo9omLNbt5G1u1zRlHgLlRljdyjGIfgANMajYhGgtoouKdAGslOuv8k0y4p+1qFcLFJKQAaQt0BLnzAgt+8LM8+rMYzze4ab6q08N1mcDIwA=="/>
     </mt>
 
     <mt src="hrv" trg="eng">
@@ -166,125 +166,125 @@
 
     <mt src="ind" trg="msa">
         <online type="apy" code="ind|msa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="id-ms" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/id-ms.zip/download" signature="jEjSvVyrXxtykljaTKmJGdEXOsueyjIA+bNqAohetGZrYZC3oCzda5+KBtWWllDaJ5R91DE3X7KtE3JOUu0Ao2CnYIhiXiQrublDtkigvCyFG9QwgmJBPK+lY/3i2PBHuHs9otxxl8j3TskR7ou8dwdUa09f2Ge7se7y1d01vcwr+tHLSHMKagC5v7CWyzB52lPMVPfnCvbw8HH1wX3JGKMlFGG/4lic7R7p+x3rY2VrBAxXHOJy9qNl7B4oi/HwzaE8KyCNDKSxmi9IdBAhmaJsdwhTEvUcphmQEwoL62fmOp4mMdjhTduP/nFsL6Fp19q57ruGU03RqQDHA3sO5A=="/>
+        <offline type="apertium" code="id-ms" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/id-ms.zip/download" signature="jEjSvVyrXxtykljaTKmJGdEXOsueyjIA+bNqAohetGZrYZC3oCzda5+KBtWWllDaJ5R91DE3X7KtE3JOUu0Ao2CnYIhiXiQrublDtkigvCyFG9QwgmJBPK+lY/3i2PBHuHs9otxxl8j3TskR7ou8dwdUa09f2Ge7se7y1d01vcwr+tHLSHMKagC5v7CWyzB52lPMVPfnCvbw8HH1wX3JGKMlFGG/4lic7R7p+x3rY2VrBAxXHOJy9qNl7B4oi/HwzaE8KyCNDKSxmi9IdBAhmaJsdwhTEvUcphmQEwoL62fmOp4mMdjhTduP/nFsL6Fp19q57ruGU03RqQDHA3sO5A=="/>
     </mt>
 
     <mt src="ita" trg="cat">
         <online type="apy" code="ita|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="it-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/it-ca.zip/download" signature="P6WSAXZ3dte+oedtbpK+/vTGwLRofnW34PSzes7qPa8L2xXcai5uSdK1bMg7/4EFAFMttsvWVw4Zd7A3flRsvFUvHCJhOQlttWZiun01n0ZQlcWk67zWi2tmiqDlKMI81YDsgb2kJNrEaauiPPp0k98pMW4zwnHHnh9iA4hbwa6Noks8mkGXDbvXYB0vL1BPCigGWzCVQzRj0aWkWaInPv/XgKSM61ioTKB/F/UuaVTCvsYZogTi32SFS1t1dqpubUvuebpbxkhF6ND6Meq7/HhwMyNeBF5fHWBWXDmwJRSZYL0o1314RzaO1fWbRevlp/bP7VqwnR05Q7qzQSZleA=="/>
+        <offline type="apertium" code="it-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/it-ca.zip/download" signature="P6WSAXZ3dte+oedtbpK+/vTGwLRofnW34PSzes7qPa8L2xXcai5uSdK1bMg7/4EFAFMttsvWVw4Zd7A3flRsvFUvHCJhOQlttWZiun01n0ZQlcWk67zWi2tmiqDlKMI81YDsgb2kJNrEaauiPPp0k98pMW4zwnHHnh9iA4hbwa6Noks8mkGXDbvXYB0vL1BPCigGWzCVQzRj0aWkWaInPv/XgKSM61ioTKB/F/UuaVTCvsYZogTi32SFS1t1dqpubUvuebpbxkhF6ND6Meq7/HhwMyNeBF5fHWBWXDmwJRSZYL0o1314RzaO1fWbRevlp/bP7VqwnR05Q7qzQSZleA=="/>
     </mt>
 
     <mt src="ita" trg="spa" beta="true">
-        <offline type="apertium" code="it-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/it-es.zip/download" signature="pWC7aRF/B8tqN2K9dCgBkLFFECbBDcL/+9sgf8s08gNzYMzpVLnlIr6DpNv7Fkfz0ez5U8cpvqu1lt1KbPpSOS+pFoVzr0b+nzIYcT3CRqxil7NuLNpc0WVUAjQTFiTFk77b3Unt3j4oIkZ0gS+QinN3NlFx2wgC5so4O9WOLuDu6rbJKwJFZnBzU2nq4f/DPtfKnKdQEJ/oPGCaHiai3HHqN+qBlGLMTpdA1jZXG143b4XfCOtMIifEh+RyMZhtCGApoDsArOINl+2GMWebuATEkPFdEYD0wWJUyp9qTHzd03P9l81IuZL79wTST8CIH2dPUICGSJptVT5iD6gHtg=="/>
+        <offline type="apertium" code="it-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/it-es.zip/download" signature="pWC7aRF/B8tqN2K9dCgBkLFFECbBDcL/+9sgf8s08gNzYMzpVLnlIr6DpNv7Fkfz0ez5U8cpvqu1lt1KbPpSOS+pFoVzr0b+nzIYcT3CRqxil7NuLNpc0WVUAjQTFiTFk77b3Unt3j4oIkZ0gS+QinN3NlFx2wgC5so4O9WOLuDu6rbJKwJFZnBzU2nq4f/DPtfKnKdQEJ/oPGCaHiai3HHqN+qBlGLMTpdA1jZXG143b4XfCOtMIifEh+RyMZhtCGApoDsArOINl+2GMWebuATEkPFdEYD0wWJUyp9qTHzd03P9l81IuZL79wTST8CIH2dPUICGSJptVT5iD6gHtg=="/>
     </mt>
 
     <mt src="mkd" trg="bos" beta="true">
-        <offline type="apertium" code="mkd-hbs_BS" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_BS.zip/download" signature="eUWL/p711rFaQqoMVQTXHzSniuIEOzBOu1As9ylnN7E+Ku5eiNXHB20nlbHNzuN639BL33ODeeU0K+6zK7GkKPxmtWAx7D47Kat4hZOcy9gNpczApiPNQg0qSB4cPqnGEXyp1DSCBUPtDvl5MP60XskniYR1tHtNDGtMGHL08zhzcu2jRZ4brqUBiL0EUHKujEaMKqaUzszweBMohN1LwY7feYSbSUT50EugvX8GiwUG3pq5OgG0U8XLgoQ9UOjKnW4J1ngXpGmq6HAczYIY6BaMiSOC0agjJU39AiuomxVrbqZPIL8U46WxnZ1rvyr2W8GX85EIL7piKSoxikDp3g=="/>
+        <offline type="apertium" code="mkd-hbs_BS" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_BS.zip/download" signature="eUWL/p711rFaQqoMVQTXHzSniuIEOzBOu1As9ylnN7E+Ku5eiNXHB20nlbHNzuN639BL33ODeeU0K+6zK7GkKPxmtWAx7D47Kat4hZOcy9gNpczApiPNQg0qSB4cPqnGEXyp1DSCBUPtDvl5MP60XskniYR1tHtNDGtMGHL08zhzcu2jRZ4brqUBiL0EUHKujEaMKqaUzszweBMohN1LwY7feYSbSUT50EugvX8GiwUG3pq5OgG0U8XLgoQ9UOjKnW4J1ngXpGmq6HAczYIY6BaMiSOC0agjJU39AiuomxVrbqZPIL8U46WxnZ1rvyr2W8GX85EIL7piKSoxikDp3g=="/>
     </mt>
 
     <mt src="mkd" trg="hrv" beta="true">
-        <offline type="apertium" code="mkd-hbs_HR" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_HR.zip/download" signature="WxA5S/rv6g+6eZajVdyRe9Yy9NUFowti02Bn+wFwOMaAz9P54holJsIjlWT1DFv7hkSn8rw7yzTkx8K6NrnR+ObYHH9/+L3MpSR36YJFzUQgkpDRmI16YNEzBs1lV0CU6eNe0r1D/VkhWeE6mLXcU1QWWuHad6fl1FEswlYp0rfEe8VH7EGpTecMn8b0AhVU09feyKtNU93Z5X+H3kjyT0mS7Hd9oHrCo8sFi3eF4zGI3Pu532/260zf5XexUMnRtQjs/Kk8rv263+7TtN5CC1Wj3bMGjqJl1Zjj7ijjegZ2qH35wZE25bEM/W9zh+I6dR37iXZQ4MMxcZXZ1PokQw=="/>
+        <offline type="apertium" code="mkd-hbs_HR" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_HR.zip/download" signature="WxA5S/rv6g+6eZajVdyRe9Yy9NUFowti02Bn+wFwOMaAz9P54holJsIjlWT1DFv7hkSn8rw7yzTkx8K6NrnR+ObYHH9/+L3MpSR36YJFzUQgkpDRmI16YNEzBs1lV0CU6eNe0r1D/VkhWeE6mLXcU1QWWuHad6fl1FEswlYp0rfEe8VH7EGpTecMn8b0AhVU09feyKtNU93Z5X+H3kjyT0mS7Hd9oHrCo8sFi3eF4zGI3Pu532/260zf5XexUMnRtQjs/Kk8rv263+7TtN5CC1Wj3bMGjqJl1Zjj7ijjegZ2qH35wZE25bEM/W9zh+I6dR37iXZQ4MMxcZXZ1PokQw=="/>
     </mt>
 
     <mt src="mkd" trg="srp" beta="true">
-        <offline type="apertium" code="mkd-hbs_SR" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_SR.zip/download" signature="JTmXzcadutEGIDuXL1ssqDB6AkZkFLRP521QY/9u8DfJpjbdWWqEIfq/zHkHthK3YKj7SW5JsHBTcKAAop/xEkcR1ZyT1gj3GcYd0ux0113qa/8qAvWzJEjFFrrz1WWUyYhsMgFXMhejmRtz2SdQiygxbiAWxC9Ca088tN+8TkmVo0fRqE/kVe8xhvjTr3D+zlrfThFaHCdx0I1WlXO87AK2eWUjTgSK5m/yMoQbZV8y4hZwEvU/oDtl5wtk3DsHHdnd11hZAqWB4EpwI1D5JIL2ENjiuLDhYBYTQYpWidnAG5f4gpn2G3k/w1MioJyApROgC1a+IK+la+AuB+th6Q=="/>
+        <offline type="apertium" code="mkd-hbs_SR" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mkd-hbs_SR.zip/download" signature="JTmXzcadutEGIDuXL1ssqDB6AkZkFLRP521QY/9u8DfJpjbdWWqEIfq/zHkHthK3YKj7SW5JsHBTcKAAop/xEkcR1ZyT1gj3GcYd0ux0113qa/8qAvWzJEjFFrrz1WWUyYhsMgFXMhejmRtz2SdQiygxbiAWxC9Ca088tN+8TkmVo0fRqE/kVe8xhvjTr3D+zlrfThFaHCdx0I1WlXO87AK2eWUjTgSK5m/yMoQbZV8y4hZwEvU/oDtl5wtk3DsHHdnd11hZAqWB4EpwI1D5JIL2ENjiuLDhYBYTQYpWidnAG5f4gpn2G3k/w1MioJyApROgC1a+IK+la+AuB+th6Q=="/>
     </mt>
 
     <mt src="mlt" trg="heb" beta="true">
-        <offline type="apertium" code="mt-he" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mt-he.zip/download" signature="Oz4iFppPaeTsC6oqPk3uKVVKb8uRz0InDi4+j7r3xc2IBfnUoKugUILygEcU2GKt+3IXqx3KedPlxjbVxPOse1t7snipGub+cF1C5075wCtnyhbbqxaIoNoRHPerr8IuVPNSOv8RdyeWle+yOrtt/92IYqahsw2FlJn4qz/SA376xMkGFOA2JuWTSR+LGc+pQwz7H2AFoR40QPyaQI4Dt8SCuCunipXUbzP+ILur7z/eEFFfDRSfKjFTgRnvViedjFTtPF7p9yyxbnw6rP5VbHQI85SQvaEuKT3brTYifGGg0GOenO7bVnCONFY16V3bN18cotWNCzuiOdlb1FKkYQ=="/>
+        <offline type="apertium" code="mt-he" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/mt-he.zip/download" signature="Oz4iFppPaeTsC6oqPk3uKVVKb8uRz0InDi4+j7r3xc2IBfnUoKugUILygEcU2GKt+3IXqx3KedPlxjbVxPOse1t7snipGub+cF1C5075wCtnyhbbqxaIoNoRHPerr8IuVPNSOv8RdyeWle+yOrtt/92IYqahsw2FlJn4qz/SA376xMkGFOA2JuWTSR+LGc+pQwz7H2AFoR40QPyaQI4Dt8SCuCunipXUbzP+ILur7z/eEFFfDRSfKjFTgRnvViedjFTtPF7p9yyxbnw6rP5VbHQI85SQvaEuKT3brTYifGGg0GOenO7bVnCONFY16V3bN18cotWNCzuiOdlb1FKkYQ=="/>
     </mt>
 
     <mt src="msa" trg="ind">
         <online type="apy" code="msa|ind" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ms-id" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ms-id.zip/download" signature="Dem4rHhFpn+iMgVLH63n0J0jIP8K9APg4lv/pyugYO44vAg1G/v5n8upR5aoHWcMOCyWgwXi4gIyZsra+klm4GW71vCYyTP+r1UFyk1GRIy2xiXNuaAL2pv5sIa5TxTfyJwsyTkcjnqeL3TQLWiTLz+SUl+/bY60J9kiH5Y0RdDvM137Mai4tuyZ/LTzWqUvIh6C+5FMEXy/4bay+qSkQ4MLw6VUdOBXfs3Rbn9B5ANM3XupR8gHS4AhGAd7KQ5geneX6ccE2xcwxMEau1r15IhlLR8eoY4uZQMGqm5g4vr2yvdoT/Nt7aDPxDMyd3oPizk3Ug/UQjUuH2P9OQ4ayw=="/>
+        <offline type="apertium" code="ms-id" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ms-id.zip/download" signature="Dem4rHhFpn+iMgVLH63n0J0jIP8K9APg4lv/pyugYO44vAg1G/v5n8upR5aoHWcMOCyWgwXi4gIyZsra+klm4GW71vCYyTP+r1UFyk1GRIy2xiXNuaAL2pv5sIa5TxTfyJwsyTkcjnqeL3TQLWiTLz+SUl+/bY60J9kiH5Y0RdDvM137Mai4tuyZ/LTzWqUvIh6C+5FMEXy/4bay+qSkQ4MLw6VUdOBXfs3Rbn9B5ANM3XupR8gHS4AhGAd7KQ5geneX6ccE2xcwxMEau1r15IhlLR8eoY4uZQMGqm5g4vr2yvdoT/Nt7aDPxDMyd3oPizk3Ug/UQjUuH2P9OQ4ayw=="/>
     </mt>
 
     <mt src="nld" trg="afr">
         <online type="apy" code="nld|afr" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="nl-af" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/nl-af.zip/download" signature="iATJFl/4HRUKZJVC4ndATWqGjGrmzfC3pboldBv818YEZb/S/EyjGdRq1iJYVMjFeFfn273UYgohNjF011F8DPWp9tXxspbrLWxA27LSlnV/OrV20m0/eyDaFiXybQwAXRqVxVe+ZHdPRNWBtA8pep9mrno1VOo75PhcfWk5yet3FALMUpSwLGUIldS5Q6GDshkr87jVXzZeWyq0CptqBrUBES+qbXKkcKCU3TBkThK3GjmJKtjYFSac0vv1R6TmwJo9mi3OTMZX0GGFOXtZQzYQzPAR7BfgJVFX+klG4ou64XRi1t02akINl/ZvqJSG30Fj4yh7DLUv1CQKcK4DNw=="/>
+        <offline type="apertium" code="nl-af" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/nl-af.zip/download" signature="iATJFl/4HRUKZJVC4ndATWqGjGrmzfC3pboldBv818YEZb/S/EyjGdRq1iJYVMjFeFfn273UYgohNjF011F8DPWp9tXxspbrLWxA27LSlnV/OrV20m0/eyDaFiXybQwAXRqVxVe+ZHdPRNWBtA8pep9mrno1VOo75PhcfWk5yet3FALMUpSwLGUIldS5Q6GDshkr87jVXzZeWyq0CptqBrUBES+qbXKkcKCU3TBkThK3GjmJKtjYFSac0vv1R6TmwJo9mi3OTMZX0GGFOXtZQzYQzPAR7BfgJVFX+klG4ou64XRi1t02akINl/ZvqJSG30Fj4yh7DLUv1CQKcK4DNw=="/>
     </mt>
 
     <mt src="oci" trg="cat">
         <online type="apy" code="oci|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="oc-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc-ca.zip/download" signature="Z1o4uv+XE/8xcQUzJBZagVQ0r4JtGHgD7vQ3SmJ8TFN+6HJ48a7GdTdp/uCWrNNL8IpFBmJDQvBDwsuJEEjjggFvl1/qkWP+ZFZEEDBxsK90q3wsVs+uQ6+X0mFb4KWwMV+ixY1FrLoUnH87W5p4GV26ogECeTLDM47XnlEGsRzsn2dqDqXx6LWSL7jhaIiX+yT60vAFSNxVX1dO1rfToFRCDKh9020YuKcCn47796oQFEh533iVVwBvR4h3SXcOeMSngcZUroM+OlZcKL8J8KFnNTAIYM/kNZmCavmfC6mJYeoT2b94wpinzHtLQ5FzisaZeC/0xaQ9EK1RaYyO8Q=="/>
+        <offline type="apertium" code="oc-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc-ca.zip/download" signature="Z1o4uv+XE/8xcQUzJBZagVQ0r4JtGHgD7vQ3SmJ8TFN+6HJ48a7GdTdp/uCWrNNL8IpFBmJDQvBDwsuJEEjjggFvl1/qkWP+ZFZEEDBxsK90q3wsVs+uQ6+X0mFb4KWwMV+ixY1FrLoUnH87W5p4GV26ogECeTLDM47XnlEGsRzsn2dqDqXx6LWSL7jhaIiX+yT60vAFSNxVX1dO1rfToFRCDKh9020YuKcCn47796oQFEh533iVVwBvR4h3SXcOeMSngcZUroM+OlZcKL8J8KFnNTAIYM/kNZmCavmfC6mJYeoT2b94wpinzHtLQ5FzisaZeC/0xaQ9EK1RaYyO8Q=="/>
     </mt>
 
     <mt src="oci" trg="spa">
         <online type="apy" code="oci|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="oc-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc-es.zip/download" signature="KZacSZU3MyLOCn0+E0YmgSem9La5S+EU8Of2Bmj4nmhLipKMaTG22nBQIcqDDMZrM0X19OOmtQn1QwqLPuCz/Fqe0LlFtUNiJzxKFKFXcYH44MiJ017K862BHqKY/bNdJUW2NgIdFsr1GK0otoQ3gUm5Fhl3hhToURd0cKqrc/Tih60DYn5uAHpg+8ZqVDUJj5coYHiKAMOz4C4CF67QuFeJDKLrurajpXvP66vwLN/Kbij6M6YEZxE7k8NbOX3qaw/TY/09ai/A+pVFbAWiyAZo6dTLD3fgDNbbI1GRaQKDVuLaXNsn+YfWeA5Vl5vqtjAv5zxE+X29riaPwugFlg=="/>
+        <offline type="apertium" code="oc-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc-es.zip/download" signature="KZacSZU3MyLOCn0+E0YmgSem9La5S+EU8Of2Bmj4nmhLipKMaTG22nBQIcqDDMZrM0X19OOmtQn1QwqLPuCz/Fqe0LlFtUNiJzxKFKFXcYH44MiJ017K862BHqKY/bNdJUW2NgIdFsr1GK0otoQ3gUm5Fhl3hhToURd0cKqrc/Tih60DYn5uAHpg+8ZqVDUJj5coYHiKAMOz4C4CF67QuFeJDKLrurajpXvP66vwLN/Kbij6M6YEZxE7k8NbOX3qaw/TY/09ai/A+pVFbAWiyAZo6dTLD3fgDNbbI1GRaQKDVuLaXNsn+YfWeA5Vl5vqtjAv5zxE+X29riaPwugFlg=="/>
     </mt>
 
     <!--mt src="oci-aran" trg="cat">
       <online type="apy" code="oci_aran|cat" url="http://apy.projectjj.com"/>
-      <offline type="apertium" code="oc_aran-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc_aran-ca.zip/download" signature="IB4xtff3fPJhqbLPGTxwb4ILdPu7hQiVowEq98gq20RbDyWcPhuoF7AuJRrpizxyoJe03tJsG0ntBTtFS10H3KAC7sZVH8ichOFEaRJV8oPR1hW8ejnOkZ/6W1O5MkrA52809wSqCrGLT4y0+d8vK6TsVXFqH5fL/Hwko9zC/ytGBa31jM5FmcqQumnKxD8lGxW6FrBp3N1x9weeScmtrsAM4f7iec5rp/Mx4J/OIYObt0jsBKJ8/6Ta7GuVo7D9fP0DtEEwYJKipkvcnOozT2Ibe0YwKt/RGlhUbsDhczbAUMdzymsv6OYF/WWF+hGk0iJe/BaTHRe4k+ZuLhVEkQ=="/>
+      <offline type="apertium" code="oc_aran-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc_aran-ca.zip/download" signature="IB4xtff3fPJhqbLPGTxwb4ILdPu7hQiVowEq98gq20RbDyWcPhuoF7AuJRrpizxyoJe03tJsG0ntBTtFS10H3KAC7sZVH8ichOFEaRJV8oPR1hW8ejnOkZ/6W1O5MkrA52809wSqCrGLT4y0+d8vK6TsVXFqH5fL/Hwko9zC/ytGBa31jM5FmcqQumnKxD8lGxW6FrBp3N1x9weeScmtrsAM4f7iec5rp/Mx4J/OIYObt0jsBKJ8/6Ta7GuVo7D9fP0DtEEwYJKipkvcnOozT2Ibe0YwKt/RGlhUbsDhczbAUMdzymsv6OYF/WWF+hGk0iJe/BaTHRe4k+ZuLhVEkQ=="/>
     </mt-->
 
     <!--mt src="oci-aran" trg="spa">
       <online type="apy" code="oci_aran|spa" url="http://apy.projectjj.com"/>
-      <offline type="apertium" code="oc_aran-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc_aran-es.zip/download" signature="ZBERCwqcAxuL/XMtgVFjnQB/x6uwy5b8INjKB1rBDXxaOD4COz+ypjogfZnZtioZnzHoR6W6NGR8a/M0jnZA5WYpH33B+4wNdnxtH2quxAi5XhIj5VdHcDOwAVVLhSKKezkax0s4qMsYy7E+w9RhF3JWqqymAB8J6Y6MtDdTqwELCQyJKEZgsoeUnCJDIsnmnVSfppxWqBV3H+1/dhDhMwcCrPguB68UoIHYPZTjMmv1gn2blmSv+EZZeRlUWmPAXkI+NmhtZiAaJRc0M1ccOy42MixukEPSPNs/2HILpXiGLd5TubLWe/YwX4H4DzyF+9FmKTeY4hTPa8T6bEOUrw=="/>
+      <offline type="apertium" code="oc_aran-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/oc_aran-es.zip/download" signature="ZBERCwqcAxuL/XMtgVFjnQB/x6uwy5b8INjKB1rBDXxaOD4COz+ypjogfZnZtioZnzHoR6W6NGR8a/M0jnZA5WYpH33B+4wNdnxtH2quxAi5XhIj5VdHcDOwAVVLhSKKezkax0s4qMsYy7E+w9RhF3JWqqymAB8J6Y6MtDdTqwELCQyJKEZgsoeUnCJDIsnmnVSfppxWqBV3H+1/dhDhMwcCrPguB68UoIHYPZTjMmv1gn2blmSv+EZZeRlUWmPAXkI+NmhtZiAaJRc0M1ccOy42MixukEPSPNs/2HILpXiGLd5TubLWe/YwX4H4DzyF+9FmKTeY4hTPa8T6bEOUrw=="/>
     </mt-->
 
     <mt src="pol" trg="ces" beta="true">
-        <offline type="apertium" code="pl-cs" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/pl-cs.zip/download" signature="maF8rWE6bMyfQniB0uQrqSKnV3TCKYG8m9dNmAQKpUMVhZ5FqfJ4a2L3XfQie4+QGKZyqf5j+lF2u+jLIOVnlEptzqw0zXQNStqh0sWjN5aaXFJ9KlKjNfM2sahBAZD061/+Bxw+h5EIWwlP5Miv7+dzAARelaED0civqg896rD6AyF6qHRPpsP6YK+SxJ3i1AFkz2FHkL4kRewX+t5GPS3rkyTuZEY0LRKe0SXrG78RzFzdozN/ex5wqVGfzJlGD3427+U2DuUn3P7SpDVN65PtQw+B7yB+WGvMJhORQ4HlstGARBILlKeF6ZrrixVh0XW9h5laJv5YZqacY87ETw=="/>
+        <offline type="apertium" code="pl-cs" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/pl-cs.zip/download" signature="maF8rWE6bMyfQniB0uQrqSKnV3TCKYG8m9dNmAQKpUMVhZ5FqfJ4a2L3XfQie4+QGKZyqf5j+lF2u+jLIOVnlEptzqw0zXQNStqh0sWjN5aaXFJ9KlKjNfM2sahBAZD061/+Bxw+h5EIWwlP5Miv7+dzAARelaED0civqg896rD6AyF6qHRPpsP6YK+SxJ3i1AFkz2FHkL4kRewX+t5GPS3rkyTuZEY0LRKe0SXrG78RzFzdozN/ex5wqVGfzJlGD3427+U2DuUn3P7SpDVN65PtQw+B7yB+WGvMJhORQ4HlstGARBILlKeF6ZrrixVh0XW9h5laJv5YZqacY87ETw=="/>
     </mt>
 
     <mt src="por" trg="cat">
         <online type="apy" code="por|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="pt-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-ca.zip/download" signature="SSZZeix1hWt68JLC+UGEi/KEhHj5/4XSO3pjXwODk+6RLtXXMUMBCMzcp+abBYZ7GMHAxsj7tKEOSjR6tNM0jTlHolAkTThaAFrUBY0gf4sEmm7hR+omeOZEOG2pHhym7Ndph8l2yxw4uxrMzmiyHDPhFmgo7eI5fqwKKQdkfcA6bE0+3hdhSnmvIB6LORZA62X0huKhz+OFTvYIhS1TuKafdEvoIzDzVMJmXV7j4KsrVCfAiqrbIFKHCiuOOcO4UXRhfOiVymPlcGmHmdVf4/D3wgIr9jBhEMVzGaL6AB59+/c/s8+O4WqKvtdCr97zN2E0Ql4bWJHkCJWZvHjlpw=="/>
+        <offline type="apertium" code="pt-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-ca.zip/download" signature="SSZZeix1hWt68JLC+UGEi/KEhHj5/4XSO3pjXwODk+6RLtXXMUMBCMzcp+abBYZ7GMHAxsj7tKEOSjR6tNM0jTlHolAkTThaAFrUBY0gf4sEmm7hR+omeOZEOG2pHhym7Ndph8l2yxw4uxrMzmiyHDPhFmgo7eI5fqwKKQdkfcA6bE0+3hdhSnmvIB6LORZA62X0huKhz+OFTvYIhS1TuKafdEvoIzDzVMJmXV7j4KsrVCfAiqrbIFKHCiuOOcO4UXRhfOiVymPlcGmHmdVf4/D3wgIr9jBhEMVzGaL6AB59+/c/s8+O4WqKvtdCr97zN2E0Ql4bWJHkCJWZvHjlpw=="/>
     </mt>
 
     <mt src="por" trg="fra" beta="true">
-        <offline type="apertium" code="por-fra" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/por-fra.zip/download" signature="E4t6NliTDH/B2Uf9abj81GlbxdYEbecUY/1OSTV+gJiCOpfA1kGfY8pyWj/vPbYM0T6uWLDJo/LkEMr/8FjpkSlZUI7lSZyRSC9qwEdsRd955IKeesz2fWSPu8nOlzQen5VoRvUgdYtQuCuermYDrHYCF/PivlT/LqrHnBGP+GolYY7zrPFIJ1BIhv0enyUV4wU8aTnxEFmFCCaXH37nlC/UMLpTs1Qv47NERHIsIfkLvGcd8/IVm4UC9VtPk6uUmD9Knmf023PBmNhWHJ/Mf7E+mYBdRm5z/b2WgjhPQd1FbUtkhJToZ0vYpD1U2wyB52vcFhwLupObATOOR3OizQ=="/>
+        <offline type="apertium" code="por-fra" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/por-fra.zip/download" signature="E4t6NliTDH/B2Uf9abj81GlbxdYEbecUY/1OSTV+gJiCOpfA1kGfY8pyWj/vPbYM0T6uWLDJo/LkEMr/8FjpkSlZUI7lSZyRSC9qwEdsRd955IKeesz2fWSPu8nOlzQen5VoRvUgdYtQuCuermYDrHYCF/PivlT/LqrHnBGP+GolYY7zrPFIJ1BIhv0enyUV4wU8aTnxEFmFCCaXH37nlC/UMLpTs1Qv47NERHIsIfkLvGcd8/IVm4UC9VtPk6uUmD9Knmf023PBmNhWHJ/Mf7E+mYBdRm5z/b2WgjhPQd1FbUtkhJToZ0vYpD1U2wyB52vcFhwLupObATOOR3OizQ=="/>
     </mt>
 
     <mt src="por" trg="glg">
         <online type="apy" code="por|glg" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="pt-gl" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-gl.zip/download" signature="IfQNvAoeAzZUaQ3Z8noLvqsUjDZTJ2cI2bs9k8X8T3h+MsDB6Dgwn66RjhP2P7s9Xi9HeFB0OWgB5sLtrxkcFNPaSHAXadtr2Jr6aREVaghuYoPI1BFhN5/5bXmIbugL+OvLrjXftScnLaY55OakrT+MTKZi7nMu1ImMdqE82rKaFlutuoUNf3dYk0pfp7G9x5XMLfL92tkvjUy3GvTxzCybr9Dz9ri11wuF7SOR6TGFrEhOq18UjJqlMg2vbjzyeUYOMYSqafgVE5HW7dn3dq9UDVB82V4NS9uLLFiWZU8YMoD6p6bkOz00KHNkRmgPB1NEIicdwMBKPbLqkeWP4Q=="/>
+        <offline type="apertium" code="pt-gl" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-gl.zip/download" signature="IfQNvAoeAzZUaQ3Z8noLvqsUjDZTJ2cI2bs9k8X8T3h+MsDB6Dgwn66RjhP2P7s9Xi9HeFB0OWgB5sLtrxkcFNPaSHAXadtr2Jr6aREVaghuYoPI1BFhN5/5bXmIbugL+OvLrjXftScnLaY55OakrT+MTKZi7nMu1ImMdqE82rKaFlutuoUNf3dYk0pfp7G9x5XMLfL92tkvjUy3GvTxzCybr9Dz9ri11wuF7SOR6TGFrEhOq18UjJqlMg2vbjzyeUYOMYSqafgVE5HW7dn3dq9UDVB82V4NS9uLLFiWZU8YMoD6p6bkOz00KHNkRmgPB1NEIicdwMBKPbLqkeWP4Q=="/>
     </mt>
 
     <mt src="por" trg="spa">
         <online type="apy" code="por|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="pt-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-es.zip/download" signature="HDshjM0iU/cHwOIgAP7k8agfUqDqzpha9QKVMHM/V2GewiEX+cGzQceipUrGRzaEvcneDbvQe0AvR+2+E4M2bxfZjUbmZGZwt5x/S5kjayjAVRZoeqq62bBBNLqnKR+cPrty0YVtCxlsnjm7h0U/aw/IQ3Ak+UN+7s2jHu7WLiRBHHmNNz/S3H982U1i1dEqbOj5w44X1ztraSOaFCDOLqiL0s9Kb8QVPtZKTeir7VXOaFTtzLnh8uJMTsKtqLlQCFR1gpz6yypYwkO5np/ZU8H9lCncavzWPZM4i9u8aLTiZH4uNiLyzDAwqLayiCkmKqfVbgGdeFwRBrIwrqSSAw=="/>
+        <offline type="apertium" code="pt-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/pt-es.zip/download" signature="HDshjM0iU/cHwOIgAP7k8agfUqDqzpha9QKVMHM/V2GewiEX+cGzQceipUrGRzaEvcneDbvQe0AvR+2+E4M2bxfZjUbmZGZwt5x/S5kjayjAVRZoeqq62bBBNLqnKR+cPrty0YVtCxlsnjm7h0U/aw/IQ3Ak+UN+7s2jHu7WLiRBHHmNNz/S3H982U1i1dEqbOj5w44X1ztraSOaFCDOLqiL0s9Kb8QVPtZKTeir7VXOaFTtzLnh8uJMTsKtqLlQCFR1gpz6yypYwkO5np/ZU8H9lCncavzWPZM4i9u8aLTiZH4uNiLyzDAwqLayiCkmKqfVbgGdeFwRBrIwrqSSAw=="/>
     </mt>
 
     <mt src="ron" trg="spa">
         <online type="apy" code="ron|spa" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="ro-es" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ro-es.zip/download" signature="I3sqzIKLoS0ec9rWrq+QXuLbS6rKcONV0Vpfk06A4pVMQR3Lie+LN9YfSby9j0Aeu9dg4bJxMM0ZEQPWgA2osSn/GR2pkNOLM/HiyVUfaeeyuVAlzZOPaULZ6swWfYLo5cVJ5i6vh4TAbQpl6ZdrmCofhyUfG/NwG2Vew+G4T1X20QhY96rGvw5JVwAF2Ui+l0jboNBWs9b1nxN0VR3k0I4ax58faSTRvJqoKvpRimPqiUmNAnhQHe/YirOnCS6U2Wjf1NtIxeKA/sXwvrtrhxA/bxs9Ahmy4Ed0vuNqy91I6Qdll8Eyku0CMmpuF83e2IvyFHlmHTcHqE9p9dEenw=="/>
+        <offline type="apertium" code="ro-es" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/ro-es.zip/download" signature="I3sqzIKLoS0ec9rWrq+QXuLbS6rKcONV0Vpfk06A4pVMQR3Lie+LN9YfSby9j0Aeu9dg4bJxMM0ZEQPWgA2osSn/GR2pkNOLM/HiyVUfaeeyuVAlzZOPaULZ6swWfYLo5cVJ5i6vh4TAbQpl6ZdrmCofhyUfG/NwG2Vew+G4T1X20QhY96rGvw5JVwAF2Ui+l0jboNBWs9b1nxN0VR3k0I4ax58faSTRvJqoKvpRimPqiUmNAnhQHe/YirOnCS6U2Wjf1NtIxeKA/sXwvrtrhxA/bxs9Ahmy4Ed0vuNqy91I6Qdll8Eyku0CMmpuF83e2IvyFHlmHTcHqE9p9dEenw=="/>
     </mt>
 
     <mt src="spa" trg="arg">
         <online type="apy" code="spa|arg" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-an" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-an.zip/download" signature="ZjQ+Si4quUeUULHcRtO3MhcqkrpQyOSGsGO4FSbwd5IJkNliRJa5UxrW+VVdvi0RNOsAYx0NC2S4gQMu+jBM39K1YN4VHCDM8uJ7FS+IbAICO/QW3yj6fvie5GNgRWc7A5QbAJWRI+C8NbUA9OP90M9VK+AD/OEEsgGjd3ZA5PgauTkZxtsvb6MLrtmQLahhtqjGya7PYgQLZ15QKxpyJy0w414RmZqyLoJX7aBobtHP9N1iXm3zvsxutB3GReFgxT5oQqd6LeolZQJtOvFsR9+kYOzT3okdr2Uu1FD7IurjzEGLxhgl86zkXzf3x/XFNte37AG0xmmszVDqkK0p8A=="/>
+        <offline type="apertium" code="es-an" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-an.zip/download" signature="ZjQ+Si4quUeUULHcRtO3MhcqkrpQyOSGsGO4FSbwd5IJkNliRJa5UxrW+VVdvi0RNOsAYx0NC2S4gQMu+jBM39K1YN4VHCDM8uJ7FS+IbAICO/QW3yj6fvie5GNgRWc7A5QbAJWRI+C8NbUA9OP90M9VK+AD/OEEsgGjd3ZA5PgauTkZxtsvb6MLrtmQLahhtqjGya7PYgQLZ15QKxpyJy0w414RmZqyLoJX7aBobtHP9N1iXm3zvsxutB3GReFgxT5oQqd6LeolZQJtOvFsR9+kYOzT3okdr2Uu1FD7IurjzEGLxhgl86zkXzf3x/XFNte37AG0xmmszVDqkK0p8A=="/>
     </mt>
 
     <mt src="spa" trg="ast">
         <online type="apy" code="spa|ast" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-ast" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-ast.zip/download" signature="NhOSEzLfjH+xOI7HCyt4WRQcCCeMV4j5xTP6lHsPHr533iXp++gnfAbfdvpUhnDlS2EtFLOLcfv/jWKoCs/WT/okixbTVSvVI8DmXrqNGp4H5Q6ebEW7tM6bDfHh7VyQKycOhh3anCCo9tHowclxtmlx9qq7FyHl335CHF50nQYPzZVHhpcFX0oorMfU9vPxiJX/ShF+SP3TGNDmA0b9qcRsppGClcI4qmIz4HPxjGXQpNSazCJQUIvQaEXj6kFubypsOHOkzTAcE2i/dixYCdEys6tSlH3Gxzr4k3BwyZRgykEfziWyfydQrthfkWn2W391EOICfPaIJA8vDWiZrQ=="/>
+        <offline type="apertium" code="es-ast" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-ast.zip/download" signature="NhOSEzLfjH+xOI7HCyt4WRQcCCeMV4j5xTP6lHsPHr533iXp++gnfAbfdvpUhnDlS2EtFLOLcfv/jWKoCs/WT/okixbTVSvVI8DmXrqNGp4H5Q6ebEW7tM6bDfHh7VyQKycOhh3anCCo9tHowclxtmlx9qq7FyHl335CHF50nQYPzZVHhpcFX0oorMfU9vPxiJX/ShF+SP3TGNDmA0b9qcRsppGClcI4qmIz4HPxjGXQpNSazCJQUIvQaEXj6kFubypsOHOkzTAcE2i/dixYCdEys6tSlH3Gxzr4k3BwyZRgykEfziWyfydQrthfkWn2W391EOICfPaIJA8vDWiZrQ=="/>
     </mt>
 
     <mt src="spa" trg="cat">
         <online type="apy" code="spa|cat" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-ca.zip/download" signature="nxUMlUYKUVh09tLXoYMfhN5G2LFWrEQGp0/1FqccVUL6POOactJec0P2Ql0XcpcjUqmSEPXspglbG4zUCpSIRdj2XrCpLL6a76BKGIdxmhaxBFPPa0H4YrUoghGvk7kaBuw7teUzIHfFwzgo7dctVbJC707nqf2qvDKzefV3C6dzCOF4BInJe2JlJgGjcJJTx30KzYDlg8Glwb0VBFan1jpkHJOimvf7TCO18leLX0Kg4FcN+79xK4K2iXhE84VPjG9hMSaPaaJiPnHQO/oolcIY6LYyF8qOdtd0wv5E9VZVU6Qe4BdTLTmd/1iWIx/TNZJ9NyiBrnA5ndSNO+fLqw=="/>
+        <offline type="apertium" code="es-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-ca.zip/download" signature="nxUMlUYKUVh09tLXoYMfhN5G2LFWrEQGp0/1FqccVUL6POOactJec0P2Ql0XcpcjUqmSEPXspglbG4zUCpSIRdj2XrCpLL6a76BKGIdxmhaxBFPPa0H4YrUoghGvk7kaBuw7teUzIHfFwzgo7dctVbJC707nqf2qvDKzefV3C6dzCOF4BInJe2JlJgGjcJJTx30KzYDlg8Glwb0VBFan1jpkHJOimvf7TCO18leLX0Kg4FcN+79xK4K2iXhE84VPjG9hMSaPaaJiPnHQO/oolcIY6LYyF8qOdtd0wv5E9VZVU6Qe4BdTLTmd/1iWIx/TNZJ9NyiBrnA5ndSNO+fLqw=="/>
     </mt>
 
     <mt src="spa" trg="cat-valencia">
         <online type="apy" code="spa|cat_valencia" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="val-es-ca" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-es-ca.zip/download" signature="gD4JUyCj8fzhN4yBpFC5dL+mP0NLtFH1EEW0QDoaeEMMMReDn6gttz4ILPa2RQzMdkD2D3woYKa+94kX3ECl4JZUWZsyemz6GLv3h/1EkuN5WSyKnsU86Asrat6GwkkVOW/jRTySYnZUVKIR2o4x33O8ZtLgS9Xkd+91Z4/9NOQIsDHOYw78YFvdWLyy/hXPw+cC5M0DIn+R21U00O700BTrVoFBiK7hqmLlWTqveWPMDF4k6+iFvfRH/vj0QYTPSSIAw7p99tGJuSmeDu78Up+NrYADthgK/q8H6yeslimWnOXeJkCNxUA/PHv4HLE5JubS8us9QPXrjgyFEaooSA=="/>
+        <offline type="apertium" code="val-es-ca" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/val-es-ca.zip/download" signature="gD4JUyCj8fzhN4yBpFC5dL+mP0NLtFH1EEW0QDoaeEMMMReDn6gttz4ILPa2RQzMdkD2D3woYKa+94kX3ECl4JZUWZsyemz6GLv3h/1EkuN5WSyKnsU86Asrat6GwkkVOW/jRTySYnZUVKIR2o4x33O8ZtLgS9Xkd+91Z4/9NOQIsDHOYw78YFvdWLyy/hXPw+cC5M0DIn+R21U00O700BTrVoFBiK7hqmLlWTqveWPMDF4k6+iFvfRH/vj0QYTPSSIAw7p99tGJuSmeDu78Up+NrYADthgK/q8H6yeslimWnOXeJkCNxUA/PHv4HLE5JubS8us9QPXrjgyFEaooSA=="/>
     </mt>
 
     <mt src="spa" trg="eng">
         <online type="apy" code="spa|eng" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-en" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-en.zip/download" signature="iMm5eTntC78VLmSe0e5LBQ2cwzUB4vaLNbrjbELIog14Ku/QUXdU3ONTQsEY7JrAAhRXPo2qJUaw1WwQIgMCkBeEI5xDIh588ZNb4/RAIt+GAovuicropOHqNQtIwLUtbwUIQsOP32PS3Z/opx1k9ref+5piqBAWGMbqsmSp1DxjLnAY/M/ZLgM04ELJxt3NzWaMemPjUG5Si42m4Q8CdYsd9G8y/j464yEX0IWvwCgXTcI06jQwcAygDPhqcSeI+r6df0vc76IVmimlVYdFXeoGOZO0M1hZ2C+bF24d+YTJ0jM6z1J6bRA1WRFYi9gFj90VMxFB21tRh8a4hqFGKA=="/>
+        <offline type="apertium" code="es-en" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-en.zip/download" signature="iMm5eTntC78VLmSe0e5LBQ2cwzUB4vaLNbrjbELIog14Ku/QUXdU3ONTQsEY7JrAAhRXPo2qJUaw1WwQIgMCkBeEI5xDIh588ZNb4/RAIt+GAovuicropOHqNQtIwLUtbwUIQsOP32PS3Z/opx1k9ref+5piqBAWGMbqsmSp1DxjLnAY/M/ZLgM04ELJxt3NzWaMemPjUG5Si42m4Q8CdYsd9G8y/j464yEX0IWvwCgXTcI06jQwcAygDPhqcSeI+r6df0vc76IVmimlVYdFXeoGOZO0M1hZ2C+bF24d+YTJ0jM6z1J6bRA1WRFYi9gFj90VMxFB21tRh8a4hqFGKA=="/>
     </mt>
 
     <mt src="spa" trg="eng-usa">
         <online type="apy" code="spa|eng_US" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-en_US" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-en_US.zip/download" signature="FgBDJbHc7WVSSLzqyivxUsIH3hSbOLWrzbT0HTWeupMs4Bpe9RIc9I/NC7QiXXy4pHSyKkwDa1q/At59KCPGHmq5NpICE3fSO1oIuZwOtctjSzRGNKGhyQJ3l9EEz2rppcOCh+gVkLWBtqibAqariKxqLs0oNdam/dNM8VEVI87HpdioE7uuiyAbZE3ty6F6epB1+RUtxbGqEi6z/UA5lYmV01DcODV4ttUgV9LmXdnLjWQ5+zZfAat/X7mzoMy1SVvnxKA+5TuMQRxQILsrBn0UNFM3UNu77js5tiTLfdgLwMvpt7YzQU+J0GugOjv593bQBtOJf+ck0l/iyCjQkA=="/>
+        <offline type="apertium" code="es-en_US" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-en_US.zip/download" signature="FgBDJbHc7WVSSLzqyivxUsIH3hSbOLWrzbT0HTWeupMs4Bpe9RIc9I/NC7QiXXy4pHSyKkwDa1q/At59KCPGHmq5NpICE3fSO1oIuZwOtctjSzRGNKGhyQJ3l9EEz2rppcOCh+gVkLWBtqibAqariKxqLs0oNdam/dNM8VEVI87HpdioE7uuiyAbZE3ty6F6epB1+RUtxbGqEi6z/UA5lYmV01DcODV4ttUgV9LmXdnLjWQ5+zZfAat/X7mzoMy1SVvnxKA+5TuMQRxQILsrBn0UNFM3UNu77js5tiTLfdgLwMvpt7YzQU+J0GugOjv593bQBtOJf+ck0l/iyCjQkA=="/>
     </mt>
 
     <mt src="spa" trg="epo">
         <online type="apy" code="spa|epo" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-eo" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-eo.zip/download" signature="Dnw6WPPg4rNxcHImhwZrezeQyYBmcGIoGEKJkB2HESXwYi4npmtfSHMRjW0IVK8r3ZFv64nF4uBaVUXHFADS17Mie0aR4v2Md/r0XuMXcblEcWqBWYeiOhtJkxea/MHmdS7Z9cpldKzISO090qQ2s/lt6L2twdDEN8etUyQfmzOhcKeInn00y57cfpvZBbrPZH4sNh7QPAyPCZ0igBhcNuvoYa7dIvzZ5xuS8i13bLKZaSGQmFJHfY/boYqa/7z7ahhT70zoYEkhPa3U+EJe1IhF3tkOUGONmutHD5Jbq48wfyi7O/Qnqf3zG6jgwC08VrmFkKaBEG4RA1lhS3nvNw=="/>
+        <offline type="apertium" code="es-eo" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-eo.zip/download" signature="Dnw6WPPg4rNxcHImhwZrezeQyYBmcGIoGEKJkB2HESXwYi4npmtfSHMRjW0IVK8r3ZFv64nF4uBaVUXHFADS17Mie0aR4v2Md/r0XuMXcblEcWqBWYeiOhtJkxea/MHmdS7Z9cpldKzISO090qQ2s/lt6L2twdDEN8etUyQfmzOhcKeInn00y57cfpvZBbrPZH4sNh7QPAyPCZ0igBhcNuvoYa7dIvzZ5xuS8i13bLKZaSGQmFJHfY/boYqa/7z7ahhT70zoYEkhPa3U+EJe1IhF3tkOUGONmutHD5Jbq48wfyi7O/Qnqf3zG6jgwC08VrmFkKaBEG4RA1lhS3nvNw=="/>
     </mt>
 
     <mt src="spa" trg="eus">
@@ -293,143 +293,143 @@
 
     <mt src="spa" trg="fra">
         <online type="apy" code="spa|fra" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-fr" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-fr.zip/download" signature="BvNkqdfHPxXorFmG8virMWYhFa4CUKjXBzPGHaOjbc3b9rSX87M+nkjwsONTMIGQlbo06eAiCW2hi4fyW/wziUyhzl8Ax6cdlgobnBf9WKxYJeLfypGx0LWHTYffgwKkg+gArN2GqL3WsDpS2vXv4gx3XuqDwNj722d0l/AC5mfgzlHlYbY5z0G4jfkRyemXtJPD4ES/UmRjBJ80gV4xdsALx1CwjKtQ8Py4DFqEKQz0VR4sc0TRdy45RBCJN8juNz9IhGW4Sopg7/YhnXfBRfqAfX6Dh6Qf16UltrccLc9ksScDi+iw/66cwdTfVSpxFOruOhlJXljB/uFlQ1zBTg=="/>
+        <offline type="apertium" code="es-fr" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-fr.zip/download" signature="BvNkqdfHPxXorFmG8virMWYhFa4CUKjXBzPGHaOjbc3b9rSX87M+nkjwsONTMIGQlbo06eAiCW2hi4fyW/wziUyhzl8Ax6cdlgobnBf9WKxYJeLfypGx0LWHTYffgwKkg+gArN2GqL3WsDpS2vXv4gx3XuqDwNj722d0l/AC5mfgzlHlYbY5z0G4jfkRyemXtJPD4ES/UmRjBJ80gV4xdsALx1CwjKtQ8Py4DFqEKQz0VR4sc0TRdy45RBCJN8juNz9IhGW4Sopg7/YhnXfBRfqAfX6Dh6Qf16UltrccLc9ksScDi+iw/66cwdTfVSpxFOruOhlJXljB/uFlQ1zBTg=="/>
     </mt>
 
     <mt src="spa" trg="glg">
         <online type="apy" code="spa|glg" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-gl" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-gl.zip/download" signature="cslW1Box9nV0VTxDCaL2jSEWYbO4h9XP09ctjQ/3IXSh9xzCzwx8lsCJpaJ50W8WEv2tZ352/fB09U6UKAm2YIxJRIxGlRkkJ3YPvXgfOJVLm+swq243VO0gbQUFfHITlHZCAvNR9FZ6YjjNABGZY62EGzrOR3DQapT0WrsXsViBv82XNWXHxe2LN2pN8oLklK/I6bQG10KbUr/MzlTuCOovPaQN4WdSq3YzDpLYVdi+bvYrDVbP4NCnNi1K3LelmZafdOwDNzi2moZsXMUqw8/2wzt1OxAGU+ZEjZmc32yt2Y5O1N95Zyu48dxvgnMxaP5WzrJyyeAyDsNnVDQM5w=="/>
+        <offline type="apertium" code="es-gl" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-gl.zip/download" signature="cslW1Box9nV0VTxDCaL2jSEWYbO4h9XP09ctjQ/3IXSh9xzCzwx8lsCJpaJ50W8WEv2tZ352/fB09U6UKAm2YIxJRIxGlRkkJ3YPvXgfOJVLm+swq243VO0gbQUFfHITlHZCAvNR9FZ6YjjNABGZY62EGzrOR3DQapT0WrsXsViBv82XNWXHxe2LN2pN8oLklK/I6bQG10KbUr/MzlTuCOovPaQN4WdSq3YzDpLYVdi+bvYrDVbP4NCnNi1K3LelmZafdOwDNzi2moZsXMUqw8/2wzt1OxAGU+ZEjZmc32yt2Y5O1N95Zyu48dxvgnMxaP5WzrJyyeAyDsNnVDQM5w=="/>
     </mt>
 
     <mt src="spa" trg="ita" beta="true">
-        <offline type="apertium" code="es-it" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/es-it.zip/download" signature="W48VgRPz2lMDX/zsf5j1tEcZjMBoSF/xlIdysG+ig+Htx8CtouxWkwAzXLA4KmXr3COdtIwKFkXopaM+8aN6BpL57SIObieOSon5/3U4XjefvveFNmuJBsVkWORRX6PxkfhpVA2sGTwyTiLPBDBwXJka/HAg1VMXb1HNCzvS8js0e7eXjCKqfY/8blQQIC9ocfarAdjwQ7ItOUJBaPf8w9pBfQz8jDpBzrtEGLZYflljjqBRMyw5KAXbCQdpVLnsbCOtPKEpT76e8rkCtivTLXFy1cbEzh7Id6FnmEZCz+bsfjIGqXBSNrysni91dFY7IL8/khKpjLEn9RtePksTmg=="/>
+        <offline type="apertium" code="es-it" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/es-it.zip/download" signature="W48VgRPz2lMDX/zsf5j1tEcZjMBoSF/xlIdysG+ig+Htx8CtouxWkwAzXLA4KmXr3COdtIwKFkXopaM+8aN6BpL57SIObieOSon5/3U4XjefvveFNmuJBsVkWORRX6PxkfhpVA2sGTwyTiLPBDBwXJka/HAg1VMXb1HNCzvS8js0e7eXjCKqfY/8blQQIC9ocfarAdjwQ7ItOUJBaPf8w9pBfQz8jDpBzrtEGLZYflljjqBRMyw5KAXbCQdpVLnsbCOtPKEpT76e8rkCtivTLXFy1cbEzh7Id6FnmEZCz+bsfjIGqXBSNrysni91dFY7IL8/khKpjLEn9RtePksTmg=="/>
     </mt>
 
     <mt src="spa" trg="oci">
         <online type="apy" code="spa|oci" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-oc" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-oc.zip/download" signature="ItBafUr9319GOz5Gn0zf234B1OIHOAuXoUaZb/zqsW+//cB2C6Pg8o6tc4SJoGBY50D/lc2vCysqGUWHTWGauKwVv6zDXD2Pz5wrGzp1nvvYR1+eIzpkSrsxnBX2MEbqLUhiLJhU7Zqv6sIkx2l3EIE8GI31g7ANlwtv3ayYb/uKb/RxPKtknMWCCKAJjgGRsNObW7/axf+TnaC6Uf4DPaB2EitZGf1dSlZpAq0SZuMdDckIGbdIT9jdcwh9tbXET9tkOOMqRU6XhsDByrMwZ0CjSFjfuulM1wdHKqwxl2jW/kwd9RMiH/r3l0HJC0Jhgzd6jOSem9VlPg3DqyxcuA=="/>
+        <offline type="apertium" code="es-oc" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-oc.zip/download" signature="ItBafUr9319GOz5Gn0zf234B1OIHOAuXoUaZb/zqsW+//cB2C6Pg8o6tc4SJoGBY50D/lc2vCysqGUWHTWGauKwVv6zDXD2Pz5wrGzp1nvvYR1+eIzpkSrsxnBX2MEbqLUhiLJhU7Zqv6sIkx2l3EIE8GI31g7ANlwtv3ayYb/uKb/RxPKtknMWCCKAJjgGRsNObW7/axf+TnaC6Uf4DPaB2EitZGf1dSlZpAq0SZuMdDckIGbdIT9jdcwh9tbXET9tkOOMqRU6XhsDByrMwZ0CjSFjfuulM1wdHKqwxl2jW/kwd9RMiH/r3l0HJC0Jhgzd6jOSem9VlPg3DqyxcuA=="/>
     </mt>
 
     <!--mt src="spa" trg="oci-aran">
       <online type="apy" code="spa|oci_aran" url="http://apy.projectjj.com"/>
-      <offline type="apertium" code="es-oc_aran" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-oc_aran.zip/download" signature="SJnXabIlq7wgEenDuxumM2scXpY9PIQkzwUufasZCox/ZqBuan0jSJt/DXw2K8NuwnzB9ScptpL5feBGBudWui7BZ8+/HikARl6/8X2bPg2QG3BKbz65LqZ0tbn8Ik2DGdbcgzFQn/JyP+biKkrF16uomsUQdpgLyctY8iIHFCze28P9hbceGO//8zUlzmgJoDEXqMmAo6CCjkZ1/LIT8L0DXQZq6BWMct22lzwA3ut/EzOzPfNe/K8NKIZk/VjUWUGDYz/LXbkxfuX6n34jUfonHPnYd5J0It9u5xzA21GmfEQacyNz4Tea1nmnruuXQv4wAjUG36/wMxz3oEdRbg=="/>
+      <offline type="apertium" code="es-oc_aran" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-oc_aran.zip/download" signature="SJnXabIlq7wgEenDuxumM2scXpY9PIQkzwUufasZCox/ZqBuan0jSJt/DXw2K8NuwnzB9ScptpL5feBGBudWui7BZ8+/HikARl6/8X2bPg2QG3BKbz65LqZ0tbn8Ik2DGdbcgzFQn/JyP+biKkrF16uomsUQdpgLyctY8iIHFCze28P9hbceGO//8zUlzmgJoDEXqMmAo6CCjkZ1/LIT8L0DXQZq6BWMct22lzwA3ut/EzOzPfNe/K8NKIZk/VjUWUGDYz/LXbkxfuX6n34jUfonHPnYd5J0It9u5xzA21GmfEQacyNz4Tea1nmnruuXQv4wAjUG36/wMxz3oEdRbg=="/>
     </mt-->
 
     <mt src="spa" trg="por">
         <online type="apy" code="spa|por" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-pt" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-pt.zip/download" signature="Wd8lv/cAK+YKVR0qNH5ZysC2idxhXr3ZiMrOUE/fMPv2lA6ZI1dR5Bu2hBm3jKU6kRhOmd1sfIaCZpy14j8NWaUT2t0RdD43qMB5rglhd98bZzAIWOBS9rBy8SDZNH82qvxfsfqfu6CGXly1omJv2uks9dcq3cEGKNlPwI8ujJgohB6LZ/KQJK0m06+bJVP63mB5ZZ3RJGXu/YU1nKXWwLscGCftX89rIbmfrqVU81V6Hbwxh3nM8/ks14/7fo2GRsM36KGNADAh9uHd4nEr+xR4YP9WvUHYNxfuRA2kan5TLOOxTNDBrIkcE0dRMH3IWk639fjSzyLGmtxX4XSL0g=="/>
+        <offline type="apertium" code="es-pt" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-pt.zip/download" signature="Wd8lv/cAK+YKVR0qNH5ZysC2idxhXr3ZiMrOUE/fMPv2lA6ZI1dR5Bu2hBm3jKU6kRhOmd1sfIaCZpy14j8NWaUT2t0RdD43qMB5rglhd98bZzAIWOBS9rBy8SDZNH82qvxfsfqfu6CGXly1omJv2uks9dcq3cEGKNlPwI8ujJgohB6LZ/KQJK0m06+bJVP63mB5ZZ3RJGXu/YU1nKXWwLscGCftX89rIbmfrqVU81V6Hbwxh3nM8/ks14/7fo2GRsM36KGNADAh9uHd4nEr+xR4YP9WvUHYNxfuRA2kan5TLOOxTNDBrIkcE0dRMH3IWk639fjSzyLGmtxX4XSL0g=="/>
     </mt>
 
     <mt src="spa" trg="por-bra">
         <online type="apy" code="spa|por_BR" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="es-pt_BR" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-pt_BR.zip/download" signature="j/NEVwFhqyTRxsWq5duvH91PDlwOgac4NiT/koFySdDIxF42hU6Te6nrzjuVJUHJt0I7shUaYqpcyjBpo7m4ct04lu9Z/cHqdpR4kNbS7Qa+zDkgBOzXXbnK5KzVVJDc4dnyuPpW0brn/qYYKm9i7lOTl6THBp7uvyRsbQK6P5Vp+qx5yjxPQ7Gy036RrN38CwCnS2WM80pmi64d3v9PFGhVWUQHoVaJhvoY0nZj5Ym/7l5k4EdbUjYMOT3rnB+RcxU2nJIQ8judSZ4rxBBq9Fs/FLckNJj/71h9YeHBZgeFOfkUxji44FNep+sABT29ia4H4560VV38dVO2/xDApw=="/>
+        <offline type="apertium" code="es-pt_BR" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/es-pt_BR.zip/download" signature="j/NEVwFhqyTRxsWq5duvH91PDlwOgac4NiT/koFySdDIxF42hU6Te6nrzjuVJUHJt0I7shUaYqpcyjBpo7m4ct04lu9Z/cHqdpR4kNbS7Qa+zDkgBOzXXbnK5KzVVJDc4dnyuPpW0brn/qYYKm9i7lOTl6THBp7uvyRsbQK6P5Vp+qx5yjxPQ7Gy036RrN38CwCnS2WM80pmi64d3v9PFGhVWUQHoVaJhvoY0nZj5Ym/7l5k4EdbUjYMOT3rnB+RcxU2nJIQ8judSZ4rxBBq9Fs/FLckNJj/71h9YeHBZgeFOfkUxji44FNep+sABT29ia4H4560VV38dVO2/xDApw=="/>
     </mt>
 
     <mt src="srd" trg="cat" beta="true">
-        <offline type="apertium" code="srd-cat" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/srd-cat.zip/download" signature="RhNP1+pjYi4Lm8aOzt2yCfESSTKdg//Johi83exooxJ/yA5Fhios4L/BkoJMXMfiB7v6cjKMfa4QR2v3y5Vg3V86RnUR+lnbeyYyhgOemGG6NNt6xWKtOQmkfObj+XOSIx6IBaIFw59FXQTUcABgpney7NLM3D5DluEd3vis/eugV9a8seqZI73ZNWjTp8AFDkpY71Wrk0KVi8KJxoWVqNokm8jJT291btyY5Pq39aRZm0YGq5/COo8ujUKvH0bHw9ldg5HD6x+PzPDLl4BXDtr+cAXfZ3ezarR/9rK9g57tI96wRK1XoMNwwqdCqiqTUA8VkGH6IMrJcLKZ70rR+w=="/>
+        <offline type="apertium" code="srd-cat" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/beta/srd-cat.zip/download" signature="RhNP1+pjYi4Lm8aOzt2yCfESSTKdg//Johi83exooxJ/yA5Fhios4L/BkoJMXMfiB7v6cjKMfa4QR2v3y5Vg3V86RnUR+lnbeyYyhgOemGG6NNt6xWKtOQmkfObj+XOSIx6IBaIFw59FXQTUcABgpney7NLM3D5DluEd3vis/eugV9a8seqZI73ZNWjTp8AFDkpY71Wrk0KVi8KJxoWVqNokm8jJT291btyY5Pq39aRZm0YGq5/COo8ujUKvH0bHw9ldg5HD6x+PzPDLl4BXDtr+cAXfZ3ezarR/9rK9g57tI96wRK1XoMNwwqdCqiqTUA8VkGH6IMrJcLKZ70rR+w=="/>
     </mt>
 
     <mt src="swe" trg="dan">
         <online type="apy" code="swe|dan" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="sv-da" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/sv-da.zip/download" signature="c/yyT27MEHckFgoVzcxMR/GPysWnXjFgP8tLNIxH2OlRxv56n4LV26njT/+iLoZY35zPDe9oZk/3gAMcSQFrdvaRU0zCBIqh6lf2yzo0DmeptLeOtwYlaxRhKaGN2pER0JTvV95gaxexjJ96yZkz6jkwGLJK1MGI2Ob3gL7kLzAz6O8MlorXNZLLnqmXCaR8qm6hzyu9s6/4Q0NGnVkjGRGTyiNTEaAVjHhFFBpJnyo9+qHG6Zgs9OMSgHAVMD59mAjH2XZ/lJZ/FxsshYeMkYd5GLcM73kftcp9ebEMerpN8JzbdIQ7hdzMVVUGmS9eJV2qm0JBv96X2Sp5eLuCFA=="/>
+        <offline type="apertium" code="sv-da" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/sv-da.zip/download" signature="c/yyT27MEHckFgoVzcxMR/GPysWnXjFgP8tLNIxH2OlRxv56n4LV26njT/+iLoZY35zPDe9oZk/3gAMcSQFrdvaRU0zCBIqh6lf2yzo0DmeptLeOtwYlaxRhKaGN2pER0JTvV95gaxexjJ96yZkz6jkwGLJK1MGI2Ob3gL7kLzAz6O8MlorXNZLLnqmXCaR8qm6hzyu9s6/4Q0NGnVkjGRGTyiNTEaAVjHhFFBpJnyo9+qHG6Zgs9OMSgHAVMD59mAjH2XZ/lJZ/FxsshYeMkYd5GLcM73kftcp9ebEMerpN8JzbdIQ7hdzMVVUGmS9eJV2qm0JBv96X2Sp5eLuCFA=="/>
     </mt>
 
     <mt src="urd" trg="hin">
         <online type="apy" code="urd|hin" url="http://apy.projectjj.com"/>
-        <offline type="apertium" code="urd-hin" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/urd-hin.zip/download" signature="QDYlGotK3VWCJm2rvwJNfZsj5KDpZcxKNZZWPePaCOiXxZKD8iW89m5Lntbgk0a6THRwVewn9I9xQH94xLiDr7EWESDYdsFh3lLZZMZJ3yuEKcLt1wm2TBdhgdAv3eAW30IRJBJZMu3RLCW/6B9hc4aMHPPwsTFrI8BNi88Z+gHtc3wkeCzbCiFM2x8ui34ONmOPFX74O+vfesRU9Ui5s8Q1Ns5ai/nQ3u+Is7Qr1Y7GbyyKTj833v95HF5H3huRYuMtU1Hpkia/SIb5F7ohTMxPlgd8zVSvijc1unRaAkX45zCX4zI75YSmtRfw8IChqWAhKegfeLNlQwQivA1w5g=="/>
+        <offline type="apertium" code="urd-hin" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/mt/released/urd-hin.zip/download" signature="QDYlGotK3VWCJm2rvwJNfZsj5KDpZcxKNZZWPePaCOiXxZKD8iW89m5Lntbgk0a6THRwVewn9I9xQH94xLiDr7EWESDYdsFh3lLZZMZJ3yuEKcLt1wm2TBdhgdAv3eAW30IRJBJZMu3RLCW/6B9hc4aMHPPwsTFrI8BNi88Z+gHtc3wkeCzbCiFM2x8ui34ONmOPFX74O+vfesRU9Ui5s8Q1Ns5ai/nQ3u+Is7Qr1Y7GbyyKTj833v95HF5H3huRYuMtU1Hpkia/SIb5F7ohTMxPlgd8zVSvijc1unRaAkX45zCX4zI75YSmtRfw8IChqWAhKegfeLNlQwQivA1w5g=="/>
     </mt>
 
 
     <ocr lang="afr">
-        <offline type="tesseract" code="afr" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/afr.zip/download" signature="hwK8jdcZsd46tO6EuyjkigRaE1C9hHx5Las5TjSZeNpADwE9TqgwIvtW2rAniXeCdRqrt/pb/jpNfyZFjx3IbYhVVd7Cfoc5RGIh7Owpu+9IynMf0NI8Litc/OuP2Y08Yn1EAgAYY1PaerrUrS/S5mEyGk5VgItg2SsvzVr2Ebku2pwJ1nqMZW8aJrbR7XzjpDRTkxAV+ulXoQeGW+JNnccBmEH84wVrcbGpM7SUvQFwxq4aC6ltPk0IgUY6Fdrd+OF2Ol6Heo88bCcwZ2SOLQPFfCFTPhcGY7o/sv0IPyz1P+zLezS8uI8GCUabVdRImgUox5W5DbjRPffoe82Y2w=="/>
+        <offline type="tesseract" code="afr" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/afr.zip/download" signature="hwK8jdcZsd46tO6EuyjkigRaE1C9hHx5Las5TjSZeNpADwE9TqgwIvtW2rAniXeCdRqrt/pb/jpNfyZFjx3IbYhVVd7Cfoc5RGIh7Owpu+9IynMf0NI8Litc/OuP2Y08Yn1EAgAYY1PaerrUrS/S5mEyGk5VgItg2SsvzVr2Ebku2pwJ1nqMZW8aJrbR7XzjpDRTkxAV+ulXoQeGW+JNnccBmEH84wVrcbGpM7SUvQFwxq4aC6ltPk0IgUY6Fdrd+OF2Ol6Heo88bCcwZ2SOLQPFfCFTPhcGY7o/sv0IPyz1P+zLezS8uI8GCUabVdRImgUox5W5DbjRPffoe82Y2w=="/>
     </ocr>
 
     <!--ocr lang="ara">
-      <offline type="tesseract" code="ara" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ara.zip/download" signature="GZa8rhjGebbZERYZ/25+U1opV9oWDCiDug+d6NiVJaOb286gYk+VFp50dmRm3Tx9xj7B8EoBbvcq1bC9f3HAefbDC6mcyczJKAbf74eTeQZCphctJMrLHrBLXFi8kWc2w4N6OoOVh3KurBvpYPtP5P9KqgY7gv3oKTrsTBz3hKjyQZS9jOHBz0L+LdCrYfTBlpbVbDOV6sdEBI0HE3sZ5w23LMKCN8WA2VpQQmkfy63U1FxXGD5NqhP8jPbJ66+UdzbZHcxASRE36adCpX4CtzaNHAURSMjmNYI+wAbyLJAT28gzulSVVkVaCN7ktHRXrvo8vlM7EfGoaLip8E6LBg=="/>
+      <offline type="tesseract" code="ara" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ara.zip/download" signature="GZa8rhjGebbZERYZ/25+U1opV9oWDCiDug+d6NiVJaOb286gYk+VFp50dmRm3Tx9xj7B8EoBbvcq1bC9f3HAefbDC6mcyczJKAbf74eTeQZCphctJMrLHrBLXFi8kWc2w4N6OoOVh3KurBvpYPtP5P9KqgY7gv3oKTrsTBz3hKjyQZS9jOHBz0L+LdCrYfTBlpbVbDOV6sdEBI0HE3sZ5w23LMKCN8WA2VpQQmkfy63U1FxXGD5NqhP8jPbJ66+UdzbZHcxASRE36adCpX4CtzaNHAURSMjmNYI+wAbyLJAT28gzulSVVkVaCN7ktHRXrvo8vlM7EfGoaLip8E6LBg=="/>
     </ocr-->
 
     <ocr lang="cat">
-        <offline type="tesseract" code="cat" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/cat.zip/download" signature="PR3yBgynG9f8T9ZH/E09Zf8qVKc8Qf5V/LbczkYVAwtMrabgbOLWsVy2jULliBhMUm4poUzomY8OoEb4rsGzXmErmUhkce2L2Z4rXn/iw9x5Oxkfxz6CCaVidoqfdVDC64HDZrf8Ifj46t36zeEPjtqOnlL8GLs+DROcnNAgwPROhEx+TaaR8irJTspO2vqafLbsDtMEz/O/5VLNJodG1kR6I/ZMfJT3PztnWFwtMYG1MTp7B4wKyQ6pV2DPT6sKqqD0GdijzqxQO0rrnqTOnu3Rz31z2jJohq7AcIbKqiQ5x/zS66iAQTYmtl8kTGzr389ckRkddsyGh20sTJi4HQ=="/>
+        <offline type="tesseract" code="cat" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/cat.zip/download" signature="PR3yBgynG9f8T9ZH/E09Zf8qVKc8Qf5V/LbczkYVAwtMrabgbOLWsVy2jULliBhMUm4poUzomY8OoEb4rsGzXmErmUhkce2L2Z4rXn/iw9x5Oxkfxz6CCaVidoqfdVDC64HDZrf8Ifj46t36zeEPjtqOnlL8GLs+DROcnNAgwPROhEx+TaaR8irJTspO2vqafLbsDtMEz/O/5VLNJodG1kR6I/ZMfJT3PztnWFwtMYG1MTp7B4wKyQ6pV2DPT6sKqqD0GdijzqxQO0rrnqTOnu3Rz31z2jJohq7AcIbKqiQ5x/zS66iAQTYmtl8kTGzr389ckRkddsyGh20sTJi4HQ=="/>
     </ocr>
 
     <ocr lang="ces">
-        <offline type="tesseract" code="ces" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ces.zip/download" signature="NvhL2KSxDPgADRlJGgiikqauH1Knu/SraDIjWbzZKQqxXHK1EcLrXGyvlyoVgXmqoP25FnxFPERBKPqUnDYbh5bf1S4xhfAILgFUDhfkp9znKqPsGbUEO/VlalLt1fXf7cAMxtGn4nup4W+dprxaTADoGvTkIeKmr4pdk2Y5lQFaCqtsS2P3+zkYCjbRSZbDjstIhtz9u9wiLI2aSlSMvrUTpB/E8oSIm0sJQij6Am7MFkFipSi0lI+OW7SeRVzlcfoeiucfD5UIgV9s5h686STId727dk6gV2orZL8EA/QwxOfT/XrX2EjEQF+/yLDuvRCUWjRJHIUyqz/o2iZBSw=="/>
+        <offline type="tesseract" code="ces" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ces.zip/download" signature="NvhL2KSxDPgADRlJGgiikqauH1Knu/SraDIjWbzZKQqxXHK1EcLrXGyvlyoVgXmqoP25FnxFPERBKPqUnDYbh5bf1S4xhfAILgFUDhfkp9znKqPsGbUEO/VlalLt1fXf7cAMxtGn4nup4W+dprxaTADoGvTkIeKmr4pdk2Y5lQFaCqtsS2P3+zkYCjbRSZbDjstIhtz9u9wiLI2aSlSMvrUTpB/E8oSIm0sJQij6Am7MFkFipSi0lI+OW7SeRVzlcfoeiucfD5UIgV9s5h686STId727dk6gV2orZL8EA/QwxOfT/XrX2EjEQF+/yLDuvRCUWjRJHIUyqz/o2iZBSw=="/>
     </ocr>
 
     <ocr lang="dan">
-        <offline type="tesseract" code="dan" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/dan.zip/download" signature="UcGDZiNopvE6GLSwYpuH8MwhSEA7IBvbxTSsrq1oTfotnoUrKP+NVDExHH/pHAH1bhFTDC/5IPv7zaGeaT4Md+jbTWkUf8foqI9oiP4bPTjTK9lOUpkoCyTw5Qlpbpb+xw8E1andQu2EJK4xDcQ+wh2pys+qZi7urQKWwNOZceAHFFlIwTSNn3RBzsyL+W8RGCQwiZkEt8nEuGkjOf+XD2p1eXZEyj/pL28acw2zPB9f3uaGQNP9rPPt6S+IQHpX+a+t29dH60qvv+4DpNDlYChxWd0+damr41t43Qm0I21xbrij0W+AeKXUwrDgTlbYV8HSizk4thzx82ICCMCfxA=="/>
+        <offline type="tesseract" code="dan" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/dan.zip/download" signature="UcGDZiNopvE6GLSwYpuH8MwhSEA7IBvbxTSsrq1oTfotnoUrKP+NVDExHH/pHAH1bhFTDC/5IPv7zaGeaT4Md+jbTWkUf8foqI9oiP4bPTjTK9lOUpkoCyTw5Qlpbpb+xw8E1andQu2EJK4xDcQ+wh2pys+qZi7urQKWwNOZceAHFFlIwTSNn3RBzsyL+W8RGCQwiZkEt8nEuGkjOf+XD2p1eXZEyj/pL28acw2zPB9f3uaGQNP9rPPt6S+IQHpX+a+t29dH60qvv+4DpNDlYChxWd0+damr41t43Qm0I21xbrij0W+AeKXUwrDgTlbYV8HSizk4thzx82ICCMCfxA=="/>
     </ocr>
 
     <ocr lang="eng">
-        <offline type="tesseract" code="eng" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/eng.zip/download" signature="pThihin/yI87kLelcAzSNXnInh+50LPWRSsmI8ztlyPP1/AhMxb+ZS9MEgTodCgjkHq2tg4pHtndhWhEWiwXmt9Bf9i3mcYYVMfsud8kj8hRc2FsZO90aus0+uBGT20JEuGJUKruCONYfzaHlXjjyiC4d3UaA02YxDd0vEeXQP1Qz9y169DwXJGq8riGYNB130yiFp4UucgecocaPDmrD0C5HtfpR9HFcpXNonmg24vfZQMwJNvJz11zE8/z1uUL0zF2ulZ5lQ84ITI04fUeXEPmTQi43q73Q7wTGm1YTR0vHNFwfYCJnvZ/AG9w39jeTBor0Zk5dsyzElPk2ahSTg=="/>
+        <offline type="tesseract" code="eng" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/eng.zip/download" signature="pThihin/yI87kLelcAzSNXnInh+50LPWRSsmI8ztlyPP1/AhMxb+ZS9MEgTodCgjkHq2tg4pHtndhWhEWiwXmt9Bf9i3mcYYVMfsud8kj8hRc2FsZO90aus0+uBGT20JEuGJUKruCONYfzaHlXjjyiC4d3UaA02YxDd0vEeXQP1Qz9y169DwXJGq8riGYNB130yiFp4UucgecocaPDmrD0C5HtfpR9HFcpXNonmg24vfZQMwJNvJz11zE8/z1uUL0zF2ulZ5lQ84ITI04fUeXEPmTQi43q73Q7wTGm1YTR0vHNFwfYCJnvZ/AG9w39jeTBor0Zk5dsyzElPk2ahSTg=="/>
     </ocr>
 
     <ocr lang="epo">
-        <offline type="tesseract" code="epo" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/epo.zip/download" signature="aXr0wjpKtHXEM1JFGfPmfI/W/f1aD+9+y4yw8ql26qjdF9bT76yNaxC2A2hesGXPu9FNnLhrZC8ljwUrUCVYs79CwOVm8GsY3U6GSQSt8uBPshw3ZDGnRXWSS2NqHNzogsItkgguOlmIUA/lbiML/8iOcGHVvj3O7MXnPobyN9rOE+Y8ljtpBwDWYA+SI4YmdY/XJlaGzpXIhYwSwpe24KD4CGQ/fKKDk4JLXpluKK0vPIfog6Vdzy7MqBhTivLtgljs/PHOHonmKVKUEdCniW5eytSq4qGvC4DB/8R/ckayMwyY0m9nlSR92nCUJMVgQAdcQ5TeinpMplcCybyfJA=="/>
+        <offline type="tesseract" code="epo" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/epo.zip/download" signature="aXr0wjpKtHXEM1JFGfPmfI/W/f1aD+9+y4yw8ql26qjdF9bT76yNaxC2A2hesGXPu9FNnLhrZC8ljwUrUCVYs79CwOVm8GsY3U6GSQSt8uBPshw3ZDGnRXWSS2NqHNzogsItkgguOlmIUA/lbiML/8iOcGHVvj3O7MXnPobyN9rOE+Y8ljtpBwDWYA+SI4YmdY/XJlaGzpXIhYwSwpe24KD4CGQ/fKKDk4JLXpluKK0vPIfog6Vdzy7MqBhTivLtgljs/PHOHonmKVKUEdCniW5eytSq4qGvC4DB/8R/ckayMwyY0m9nlSR92nCUJMVgQAdcQ5TeinpMplcCybyfJA=="/>
     </ocr>
 
     <ocr lang="eus">
-        <offline type="tesseract" code="eus" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/eus.zip/download" signature="Kv9R1TY9XUYfClzppF56xeFGCu4Ifva+9em/kt/1SDLAk6l6xm0SASJQk7JXEbNNIRqNKflZrpC7wnvcQUyMxPJnVF3kTVQeO6DdS+u5n2Qp1AVzgmY1uZn6EOLhlX5/jqYO2Md6weseq+h1ImZ3ZAr9QBwkhE3MMuyqbJkKb9xP6N3n2+DeZCiThXWOFnkFw3KWyNGbjE/BD2nBq/cMcQFAa7Rm79S1PgwhdfTcwujBfkTAHZvKOLj/BlMrIhgkJJq+muKMh4TyVC0QVGaHtarFY1Hha6krfR3H1XmKoDIrdTMJk5MZFfDJXtOT651r/BLK4syMlgJnPLArO3RSow=="/>
+        <offline type="tesseract" code="eus" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/eus.zip/download" signature="Kv9R1TY9XUYfClzppF56xeFGCu4Ifva+9em/kt/1SDLAk6l6xm0SASJQk7JXEbNNIRqNKflZrpC7wnvcQUyMxPJnVF3kTVQeO6DdS+u5n2Qp1AVzgmY1uZn6EOLhlX5/jqYO2Md6weseq+h1ImZ3ZAr9QBwkhE3MMuyqbJkKb9xP6N3n2+DeZCiThXWOFnkFw3KWyNGbjE/BD2nBq/cMcQFAa7Rm79S1PgwhdfTcwujBfkTAHZvKOLj/BlMrIhgkJJq+muKMh4TyVC0QVGaHtarFY1Hha6krfR3H1XmKoDIrdTMJk5MZFfDJXtOT651r/BLK4syMlgJnPLArO3RSow=="/>
     </ocr>
 
     <ocr lang="fra">
-        <offline type="tesseract" code="fra" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/fra.zip/download" signature="hAWWUFRKqkrfj9hUfAL/2UuW60phhWp+1xj+EjLvPXjq0k8Or8MZfPVOhpcffXtCdGXLjOEh6hiZnExLz6/nzyxeVPNVit+LCdW2iD8Kh326tXfvSqHQze3ZW72hLxhxsjNWp//YE8U2gegUXBGMhIVkK0u9rFX/U1JRAfNNVkm7eUAx/7jTPl13x+WomYqgHpZlDxvyJcGk18Sn27FJPWGCfNulN4n2ffh1MRNpQmKb+LDiA3RVfoni6e+VGmuFe+FAwBlqJxALpJ7xB0mEjPC3l3NVQ5ACua5UVOmnZR/AB9vOol32R/W8Fcf9sODtS1Xz+frc4dO4KuFCLFE/Mg=="/>
+        <offline type="tesseract" code="fra" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/fra.zip/download" signature="hAWWUFRKqkrfj9hUfAL/2UuW60phhWp+1xj+EjLvPXjq0k8Or8MZfPVOhpcffXtCdGXLjOEh6hiZnExLz6/nzyxeVPNVit+LCdW2iD8Kh326tXfvSqHQze3ZW72hLxhxsjNWp//YE8U2gegUXBGMhIVkK0u9rFX/U1JRAfNNVkm7eUAx/7jTPl13x+WomYqgHpZlDxvyJcGk18Sn27FJPWGCfNulN4n2ffh1MRNpQmKb+LDiA3RVfoni6e+VGmuFe+FAwBlqJxALpJ7xB0mEjPC3l3NVQ5ACua5UVOmnZR/AB9vOol32R/W8Fcf9sODtS1Xz+frc4dO4KuFCLFE/Mg=="/>
     </ocr>
 
     <ocr lang="glg">
-        <offline type="tesseract" code="glg" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/glg.zip/download" signature="CQX4bXtpb53DnVNItOOXkvCXj/WZDMeScKb+2rKS6Klx9FU18p2bfsk90MmOG4ysbFOVlxYzJ4ZiCBdl80n3DLJ7AzDMNIFiGITh1lsC02Q6DgIf+2/4Q5PxBht+7AYgVDoRBdT+UKizR9TIYxIb6M3A4j9XZmIGJT/RdR8HL83ODYmLamX3PVDAnKoYxsAyTPpV/NX8syBJWbNS8Axnwqe0qA2qCOGp/kVIFMDcpMqdFVnXfMiSHatm5MHd4wD2Bk1rvtYzyqCJrN9VCAI9uNHeMsoMSFQ5r5VfSWkLzQ9rN8jn9gEwzoEVQ9d0FQHuvZ7HXuCB6sYJ4POAyciccQ=="/>
+        <offline type="tesseract" code="glg" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/glg.zip/download" signature="CQX4bXtpb53DnVNItOOXkvCXj/WZDMeScKb+2rKS6Klx9FU18p2bfsk90MmOG4ysbFOVlxYzJ4ZiCBdl80n3DLJ7AzDMNIFiGITh1lsC02Q6DgIf+2/4Q5PxBht+7AYgVDoRBdT+UKizR9TIYxIb6M3A4j9XZmIGJT/RdR8HL83ODYmLamX3PVDAnKoYxsAyTPpV/NX8syBJWbNS8Axnwqe0qA2qCOGp/kVIFMDcpMqdFVnXfMiSHatm5MHd4wD2Bk1rvtYzyqCJrN9VCAI9uNHeMsoMSFQ5r5VfSWkLzQ9rN8jn9gEwzoEVQ9d0FQHuvZ7HXuCB6sYJ4POAyciccQ=="/>
     </ocr>
 
     <!--ocr lang="hin">
-      <offline type="tesseract" code="hin" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/hin.zip/download" signature="QZ7qZJMsQ0pm6muCIcbb2/XX49ZlVfVd87ayTzWleiKrphDz7PXmUVs9uRLjUmCioA7N8EfsI12tbzBFRtq1c3m4NmiG+kLULcNyDUCDGi/OK177xjiT5mcSldaQOOC/O7sZ+oV7u0sH8IReUY0jussS1yELaNIN5CfEnSFKWnz/w/Fb29aMgBGB14BOpU+DV8IZKTQCKM5kyFwRIqm1i07IWyEYTadlfvW9Avi/mWwEcEhRy1UWuXsToCDt6PAceDUd3uG827PSOPdKoc8Xnr7gpcIA3IQH36KzaPl3Jd2nEM5g0Lr62n8hBIGo1YzYBy447Yq9R6Z5Kv0HoEW6Zg=="/>
+      <offline type="tesseract" code="hin" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/hin.zip/download" signature="QZ7qZJMsQ0pm6muCIcbb2/XX49ZlVfVd87ayTzWleiKrphDz7PXmUVs9uRLjUmCioA7N8EfsI12tbzBFRtq1c3m4NmiG+kLULcNyDUCDGi/OK177xjiT5mcSldaQOOC/O7sZ+oV7u0sH8IReUY0jussS1yELaNIN5CfEnSFKWnz/w/Fb29aMgBGB14BOpU+DV8IZKTQCKM5kyFwRIqm1i07IWyEYTadlfvW9Avi/mWwEcEhRy1UWuXsToCDt6PAceDUd3uG827PSOPdKoc8Xnr7gpcIA3IQH36KzaPl3Jd2nEM5g0Lr62n8hBIGo1YzYBy447Yq9R6Z5Kv0HoEW6Zg=="/>
     </ocr-->
 
     <ocr lang="hrv">
-        <offline type="tesseract" code="hrv" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/hrv.zip/download" signature="celweVpQV78r+NH5iPI+of6FE5TXHeJYJdP8J+XTgr7YB7J4EoFsPjCwFVYViiFM8RScSdvljT7RQILxMvz+7l2IQOawQOKrToGtZDyHO4OLkLdsapTMnkd5sT0M3EryQ0EzMj/XiAoGkrTD37mMvrrLHKJ5eI7XmNK37wvc7/pc/Jp7sXR0lxIcZRw3/vOtHydnrLCXohjoueEX0GGNmW8JNLRXFDI8TONvYGhGfdnkglrMexHCE1P/086RdrJcfBoY7r8updG6mFzYRCcKF+mfGJkFnIV8Ydr04BCw0bpzjPcq17e7ZtMHt9KKh4tcELENzVYl5am9JtNOZogTpw=="/>
+        <offline type="tesseract" code="hrv" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/hrv.zip/download" signature="celweVpQV78r+NH5iPI+of6FE5TXHeJYJdP8J+XTgr7YB7J4EoFsPjCwFVYViiFM8RScSdvljT7RQILxMvz+7l2IQOawQOKrToGtZDyHO4OLkLdsapTMnkd5sT0M3EryQ0EzMj/XiAoGkrTD37mMvrrLHKJ5eI7XmNK37wvc7/pc/Jp7sXR0lxIcZRw3/vOtHydnrLCXohjoueEX0GGNmW8JNLRXFDI8TONvYGhGfdnkglrMexHCE1P/086RdrJcfBoY7r8updG6mFzYRCcKF+mfGJkFnIV8Ydr04BCw0bpzjPcq17e7ZtMHt9KKh4tcELENzVYl5am9JtNOZogTpw=="/>
     </ocr>
 
     <ocr lang="ind">
-        <offline type="tesseract" code="ind" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ind.zip/download" signature="B0lfKWrgZrIu8q5zI48YKTnzMGoqPXfCiNSBRKxptdEM8/DbI6u+z2Z4MDKm1lRQxUbydKe98gL11rxRenLuwl2fzp1bvh3/sKl3akQP7/UFaQVpQKo7q4caZbz/z8GlF1bN0VKh+g5Pt8u9x/Dhtu97K5j+uTauuV+EMkmsDGrHOeHG263tg/mHEZkPqIlaRBH/YNPKG7PJiikTr0Y9eNR8lgreLgAfEVKEQdPyiDKO8H/mAZaS2VHnoTAvBWw9IeNk7GN5kst19WOXVwgaxiU0VpjmFglriVXTwJcpTZIW6rYMZxLX1OfGSWCeq7SU4JIQ1n/HpNzf64cf6y455g=="/>
+        <offline type="tesseract" code="ind" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ind.zip/download" signature="B0lfKWrgZrIu8q5zI48YKTnzMGoqPXfCiNSBRKxptdEM8/DbI6u+z2Z4MDKm1lRQxUbydKe98gL11rxRenLuwl2fzp1bvh3/sKl3akQP7/UFaQVpQKo7q4caZbz/z8GlF1bN0VKh+g5Pt8u9x/Dhtu97K5j+uTauuV+EMkmsDGrHOeHG263tg/mHEZkPqIlaRBH/YNPKG7PJiikTr0Y9eNR8lgreLgAfEVKEQdPyiDKO8H/mAZaS2VHnoTAvBWw9IeNk7GN5kst19WOXVwgaxiU0VpjmFglriVXTwJcpTZIW6rYMZxLX1OfGSWCeq7SU4JIQ1n/HpNzf64cf6y455g=="/>
     </ocr>
 
     <ocr lang="ita">
-        <offline type="tesseract" code="ita" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ita.zip/download" signature="ljMV7hqH+LndYtt6zGblNRhef+lxe8s/rMv3Zk313abrlfLWACzVGxEziYF9g45lKS0hZ+XCYHd0OBdeuCxvuKCBD3VosmCmsbXKgjy5ha34RYEhrKlku3SJWQG/sCvkfGVtt7sgpZ4dpgfzTP5rM/bbSL+8wC97eteoRbhkrqVt1sDdUDg+KEuIPdiIxqhiDLxlPyJhc+DfQVvZFNHdiGcXCIZTd9FUr+8c5kHVw7u+l5PcCZFu/4t3mDC58AAYkj62vAPBoAK4kpYhhuTW2+2McTRekQGC5HCHL8ebuQYi3pB8gYFbCp6FqWa/MbfmiDDgOQSLUPUamnWYp3oc2g=="/>
+        <offline type="tesseract" code="ita" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ita.zip/download" signature="ljMV7hqH+LndYtt6zGblNRhef+lxe8s/rMv3Zk313abrlfLWACzVGxEziYF9g45lKS0hZ+XCYHd0OBdeuCxvuKCBD3VosmCmsbXKgjy5ha34RYEhrKlku3SJWQG/sCvkfGVtt7sgpZ4dpgfzTP5rM/bbSL+8wC97eteoRbhkrqVt1sDdUDg+KEuIPdiIxqhiDLxlPyJhc+DfQVvZFNHdiGcXCIZTd9FUr+8c5kHVw7u+l5PcCZFu/4t3mDC58AAYkj62vAPBoAK4kpYhhuTW2+2McTRekQGC5HCHL8ebuQYi3pB8gYFbCp6FqWa/MbfmiDDgOQSLUPUamnWYp3oc2g=="/>
     </ocr>
 
     <ocr lang="mkd">
-        <offline type="tesseract" code="mkd" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/mkd.zip/download" signature="jxMCZf2Gpa1Jq8RYrGL/pRwRh168XcBsMh939S+ibyFJb1YF83Mdv8n0bJoX2qIplPYKySv6OjpltIhAVOoGPPgo0gLvsrQsc+gTtw+RIIwMYTQN0k+Mqv8TXmFgN3teJIEA55XaKX2Vz9beIxcut1SC2zYC7oC2olaq1JhU6qfjFCOLraNmC44EmuColMIjh9aYbTuNYaC4W1C/LUvomm71JMQ2Ub3FQ35elOfaCWWZRNo1+Xi/yKzvqSxRyV/1pfMF4FX6N1pHwlDL7t6xDyQS5Hh28EwpJu08crG5y4p9ZSL2hxMtsvlFiXOV46J2K0FOG4xhQe5Y5Y/NEsB25Q=="/>
+        <offline type="tesseract" code="mkd" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/mkd.zip/download" signature="jxMCZf2Gpa1Jq8RYrGL/pRwRh168XcBsMh939S+ibyFJb1YF83Mdv8n0bJoX2qIplPYKySv6OjpltIhAVOoGPPgo0gLvsrQsc+gTtw+RIIwMYTQN0k+Mqv8TXmFgN3teJIEA55XaKX2Vz9beIxcut1SC2zYC7oC2olaq1JhU6qfjFCOLraNmC44EmuColMIjh9aYbTuNYaC4W1C/LUvomm71JMQ2Ub3FQ35elOfaCWWZRNo1+Xi/yKzvqSxRyV/1pfMF4FX6N1pHwlDL7t6xDyQS5Hh28EwpJu08crG5y4p9ZSL2hxMtsvlFiXOV46J2K0FOG4xhQe5Y5Y/NEsB25Q=="/>
     </ocr>
 
     <ocr lang="mlt">
-        <offline type="tesseract" code="mlt" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/mlt.zip/download" signature="O4uYxhhqbZEL4ZUskKKIIqckSrtADgPR5hXFVnTRbP5SPf4vlC3wuK5ZT4yJMG9Xf6FVSaQIKzQ/MgrEnHvIQcZQZoQfkrcQpLG/gbwTuhAnmX3v7lOad/9ng4MB9zid5fFahfmAqd96el0u0huOr5mfWNT7EQHiA4aH3pCrMXXuV0YdkgB01l/g7jWAwx1ntusRGpuG72KAYj0okBwoiQ9eETbJ+1sXqiREFYxs6qSKfQgXUxTQLLGhoq1KXz6UYwgzUh18isbGV2ov7VpBkncXTZpNCnhjwqrH1IUzTQVwthtYOiRN7zqrId54WIFn3E0Sg+dAfYPiiaCGQun41g=="/>
+        <offline type="tesseract" code="mlt" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/mlt.zip/download" signature="O4uYxhhqbZEL4ZUskKKIIqckSrtADgPR5hXFVnTRbP5SPf4vlC3wuK5ZT4yJMG9Xf6FVSaQIKzQ/MgrEnHvIQcZQZoQfkrcQpLG/gbwTuhAnmX3v7lOad/9ng4MB9zid5fFahfmAqd96el0u0huOr5mfWNT7EQHiA4aH3pCrMXXuV0YdkgB01l/g7jWAwx1ntusRGpuG72KAYj0okBwoiQ9eETbJ+1sXqiREFYxs6qSKfQgXUxTQLLGhoq1KXz6UYwgzUh18isbGV2ov7VpBkncXTZpNCnhjwqrH1IUzTQVwthtYOiRN7zqrId54WIFn3E0Sg+dAfYPiiaCGQun41g=="/>
     </ocr>
 
     <ocr lang="msa">
-        <offline type="tesseract" code="msa" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/msa.zip/download" signature="FiuXEIJRwxYseUnzo3ruXIunvam3sP3vQUb1RiMtLIwbBozm/tXlHtg5sSdaiodkVy84C9nyg9t376p2PaG6IEVHRxy3kQCtMkh2WDTWjSJIls4UqsUJkX5kOjnTUrCp1spuh0Ocf4SqTwzGoxfX23iJrRj1OMRWg3VWJUd8eETWVyecgrWMnIzD2qJD2Zlc7BiEU4rEwiYTp8/LgtvCMSVCG0knGMzyf2tRzpeH4ztlGBdSR/CktZSJcPobnn7/JCJNVUS8ARDGmLvuyHq08rXpRqSKh9axiKRo8rjxMYULOiy/9rPZI9Rw3sKxiJ0zdp4J+bI7uNl31mopm1TLMw=="/>
+        <offline type="tesseract" code="msa" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/msa.zip/download" signature="FiuXEIJRwxYseUnzo3ruXIunvam3sP3vQUb1RiMtLIwbBozm/tXlHtg5sSdaiodkVy84C9nyg9t376p2PaG6IEVHRxy3kQCtMkh2WDTWjSJIls4UqsUJkX5kOjnTUrCp1spuh0Ocf4SqTwzGoxfX23iJrRj1OMRWg3VWJUd8eETWVyecgrWMnIzD2qJD2Zlc7BiEU4rEwiYTp8/LgtvCMSVCG0knGMzyf2tRzpeH4ztlGBdSR/CktZSJcPobnn7/JCJNVUS8ARDGmLvuyHq08rXpRqSKh9axiKRo8rjxMYULOiy/9rPZI9Rw3sKxiJ0zdp4J+bI7uNl31mopm1TLMw=="/>
     </ocr>
 
     <ocr lang="nld">
-        <offline type="tesseract" code="nld" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/nld.zip/download" signature="Vhb3oG/zf4mNL0PjEDJco41/RsP4q6fN0rudtcAEZ3yTSWExXLC467n20KoJ+NU8ycAyvhdYWDdP+OH5h++Uq+uwmAynbIoPAvfYZVPfKYjHuxk+251MupCSicezAywyNPaNZRgd5exMgtAvA6tAKhhvLKNO1d9jvWGxbsM99SXhfmHGmLW9YvxF89cJE5hxqdSuJiYwlEz6bMaEV/sFsRo5NVqGMH57saPNJoFH2QOxmYyaljyfdDAQ6cBDkN6B481t9pmEktkdYqPjZjhDAPtd46+c7A4nLvoZoyMXA0MGX1b3dPSNA8OX8QnbmLIHlSijzWs9i1xaiiIzw1reXA=="/>
+        <offline type="tesseract" code="nld" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/nld.zip/download" signature="Vhb3oG/zf4mNL0PjEDJco41/RsP4q6fN0rudtcAEZ3yTSWExXLC467n20KoJ+NU8ycAyvhdYWDdP+OH5h++Uq+uwmAynbIoPAvfYZVPfKYjHuxk+251MupCSicezAywyNPaNZRgd5exMgtAvA6tAKhhvLKNO1d9jvWGxbsM99SXhfmHGmLW9YvxF89cJE5hxqdSuJiYwlEz6bMaEV/sFsRo5NVqGMH57saPNJoFH2QOxmYyaljyfdDAQ6cBDkN6B481t9pmEktkdYqPjZjhDAPtd46+c7A4nLvoZoyMXA0MGX1b3dPSNA8OX8QnbmLIHlSijzWs9i1xaiiIzw1reXA=="/>
     </ocr>
 
     <ocr lang="pol">
-        <offline type="tesseract" code="pol" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/pol.zip/download" signature="L2powYoL6TBrwlZF6l77iQEkDixTkzXoOiB7tC6FCroVKMwVBKwaQ7eaRyyFGC/jxqgvsG/xG/1+MBxeWaWQICEUsSydLusiNh8d72IIAOWqvR456GiwPyV7SzpbpJLzb7fehWW6nsQrjAS4xACD8tYRyBTNqyr++F98ICObIHIk4uTetGgfLy7MdqFMzStk5iVRXR3nF52j3IEHQJKv1/p5ZfgDa0pAbpBkspLsl9rZI8IMpIpCKVLcACkkIxS1lp5ISDmBAW8toP7GXj8LE/W1mHgL4TqZRXlr06q4J6YcUiIB9bOFMUe+FuBJaYkUPdSYxezCLO5zZt3+I8UPQQ=="/>
+        <offline type="tesseract" code="pol" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/pol.zip/download" signature="L2powYoL6TBrwlZF6l77iQEkDixTkzXoOiB7tC6FCroVKMwVBKwaQ7eaRyyFGC/jxqgvsG/xG/1+MBxeWaWQICEUsSydLusiNh8d72IIAOWqvR456GiwPyV7SzpbpJLzb7fehWW6nsQrjAS4xACD8tYRyBTNqyr++F98ICObIHIk4uTetGgfLy7MdqFMzStk5iVRXR3nF52j3IEHQJKv1/p5ZfgDa0pAbpBkspLsl9rZI8IMpIpCKVLcACkkIxS1lp5ISDmBAW8toP7GXj8LE/W1mHgL4TqZRXlr06q4J6YcUiIB9bOFMUe+FuBJaYkUPdSYxezCLO5zZt3+I8UPQQ=="/>
     </ocr>
 
     <ocr lang="por">
-        <offline type="tesseract" code="por" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/por.zip/download" signature="FphHsxh6B5AGo5oZQfQFaPd+JWFItlXGOAT3TDO7huc/1nKkjrqSTXZChg6lyytbAYBOu53QDaJyotfFmZdX0Wr0bGTbpIS+K1o9JlObRO9kSlQ5mgJd1Vw3C/ZqynHZRoeqnxFDRqw/lJAVQ2it9nrl8kpWSxsJCNHd2uR3c3UwmbjwyXUow635FMLWXijSPpReYFCHy+RhOVGxqtH/qrh6X4kuh/hhZ43HQMf5ZxrGBNLff2etjHTAUJG1s2WQJy4f5xU1RjZXFuKxkpzW43immDA1VH/iebdpRBrYbsWI6LAN7sqWuvYgZ5MHVLHvikg+BoJd45bPpbfUim2QDQ=="/>
+        <offline type="tesseract" code="por" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/por.zip/download" signature="FphHsxh6B5AGo5oZQfQFaPd+JWFItlXGOAT3TDO7huc/1nKkjrqSTXZChg6lyytbAYBOu53QDaJyotfFmZdX0Wr0bGTbpIS+K1o9JlObRO9kSlQ5mgJd1Vw3C/ZqynHZRoeqnxFDRqw/lJAVQ2it9nrl8kpWSxsJCNHd2uR3c3UwmbjwyXUow635FMLWXijSPpReYFCHy+RhOVGxqtH/qrh6X4kuh/hhZ43HQMf5ZxrGBNLff2etjHTAUJG1s2WQJy4f5xU1RjZXFuKxkpzW43immDA1VH/iebdpRBrYbsWI6LAN7sqWuvYgZ5MHVLHvikg+BoJd45bPpbfUim2QDQ=="/>
     </ocr>
 
     <ocr lang="ron">
-        <offline type="tesseract" code="ron" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ron.zip/download" signature="A6jxi+ouR33hoRCziAsTo0De5SB2xVUn8/wVfkdrOe0ZSl9fFW6PxL9xbTIwpheF5aWFv2pZCHKJc456FIi5gY+culFNBQfrNGjE81Wr9Nqe3f9VjY4GZmLvKhasC4sr1mZ6T+cuWfb0uR64UPwKL6gCU2/K53TIF/3cyTH7IIzB71ErSP+2gXSSTlNKsBq7ve7Lbx4VJ2KvaMZcMOAiRMyju1CzGgVEtaENgceQRn9M5fkovmNSfRPDrk4d1Mbejlp3anHVrVeCMMDYtqZahcJzc3YOMLFkqKhlzKei6+BMwRRd1xTibRbsi7Ffj4GIV8ZWIIKXpHoo+mrq+BHGJA=="/>
+        <offline type="tesseract" code="ron" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/ron.zip/download" signature="A6jxi+ouR33hoRCziAsTo0De5SB2xVUn8/wVfkdrOe0ZSl9fFW6PxL9xbTIwpheF5aWFv2pZCHKJc456FIi5gY+culFNBQfrNGjE81Wr9Nqe3f9VjY4GZmLvKhasC4sr1mZ6T+cuWfb0uR64UPwKL6gCU2/K53TIF/3cyTH7IIzB71ErSP+2gXSSTlNKsBq7ve7Lbx4VJ2KvaMZcMOAiRMyju1CzGgVEtaENgceQRn9M5fkovmNSfRPDrk4d1Mbejlp3anHVrVeCMMDYtqZahcJzc3YOMLFkqKhlzKei6+BMwRRd1xTibRbsi7Ffj4GIV8ZWIIKXpHoo+mrq+BHGJA=="/>
     </ocr>
 
     <ocr lang="spa">
-        <offline type="tesseract" code="spa" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/spa.zip/download" signature="mRv7C0QHLBbmZ8JRmkY7I2RlUE9C4JTu1Mj0YZyo24Ya6B4tG3Z1i4u1vCkSE5pcyK275SLwbzPHyh5rZB00IvmsJWvhPe+eOLF2BuzeR0MdCEdCI2O0+AMQvSmSxyoT60ebK0ADvN/9OmG0m96hP2BUz6r/4rN/CkqygSuLcgbL94qf1CqrlsVCycxsQbANouecw8UE4a+iBL76YlyHQzH4Zjw/AqmrO1mSHwrIe3Pc5PMJDYPx10KtHAbgx23zIjPHH5SBbhuAatPISHA0A3yiZJ3KqHEoRPKmxyotnNzshqDlyztBq7fRXShCGYBHj2xl7ZikByb/hOq1MzU9pg=="/>
+        <offline type="tesseract" code="spa" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/spa.zip/download" signature="mRv7C0QHLBbmZ8JRmkY7I2RlUE9C4JTu1Mj0YZyo24Ya6B4tG3Z1i4u1vCkSE5pcyK275SLwbzPHyh5rZB00IvmsJWvhPe+eOLF2BuzeR0MdCEdCI2O0+AMQvSmSxyoT60ebK0ADvN/9OmG0m96hP2BUz6r/4rN/CkqygSuLcgbL94qf1CqrlsVCycxsQbANouecw8UE4a+iBL76YlyHQzH4Zjw/AqmrO1mSHwrIe3Pc5PMJDYPx10KtHAbgx23zIjPHH5SBbhuAatPISHA0A3yiZJ3KqHEoRPKmxyotnNzshqDlyztBq7fRXShCGYBHj2xl7ZikByb/hOq1MzU9pg=="/>
     </ocr>
 
     <ocr lang="swe">
-        <offline type="tesseract" code="swe" version="20150202001" url="http://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/swe.zip/download" signature="M5jGRIFPxt0LYmhzDVnFw+cAAC1ukEzYd6C1kx1o8PVmEUe1mdRvRpQovbq5keqSG0960NUoutp7JeHNp5Go5hGNBRpWw7v5kEPdP9l7lEn80D7KwHmQxLXeSIQAMP/b3ZzLbwvCHb3vHSZRle7fFxKUHB07IGg67HEKAO+CSL2jPfiu8S12F7/ItdZtgdYFSJEmzoz7k3oD/cbVJKYl6laCyjrw++CLQcKM3x/zcbiOWI0xIEZpbo7xmXfAVumi7dhteqfdi7Rfcxu8jd2o541qH2UV73ETqJDD1AspwnPyTkhFZ/aTJhtQ5ptsuy3CgFlGLH2d8FA6q7gtY/WjrA=="/>
+        <offline type="tesseract" code="swe" version="20150202001" url="https://sourceforge.net/projects/mitzuli/files/packages/v1/ocr/released/swe.zip/download" signature="M5jGRIFPxt0LYmhzDVnFw+cAAC1ukEzYd6C1kx1o8PVmEUe1mdRvRpQovbq5keqSG0960NUoutp7JeHNp5Go5hGNBRpWw7v5kEPdP9l7lEn80D7KwHmQxLXeSIQAMP/b3ZzLbwvCHb3vHSZRle7fFxKUHB07IGg67HEKAO+CSL2jPfiu8S12F7/ItdZtgdYFSJEmzoz7k3oD/cbVJKYl6laCyjrw++CLQcKM3x/zcbiOWI0xIEZpbo7xmXfAVumi7dhteqfdi7Rfcxu8jd2o541qH2UV73ETqJDD1AspwnPyTkhFZ/aTJhtQ5ptsuy3CgFlGLH2d8FA6q7gtY/WjrA=="/>
     </ocr>
 
 </manifest>
