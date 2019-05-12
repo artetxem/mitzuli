@@ -229,77 +229,84 @@ public class PackageManager { // TODO Using packages contained by this manager w
         while (parser.next() != XmlPullParser.END_DOCUMENT) {
             if (parser.getEventType() == XmlPullParser.START_TAG) {
                 final String tag = parser.getName();
-                if (tag.equals(TAG_ROOT)) {
-                    manifestVersion = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
-                } else if (tag.equals(TAG_MT)) {
-                    final Language src = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_SRC));
-                    final Language trg = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_TRG));
-                    final String betaAttr = parser.getAttributeValue(NAMESPACE, ATTR_BETA);
-                    final boolean beta = betaAttr != null && betaAttr.equals("true");
-                    final String id = src.toTag() + "." + trg.toTag();
-                    final MtPackage.Builder builder = new MtPackage.Builder(this, new KeyValueSaver(mtSaver, id),
-                            new File(mtPackageDir, id), new File(mtCacheDir, id), new File(mtSafeCacheDir, id), new File(mtTmpDir, id),
-                            src, trg);
-                    builder.setBeta(beta);
-                    if (publicKey != null) builder.setPublicKey(publicKey);
-                    while (parser.next() != XmlPullParser.END_TAG) {
-                        if (parser.getEventType() == XmlPullParser.START_TAG) {
-                            if (parser.getName().equals(TAG_ONLINE)) {
-                                final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
-                                final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
-                                final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
-                                builder.addOnline(type, code, url);
-                            } else if (parser.getName().equals(TAG_OFFLINE)) {
-                                final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
-                                final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
-                                final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
-                                final byte[] signature = Base64.decode(parser.getAttributeValue(NAMESPACE, ATTR_SIGNATURE), Base64.DEFAULT);
-                                final long version = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
-                                builder.setOffline(type, code, url, signature, version);
+                switch (tag) {
+                    case TAG_ROOT:
+                        manifestVersion = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
+                        break;
+                    case TAG_MT: {
+                        final Language src = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_SRC));
+                        final Language trg = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_TRG));
+                        final String betaAttr = parser.getAttributeValue(NAMESPACE, ATTR_BETA);
+                        final boolean beta = betaAttr != null && betaAttr.equals("true");
+                        final String id = src.toTag() + "." + trg.toTag();
+                        final MtPackage.Builder builder = new MtPackage.Builder(this, new KeyValueSaver(mtSaver, id),
+                                new File(mtPackageDir, id), new File(mtCacheDir, id), new File(mtSafeCacheDir, id), new File(mtTmpDir, id),
+                                src, trg);
+                        builder.setBeta(beta);
+                        if (publicKey != null) builder.setPublicKey(publicKey);
+                        while (parser.next() != XmlPullParser.END_TAG) {
+                            if (parser.getEventType() == XmlPullParser.START_TAG) {
+                                if (parser.getName().equals(TAG_ONLINE)) {
+                                    final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
+                                    final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
+                                    final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
+                                    builder.addOnline(type, code, url);
+                                } else if (parser.getName().equals(TAG_OFFLINE)) {
+                                    final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
+                                    final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
+                                    final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
+                                    final byte[] signature = Base64.decode(parser.getAttributeValue(NAMESPACE, ATTR_SIGNATURE), Base64.DEFAULT);
+                                    final long version = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
+                                    builder.setOffline(type, code, url, signature, version);
+                                }
+                                skip(parser);
                             }
-                            skip(parser);
                         }
+                        final MtPackage mtPackage = builder.build();
+                        if (!beta || useBetaPackages || mtPackage.isInstalled()) {
+                            mtPackages.add(mtPackage);
+                            processedMtPackages.add(id);
+                        }
+                        break;
                     }
-                    final MtPackage mtPackage = builder.build();
-                    if (!beta || useBetaPackages || mtPackage.isInstalled()) {
-                        mtPackages.add(mtPackage);
-                        processedMtPackages.add(id);
-                    }
-                } else if (tag.equals(TAG_OCR)) {
-                    final Language language = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_LANGUAGE));
-                    final String id = language.toTag();
-                    final String betaAttr = parser.getAttributeValue(NAMESPACE, ATTR_BETA);
-                    final boolean beta = betaAttr != null && betaAttr.equals("true");
-                    final OcrPackage.Builder builder = new OcrPackage.Builder(this, new KeyValueSaver(ocrSaver, id),
-                            new File(ocrPackageDir, id), new File(ocrCacheDir, id), new File(ocrSafeCacheDir, id), new File(ocrTmpDir, id),
-                            language);
-                    builder.setBeta(beta);
-                    if (publicKey != null) builder.setPublicKey(publicKey);
-                    while (parser.next() != XmlPullParser.END_TAG) {
-                        if (parser.getEventType() == XmlPullParser.START_TAG) {
-                            if (parser.getName().equals(TAG_ONLINE)) {
-                                final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
-                                final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
-                                final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
-                                builder.addOnline(type, code, url);
-                            } else if (parser.getName().equals(TAG_OFFLINE)) {
-                                final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
-                                final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
-                                final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
-                                final byte[] signature = Base64.decode(parser.getAttributeValue(NAMESPACE, ATTR_SIGNATURE), Base64.DEFAULT);
-                                final long version = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
-                                builder.setOffline(type, code, url, signature, version);
+                    case TAG_OCR: {
+                        final Language language = Language.forTag(parser.getAttributeValue(NAMESPACE, ATTR_LANGUAGE));
+                        final String id = language.toTag();
+                        final String betaAttr = parser.getAttributeValue(NAMESPACE, ATTR_BETA);
+                        final boolean beta = betaAttr != null && betaAttr.equals("true");
+                        final OcrPackage.Builder builder = new OcrPackage.Builder(this, new KeyValueSaver(ocrSaver, id),
+                                new File(ocrPackageDir, id), new File(ocrCacheDir, id), new File(ocrSafeCacheDir, id), new File(ocrTmpDir, id),
+                                language);
+                        builder.setBeta(beta);
+                        if (publicKey != null) builder.setPublicKey(publicKey);
+                        while (parser.next() != XmlPullParser.END_TAG) {
+                            if (parser.getEventType() == XmlPullParser.START_TAG) {
+                                if (parser.getName().equals(TAG_ONLINE)) {
+                                    final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
+                                    final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
+                                    final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
+                                    builder.addOnline(type, code, url);
+                                } else if (parser.getName().equals(TAG_OFFLINE)) {
+                                    final String type = parser.getAttributeValue(NAMESPACE, ATTR_TYPE);
+                                    final String code = parser.getAttributeValue(NAMESPACE, ATTR_CODE);
+                                    final String url = parser.getAttributeValue(NAMESPACE, ATTR_URL);
+                                    final byte[] signature = Base64.decode(parser.getAttributeValue(NAMESPACE, ATTR_SIGNATURE), Base64.DEFAULT);
+                                    final long version = Long.parseLong(parser.getAttributeValue(NAMESPACE, ATTR_VERSION));
+                                    builder.setOffline(type, code, url, signature, version);
+                                }
+                                skip(parser);
                             }
-                            skip(parser);
                         }
+                        final OcrPackage ocrPackage = builder.build();
+                        if (!beta || useBetaPackages || ocrPackage.isInstalled()) {
+                            ocrPackages.add(ocrPackage);
+                            processedOcrPackages.add(id);
+                        }
+                        break;
                     }
-                    final OcrPackage ocrPackage = builder.build();
-                    if (!beta || useBetaPackages || ocrPackage.isInstalled()) {
-                        ocrPackages.add(ocrPackage);
-                        processedOcrPackages.add(id);
-                    }
-                } else {
-                    skip(parser);
+                    default:
+                        skip(parser);
+                        break;
                 }
             }
         }
@@ -414,12 +421,10 @@ public class PackageManager { // TODO Using packages contained by this manager w
         }
     }
 
-
-
     // TODO The following are again convenient methods for which this might not be the most appropriate place, but they make everything simpler for now
 
-    public static interface ManifestsUpdateCallback {
-        public void onManifestsUpdate();
+    public interface ManifestsUpdateCallback {
+        void onManifestsUpdate();
     }
 
     public static void installPackages(List<Package> packages, Package.ProgressCallback progressCallback, Package.InstallCallback installCallback, Package.ExceptionCallback exceptionCallback) {
@@ -553,16 +558,8 @@ public class PackageManager { // TODO Using packages contained by this manager w
                                     progressDialog.setProgress(0);
                                     updatePackages(
                                             updateablePackages,
-                                            new Package.ProgressCallback() {
-                                                @Override public void onProgress(int progress) {
-                                                    progressDialog.setProgress(progress);
-                                                }
-                                            },
-                                            new Package.UpdateCallback() {
-                                                @Override public void onUpdate() {
-                                                    progressDialog.dismiss();
-                                                }
-                                            },
+                                            progressDialog::setProgress,
+                                            progressDialog::dismiss,
                                             new Package.ExceptionCallback() {
                                                 @Override public void onException(Exception exception) {
                                                     ACRA.getErrorReporter().handleSilentException(exception);

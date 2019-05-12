@@ -69,12 +69,12 @@ public class KeyValueSaver {
 
     public void saveBoolean(String key, boolean value) {
         checkKey(key);
-        prefs.edit().putBoolean(prefix + TYPE_BOOLEAN + key, value).commit();
+        prefs.edit().putBoolean(prefix + TYPE_BOOLEAN + key, value).apply();
     }
 
     public void removeBoolean(String key) {
         checkKey(key);
-        prefs.edit().remove(prefix + TYPE_BOOLEAN + key).commit();
+        prefs.edit().remove(prefix + TYPE_BOOLEAN + key).apply();
     }
 
     public boolean containsInt(String key) {
@@ -92,12 +92,12 @@ public class KeyValueSaver {
 
     public void saveInt(String key, int value) {
         checkKey(key);
-        prefs.edit().putInt(prefix + TYPE_INT + key, value).commit();
+        prefs.edit().putInt(prefix + TYPE_INT + key, value).apply();
     }
 
     public void removeInt(String key) {
         checkKey(key);
-        prefs.edit().remove(prefix + TYPE_INT + key).commit();
+        prefs.edit().remove(prefix + TYPE_INT + key).apply();
     }
 
     public boolean containsLong(String key) {
@@ -115,12 +115,12 @@ public class KeyValueSaver {
 
     public void saveLong(String key, long value) {
         checkKey(key);
-        prefs.edit().putLong(prefix + TYPE_LONG + key, value).commit();
+        prefs.edit().putLong(prefix + TYPE_LONG + key, value).apply();
     }
 
     public void removeLong(String key) {
         checkKey(key);
-        prefs.edit().remove(prefix + TYPE_LONG + key).commit();
+        prefs.edit().remove(prefix + TYPE_LONG + key).apply();
     }
 
     public boolean containsFloat(String key) {
@@ -138,12 +138,12 @@ public class KeyValueSaver {
 
     public void saveFloat(String key, float value) {
         checkKey(key);
-        prefs.edit().putFloat(prefix + TYPE_FLOAT + key, value).commit();
+        prefs.edit().putFloat(prefix + TYPE_FLOAT + key, value).apply();
     }
 
     public void removeFloat(String key) {
         checkKey(key);
-        prefs.edit().remove(prefix + TYPE_FLOAT + key).commit();
+        prefs.edit().remove(prefix + TYPE_FLOAT + key).apply();
     }
 
     public boolean containsString(String key) {
@@ -161,18 +161,18 @@ public class KeyValueSaver {
 
     public void saveString(String key, String value) {
         checkKey(key);
-        prefs.edit().putString(prefix + TYPE_STRING + key, value).commit();
+        prefs.edit().putString(prefix + TYPE_STRING + key, value).apply();
     }
 
     public void removeString(String key) {
         checkKey(key);
-        prefs.edit().remove(prefix + TYPE_STRING + key).commit();
+        prefs.edit().remove(prefix + TYPE_STRING + key).apply();
     }
 
     public void removeAll() {
         final SharedPreferences.Editor editor = prefs.edit();
         for (String key : prefs.getAll().keySet()) if (keyPattern.matcher(key).matches()) editor.remove(key);
-        editor.commit();
+        editor.apply();
     }
 
 

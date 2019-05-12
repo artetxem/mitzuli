@@ -323,33 +323,38 @@ public class TransferBytecode {
     currentNode = instr;
     for (Element e : listChildren(instr)) {
       String n = e.getTagName();
-      if (n.equals("lu")) {
-        processLu(e);
-      } else if (n.equals("mlu")) {
-        il.append(createLoad(APPENDABLE, 1));
-        il.append(factory.createConstant('^'));
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-        for (java.util.Iterator<Element> it = listChildren(e).iterator(); it.hasNext();) {
-          Element mlu = it.next();
-          for (Element lu : listChildren(mlu)) {
-            evalString(lu);
-            il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+      switch (n) {
+        case "lu":
+          processLu(e);
+          break;
+        case "mlu":
+          il.append(createLoad(APPENDABLE, 1));
+          il.append(factory.createConstant('^'));
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          for (java.util.Iterator<Element> it = listChildren(e).iterator(); it.hasNext(); ) {
+            Element mlu = it.next();
+            for (Element lu : listChildren(mlu)) {
+              evalString(lu);
+              il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+            }
+            if (it.hasNext()) {
+              il.append(factory.createConstant('+'));
+              il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+            }
           }
-          if (it.hasNext()) {
-            il.append(factory.createConstant('+'));
-            il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-          }
-        }
-        il.append(factory.createConstant('$'));
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-        il.append(POP);
-      } else if (n.equals("chunk")) {
-        processChunk(e);
-      } else {
-        il.append(createLoad(APPENDABLE, 1));
-        evalString(e);
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
-        il.append(POP);
+          il.append(factory.createConstant('$'));
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          il.append(POP);
+          break;
+        case "chunk":
+          processChunk(e);
+          break;
+        default:
+          il.append(createLoad(APPENDABLE, 1));
+          evalString(e);
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+          il.append(POP);
+          break;
       }
     }
   }
@@ -408,34 +413,39 @@ public class TransferBytecode {
 
     for (Element c0 : listChildren(e)) {
       String n = c0.getTagName();
-      if (n.equals("tags")) {
-        for (Element tag : listChildren(c0)) {
-          evalString(findElementSibling(tag.getFirstChild()));
-          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
-        }
-        il.append(factory.createConstant('{'));
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-      } else if (n.equals("lu")) {
-        processLu(c0);
-      } else if (n.equals("mlu")) {
-        il.append(factory.createConstant('^'));
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-        for (java.util.Iterator<Element> it = listChildren(c0).iterator(); it.hasNext();) {
-          Element mlu = it.next();
-          for (Element lu : listChildren(mlu)) {
-            evalString(lu);
+      switch (n) {
+        case "tags":
+          for (Element tag : listChildren(c0)) {
+            evalString(findElementSibling(tag.getFirstChild()));
             il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
           }
-          if (it.hasNext()) {
-            il.append(factory.createConstant('+'));
-            il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          il.append(factory.createConstant('{'));
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          break;
+        case "lu":
+          processLu(c0);
+          break;
+        case "mlu":
+          il.append(factory.createConstant('^'));
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          for (java.util.Iterator<Element> it = listChildren(c0).iterator(); it.hasNext(); ) {
+            Element mlu = it.next();
+            for (Element lu : listChildren(mlu)) {
+              evalString(lu);
+              il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+            }
+            if (it.hasNext()) {
+              il.append(factory.createConstant('+'));
+              il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+            }
           }
-        }
-        il.append(factory.createConstant('$'));
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
-      } else {
-        evalString(c0);
-        il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+          il.append(factory.createConstant('$'));
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR}, INVOKEINTERFACE));
+          break;
+        default:
+          evalString(c0);
+          il.append(factory.createInvoke("java.lang.Appendable", "append", APPENDABLE, new Type[]{CHAR_SEQUENCE}, INVOKEINTERFACE));
+          break;
       }
     }
     il.append(factory.createConstant("}$"));
@@ -446,20 +456,28 @@ public class TransferBytecode {
   private void processInstruction(Element instr) {
     currentNode = instr;
     String n = instr.getTagName();
-    if (n.equals("choose")) {
-      processChoose(instr);
-    } else if (n.equals("let")) {
-      processLet(instr);
-    } else if (n.equals("append")) {
-      processAppend(instr);
-    } else if (n.equals("out")) {
-      processOut(instr);
-    } else if (n.equals("call-macro")) {
-      processCallMacro(instr);
-    } else if (n.equals("modify-case")) {
-      processModifyCase(instr);
-    } else {
-      throwParseError("processInstruction(n = " + n);
+    switch (n) {
+      case "choose":
+        processChoose(instr);
+        break;
+      case "let":
+        processLet(instr);
+        break;
+      case "append":
+        processAppend(instr);
+        break;
+      case "out":
+        processOut(instr);
+        break;
+      case "call-macro":
+        processCallMacro(instr);
+        break;
+      case "modify-case":
+        processModifyCase(instr);
+        break;
+      default:
+        throwParseError("processInstruction(n = " + n);
+        break;
     }
   }
 
@@ -927,17 +945,21 @@ public class TransferBytecode {
       Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(openFile(txFilename));
       Element root = doc.getDocumentElement();
       String rootTagName = root.getTagName();
-      if (rootTagName.equals("transfer")) {
-        parseMode = ParseMode.TRANSFER;
-        WORD = TRANSFER_WORD;
-      } else if (rootTagName.equals("interchunk")) {
-        parseMode = ParseMode.INTERCHUNK;
-        WORD = INTERCHUNK_WORD;
-      } else if (rootTagName.equals("postchunk")) {
-        parseMode = ParseMode.POSTCHUNK;
-        WORD = INTERCHUNK_WORD;
-      } else {
-        throw new IllegalArgumentException("illegal rootTagName: " + rootTagName);
+      switch (rootTagName) {
+        case "transfer":
+          parseMode = ParseMode.TRANSFER;
+          WORD = TRANSFER_WORD;
+          break;
+        case "interchunk":
+          parseMode = ParseMode.INTERCHUNK;
+          WORD = INTERCHUNK_WORD;
+          break;
+        case "postchunk":
+          parseMode = ParseMode.POSTCHUNK;
+          WORD = INTERCHUNK_WORD;
+          break;
+        default:
+          throw new IllegalArgumentException("illegal rootTagName: " + rootTagName);
       }
 
       //MethodGen for isOutputChunked

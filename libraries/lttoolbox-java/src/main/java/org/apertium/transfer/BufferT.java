@@ -208,9 +208,9 @@ public class BufferT<E> {
   @Override
   public String toString() {
     String res = new String("content : ");
-    for (int i = 0; i < buf.length; i++) {
-      res += buf[i];
-    }
+	  for (E e : buf) {
+		  res += e;
+	  }
     res += ", lastpos : " + lastpos + ", currentpos : " + currentpos;
     return res;
   }

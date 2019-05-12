@@ -1025,8 +1025,8 @@ public class HMM {
   }
 
   void clear_array_vector(IntVector a[]) {
-    for (int i = 0; i < a.length; i++) {
-      a[i].nodes.clear();
+    for (IntVector intVector : a) {
+      intVector.nodes.clear();
     }
   }
 }

@@ -74,20 +74,20 @@ public abstract class Package {
     private OfflineServiceProvider cachedServiceProvider;
     private InstallTask installTask;
 
-    public static interface ProgressCallback {
-        public void onProgress(int progress);
+    public interface ProgressCallback {
+        void onProgress(int progress);
     }
 
-    public static interface InstallCallback {
-        public void onInstall();
+    public interface InstallCallback {
+        void onInstall();
     }
 
-    public static interface UpdateCallback {
-        public void onUpdate();
+    public interface UpdateCallback {
+        void onUpdate();
     }
 
-    public static interface ExceptionCallback {
-        public void onException(Exception exception);
+    public interface ExceptionCallback {
+        void onException(Exception exception);
     }
 
     protected static class OnlineServiceProvider {
@@ -271,11 +271,7 @@ public abstract class Package {
 
     public synchronized void update(final ProgressCallback progressCallback, final UpdateCallback updateCallback, final ExceptionCallback exceptionCallback) {
         // Updating a package is simply reinstalling it (but note that we do not check if it was already installed!)
-        final InstallCallback installCallback = updateCallback == null ? null : new InstallCallback() {
-            @Override public void onInstall() {
-                updateCallback.onUpdate();
-            }
-        };
+        final InstallCallback installCallback = updateCallback == null ? null : updateCallback::onUpdate;
         install(progressCallback, installCallback, exceptionCallback);
     }
 
@@ -473,7 +469,5 @@ public abstract class Package {
             if (exception == null) for (InstallCallback callback : installCallbacks) callback.onInstall();
             else for (ExceptionCallback callback : exceptionCallbacks) callback.onException(exception);
         }
-
     }
-
 }

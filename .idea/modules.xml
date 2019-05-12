@@ -9,8 +9,6 @@
       <module fileurl="file://$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" filepath="$PROJECT_DIR$/libraries/lttoolbox-java/lttoolbox-java.iml" />
       <module fileurl="file://$PROJECT_DIR$/mitzuli.iml" filepath="$PROJECT_DIR$/mitzuli.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/opencv/opencv.iml" filepath="$PROJECT_DIR$/libraries/opencv/opencv.iml" />
-      <module fileurl="file://$PROJECT_DIR$/libraries/tesseract-android-tools/tesseract-android-tools.iml" filepath="$PROJECT_DIR$/libraries/tesseract-android-tools/tesseract-android-tools.iml" />
     </modules>
   </component>
 </project>
-

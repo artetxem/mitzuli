@@ -35,10 +35,9 @@ public class SlowIntegerTreeSet extends TreeSet<Integer> implements IntSet {// T
 
   @Override
   public boolean addAll(IntSet c) {
-    Iterator<? extends Integer> e = c.iterator();
-    while (e.hasNext()) {
-      add(e.next());
-    }
+	  for (Integer integer : c) {
+		  add(integer);
+	  }
     return true;
   }
 }

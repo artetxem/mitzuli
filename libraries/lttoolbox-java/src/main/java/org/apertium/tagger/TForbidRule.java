@@ -26,7 +26,7 @@ public class TForbidRule {
   int tagi;
   int tagj;
 
-  public void TForbidRule() {
+  public TForbidRule() {
     tagi = 0;
     tagj = 0;
   }

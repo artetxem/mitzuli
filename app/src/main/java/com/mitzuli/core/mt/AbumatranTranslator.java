@@ -27,6 +27,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -58,7 +59,7 @@ public class AbumatranTranslator implements Translator {
         postprocessParams.put("detokenizer", new JSONArray(Arrays.asList(new Integer[]{1,2})));
         postprocessParams.put("detruecaser", new JSONArray(Arrays.asList(new Integer[]{1,1})));
         params.put("postprocess", postprocessParams);
-        wr.write(("[" + params + "]").getBytes("UTF-8"));
+        wr.write(("[" + params + "]").getBytes(StandardCharsets.UTF_8));
         wr.flush();
         wr.close();
         final JSONObject response = new JSONObject(new Scanner(new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"))).useDelimiter("\\A").next());

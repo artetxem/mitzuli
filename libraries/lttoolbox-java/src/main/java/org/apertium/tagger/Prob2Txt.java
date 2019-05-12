@@ -102,8 +102,7 @@ public class Prob2Txt {
     boolean human_readable = false;
 
     System.err.print("Command line: ");
-    for (int i = 0; i < argv.length; i++)
-      System.err.print(argv[i] + " ");
+	  for (String s : argv) System.err.print(s + " ");
     System.err.println();
 
     MyGetOpt getopt = new MyGetOpt(argv, "fu");

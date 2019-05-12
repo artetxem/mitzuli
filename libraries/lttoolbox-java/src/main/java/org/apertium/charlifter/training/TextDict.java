@@ -43,7 +43,7 @@ public class TextDict {
   HashMap<Character, Integer> ambigchars;
   TrainData td;
 
-  void TextDict() {
+  TextDict() {
     clean = new HashMap<String, Integer>();
     ambigchars = new HashMap<Character, Integer>();
     td = new TrainData();

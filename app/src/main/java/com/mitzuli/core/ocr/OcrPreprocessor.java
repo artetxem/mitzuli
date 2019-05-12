@@ -18,11 +18,9 @@
 
 package com.mitzuli.core.ocr;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+//import com.googlecode.leptonica.android.Dewarp;
+import com.googlecode.leptonica.android.Pix;
+import com.mitzuli.Image;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -33,9 +31,11 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
-import com.googlecode.leptonica.android.Dewarp;
-import com.googlecode.leptonica.android.Pix;
-import com.mitzuli.Image;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class OcrPreprocessor {
 
@@ -212,8 +212,8 @@ public class OcrPreprocessor {
 
         // Dewarp the text using Leptonica
         Pix pixs = Image.fromMat(binary).toGrayscalePix();
-        Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
-        final Image result = Image.fromGrayscalePix(pixsDewarp);
+//        Pix pixsDewarp = Dewarp.dewarp(pixs, 0, Dewarp.DEFAULT_SAMPLING, 5, true);
+        final Image result = Image.fromGrayscalePix(pixs/*Dewarp*/);
         if (DEBUG) result.write(new File(debugDir, "8_dewarp.jpg"));
 
         // Clean up

@@ -197,12 +197,16 @@ public class RegexpCompiler {
       e = t.insertNewSingleTransduction(alphabet.cast(letter, letter), e);
       t.setFinal(e);
       Postop();
-      if (postop.equals("*")) {
-        t.zeroOrMore();
-      } else if (postop.equals("+")) {
-        t.oneOrMore();
-      } else if (postop.equals("?")) {
-        t.optional();
+      switch (postop) {
+        case "*":
+          t.zeroOrMore();
+          break;
+        case "+":
+          t.oneOrMore();
+          break;
+        case "?":
+          t.optional();
+          break;
       }
       postop = "";
       state = transducer.insertTransducer(state, t);
@@ -217,12 +221,16 @@ public class RegexpCompiler {
       consume(')');
       transducer.setFinal(state);
       Postop();
-      if (postop.equals("*")) {
-        transducer.zeroOrMore();
-      } else if (postop.equals("+")) {
-        transducer.oneOrMore();
-      } else if (postop.equals("?")) {
-        transducer.optional();
+      switch (postop) {
+        case "*":
+          transducer.zeroOrMore();
+          break;
+        case "+":
+          transducer.oneOrMore();
+          break;
+        case "?":
+          transducer.optional();
+          break;
       }
       postop = "";
       state = t.insertTransducer(e, transducer);
@@ -322,12 +330,16 @@ public class RegexpCompiler {
       error();
     }
 
-    if (postop.equals("+")) {
-      t.oneOrMore();
-    } else if (postop.equals("*")) {
-      t.zeroOrMore();
-    } else if (postop.equals("?")) {
-      t.optional();
+    switch (postop) {
+      case "+":
+        t.oneOrMore();
+        break;
+      case "*":
+        t.zeroOrMore();
+        break;
+      case "?":
+        t.optional();
+        break;
     }
     brackets.clear();
     postop = "";

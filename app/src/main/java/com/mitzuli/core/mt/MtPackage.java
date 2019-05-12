@@ -144,14 +144,15 @@ public class MtPackage extends Package { // TODO Installing, updating or uninsta
             if (offline == null) {
                 for (OnlineServiceProvider online : getOnlineServiceProviders()) {
                     try {
-                        if (online.type.equals(ONLINE_SCALE_MT)) {
-                            return format(new ScaleMtTranslator(online.code, online.url, Keys.SCALE_MT_API_KEY).translate(text[0]));
-                        } else if (online.type.equals(ONLINE_APERTIUM_APY)) {
-                            return format(new ApyTranslator(online.code, online.url).translate(text[0]));
-                        } else if (online.type.equals(ONLINE_MATXIN)) {
-                            return format(new MatxinTranslator(online.code, online.url, Keys.MATXIN_API_KEY).translate(text[0]));
-                        } else if (online.type.equals(ONLINE_ABUMATRAN)) {
-                            return format(new AbumatranTranslator(online.code, online.url).translate(text[0]));
+                        switch (online.type) {
+                            case ONLINE_SCALE_MT:
+                                return format(new ScaleMtTranslator(online.code, online.url, Keys.SCALE_MT_API_KEY).translate(text[0]));
+                            case ONLINE_APERTIUM_APY:
+                                return format(new ApyTranslator(online.code, online.url).translate(text[0]));
+                            case ONLINE_MATXIN:
+                                return format(new MatxinTranslator(online.code, online.url, Keys.MATXIN_API_KEY).translate(text[0]));
+                            case ONLINE_ABUMATRAN:
+                                return format(new AbumatranTranslator(online.code, online.url).translate(text[0]));
                         }
                     } catch (Exception e) {
                         exception = e;
@@ -190,7 +191,5 @@ public class MtPackage extends Package { // TODO Installing, updating or uninsta
             if (translation != null) translationCallback.onTranslationDone(translation);
             else if (exception != null) exceptionCallback.onException(exception);
         }
-
     }
-
 }

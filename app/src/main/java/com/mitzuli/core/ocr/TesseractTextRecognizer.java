@@ -106,7 +106,7 @@ public class TesseractTextRecognizer implements TextRecognizer {
             build.println("CPU_ABI:       " + Build.CPU_ABI);
             build.println("CPU_ABI2:      " + Build.CPU_ABI2);
             build.println();
-            build.println("SERIAL:        " + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD ? Build.SERIAL : Build.UNKNOWN));
+            build.println("SERIAL:        " + Build.SERIAL);
             build.println();
             build.println("BOOTLOADER:    " + Build.BOOTLOADER);
             build.println("RADIO:         " + Build.RADIO);

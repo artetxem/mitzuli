@@ -1,13 +1,15 @@
 import org.apache.tools.ant.taskdefs.condition.Os
+
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -29,15 +31,18 @@ android {
             ndk_build_command = 'ndk-build.cmd'
         }
         commandLine "$ndkdir/$ndk_build_command", "--directory", "$projectDir/src/main/native", '-j', Runtime.runtime.availableProcessors(),
-                "APP_PLATFORM=android-8",
+//                "APP_PLATFORM=android-8",
                 "APP_BUILD_SCRIPT=$projectDir/src/main/native/Android.mk",
                 "NDK_APPLICATION_MK=$projectDir/src/main/native/Application.mk",
                 "NDK_OUT=$buildDir/native/obj",
                 "NDK_APP_DST_DIR=$buildDir/native/libs/\$(TARGET_ARCH_ABI)"
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 
     tasks.withType(JavaCompile) {
         compileTask -> compileTask.dependsOn ndkBuild
     }
-
 }
