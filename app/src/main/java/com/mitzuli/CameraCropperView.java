@@ -51,7 +51,7 @@ import com.edmodo.cropper.cropwindow.edge.Edge;
 public class CameraCropperView extends FrameLayout {
 
     // Whether to crop or stretch the camera preview (cropping is preferred, but it seems that it is only working on Android 4.1 and above)
-    private static final boolean CROP_PREVIEW = Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN;
+    private static final boolean CROP_PREVIEW = true;
 
 
     public static interface OpenCameraCallback {
@@ -121,23 +121,18 @@ public class CameraCropperView extends FrameLayout {
             if (opened) return true;
 
             try {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-                    // Choose the first back-facing camera
-                    boolean cameraAvailable = false;
-                    final CameraInfo cameraInfo = new CameraInfo();
-                    int cameraId = 0;
-                    while (!cameraAvailable && cameraId < Camera.getNumberOfCameras()) {
-                        Camera.getCameraInfo(cameraId, cameraInfo);
-                        if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) cameraAvailable = true;
-                        else cameraId++;
-                    }
-                    if (!cameraAvailable) return false; // No back-facing camera available...
-                    camera = Camera.open(cameraId);
-                    cameraOrientation = cameraInfo.orientation;
-                } else {
-                    camera = Camera.open();
-                    cameraOrientation = 90; // TODO Is this correct?
+                // Choose the first back-facing camera
+                boolean cameraAvailable = false;
+                final CameraInfo cameraInfo = new CameraInfo();
+                int cameraId = 0;
+                while (!cameraAvailable && cameraId < Camera.getNumberOfCameras()) {
+                    Camera.getCameraInfo(cameraId, cameraInfo);
+                    if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) cameraAvailable = true;
+                    else cameraId++;
                 }
+                if (!cameraAvailable) return false; // No back-facing camera available...
+                camera = Camera.open(cameraId);
+                cameraOrientation = cameraInfo.orientation;
                 if (camera == null) return false; // No camera available...
                 final Camera.Parameters params = camera.getParameters();
 
@@ -434,7 +429,7 @@ public class CameraCropperView extends FrameLayout {
     public void updateDisplayOrientation(Context context) {
         if (!opened) throw new IllegalStateException("Camera not opened yet");
         joinPreviewStarter();
-        final boolean restartPreview = previewing && Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH;
+        final boolean restartPreview = previewing;
         if (restartPreview) {
             stopPreview();
         }

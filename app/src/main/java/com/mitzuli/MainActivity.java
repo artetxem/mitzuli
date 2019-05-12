@@ -670,7 +670,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         activePair = pair;
         if (pair != null) {
             setTitle(pair.name);
-            preferences.edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getSourceLanguage().toTag() + "." + pair.mtPackage.getTargetLanguage().toTag()).commit();
+            preferences.edit().putString(PREFS_LAST_PAIR, pair.mtPackage.getSourceLanguage().toTag() + "." + pair.mtPackage.getTargetLanguage().toTag()).apply();
             for (int i = 0; i < languagePairs.size(); i++) {
                 if (pair.mtPackage.equals(languagePairs.get(i).mtPackage)) {
                     actionBarSpinner.setSelection(i);

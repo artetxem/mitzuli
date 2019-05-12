@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 22
-  buildToolsVersion = '22.0.1'
+  compileSdkVersion 28
+  buildToolsVersion = '28.0.3'
 
   sourceSets {
     main {
@@ -11,4 +11,12 @@ android {
       res.srcDirs = ['res']
     }
   }
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }

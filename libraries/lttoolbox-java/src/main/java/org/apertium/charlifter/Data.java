@@ -65,7 +65,7 @@ public class Data {
    */
   public HashMap<String, Double> contextref;
 
-  public void Data() {
+  public Data() {
     CharRef = new HashMap<Character, Integer>();
     charsref = new HashMap<Character, HashMap<Character, Integer>>();
     tableref = new HashMap<String, HashMap<String, Integer>>();

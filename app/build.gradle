@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 22
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 10008
         versionName "1.0.8"
     }
@@ -23,6 +23,10 @@ android {
             include 'armeabi', 'armeabi-v7a', 'mips', 'x86'
             universalApk true
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -42,14 +46,15 @@ android.applicationVariants.all { variant ->
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:22.2.0'
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:cardview-v7:22.2.0'
-    compile 'com.f2prateek.progressbutton:progressbutton:2.1.0@aar'
-    compile 'ch.acra:acra:4.6.2'
-    compile project(':libraries:axmlrpc')
-    compile project(':libraries:cropper')
-    compile project(':libraries:opencv')
-    compile project(':libraries:tesseract-android-tools')
-    compile project(':libraries:lttoolbox-java')
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.f2prateek.progressbutton:progressbutton:2.1.0@aar'
+    implementation 'ch.acra:acra:4.9.2'
+    implementation project(':libraries:axmlrpc')
+    implementation project(':libraries:cropper')
+    implementation project(':libraries:opencv')
+    implementation 'com.rmtheis:tess-two:9.0.0'
+//    implementation project(':libraries:tesseract-android-tools')
+    implementation project(':libraries:lttoolbox-java')
 }

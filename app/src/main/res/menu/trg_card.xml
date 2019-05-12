@@ -22,21 +22,21 @@
     <item
         android:id="@+id/action_trg_audio"
         android:orderInCategory="1"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:title="@string/action_trg_audio"
         android:icon="@drawable/ic_action_trg_audio"/>
 
     <item
         android:id="@+id/action_copy"
         android:orderInCategory="2"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:title="@string/action_copy"
         android:icon="@drawable/ic_action_copy"/>
 
     <item
         android:id="@+id/action_share"
         android:orderInCategory="3"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         android:title="@string/action_share"
         android:icon="@drawable/ic_action_share"/>
 

@@ -92,19 +92,17 @@ public class AbundantIntSet implements IntSet { //extends TreeSet<Integer> {
 
   @Override
   public boolean addAll(Collection<? extends Integer> c) {
-    Iterator<? extends Integer> e = c.iterator();
-    while (e.hasNext()) {
-      add(e.next());
-    }
+	  for (Integer integer : c) {
+		  add(integer);
+	  }
     return true;
   }
 
   @Override
   public boolean addAll(IntSet c) {
-    Iterator<? extends Integer> e = c.iterator();
-    while (e.hasNext()) {
-      add(e.next());
-    }
+	  for (Integer integer : c) {
+		  add(integer);
+	  }
     return true;
   }
 }

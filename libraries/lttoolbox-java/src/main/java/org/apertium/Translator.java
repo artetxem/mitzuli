@@ -238,8 +238,8 @@ public class Translator {
     ArrayList<String[]> unidirectionalPairs = new ArrayList<String[]>();
     ArrayList<String[]> bidirectionalPairs = new ArrayList<String[]>();
     String pairs[] = id.split(",");
-    for (int i = 0; i < pairs.length; i++) {
-      String pair[] = pairs[i].split("-");
+    for (String s : pairs) {
+      String pair[] = s.split("-");
       if (pair.length < 2 || pairs.length > 1 && (pair.length > 2 || pair[0].contains("_") || pair[1].contains("_")))
         continue;
       for (int j = 0; j < pair.length; j++)
