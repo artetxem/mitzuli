@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Авторские права (C) 2014 Mikel Artetxe <artetxem@gmail.com>
+  ~
+  ~ Эта программа является свободным программным обеспечением; вы можете распространять и/или изменять
+  ~ её на условиях GNU General Public License, опубликованной Free Software Foundation;
+  ~ либо версии 2 лицензии, либо (по вашему выбору) любой более поздней версии.
+  ~
+  ~ Программа распространяется в надежде, что она будет полезной,
+  ~ но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, даже без подразумеваемой гарантии
+  ~ КОММЕРЧЕСКОЙ ПРИГОДНОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЁННЫХ ЦЕЛЕЙ. Подробнее см. в GNU General Public License.
+  ~
+  ~ Вы должны были получить копию GNU General Public License вместе с этой программой;
+  ~ если нет, напишите в Free Software Foundation, Inc.,
+  ~ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  -->
+
+<resources>
+
+    <string name="app_name">Mitzuli</string>
+    <string name="settings">Настройки</string>
+    <string name="translate_button">ПЕРЕВЕСТИ</string>
+    <string name="speak_now">говорите сейчас</string>
+    <string name="translation_copied">Перевод скопирован</string>
+    <string name="share_with">Поделиться переводом с</string>
+
+    <string name="ok_button">ОК</string>
+    <string name="cancel_button">Отмена</string>
+
+    <string name="action_src_audio">Озвучить</string>
+    <string name="action_mic">Голосовой ввод</string>
+    <string name="action_camera">Ввод с камеры</string>
+    <string name="action_keyboard">Ввод с клавиатуры</string>
+    <string name="action_clear">Очистить</string>
+    <string name="action_trg_audio">Озвучить</string>
+    <string name="action_copy">Копировать</string>
+    <string name="action_share">Поделиться</string>
+
+    <string name="error_dialog_title">Ошибка</string>
+
+    <string name="update_dialog_title">Обновить сейчас?</string>
+    <string name="update_dialog_update_button">Обновить</string>
+    <string name="update_dialog_packages_to_update">Будут обновлены следующие пакеты:</string>
+
+    <string name="no_update_dialog_message">Все обновления установлены!</string>
+
+    <string name="update_progress_dialog_title">Обновление</string>
+    <string name="update_progress_dialog_message">Обновление пакетов&#8230;</string>
+
+    <string name="offline_on_install_error_title">Ошибка установки</string>
+    <string name="offline_on_install_error_message">Для установки языковых пар требуется подключение к интернету.</string>
+    <string name="offline_on_translate_error_title">Ошибка перевода</string>
+    <string name="offline_on_translate_error_message">Установите языковые пары для перевода без подключения к интернету.</string>
+
+    <string name="toast_unavailable_tts">Озвучивание недоступно для этого языка</string>
+    <string name="toast_unavailable_tts_offline">Озвучивание недоступно для этого языка без подключения к интернету</string>
+    <string name="toast_unavailable_stt">Озвучивание недоступно для этого языка</string>
+    <string name="toast_unavailable_stt_offline">Озвучивание недоступно без подключения к интернету</string>
+    <string name="toast_unavailable_ocr">Ввод с камеры недоступен для этого языка</string>
+
+
+    <!-- НАСТРОЙКИ -->
+
+    <string name="pref_header_general">Общие</string>
+    <string name="pref_title_display_language">Язык интерфейса</string>
+    <string name="pref_entry_value_default_display_language">Системный по умолчанию</string>
+    <string name="pref_dialog_title_confirm_display_language">Изменить язык?</string>
+    <string name="pref_dialog_message_confirm_display_language">Приложение будет перезапущено для применения изменений.</string>
+    <string name="pref_title_beta_packages">Бета языковые пары</string>
+    <string name="pref_description_beta_packages">Включить бета языковые пары (качество перевода может быть низким)</string>
+    <string name="pref_title_mark_unknown">Отмечать неизвестные слова</string>
+    <string name="pref_description_mark_unknown">Отображать отметки для неизвестных слов</string>
+    <string name="pref_title_auto_tts">Автоозвучивание</string>
+    <string name="pref_description_auto_tts">Автоозвучивать переведённый текст в режиме микрофона</string>
+
+    <string name="pref_header_updates">Обновления</string>
+    <string name="pref_title_autocheck_updates">Автопроверка обновлений</string>
+    <string name="pref_description_autocheck_updates">Автопроверка обновлений языковых пар</string>
+    <string name="pref_title_check_updates">Проверить обновления</string>
+    <string name="pref_description_check_updates">Проверить обновления языковых пар</string>
+
+    <string name="pref_header_advanced">Дополнительно</string>
+    <string name="pref_title_external_storage">Использовать внешнее хранилище</string>
+    <string name="pref_description_external_storage">Устанавливать пакеты во внешнее хранилище</string>
+    <string name="pref_dialog_title_confirm_external_storage">Изменить место установки?</string>
+    <string name="pref_dialog_message_confirm_external_storage">Все языковые пары, загруженные для офлайн-использования, будут удалены.</string>
+    <string name="pref_title_signature_verification">Проверка подписей пакетов</string>
+    <string name="pref_description_signature_verification">Использовать проверку подписей для защиты от внедрения вредоносного кода</string>
+
+    <string name="pref_header_development">Разработка</string>
+    <string name="pref_title_ocr_debugging">Отладка OCR</string>
+    <string name="pref_description_ocr_debugging">Сохранять файлы для отладки OCR во внешнем хранилище</string>
+
+    <string name="pref_header_about">О приложении</string>
+    <string name="pref_title_licenses">Лицензии с открытым исходным кодом</string>
+    <string name="pref_description_licenses">Информация о лицензиях открытого ПО</string>
+    <string name="pref_title_acknowledgments">Благодарности</string>
+    <string name="pref_description_acknowledgments">Информация об организациях, финансировавших проект</string>
+    <string name="pref_dialog_message_acknowledgments">Проект поддержан Баскским правительством в рамках финансовой помощи IKT 2014</string>
+
+    <string name="offline_on_update_error_title">Ошибка обновления</string>
+    <string name="offline_on_update_error_message">Для обновления языковых пар требуется подключение к интернету.</string>
+
+
+    <!-- НАЗВАНИЯ ЯЗЫКОВ -->
+
+    <string name="language_name_afr">Африкаанс</string>
+    <string name="language_name_ara">Арабский</string>
+    <string name="language_name_arg">Арагонский</string>
+    <string name="language_name_ast">Астурийский</string>
+    <string name="language_name_bos">Боснийский</string>
+    <string name="language_name_bre">Бретонский</string>
+    <string name="language_name_bul">Болгарский</string>
+    <string name="language_name_cat">Каталанский</string>
+    <string name="language_name_ces">Чешский</string>
+    <string name="language_name_cym">Валлийский</string>
+    <string name="language_name_dan">Датский</string>
+    <string name="language_name_deu">Немецкий</string>
+    <string name="language_name_eng">Английский</string>
+    <string name="language_name_epo">Эсперанто</string>
+    <string name="language_name_eus">Баскский</string>
+    <string name="language_name_fra">Французский</string>
+    <string name="language_name_glg">Галисийский</string>
+    <string name="language_name_hat">Гаитянский</string>
+    <string name="language_name_hbs">Сербохорватский</string>
+    <string name="language_name_heb">Иврит</string>
+    <string name="language_name_hin">Хинди</string>
+    <string name="language_name_hrv">Хорватский</string>
+    <string name="language_name_isl">Исландский</string>
+    <string name="language_name_ind">Индонезийский</string>
+    <string name="language_name_ita">Итальянский</string>
+    <string name="language_name_kaz">Казахский</string>
+    <string name="language_name_mkd">Македонский</string>
+    <string name="language_name_mlt">Мальтийский</string>
+    <string name="language_name_msa">Малайский</string>
+    <string name="language_name_nld">Нидерландский</string>
+    <string name="language_name_nno">Норвежский нюнорск</string>
+    <string name="language_name_nob">Норвежский букмол</string>
+    <string name="language_name_nor">Норвежский</string>
+    <string name="language_name_oci">Окситанский</string>
+    <string name="language_name_pol">Польский</string>
+    <string name="language_name_por">Португальский</string>
+    <string name="language_name_ron">Румынский</string>
+    <string name="language_name_rus">Русский</string> <!-- Added/Добавлено -->
+    <string name="language_name_slv">Словенский</string>
+    <string name="language_name_sme">Северносаамский</string>
+    <string name="language_name_spa">Испанский</string>
+    <string name="language_name_srd">Сардинский</string>
+    <string name="language_name_srp">Сербский</string>
+    <string name="language_name_swe">Шведский</string>
+    <string name="language_name_tat">Татарский</string>
+    <string name="language_name_tet">Тетум</string>
+    <string name="language_name_urd">Урду</string>
+
+    <string name="country_name_aran">Аран</string>
+    <string name="country_name_bra">Бразилия</string>
+    <string name="country_name_usa">США</string>
+    <string name="country_name_valencia">Валенсия</string>
+
+    <!-- НЕ ПЕРЕВОДИТЬ -->
+
+    <string-array name="supported_display_languages" translatable="false">
+        <item>an</item>
+        <item>ast</item>
+        <item>ca</item>
+        <item>de</item>
+        <item>fr</item>
+        <item>gl</item>
+        <item>en</item>
+        <item>es</item>
+        <item>eu</item>
+        <item>ru</item> <!-- Added/Добавлено -->
+    </string-array>
+
+</resources>
